@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lab1.pkg2;
+package Presentacion;
 
 /**
  *
  * @author cdiaz
  */
-public class Lab12 {
+public class Principal {
 
     /**
      * @param args the command line arguments

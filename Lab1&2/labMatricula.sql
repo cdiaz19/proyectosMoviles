@@ -1,10 +1,20 @@
+conn system/root
+
+drop tablespace TB_TABLAS including contents and datafiles;
+CREATE TABLESPACE TB_TABLAS
+  datafile 'C:\oraclexe\app\oracle\oradata\XE\TB_TABLAS.DBF'
+  SIZE  5M REUSE AUTOEXTEND OFF;
+
+drop table ciclo;
+drop table profesor;
+drop table curso;
+
 --------------------------------- TABLES ---------------------------------
 --TABLE SCHOOL YEAR
 CREATE TABLE ciclo(
 id VARCHAR(10),
 anno int,
-numeroUno int,
-numeroDos int,
+numero int,
 fechaInicio VARCHAR(10),
 fechaFinal VARCHAR(10),
 CONSTRAINTS pkciclo PRIMARY KEY (id)
@@ -47,9 +57,10 @@ AS
   cursorCiclo types.ref_cursor;
 BEGIN
   OPEN cursorCiclo FOR
-    SELECT id, anno, numeroUno, numeroDos, fechaInicio, fechaFinal from ciclo;
+    SELECT id, anno, numero, fechaInicio, fechaFinal from ciclo;
   RETURN cursorCiclo;
 END;
+/
 
 -- PROFESSOR INDEX
 CREATE OR REPLACE FUNCTION listarProfesores
@@ -61,6 +72,7 @@ BEGIN
     SELECT id, cedula, nombre, email, contrasena, telefono from profesor;
   RETURN cursorProfesor;
 END;
+/
 
 -- COURSE INDEX
 CREATE OR REPLACE FUNCTION listarCursos
@@ -72,14 +84,15 @@ BEGIN
     SELECT id, codigo, nombre, creditos, horasSemanales from curso;
   RETURN cursorCurso;
 END;
+/
 
 ------------ CREATE #POST ------------
 -- INSERT SCHOOL YEAR
-CREATE OR REPLACE PROCEDURE insertarCiclo(id IN ciclo.id%TYPE, anno IN ciclo.anno%TYPE, numeroUno IN ciclo.numeroUno%TYPE, numeroDos IN ciclo.numeroDos%TYPE,
+CREATE OR REPLACE PROCEDURE insertarCiclo(id IN ciclo.id%TYPE, anno IN ciclo.anno%TYPE, numero IN ciclo.numero%TYPE,
 fechaInicio IN ciclo.fechaInicio%TYPE, fechaFinal IN ciclo.fechaFinal%TYPE)
 AS
 BEGIN
-	INSERT INTO ciclo VALUES(id, anno, numeroUno, numeroDos, fechaInicio, fechaFinal);
+	INSERT INTO ciclo VALUES(id, anno, numero, fechaInicio, fechaFinal);
 END;
 /
 
@@ -109,9 +122,10 @@ AS
   cursorCiclo types.ref_cursor;
 BEGIN
   OPEN cursorCiclo FOR
-    SELECT id, anno, numeroUno, numeroDos, fechaInicio, fechaFinal from ciclo WHERE id=idCiclo;
+    SELECT id, anno, numero, fechaInicio, fechaFinal from ciclo WHERE id=idCiclo;
 RETURN cursorCiclo;
 END;
+/
 
 -- SHOW PROFESSOR
 CREATE OR REPLACE FUNCTION buscarProfesor(idProfesor IN varchar)
@@ -123,6 +137,7 @@ BEGIN
     SELECT id, cedula, nombre, email, contrasena, telefono from profesor WHERE id=idProfesor;
 RETURN cursorProfesor;
 END;
+/
 
 -- SHOW COURSE
 CREATE OR REPLACE FUNCTION buscarCurso(idCurso IN varchar)
@@ -134,15 +149,17 @@ BEGIN
     SELECT id, codigo, nombre, creditos, horasSemanales from curso WHERE id=idCurso;
 RETURN cursorCurso;
 END;
+/
 
 ------------ UPDATE #PUT (object_id)------------
 -- UPDATE SCHOOL YEAR
-CREATE OR REPLACE PROCEDURE modificarCiclo(idCiclo IN ciclo.id%TYPE, annoNuevo IN ciclo.anno%TYPE, numeroUnoNuevo IN ciclo.numeroUno%TYPE, numeroDosNuevo IN ciclo.numeroDos%TYPE,
+CREATE OR REPLACE PROCEDURE modificarCiclo(idCiclo IN ciclo.id%TYPE, annoNuevo IN ciclo.anno%TYPE, numeroNuevo IN ciclo.numero%TYPE,
 fechaInicioNuevo IN ciclo.fechaInicio%TYPE, fechaFinalNuevo IN ciclo.fechaFinal%TYPE)
 AS
 BEGIN
-  UPDATE ciclo SET anno=annoNuevo, numeroUno=numeroUnoNuevo, numeroDos=numeroDosNuevo, fechaInicio=fechaInicioNuevo, fechaFinal=fechaFinalNuevo WHERE id=idCiclo;
+  UPDATE ciclo SET anno=annoNuevo, numero=numeroNuevo, fechaInicio=fechaInicioNuevo, fechaFinal=fechaFinalNuevo WHERE id=idCiclo;
 END;
+/
 
 -- UPDATE PROFESSOR
 CREATE OR REPLACE PROCEDURE modificarProfesor(idProfesor IN profesor.id%TYPE, cedulaNuevo IN profesor.cedula%TYPE, nombreNuevo IN profesor.nombre%TYPE, emailNuevo IN profesor.email%TYPE,
@@ -151,6 +168,7 @@ AS
 BEGIN
   UPDATE profesor SET cedula=cedulaNuevo, nombre=nombreNuevo, email=emailNuevo, contrasena=contrasenaNuevo, telefono=telefonoNuevo WHERE id=idProfesor;
 END;
+/
 
 -- UPDATE COURSE
 CREATE OR REPLACE PROCEDURE modificarCurso(idCurso IN curso.id%TYPE, codigoNuevo IN curso.codigo%TYPE, nombreNuevo IN curso.nombre%TYPE, creditosNuevo IN curso.creditos%TYPE,
@@ -159,6 +177,7 @@ AS
 BEGIN
   UPDATE curso SET codigo=codigoNuevo, nombre=nombreNuevo, creditos=creditosNuevo, horasSemanales=horasSemanalesNuevo WHERE id=idCurso;
 END;
+/
 
 ------------ DESTROY #DELETE (object_id)------------
 -- DESTROY SCHOOL YEAR
@@ -167,6 +186,7 @@ as
 begin
   delete from ciclo where id=idCiclo;
 end;
+/
 
 -- DESTROY PROFESSOR
 create or replace procedure eliminarProfesor(idProfesor IN varchar)
@@ -174,6 +194,7 @@ as
 begin
   delete from profesor where id=idProfesor;
 end;
+/
 
 -- DESTROY COURSE
 create or replace procedure eliminarCurso(idCurso IN varchar)
@@ -181,3 +202,4 @@ as
 begin
   delete from curso where id=idCurso;
 end;
+/
