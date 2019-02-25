@@ -46,7 +46,6 @@ public class ServicioProfesor extends Servicio {
     {
       throw new NoDataException("La base de datos no se encuentra disponible");
     }
-    System.out.print("Entra");
     ResultSet rs = null;
     LinkedList<Profesor> coleccion = new LinkedList();
     Profesor profesor = null;
@@ -55,7 +54,6 @@ public class ServicioProfesor extends Servicio {
     {
       
       pstmt = this.conexion.prepareCall("{?=call listarProfesores()}");
-      System.out.print(pstmt);
       pstmt.registerOutParameter(1, -10);
       pstmt.execute();
       rs = (ResultSet)pstmt.getObject(1);
