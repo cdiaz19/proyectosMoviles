@@ -49,8 +49,8 @@ public class ControlProfesores {
     }
     
     public void agregar() throws GlobalException, NoDataException{
-        //Profesor profesor_agregado = new Profesor(view.insertarId.getText(),view.insertarCedula.getText(),view.insertarEmail.getText());
-        //domainModel.insertar(profesor_agregado);
+        Profesor profesor_agregado = new Profesor(view.insertarId.getText(),view.insertarCedula.getText(),view.insertarNombre.getText(),view.insertarEmail.getText(),view.insertarContrasena.getText(),Integer.parseInt(view.insertarTelefono.getText()));
+        domainModel.insertar(profesor_agregado);
         LinkedList<Profesor> rows = domainModel.listar();
         if (rows.isEmpty()){
             model.getErrores().put("nombreFld", "Ningun registro coincide");

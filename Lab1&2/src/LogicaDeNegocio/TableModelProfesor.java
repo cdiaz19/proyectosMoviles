@@ -15,9 +15,9 @@ import javax.swing.table.AbstractTableModel;
  */
 public class TableModelProfesor extends AbstractTableModel {
 
-    public static final int ID = 0;
-  public static final int NOMBRE = 1;
-  public static final int CEDULA = 2;
+  public static final int ID = 0;
+  public static final int CEDULA = 1;
+  public static final int NOMBRE = 2;
   public static final int EMAIL = 3;
   public static final int CONTRASENA = 4;
   public static final int TELEFONO = 5;
@@ -88,8 +88,8 @@ public class TableModelProfesor extends AbstractTableModel {
   private void initColNames()
   {
     this.colNames[0] = "ID";
-    this.colNames[1] = "NOMBRE";
-    this.colNames[2] = "Cedula";
+    this.colNames[1] = "Cedula";
+    this.colNames[2] = "Nombre";
     this.colNames[3] = "Email";
     this.colNames[4] = "Contrasena";
     this.colNames[5] = "Telefono";

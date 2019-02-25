@@ -18,6 +18,7 @@ public class Profesor {
     private int telefono;
 
     public Profesor() {
+        id="";
         cedula = "";
         nombre = "";
         email = "";
