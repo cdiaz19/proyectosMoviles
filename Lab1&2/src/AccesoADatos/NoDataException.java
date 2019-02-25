@@ -9,7 +9,7 @@ package AccesoADatos;
  *
  * @author cdiaz
  */
-public class NoDataException extends java.lang.Exception {
+public class NoDataException extends Exception {
     /** Creates a new instance of NoDataException */
     public NoDataException() { 
     }

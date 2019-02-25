@@ -10,7 +10,7 @@ package LogicaDeNegocio;
  * @author cdiaz
  */
 public class Profesor {
-    private int id;
+    private String id;
     private String cedula;
     private String nombre;
     private String email;
@@ -22,10 +22,10 @@ public class Profesor {
         nombre = "";
         email = "";
         contrasena = "";
-        telefono = 12345678;
+        telefono = 0;
     }
 
-    public Profesor(int id, String cedula, String nombre, String email, String contrasena, int telefono) {
+    public Profesor(String id, String cedula, String nombre, String email, String contrasena, int telefono) {
         this.id = id;
         this.cedula = cedula;
         this.nombre = nombre;
@@ -34,11 +34,11 @@ public class Profesor {
         this.telefono = telefono;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

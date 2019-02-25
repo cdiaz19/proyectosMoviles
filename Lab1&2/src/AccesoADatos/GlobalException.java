@@ -9,12 +9,12 @@ package AccesoADatos;
  *
  * @author cdiaz
  */
-public class GlobalException extends java.lang.Exception {
+public class GlobalException extends Exception {
     /** Creates a new instance of GlobalException */
-    public GlobalException() {
-    }
-    
-    public GlobalException(String msg) {
-        super(msg);
-    }
+   public GlobalException() {}
+  
+  public GlobalException(String msg)
+  {
+    super(msg);
+  }
 }

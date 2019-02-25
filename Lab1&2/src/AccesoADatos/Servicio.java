@@ -26,28 +26,30 @@ public class Servicio {
     }
     
     protected void conectar() throws SQLException, ClassNotFoundException  {
-        //Class.forName("oracle.jdbc.driver.OracleDriver");
-       // try {
-            //conexion = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","progra3");
-            //conexion = getJdbcMydbsource();
-       /* } catch (NamingException ex) {
-            ex.printStackTrace();
-        }*/  
+        Class.forName("oracle.jdbc.OracleTypes");
+        this.conexion = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "system", "root");
     }
     
     protected void desconectar() throws SQLException{
-        if(!conexion.isClosed()) { 
-            conexion.close(); 
+        if (!this.conexion.isClosed()) {
+             this.conexion.close();
         }
     }
 
     private Connection getJdbcMydbsource() throws NamingException {
-        Context context = new InitialContext();
-        try {
-            return ((DataSource) context.lookup("jdbc/Mydbsource")).getConnection();
-        } catch (NamingException | SQLException ex) {
-            ex.printStackTrace();
-        }
-        return null;
+    Context c = new InitialContext();
+    try
+    {
+      return ((DataSource)c.lookup("jdbc/Mydbsource")).getConnection();
     }
+    catch (NamingException ex)
+    {
+      ex.printStackTrace();
+    }
+    catch (SQLException ex)
+    {
+      ex.printStackTrace();
+    }
+    return null;
+  }
 }

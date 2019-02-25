@@ -1,4 +1,4 @@
-conn system/root
+
 
 drop tablespace TB_TABLAS including contents and datafiles;
 CREATE TABLESPACE TB_TABLAS
@@ -138,6 +138,18 @@ BEGIN
 RETURN cursorProfesor;
 END;
 /
+-- SHOW PROFESSOR BY NAME
+CREATE OR REPLACE FUNCTION buscarNombres(nombrebuscar IN profesor.nombre%TYPE)
+RETURN Types.ref_cursor 
+AS 
+        cursorProfesor types.ref_cursor; 
+BEGIN 
+  OPEN cursorProfesor FOR 
+       SELECT id, cedula, nombre, email, contrasena, telefono from profesor WHERE nombre=nombrebuscar; 
+RETURN producto_cursor; 
+END;
+/
+
 
 -- SHOW COURSE
 CREATE OR REPLACE FUNCTION buscarCurso(idCurso IN varchar)
@@ -203,3 +215,5 @@ begin
   delete from curso where id=idCurso;
 end;
 /
+INSERT INTO profesor values('123','115790','Georges','aaaa','ffff',5555);
+
