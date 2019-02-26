@@ -18,52 +18,44 @@ import java.util.LinkedList;
  * @author Alejandro
  */
 public class ServicioProfesor extends Servicio {
-    private static final String insertarProfesor = "{call insertarProfesor(?,?,?,?,?,?)}";
-  private static final String LISTAR = "{?=call listarProfesores()}";
-  private static final String BUSCARID = "{?=call buscarProfesor(?)}";
-  private static final String modificarProfesor = "{call modificarProfesor(?,?,?,?,?,?)}";
-  private static final String eliminarProfesor = "{call eliminarProfesor(?)}";
-  private static final String buscarNombres = "{call buscarNombres(?)}";
-  private static final String buscarTipos = "{call buscarTipos(?)}";
+    private static final String INSERTARPROFESOR = "{call insertarProfesor(?,?,?,?,?,?)}";
+  private static final String LISTARPROFESORES = "{?=call listarProfesores()}";
+  private static final String BUSCARPROFESOR = "{?=call buscarProfesor(?)}";
+  private static final String MODIFICARPROFESOR = "{call modificarProfesor(?,?,?,?,?,?)}";
+  private static final String ELIMINARPROFESOR = "{call eliminarProfesor(?)}";
+  private static final String BUSCARNOMBRES = "{call buscarNombres(?)}";
+  private static final String BUSCARTIPOS = "{call buscarTipos(?)}";
   
-  public static ServicioProfesor getInstancia()
-  {
+  public static ServicioProfesor getInstancia(){
     return INSTANCIA == null ? (INSTANCIA = new ServicioProfesor()) : INSTANCIA;
   }
   
   public LinkedList<Profesor> listar()
-    throws GlobalException, NoDataException
-  {
-    try
-    {
+    throws GlobalException, NoDataException {
+    try {
       conectar();
     }
-    catch (ClassNotFoundException ex)
-    {
+    catch (ClassNotFoundException ex) {
       throw new GlobalException("No se ha localizado el Driver");
     }
-    catch (SQLException e)
-    {
+    catch (SQLException e) {
       throw new NoDataException("La base de datos no se encuentra disponible");
     }
+    
     ResultSet rs = null;
     LinkedList<Profesor> coleccion = new LinkedList();
     Profesor profesor = null;
     CallableStatement pstmt = null;
-    try
-    {
-      
-      pstmt = this.conexion.prepareCall("{?=call listarProfesores()}");
+    try{
+      pstmt = this.conexion.prepareCall(LISTARPROFESORES);
       pstmt.registerOutParameter(1, -10);
       pstmt.execute();
       rs = (ResultSet)pstmt.getObject(1);
-      while (rs.next())
-      {
+      while (rs.next()) {
         profesor = new Profesor(rs.getString("id"), rs.getString("cedula"),rs.getString("nombre"),rs.getString("email"),rs.getString("contrasena"),rs.getInt("telefono"));
         coleccion.add(profesor);
       }
-      try
-      {
+      try {
         if (rs != null) {
           rs.close();
         }
@@ -72,24 +64,20 @@ public class ServicioProfesor extends Servicio {
         }
         desconectar();
       }
-      catch (SQLException e)
-      {
+      catch (SQLException e) {
         throw new GlobalException("Estatutos invalidos o nulos");
       }
       if (coleccion == null) {
         //break label275;
       }
     }
-    catch (SQLException e)
-    {
+    catch (SQLException e) {
       e.printStackTrace();
       
       throw new GlobalException("Sentencia no valida");
     }
-    finally
-    {
-      try
-      {
+    finally {
+      try {
         if (rs != null) {
           rs.close();
         }
@@ -111,24 +99,20 @@ public class ServicioProfesor extends Servicio {
   }
   
   public void insertar(Profesor profesor)
-    throws GlobalException, NoDataException
-  {
-    try
-    {
+    throws GlobalException, NoDataException {
+    try {
       conectar();
     }
-    catch (ClassNotFoundException e)
-    {
+    catch (ClassNotFoundException e) {
       throw new GlobalException("No se ha localizado el driver");
     }
-    catch (SQLException e)
-    {
+    catch (SQLException e) {
       throw new NoDataException("La base de datos no se encuentra disponible");
     }
     CallableStatement pstmt = null;
-    try
-    {
-      pstmt = this.conexion.prepareCall("{call insertarProfesor (?,?,?,?,?,?)}");
+    
+    try {
+      pstmt = this.conexion.prepareCall(INSERTARPROFESOR);
       pstmt.setString(1, profesor.getId());
       pstmt.setString(2, profesor.getCedula());
       pstmt.setString(3, profesor.getNombre());
@@ -163,10 +147,8 @@ public class ServicioProfesor extends Servicio {
   }
   
   public void modificar(Profesor profesor)
-    throws GlobalException, NoDataException
-  {
-    try
-    {
+    throws GlobalException, NoDataException {
+    try {
       conectar();
     }
     catch (ClassNotFoundException e)
@@ -178,9 +160,9 @@ public class ServicioProfesor extends Servicio {
       throw new NoDataException("La base de datos no se encuentra disponible");
     }
     PreparedStatement pstmt = null;
-    try
-    {
-      pstmt = this.conexion.prepareStatement("{call modificarProfesor(?,?,?,?,?,?)}");
+    
+    try {
+      pstmt = this.conexion.prepareStatement(MODIFICARPROFESOR);
       pstmt.setString(1, profesor.getId());
       pstmt.setString(2, profesor.getCedula());
       pstmt.setString(3, profesor.getNombre());
@@ -231,7 +213,7 @@ public class ServicioProfesor extends Servicio {
     PreparedStatement pstmt = null;
     try
     {
-      pstmt = this.conexion.prepareStatement("{call eliminarProfesor(?)}");
+      pstmt = this.conexion.prepareStatement(ELIMINARPROFESOR);
       pstmt.setString(1, codigo);
       
       int resultado = pstmt.executeUpdate();
@@ -281,7 +263,7 @@ public class ServicioProfesor extends Servicio {
     CallableStatement pstmt = null;
     try
     {
-      pstmt = this.conexion.prepareCall("{?=call buscarProfesor(?)}");
+      pstmt = this.conexion.prepareCall(BUSCARPROFESOR);
       pstmt.registerOutParameter(1, -10);
       pstmt.setString(2, codigo);
       pstmt.execute();
@@ -360,7 +342,7 @@ public class ServicioProfesor extends Servicio {
     CallableStatement pstmt = null;
     try
     {
-      pstmt = this.conexion.prepareCall("{call buscarNombres(?)}");
+      pstmt = this.conexion.prepareCall(BUSCARNOMBRES);
       pstmt.registerOutParameter(1, -10);
       pstmt.setString(2, nombres);
       pstmt.execute();
