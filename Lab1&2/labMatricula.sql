@@ -80,6 +80,24 @@ CONSTRAINTS fkCurso
   REFERENCES curso(id)
 );
 
+
+INSERT INTO usuario values('1','304740935','12345678');
+INSERT INTO profesor values('1','Georges','george@example.com',222222, 1);
+
+INSERT INTO ciclo values('1',2018, 1, '6/02/2018', '6/06/2018');
+INSERT INTO ciclo values('2',2018, 1, '6/02/2018', '6/06/2018');
+
+INSERT INTO curso values('1','123','Mate I', 3, 8);
+INSERT INTO curso values('2','456','Mate II', 3, 12);
+
+INSERT INTO carrera values('1','INF','Informatica', 'Bachiller');
+INSERT INTO carrera values('2','BIO','Biologia', 'Licenciatura');
+
+INSERT INTO listaCurso values('1','2019',1, 1, 1);
+INSERT INTO listaCurso values('2','2018',2, 2, 1);
+INSERT INTO listaCurso values('3','2019',1, 1, 2);
+
+
 --------------------------------- Mantenimientos ---------------------------------
 --CURSOR REFERENCE
 CREATE OR REPLACE PACKAGE types
@@ -390,18 +408,4 @@ begin
 end;
 /
 
-INSERT INTO usuario values('1','304740935','12345678');
-INSERT INTO profesor values('1','Georges','george@example.com',222222, 1);
 
-INSERT INTO ciclo values('1',2018, 1, '6/02/2018', '6/06/2018');
-INSERT INTO ciclo values('2',2018, 1, '6/02/2018', '6/06/2018');
-
-INSERT INTO curso values('1','123','Mate I', 3, 8);
-INSERT INTO curso values('2','456','Mate II', 3, 12);
-
-INSERT INTO carrera values('1','INF','Informatica', 'Bachiller');
-INSERT INTO carrera values('2','BIO','Biologia', 'Licenciatura');
-
-INSERT INTO listaCurso values('1','2019',1, 1, 1);
-INSERT INTO listaCurso values('2','2018',2, 2, 1);
-INSERT INTO listaCurso values('3','2019',1, 1, 2);

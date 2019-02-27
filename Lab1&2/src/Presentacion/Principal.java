@@ -5,25 +5,19 @@
  */
 package Presentacion;
 
-import AccesoADatos.Servicio;
-import AccesoADatos.ServicioProfesor;
+import AccesoADatos.ServicioCiclo;
 import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
-import LogicaDeNegocio.Profesor;
+import LogicaDeNegocio.Ciclo;
 import java.util.LinkedList;
 
-/**
- *
- * @author cdiaz
- */
-public class Principal {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) throws GlobalException, NoDataException {
-        // TODO code application logic here
-
-    }
-    
+public class Principal
+{
+  public static void main(String[] args)
+    throws GlobalException, NoDataException
+  {
+    ServicioCiclo sp = ServicioCiclo.getInstancia();
+    LinkedList<Ciclo> p1 = sp.listar();
+    System.out.print(p1);
+  }
 }

@@ -12,7 +12,7 @@ import java.util.Random;
  * @author cdiaz
  */
 public class Ciclo {
-    private int id;
+    private String id;
     private int anno;
     private int numero;
     private String fechaInicio;
@@ -25,7 +25,7 @@ public class Ciclo {
         fechaFinal= "";
     }
 
-    public Ciclo(int id, int anno, int numero, String fechaInicio, String fechaFinal) {
+    public Ciclo(String id, int anno, int numero, String fechaInicio, String fechaFinal) {
         this.id = id;
         this.anno = anno;
         this.numero = numero;
@@ -33,11 +33,11 @@ public class Ciclo {
         this.fechaFinal = fechaFinal;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
