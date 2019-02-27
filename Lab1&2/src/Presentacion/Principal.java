@@ -23,9 +23,7 @@ public class Principal {
      */
     public static void main(String[] args) throws GlobalException, NoDataException {
         // TODO code application logic here
-        ServicioProfesor sp= ServicioProfesor.getInstancia();
-        LinkedList<Profesor> p1 = sp.listar();
-        
+
     }
     
 }

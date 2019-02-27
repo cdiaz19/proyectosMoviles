@@ -11,28 +11,26 @@ package LogicaDeNegocio;
  */
 public class Profesor {
     private String id;
-    private String cedula;
     private String nombre;
-    private String email;
+    private String correo;
     private String contrasena;
     private int telefono;
+    private Usuario usuario;
 
     public Profesor() {
         id="";
-        cedula = "";
         nombre = "";
-        email = "";
-        contrasena = "";
+        correo = "";
         telefono = 0;
+        usuario = new Usuario();
     }
 
-    public Profesor(String id, String cedula, String nombre, String email, String contrasena, int telefono) {
+    public Profesor(String id, String nombre, String correo, int telefono, Usuario usuario) {
         this.id = id;
-        this.cedula = cedula;
         this.nombre = nombre;
-        this.email = email;
-        this.contrasena = contrasena;
+        this.correo = correo;
         this.telefono = telefono;
+        this.usuario = usuario;
     }
 
     public String getId() {
@@ -43,14 +41,6 @@ public class Profesor {
         this.id = id;
     }
 
-    public String getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
-    }
-
     public String getNombre() {
         return nombre;
     }
@@ -59,22 +49,14 @@ public class Profesor {
         this.nombre = nombre;
     }
 
-    public String getEmail() {
-        return email;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
-
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
-
+    
     public int getTelefono() {
         return telefono;
     }
@@ -83,8 +65,16 @@ public class Profesor {
         this.telefono = telefono;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
     @Override
     public String toString() {
-        return  id + cedula + nombre+ email + contrasena + telefono;
+        return id + nombre + correo +telefono + usuario.toString();
     }
 }

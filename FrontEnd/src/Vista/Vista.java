@@ -8,7 +8,7 @@ package Vista;
 import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
 import Control.ControlProfesores;
-import LogicaDeNegocio.Modelo;
+import Control.Modelo;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LogicaDeNegocio;
+package Control;
 
+import LogicaDeNegocio.Profesor;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Observable;
@@ -15,7 +16,7 @@ import java.util.Observer;
  * @author Alejandro
  */
 public class Modelo extends Observable {
-   Profesor filter;
+  Profesor filter;
   TableModelProfesor profesores;
   HashMap<String, String> errores;
   String mensaje;
