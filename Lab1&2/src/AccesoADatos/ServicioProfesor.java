@@ -13,12 +13,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
+
 /**
  *
  * @author Alejandro
  */
 public class ServicioProfesor extends Servicio {
-    private static final String INSERTARPROFESOR = "{call insertarProfesor(?,?,?,?,?,?)}";
+  
+  private static final String INSERTARPROFESOR = "{call insertarProfesor(?,?,?,?,?,?)}";
   private static final String LISTARPROFESORES = "{?=call listarProfesores()}";
   private static final String BUSCARPROFESOR = "{?=call buscarProfesor(?)}";
   private static final String MODIFICARPROFESOR = "{call modificarProfesor(?,?,?,?,?,?)}";
