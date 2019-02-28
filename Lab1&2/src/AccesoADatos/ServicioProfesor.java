@@ -53,13 +53,14 @@ public class ServicioProfesor extends Servicio {
             pstmt.execute();
             rs = (ResultSet) pstmt.getObject(1);
             while (rs.next()) {
-                usuario = new Usuario(rs.getString("usuarioId"));
+                usuario = new Usuario(rs.getString("id"),rs.getString("cedula"),rs.getString("contrasena"));
                 profesor = new Profesor(
                             rs.getString("id"), 
                             rs.getString("nombre"), 
                             rs.getString("correo"),
                             rs.getInt("telefono"),
-                            usuario);
+                            usuario
+                            );
                 coleccion.add(profesor);
             }
             try {
@@ -117,9 +118,9 @@ public class ServicioProfesor extends Servicio {
             pstmt.setString(2, profesor.getNombre());
             pstmt.setString(3, profesor.getCorreo());
             pstmt.setInt(4, profesor.getTelefono());
-            pstmt.setString(5, usuario.getId());
-            pstmt.setString(6, usuario.getCedula());
-            pstmt.setString(7, usuario.getContrasena());
+            pstmt.setString(5, profesor.getUsuario().getId());
+            pstmt.setString(6, profesor.getUsuario().getCedula());
+            pstmt.setString(7, profesor.getUsuario().getContrasena());
             
             boolean resultado = pstmt.execute();
             if (resultado == true) {
@@ -204,7 +205,7 @@ public class ServicioProfesor extends Servicio {
             
             rs = (ResultSet) pstmt.getObject(1);
             while (rs.next()) {
-                usuario = new Usuario(rs.getString("usuarioId"));
+                usuario = new Usuario(rs.getString("id"),rs.getString("cedula"),rs.getString("contrasena"));
                 profesor = new Profesor(
                             rs.getString("id"), 
                             rs.getString("nombre"), 
@@ -270,9 +271,10 @@ public class ServicioProfesor extends Servicio {
             pstmt.registerOutParameter(1, -10);
             pstmt.setString(2, nombres);
             pstmt.execute();
+            System.out.print(pstmt.getMetaData());
             rs = (ResultSet) pstmt.getObject(1);
             while (rs.next()) {
-                usuario = new Usuario(rs.getString("usuarioId"));
+                usuario = new Usuario(rs.getString("id"),rs.getString("cedula"),rs.getString("contrasena"));
                 profesor = new Profesor(
                             rs.getString("id"), 
                             rs.getString("nombre"), 
@@ -317,6 +319,7 @@ public class ServicioProfesor extends Servicio {
             throw new NoDataException("No hay datos");
         }
         return coleccion;
+    
     }
     
     public LinkedList<Profesor> buscarCedulaProfesor(String nombres)

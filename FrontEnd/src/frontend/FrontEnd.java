@@ -18,6 +18,7 @@ public class FrontEnd {
     public static void main(String[] args) throws GlobalException, NoDataException {
         // TODO code application logic here
         ControlProfesores control = new ControlProfesores();
+        
     }
     public static final int MODO_AGREGAR = 0;
     public static final int MODO_EDITAR = 1;

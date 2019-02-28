@@ -37,13 +37,13 @@ public class TableModelProfesor extends AbstractTableModel {
         return this.colNames[this.columnas[col]];
     }
 
-    public Class<?> getColumnClass(int col) {
-        switch (this.columnas[col]) {
-            case 4:
-                return Icon.class;
-        }
-        return super.getColumnClass(col);
-    }
+//    public Class<?> getColumnClass(int col) {
+//        switch (this.columnas[col]) {
+//            case 4:
+//                return Icon.class;
+//        }
+//        return super.getColumnClass(col);
+//    }
 
     public int getRowCount() {
         return this.filas.size();

@@ -248,7 +248,6 @@ public class Vista extends javax.swing.JFrame implements Observer {
         );
 
         insertarCedula.getAccessibleContext().setAccessibleDescription("");
-        insertaEmail.getAccessibleContext().setAccessibleName("Email");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

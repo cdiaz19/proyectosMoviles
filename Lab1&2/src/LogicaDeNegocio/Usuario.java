@@ -19,7 +19,10 @@ public class Usuario {
         cedula = "12345678";
         contrasena = "contrasena";
     }
-
+     public Usuario(String cedula, String contrasena) {
+        this.cedula = cedula;
+        this.contrasena = contrasena;
+    }
     public Usuario(String id, String cedula, String contrasena) {
         this.id = id;
         this.cedula = cedula;

@@ -51,6 +51,7 @@ public class ControlProfesores {
     public void agregar() throws GlobalException, NoDataException{
         Usuario usuario_agregado = new Usuario(view.insertarId.getText(),view.insertarCedula.getText(),view.insertarContrasena.getText());
         Profesor profesor_agregado = new Profesor(view.insertarId.getText(),view.insertarNombre.getText(),view.insertarEmail.getText(), Integer.parseInt(view.insertarTelefono.getText()), usuario_agregado);
+
         domainModel.insertarProfesor(profesor_agregado, usuario_agregado);
         LinkedList<Profesor> rows = domainModel.listarProfesores();
         if (rows.isEmpty()){

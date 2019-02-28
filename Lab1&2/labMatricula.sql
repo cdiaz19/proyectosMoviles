@@ -114,7 +114,7 @@ AS
   cursorProfesor types.ref_cursor;
 BEGIN
   OPEN cursorProfesor FOR
-    select p.id, p.nombre, u.cedula, p.correo, u.contrasena, p.telefono from profesor p, usuario u;
+    select p.id, p.nombre, u.cedula, p.correo, u.contrasena, p.telefono from profesor p join usuario u on p.id=u.id;
   RETURN cursorProfesor;
 END;
 /
@@ -136,7 +136,7 @@ AS
   cursorProfesor types.ref_cursor;
 BEGIN
   OPEN cursorProfesor FOR
-    select p.id, p.nombre, u.cedula, p.correo, u.contrasena, p.telefono from profesor p, usuario u WHERE p.id=idProfesor;
+    select p.id, p.nombre, u.cedula, p.correo, u.contrasena, p.telefono from profesor p join usuario u on p.id=u.id WHERE p.id=idProfesor;
 RETURN cursorProfesor;
 END;
 /
@@ -158,7 +158,7 @@ AS
   cursorProfesor types.ref_cursor;
 BEGIN
   OPEN cursorProfesor FOR
-    select p.id, p.nombre, u.cedula, p.correo, u.contrasena, p.telefono from profesor p, usuario u WHERE nombre=nombrebuscar;
+    select p.id, p.nombre, u.cedula, p.correo, u.contrasena, p.telefono from profesor p join usuario u on p.id=u.id WHERE p.nombre=nombrebuscar;
 RETURN cursorProfesor;
 END;
 /

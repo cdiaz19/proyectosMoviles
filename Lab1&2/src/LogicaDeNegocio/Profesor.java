@@ -13,24 +13,31 @@ public class Profesor {
     private String id;
     private String nombre;
     private String correo;
-    private String contrasena;
-    private int telefono;
     private Usuario usuario;
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    private int telefono;
+    
 
     public Profesor() {
         id="";
         nombre = "";
         correo = "";
         telefono = 0;
-        usuario = new Usuario();
     }
 
-    public Profesor(String id, String nombre, String correo, int telefono, Usuario usuario) {
+    public Profesor(String id, String nombre, String correo, int telefono,Usuario usuario) {
         this.id = id;
         this.nombre = nombre;
         this.correo = correo;
         this.telefono = telefono;
-        this.usuario = usuario;
+        this.usuario=usuario;
     }
 
     public String getId() {
@@ -65,16 +72,9 @@ public class Profesor {
         this.telefono = telefono;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
+    
     @Override
     public String toString() {
-        return id + nombre + correo +telefono + usuario.toString();
+         return "ID: " + this.id + ", " + "Nombre: " + this.nombre + ", " + "Cedula: " + this.usuario.getCedula() + ", " + "Correo: " + this.correo + ", " + "Contrasena: " + this.usuario.getContrasena() +  "Telefono: " + this.telefono;
     }
 }
