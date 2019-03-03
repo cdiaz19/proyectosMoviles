@@ -175,6 +175,14 @@ RETURN cursorProfesor;
 END;
 /
 
+-- DESTROY PROFESOR
+create or replace procedure eliminarProfesor(idProfesor IN varchar)
+as
+begin
+  delete from profesor where id=idProfesor;
+end;
+/
+
 -- 2 - Mantenimiento de cursos (búsqueda por nombre, código y por carrera (FALTA)).
 -- COURSE INDEX
 CREATE OR REPLACE FUNCTION listarCursos

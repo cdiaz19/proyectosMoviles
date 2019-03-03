@@ -27,6 +27,7 @@ public class ServicioProfesor extends Servicio {
     private static final String BUSCARPROFESOR = "{?=call buscarProfesor(?)}";
     private static final String BUSCARNOMBRES = "{call buscarNombres(?)}";
     private static final String BUSCARCEDULAPROFESOR = "{call buscarCedulaProfesor(?)}";
+    private static final String ELIMINARPROFESOR = "{call eliminarProfesor(?)}";
 
     public static ServicioProfesor getInstancia() {
         return INSTANCIA == null ? (INSTANCIA = new ServicioProfesor()) : INSTANCIA;
@@ -389,6 +390,53 @@ public class ServicioProfesor extends Servicio {
         }
         return coleccion;
     }
+    
+    public void eliminar(String codigo)
+    throws GlobalException, NoDataException
+  {
+    try
+    {
+      conectar();
+    }
+    catch (ClassNotFoundException e)
+    {
+      throw new GlobalException("No se ha localizado el driver");
+    }
+    catch (SQLException e)
+    {
+      throw new NoDataException("La base de datos no se encuentra disponible");
+    }
+    PreparedStatement pstmt = null;
+    try
+    {
+      pstmt = this.conexion.prepareStatement("{call eliminarProfesor(?)}");
+      pstmt.setString(1, codigo);
+      
+      int resultado = pstmt.executeUpdate();
+      if (resultado != 1) {
+        throw new NoDataException("No se realizo el borrado");
+      }
+      System.out.println("\nEliminaci�n Satisfactoria!"); return;
+    }
+    catch (SQLException e)
+    {
+      throw new GlobalException("Sentencia no valida");
+    }
+    finally
+    {
+      try
+      {
+        if (pstmt != null) {
+          pstmt.close();
+        }
+        desconectar();
+      }
+      catch (SQLException e)
+      {
+        throw new GlobalException("Estatutos invalidos o nulos");
+      }
+    }
+  }
 
     private static ServicioProfesor INSTANCIA = null;
 }
