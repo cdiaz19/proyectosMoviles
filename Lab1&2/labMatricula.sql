@@ -49,7 +49,7 @@ usuarioId VARCHAR(10) not null,
 CONSTRAINTS pkProfesor PRIMARY KEY (id),
 CONSTRAINTS fkUsuario
   FOREIGN KEY (usuarioId)
-  REFERENCES usuario(id)
+  REFERENCES usuario(id) ON DELETE CASCADE
 );
 
 --TABLE CARRER
@@ -179,7 +179,7 @@ END;
 create or replace procedure eliminarProfesor(idProfesor IN varchar)
 as
 begin
-  delete from profesor where id=idProfesor;
+  delete from usuario where id=idProfesor;
 end;
 /
 
