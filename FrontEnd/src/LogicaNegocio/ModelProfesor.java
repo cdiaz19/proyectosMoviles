@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Control;
+package LogicaNegocio;
 
+import LogicaNegocio.TableProfesor;
 import LogicaDeNegocio.Profesor;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -15,72 +16,61 @@ import java.util.Observer;
  *
  * @author Alejandro
  */
-public class Modelo extends Observable {
+public class ModelProfesor extends Observable {
   Profesor filter;
-  TableModelProfesor profesores;
+  TableProfesor profesores;
   HashMap<String, String> errores;
   String mensaje;
   
-  public void init()
-  {
+  public void init() {
     this.filter = new Profesor();
     LinkedList<Profesor> rows = new LinkedList();
     setProfesores(rows);
     clearErrors();
   }
   
-  public void setProfesores(LinkedList<Profesor> profesores)
-  {
+  public void setProfesores(LinkedList<Profesor> profesores) {
     int[] cols = { 0, 1, 2, 3, 4, 5 };
-    this.profesores = new TableModelProfesor(cols, profesores);
+    this.profesores = new TableProfesor(cols, profesores);
     setChanged();
     notifyObservers();
   }
   
-  public Profesor getFilter()
-  {
+  public Profesor getFilter() {
     return this.filter;
   }
   
-  public void setFilter(Profesor filter)
-  {
+  public void setFilter(Profesor filter) {
     this.filter = filter;
   }
   
-  public TableModelProfesor getProfesores()
-  {
+  public TableProfesor getProfesores() {
     return this.profesores;
   }
   
-  public void addObserver(Observer o)
-  {
+  public void addObserver(Observer o) {
     super.addObserver(o);
     setChanged();
     notifyObservers();
   }
   
-  public String getMensaje()
-  {
+  public String getMensaje() {
     return this.mensaje;
   }
   
-  public void setMensaje(String mensaje)
-  {
+  public void setMensaje(String mensaje) {
     this.mensaje = mensaje;
   }
   
-  public HashMap<String, String> getErrores()
-  {
+  public HashMap<String, String> getErrores() {
     return this.errores;
   }
   
-  public void setErrores(HashMap<String, String> errores)
-  {
+  public void setErrores(HashMap<String, String> errores) {
     this.errores = errores;
   }
   
-  public void clearErrors()
-  {
+  public void clearErrors() {
     setErrores(new HashMap());
     setMensaje("");
   } 

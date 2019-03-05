@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Control;
+package LogicaNegocio;
 
 import LogicaDeNegocio.Profesor;
 import java.util.LinkedList;
@@ -14,7 +14,8 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author Alejandro
  */
-public class TableModelProfesor extends AbstractTableModel {
+
+public class TableProfesor extends AbstractTableModel {
 
     public static final int ID = 0;
     public static final int NOMBRE = 1;
@@ -23,7 +24,7 @@ public class TableModelProfesor extends AbstractTableModel {
     public static final int CONTRASENA = 4;
     public static final int TELEFONO = 5;
 
-    public TableModelProfesor(int[] cols, LinkedList<Profesor> rows) {
+    public TableProfesor(int[] cols, LinkedList<Profesor> rows) {
         this.columnas = cols;
         this.filas = rows;
         initColNames();

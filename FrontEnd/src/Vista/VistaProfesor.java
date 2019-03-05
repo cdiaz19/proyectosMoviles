@@ -8,8 +8,8 @@ package Vista;
 import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
 import Control.ControlProfesores;
-import Control.Modelo;
-import Control.TableModelProfesor;
+import LogicaNegocio.ModelProfesor;
+import LogicaNegocio.TableProfesor;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;
@@ -20,15 +20,16 @@ import javax.swing.JOptionPane;
  *
  * @author Kevin
  */
-public class Vista extends javax.swing.JFrame implements Observer {
+public class VistaProfesor extends javax.swing.JFrame implements Observer {
 
     /**
      * Creates new form Vista
      */
-    public Vista() {
+    public VistaProfesor() {
         initComponents();
         btnCancelar.setEnabled(false);
         btnActualizar.setEnabled(false);
+        btnEliminar.setEnabled(false);
         setVisible(true);
     }
 
@@ -36,7 +37,7 @@ public class Vista extends javax.swing.JFrame implements Observer {
         this.controller = controller;
     }
 
-    public void setModel(Modelo model) {
+    public void setModel(ModelProfesor model) {
         this.model = model;
         model.addObserver(this);
     }
@@ -72,6 +73,7 @@ public class Vista extends javax.swing.JFrame implements Observer {
         insertarTelefono = new javax.swing.JTextField();
         btnCancelar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Profesores");
@@ -202,37 +204,50 @@ public class Vista extends javax.swing.JFrame implements Observer {
             }
         });
 
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelInsertaProfesorLayout = new javax.swing.GroupLayout(panelInsertaProfesor);
         panelInsertaProfesor.setLayout(panelInsertaProfesorLayout);
         panelInsertaProfesorLayout.setHorizontalGroup(
             panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelInsertaProfesorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelInsertaProfesorLayout.createSequentialGroup()
-                        .addComponent(insertaTelefono)
-                        .addGap(36, 36, 36)
-                        .addComponent(insertarTelefono))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelInsertaProfesorLayout.createSequentialGroup()
-                        .addGroup(panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(insertaContrasena, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(insertaEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(insertaId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(insertaCedula, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(insertaNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(24, 24, 24)
-                        .addGroup(panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(insertarNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
-                            .addComponent(insertarId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(insertarCedula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(insertarEmail)
-                            .addComponent(insertarContrasena))))
-                .addGap(67, 67, 67)
                 .addGroup(panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnActualizar)
-                    .addComponent(btnAgregar)
-                    .addComponent(btnCancelar))
-                .addContainerGap(145, Short.MAX_VALUE))
+                    .addGroup(panelInsertaProfesorLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelInsertaProfesorLayout.createSequentialGroup()
+                                .addComponent(insertaTelefono)
+                                .addGap(36, 36, 36)
+                                .addComponent(insertarTelefono))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelInsertaProfesorLayout.createSequentialGroup()
+                                .addGroup(panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(insertaContrasena, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(insertaEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(insertaId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(insertaCedula, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(insertaNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(24, 24, 24)
+                                .addGroup(panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(insertarNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
+                                    .addComponent(insertarId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(insertarCedula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(insertarEmail)
+                                    .addComponent(insertarContrasena)))))
+                    .addGroup(panelInsertaProfesorLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(btnAgregar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnActualizar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnEliminar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCancelar)))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         panelInsertaProfesorLayout.setVerticalGroup(
             panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,35 +262,32 @@ public class Vista extends javax.swing.JFrame implements Observer {
                                     .addComponent(insertarId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(insertaCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(insertarCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAgregar))
+                            .addComponent(insertarCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(insertaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(insertarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(insertaEmail)
-                    .addGroup(panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(insertarEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnActualizar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(insertarEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(insertarContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(insertaContrasena))
-                .addGroup(panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelInsertaProfesorLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(insertaTelefono)
-                            .addComponent(insertarTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelInsertaProfesorLayout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(btnCancelar)))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addGap(3, 3, 3)
+                .addGroup(panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(insertaTelefono)
+                    .addComponent(insertarTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregar)
+                    .addComponent(btnActualizar)
+                    .addComponent(btnEliminar)
+                    .addComponent(btnCancelar))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         insertarCedula.getAccessibleContext().setAccessibleDescription("");
-        btnCancelar.getAccessibleContext().setAccessibleName("Cancelar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -344,9 +356,9 @@ public class Vista extends javax.swing.JFrame implements Observer {
             this.insertarContrasena.setText("");
             
         } catch (GlobalException ex) {
-            Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VistaProfesor.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoDataException ex) {
-            Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VistaProfesor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
@@ -359,9 +371,9 @@ public class Vista extends javax.swing.JFrame implements Observer {
             this.controller.buscar();
             this.nombreField.setText("");
         } catch (GlobalException ex) {
-            Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VistaProfesor.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoDataException ex) {
-            Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VistaProfesor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_botonNombreActionPerformed
 
@@ -374,10 +386,10 @@ public class Vista extends javax.swing.JFrame implements Observer {
         btnAgregar.setEnabled(false);
         btnActualizar.setEnabled(true);
         btnCancelar.setEnabled(true);
-        TableModelProfesor Tablemodel = (TableModelProfesor) tablaProfesor.getModel();
+        btnEliminar.setEnabled(true);
+        TableProfesor Tablemodel = (TableProfesor) tablaProfesor.getModel();
 
         int filaProfesorSeleccionada = tablaProfesor.getSelectedRow();
-        System.out.print(filaProfesorSeleccionada);
         
         this.insertarId.setText(Tablemodel.getValueAt(filaProfesorSeleccionada, 0).toString());
         this.insertarId.setEnabled(false);
@@ -395,6 +407,7 @@ public class Vista extends javax.swing.JFrame implements Observer {
         btnAgregar.setEnabled(true);
         btnActualizar.setEnabled(false);
         btnCancelar.setEnabled(false);
+        btnEliminar.setEnabled(false);
 
         this.insertarId.setText("");
         this.insertarCedula.setText("");
@@ -415,13 +428,23 @@ public class Vista extends javax.swing.JFrame implements Observer {
             this.insertarContrasena.setText("");
             
         } catch (GlobalException ex) {
-            Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VistaProfesor.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoDataException ex) {
-            Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VistaProfesor.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        try {
+            this.controller.eliminar();
+        } catch (GlobalException ex) {
+            Logger.getLogger(VistaProfesor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(VistaProfesor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -440,25 +463,26 @@ public class Vista extends javax.swing.JFrame implements Observer {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Vista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaProfesor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Vista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaProfesor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Vista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaProfesor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Vista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaProfesor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Vista().setVisible(true);
+                new VistaProfesor().setVisible(true);
             }
         });
     }
 
-    public Modelo getModel() {
+    public ModelProfesor getModel() {
         return model;
     }
 
@@ -473,12 +497,13 @@ public class Vista extends javax.swing.JFrame implements Observer {
     }
 
     ControlProfesores controller;
-    Modelo model;
+    ModelProfesor model;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonNombre;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnEliminar;
     private java.awt.Label insertaCedula;
     private javax.swing.JLabel insertaContrasena;
     private javax.swing.JLabel insertaEmail;

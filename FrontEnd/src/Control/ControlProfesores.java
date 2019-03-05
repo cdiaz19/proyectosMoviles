@@ -5,26 +5,30 @@
  */
 package Control;
 
+import LogicaNegocio.ModelProfesor;
 import AccesoADatos.ServicioProfesor;
 import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
 import LogicaDeNegocio.Profesor;
 import LogicaDeNegocio.Usuario;
-import Vista.Vista;
+import Vista.VistaProfesor;
 import java.util.LinkedList;
+
 /**
  *
  * @author Alejandro
  */
+
 public class ControlProfesores {
     ServicioProfesor domainModel;
-    Vista view;
-    Modelo model;
-     public ControlProfesores() throws GlobalException, NoDataException {
-        this(new Modelo(),new Vista());
+    VistaProfesor view;
+    ModelProfesor model;
+    
+    public ControlProfesores() throws GlobalException, NoDataException {
+        this(new ModelProfesor(),new VistaProfesor());
     }
 
-    public ControlProfesores(Modelo model,Vista view) throws GlobalException, NoDataException {
+    public ControlProfesores(ModelProfesor model,VistaProfesor view) throws GlobalException, NoDataException {
         model.init();
         this.domainModel= ServicioProfesor.getInstancia();
         
@@ -34,13 +38,10 @@ public class ControlProfesores {
         view.setController(this);
         view.setModel(model);
     }
+    
     public void iniciar() throws GlobalException, NoDataException{
         LinkedList lista = domainModel.listarProfesores();
-//        LinkedList lista = new LinkedList<>();
-//        Usuario usuario =  new Usuario("A", "B","C");
-//        Profesor  profesor = new Profesor("Z", "Y", "B", 1, usuario);
-        this.model.setProfesores(domainModel.listarProfesores());
-        
+        this.model.setProfesores(lista); 
     }
     
     public void buscar() throws GlobalException, NoDataException{
@@ -62,6 +63,7 @@ public class ControlProfesores {
         }
         model.setProfesores(rows);
     }
+    
     public void actualizar()throws GlobalException, NoDataException{
         Usuario usuario_agregado = new Usuario(view.insertarId.getText(),view.insertarCedula.getText(),view.insertarContrasena.getText());
         Profesor profesor_agregado = new Profesor(view.insertarId.getText(),view.insertarNombre.getText(),view.insertarEmail.getText(), Integer.parseInt(view.insertarTelefono.getText()), usuario_agregado);
@@ -73,6 +75,14 @@ public class ControlProfesores {
         }
         model.setProfesores(rows);
     }
+    
+    public void eliminar() throws GlobalException, NoDataException {
+        String profesorId = view.insertarId.getText();
+        domainModel.eliminar(profesorId);
+        LinkedList lista = domainModel.listarProfesores();
+        model.setProfesores(lista); 
+    }
+    
     public void salir(){ 
     }
 }
