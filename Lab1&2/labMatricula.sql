@@ -143,11 +143,11 @@ END;
 
 -- UPDATE PROFESSOR
 CREATE OR REPLACE PROCEDURE modificarProfesor(idProfesor IN profesor.id%TYPE, nombreNuevo IN profesor.nombre%TYPE, correoNuevo IN profesor.correo%TYPE,
-telefonoNuevo IN profesor.telefono%TYPE, idUsuario IN usuario.id%TYPE, usuarioCedulaNueva IN usuario.cedula%TYPE, usuarioContrasenaNueva IN usuario.contrasena%TYPE)
+telefonoNuevo IN profesor.telefono%TYPE,usuarioCedulaNueva IN usuario.cedula%TYPE, usuarioContrasenaNueva IN usuario.contrasena%TYPE)
 AS
 BEGIN
-  UPDATE usuario SET id=idUsuario, cedula=usuarioCedulaNueva, contrasena=usuarioContrasenaNueva WHERE id=idUsuario;
-  UPDATE profesor SET nombre=nombreNuevo, correo=correoNuevo, telefono=telefonoNuevo, usuarioID=idUsuario WHERE id=idProfesor;
+  UPDATE usuario SET cedula=usuarioCedulaNueva, contrasena=usuarioContrasenaNueva WHERE id=idProfesor;
+  UPDATE profesor SET nombre=nombreNuevo, correo=correoNuevo, telefono=telefonoNuevo WHERE id=idProfesor;
 END;
 /
 
@@ -416,4 +416,4 @@ begin
 end;
 /
 
-
+ UPDATE usuario SET cedula=12345, contrasena=usuarioContrasenaNueva WHERE id=idProfesor;

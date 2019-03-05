@@ -17,12 +17,13 @@ public class Principal
   public static void main(String[] args)
     throws GlobalException, NoDataException
   {
-     Usuario usuario1= new Usuario("123","115","444");
-    Profesor profesor1=new Profesor("123","Cristian","aaaf@gmail.com",5555,usuario1);
+     Usuario usuario1= new Usuario("1","3126","33");
+    Profesor profesor1=new Profesor("1","Alejandro Gamboa","aauf@gmail.com",55565,usuario1);
     ServicioProfesor sp = ServicioProfesor.getInstancia();
     //LinkedList<Profesor> p1 = sp.listarProfesores();
-    sp.insertarProfesor(profesor1, usuario1);
-    LinkedList<Profesor> p1 = sp.buscarNombres("Georges");
+    sp.modificarProfesor(profesor1, usuario1);
+    //   sp.eliminar("1");
+    LinkedList<Profesor> p1 = sp.listarProfesores();
     System.out.print(p1);
   }
 }

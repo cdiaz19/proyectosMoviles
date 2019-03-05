@@ -35,13 +35,12 @@ public class ControlProfesores {
         view.setModel(model);
     }
     public void iniciar() throws GlobalException, NoDataException{
-//        LinkedList lista = domainModel.listarProfesores();
-        LinkedList lista = new LinkedList<>();
-        Usuario usuario =  new Usuario("A", "B","C");
-        Profesor  profesor = new Profesor("Z", "Y", "B", 1, usuario);
-        lista.add(profesor);
+        LinkedList lista = domainModel.listarProfesores();
+//        LinkedList lista = new LinkedList<>();
+//        Usuario usuario =  new Usuario("A", "B","C");
+//        Profesor  profesor = new Profesor("Z", "Y", "B", 1, usuario);
+        this.model.setProfesores(domainModel.listarProfesores());
         
-        this.model.setProfesores(lista);
     }
     
     public void buscar() throws GlobalException, NoDataException{
