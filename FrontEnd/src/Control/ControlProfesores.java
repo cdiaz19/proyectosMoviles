@@ -62,7 +62,17 @@ public class ControlProfesores {
         }
         model.setProfesores(rows);
     }
-
+    public void actualizar()throws GlobalException, NoDataException{
+        Usuario usuario_agregado = new Usuario(view.insertarId.getText(),view.insertarCedula.getText(),view.insertarContrasena.getText());
+        Profesor profesor_agregado = new Profesor(view.insertarId.getText(),view.insertarNombre.getText(),view.insertarEmail.getText(), Integer.parseInt(view.insertarTelefono.getText()), usuario_agregado);
+        domainModel.modificarProfesor(profesor_agregado, usuario_agregado);
+        LinkedList<Profesor> rows = domainModel.listarProfesores();
+        if (rows.isEmpty()){
+            model.getErrores().put("nombreFld", "Ningun registro coincide");
+            model.setMensaje("NINGUN REGISTRO COINCIDE");
+        }
+        model.setProfesores(rows);
+    }
     public void salir(){ 
     }
 }

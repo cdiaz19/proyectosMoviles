@@ -380,7 +380,9 @@ public class Vista extends javax.swing.JFrame implements Observer {
         System.out.print(filaProfesorSeleccionada);
         
         this.insertarId.setText(Tablemodel.getValueAt(filaProfesorSeleccionada, 0).toString());
+        this.insertarId.setEnabled(false);
         this.insertarCedula.setText(Tablemodel.getValueAt(filaProfesorSeleccionada, 1).toString());
+        this.insertarCedula.setEnabled(false);
         this.insertarNombre.setText(Tablemodel.getValueAt(filaProfesorSeleccionada, 2).toString());
         this.insertarEmail.setText(Tablemodel.getValueAt(filaProfesorSeleccionada, 3).toString());
         this.insertarContrasena.setText(Tablemodel.getValueAt(filaProfesorSeleccionada, 4).toString());
@@ -403,6 +405,21 @@ public class Vista extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        try {
+            this.controller.actualizar();
+            this.insertarId.setText("");
+            this.insertarCedula.setText("");
+            this.insertarNombre.setText("");
+            this.insertarEmail.setText("");
+            this.insertarTelefono.setText("");
+            this.insertarContrasena.setText("");
+            
+        } catch (GlobalException ex) {
+            Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         // TODO add your handling code here:
     }//GEN-LAST:event_btnActualizarActionPerformed
 

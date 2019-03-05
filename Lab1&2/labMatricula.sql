@@ -415,5 +415,3 @@ begin
   delete from ciclo where id=idCiclo;
 end;
 /
-
- UPDATE usuario SET cedula=12345, contrasena=usuarioContrasenaNueva WHERE id=idProfesor;

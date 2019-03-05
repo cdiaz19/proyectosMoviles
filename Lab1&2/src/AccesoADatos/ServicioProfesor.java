@@ -23,7 +23,7 @@ public class ServicioProfesor extends Servicio {
 
     private static final String LISTARPROFESORES = "{?=call listarProfesores()}";
     private static final String INSERTARPROFESOR = "{call insertarProfesor(?,?,?,?,?,?,?)}";
-    private static final String MODIFICARPROFESOR = "{call modificarProfesor(?,?,?,?,?,?,?)}";
+    private static final String MODIFICARPROFESOR = "{call modificarProfesor(?,?,?,?,?,?)}";
     private static final String BUSCARPROFESOR = "{?=call buscarProfesor(?)}";
     private static final String BUSCARNOMBRES = "{call buscarNombres(?)}";
     private static final String BUSCARCEDULAPROFESOR = "{call buscarCedulaProfesor(?)}";
@@ -160,11 +160,10 @@ public class ServicioProfesor extends Servicio {
             pstmt.setString(2, profesor.getNombre());
             pstmt.setString(3, profesor.getCorreo());
             pstmt.setInt(4, profesor.getTelefono());
-            pstmt.setString(5, usuario.getId());
-            pstmt.setString(6, usuario.getCedula());
-            pstmt.setString(7, usuario.getContrasena());
+            pstmt.setString(5, usuario.getCedula());
+            pstmt.setString(6, usuario.getContrasena());
             int resultado = pstmt.executeUpdate();
-            if (resultado != 0) {
+            if (resultado != 1) {
                 throw new NoDataException("No se realizo la actualizaci�n");
             }
             System.out.println("\nModificaci�n Satisfactoria!");

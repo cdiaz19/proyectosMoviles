@@ -78,8 +78,8 @@ public class TableModelProfesor extends AbstractTableModel {
 
     private void initColNames() {
         this.colNames[0] = "ID";
-        this.colNames[1] = "NOMBRE";
-        this.colNames[2] = "Cedula";
+        this.colNames[1] = "Cedula";
+        this.colNames[2] = "Nombre";
         this.colNames[3] = "Correo";
         this.colNames[4] = "Contrasena";
         this.colNames[5] = "Telefono";
