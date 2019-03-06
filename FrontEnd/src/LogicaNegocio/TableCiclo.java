@@ -73,4 +73,14 @@ public class TableCiclo extends AbstractTableModel {
         this.colNames[3] = "Fecha Inicio";
         this.colNames[4] = "Fecha Final";
     }
+    
+    public LinkedList<Ciclo> buscar(String id, LinkedList<Ciclo> original) {
+        LinkedList<Ciclo> aux = new LinkedList();
+        for (Ciclo e : original) {
+            if (e.getId().equals(id)) {
+                aux.add(e);
+            }
+        }
+        return aux;
+    }
 }

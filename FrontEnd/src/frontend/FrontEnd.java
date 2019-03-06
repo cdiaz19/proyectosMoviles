@@ -7,6 +7,7 @@ package frontend;
 
 import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
+import Control.ControlCiclos;
 import Control.ControlProfesores;
 
 /**
@@ -17,7 +18,7 @@ public class FrontEnd {
 
     public static void main(String[] args) throws GlobalException, NoDataException {
         // TODO code application logic here
-        ControlProfesores control = new ControlProfesores();
+        ControlCiclos control = new ControlCiclos();
         
     }
     public static final int MODO_AGREGAR = 0;

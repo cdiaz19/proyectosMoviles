@@ -32,7 +32,7 @@ public class ServicioCiclo
     return INSTANCIA == null ? (INSTANCIA = new ServicioCiclo()) : INSTANCIA;
   }
   
-  public LinkedList<Ciclo> listar()
+  public LinkedList<Ciclo> listarCiclos()
     throws GlobalException, NoDataException
   {
     try
