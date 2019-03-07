@@ -407,13 +407,13 @@ public class VistaCiclo extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-//        try {
-//            this.controller.eliminar();
-//        } catch (GlobalException ex) {
-//            Logger.getLogger(VistaCiclo.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (NoDataException ex) {
-//            Logger.getLogger(VistaCiclo.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        try {
+            this.controller.eliminar();
+        } catch (GlobalException ex) {
+            Logger.getLogger(VistaCiclo.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(VistaCiclo.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**

@@ -79,8 +79,12 @@ public class ControlProfesores {
     public void eliminar() throws GlobalException, NoDataException {
         String profesorId = view.insertarId.getText();
         domainModel.eliminar(profesorId);
-        LinkedList lista = domainModel.listarProfesores();
-        model.setProfesores(lista); 
+         LinkedList<Profesor> rows = domainModel.listarProfesores();
+        if (rows.isEmpty()){
+            model.getErrores().put("nombreFld", "Ningun registro coincide");
+            model.setMensaje("NINGUN REGISTRO COINCIDE");
+        }
+        model.setProfesores(rows);
     }
     
     public void salir(){ 

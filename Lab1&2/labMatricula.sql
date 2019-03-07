@@ -71,13 +71,13 @@ cursoId VARCHAR(10) not null,
 CONSTRAINTS pkListaCurso PRIMARY KEY (id),
 CONSTRAINTS fkCiclo
   FOREIGN KEY (cicloId)
-  REFERENCES ciclo(id),
+  REFERENCES ciclo(id) ON DELETE CASCADE,
 CONSTRAINTS fkCarrera
   FOREIGN KEY (carreraId)
-  REFERENCES carrera(id),
+  REFERENCES carrera(id) ON DELETE CASCADE,
 CONSTRAINTS fkCurso
   FOREIGN KEY (cursoId)
-  REFERENCES curso(id)
+  REFERENCES curso(id) ON DELETE CASCADE
 );
 
 
@@ -388,13 +388,13 @@ END;
 /
 
 -- SHOW SCHOOL YEAR
-CREATE OR REPLACE FUNCTION buscarCiclo(idCiclo IN varchar)
+CREATE OR REPLACE FUNCTION buscarCiclo(numCiclo IN int)
 RETURN Types.ref_cursor
 AS
   cursorCiclo types.ref_cursor;
 BEGIN
   OPEN cursorCiclo FOR
-    SELECT id, anno, numero, fechaInicio, fechaFinal from ciclo WHERE id=idCiclo;
+    SELECT id, anno, numero, fechaInicio, fechaFinal from ciclo WHERE numero=numCiclo;
 RETURN cursorCiclo;
 END;
 /

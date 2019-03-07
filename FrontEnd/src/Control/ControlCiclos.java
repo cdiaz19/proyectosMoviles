@@ -77,7 +77,7 @@ public class ControlCiclos {
     
     public void eliminar() throws GlobalException, NoDataException {
         String cicloId = cicloView.insertarId.getText();
-        cicloServicio.eliminarCiclo(cicloId);
+        cicloServicio.eliminar(cicloId);
         LinkedList lista = cicloServicio.listarCiclos();
         cicloModel.setCiclos(lista); 
     }
