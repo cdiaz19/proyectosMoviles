@@ -311,7 +311,7 @@ CREATE OR REPLACE PROCEDURE modificarCarrera(idCarrera IN carrera.id%TYPE, codig
 tituloNuevo IN carrera.titulo%TYPE)
 AS
 BEGIN
-  UPDATE ciclo SET codigo=codigoNuevo, nombre=nombreNuevo, titulo=tituloNuevo WHERE id=idCarrera;
+  UPDATE carrera SET codigo=codigoNuevo, nombre=nombreNuevo, titulo=tituloNuevo WHERE id=idCarrera;
 END;
 /
 
