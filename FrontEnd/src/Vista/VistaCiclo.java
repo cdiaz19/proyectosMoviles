@@ -337,10 +337,10 @@ public class VistaCiclo extends javax.swing.JFrame implements Observer {
         try {
             this.controller.agregar();
             this.insertarId.setText("");
-            this.insertaAnno.setText("");
-            this.insertaNumero.setText("");
-            this.insertaFechaInicio.setText("");
-            this.insertaFechaFinal.setText("");
+            this.insertarAnno.setText("");
+            this.insertarNumero.setText("");
+            this.insertarFechaInicio.setText("");
+            this.insertarFechaFinal.setText("");
         } catch (GlobalException | NoDataException ex) {
             Logger.getLogger(VistaCiclo.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -354,6 +354,11 @@ public class VistaCiclo extends javax.swing.JFrame implements Observer {
         try {
             this.controller.buscar();
             this.IDField.setText("");
+            this.insertarId.setText("");
+            this.insertaAnno.setText("");
+            this.insertaNumero.setText("");
+            this.insertaFechaInicio.setText("");
+            this.insertaFechaFinal.setText("");
         } catch (GlobalException | NoDataException ex) {
             Logger.getLogger(VistaCiclo.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -374,7 +379,6 @@ public class VistaCiclo extends javax.swing.JFrame implements Observer {
         
         this.insertarId.setText(Tablemodel.getValueAt(filaProfesorSeleccionada, 0).toString());
         this.insertarId.setEnabled(false);
-        this.insertarAnno.setText("");
         this.insertarAnno.setText(Tablemodel.getValueAt(filaProfesorSeleccionada, 1).toString());
         this.insertarNumero.setText(Tablemodel.getValueAt(filaProfesorSeleccionada, 2).toString());
         this.insertarFechaInicio.setText(Tablemodel.getValueAt(filaProfesorSeleccionada, 3).toString());
@@ -397,12 +401,11 @@ public class VistaCiclo extends javax.swing.JFrame implements Observer {
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         try {
             this.controller.actualizar();
-            this.controller.agregar();
             this.insertarId.setText("");
-            this.insertaAnno.setText("");
-            this.insertaNumero.setText("");
-            this.insertaFechaInicio.setText("");
-            this.insertaFechaFinal.setText("");     
+            this.insertarAnno.setText("");
+            this.insertarNumero.setText("");
+            this.insertarFechaInicio.setText("");
+            this.insertarFechaFinal.setText("");     
         } catch (GlobalException | NoDataException ex) {
             Logger.getLogger(VistaCiclo.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -411,6 +414,11 @@ public class VistaCiclo extends javax.swing.JFrame implements Observer {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         try {
             this.controller.eliminar();
+            this.insertarId.setText("");
+            this.insertarAnno.setText("");
+            this.insertarNumero.setText("");
+            this.insertarFechaInicio.setText("");
+            this.insertarFechaFinal.setText("");
         } catch (GlobalException ex) {
             Logger.getLogger(VistaCiclo.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoDataException ex) {
