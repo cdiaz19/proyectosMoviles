@@ -45,9 +45,9 @@ public class ControlProfesores {
     }
     
     public void buscar() throws GlobalException, NoDataException{
-        String nombre = view.nombreField.getText();
+        String cedula = view.CedulaField.getText();
         LinkedList lista = domainModel.listarProfesores();
-        LinkedList aux = model.getProfesores().buscar(nombre, lista);
+        LinkedList aux = model.getProfesores().buscar(cedula, lista);
         model.setProfesores(aux);
     }
     

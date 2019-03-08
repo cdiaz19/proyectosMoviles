@@ -86,10 +86,10 @@ public class TableProfesor extends AbstractTableModel {
         this.colNames[5] = "Telefono";
     }
 
-    public LinkedList<Profesor> buscar(String nombres, LinkedList<Profesor> original) {
+    public LinkedList<Profesor> buscar(String cedula, LinkedList<Profesor> original) {
         LinkedList<Profesor> aux = new LinkedList();
         for (Profesor e : original) {
-            if (e.getNombre().equals(nombres)) {
+            if (e.getUsuario().getCedula().equals(cedula)) {
                 aux.add(e);
             }
         }

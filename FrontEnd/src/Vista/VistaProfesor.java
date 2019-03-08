@@ -51,9 +51,9 @@ public class VistaProfesor extends javax.swing.JFrame implements Observer {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        nombreField = new javax.swing.JTextField();
-        labelNombre = new javax.swing.JLabel();
-        botonNombre = new javax.swing.JButton();
+        CedulaField = new javax.swing.JTextField();
+        labelCedula = new javax.swing.JLabel();
+        botonCedula = new javax.swing.JButton();
         panelTabla = new java.awt.Panel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaProfesor = new javax.swing.JTable();
@@ -80,24 +80,24 @@ public class VistaProfesor extends javax.swing.JFrame implements Observer {
         setBackground(new java.awt.Color(0, 0, 0));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        nombreField.setToolTipText("Nombre");
-        nombreField.addActionListener(new java.awt.event.ActionListener() {
+        CedulaField.setToolTipText("Nombre");
+        CedulaField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreFieldActionPerformed(evt);
+                CedulaFieldActionPerformed(evt);
             }
         });
 
-        labelNombre.setText("Nombre");
+        labelCedula.setText("Cedula");
 
-        botonNombre.setText("Buscar");
-        botonNombre.addMouseListener(new java.awt.event.MouseAdapter() {
+        botonCedula.setText("Buscar");
+        botonCedula.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                botonNombreMouseClicked(evt);
+                botonCedulaMouseClicked(evt);
             }
         });
-        botonNombre.addActionListener(new java.awt.event.ActionListener() {
+        botonCedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonNombreActionPerformed(evt);
+                botonCedulaActionPerformed(evt);
             }
         });
 
@@ -300,11 +300,11 @@ public class VistaProfesor extends javax.swing.JFrame implements Observer {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelNombre)
+                                .addComponent(labelCedula)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(nombreField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(CedulaField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(botonNombre))
+                                .addComponent(botonCedula))
                             .addComponent(panelInsertaProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -314,9 +314,9 @@ public class VistaProfesor extends javax.swing.JFrame implements Observer {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombreField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelNombre)
-                    .addComponent(botonNombre))
+                    .addComponent(CedulaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelCedula)
+                    .addComponent(botonCedula))
                 .addGap(24, 24, 24)
                 .addComponent(panelTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23)
@@ -329,9 +329,9 @@ public class VistaProfesor extends javax.swing.JFrame implements Observer {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nombreFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreFieldActionPerformed
+    private void CedulaFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CedulaFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombreFieldActionPerformed
+    }//GEN-LAST:event_CedulaFieldActionPerformed
 
     private void insertarIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarIdActionPerformed
         // TODO add your handling code here:
@@ -341,9 +341,9 @@ public class VistaProfesor extends javax.swing.JFrame implements Observer {
         // TODO add your handling code here:
     }//GEN-LAST:event_insertarNombreActionPerformed
 
-    private void botonNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonNombreMouseClicked
+    private void botonCedulaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCedulaMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_botonNombreMouseClicked
+    }//GEN-LAST:event_botonCedulaMouseClicked
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         try {
@@ -366,16 +366,16 @@ public class VistaProfesor extends javax.swing.JFrame implements Observer {
         // TODO add your handling code here:
     }//GEN-LAST:event_insertarCedulaActionPerformed
 
-    private void botonNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNombreActionPerformed
+    private void botonCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCedulaActionPerformed
         try {
             this.controller.buscar();
-            this.nombreField.setText("");
+            this.CedulaField.setText("");
         } catch (GlobalException ex) {
             Logger.getLogger(VistaProfesor.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoDataException ex) {
             Logger.getLogger(VistaProfesor.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_botonNombreActionPerformed
+    }//GEN-LAST:event_botonCedulaActionPerformed
 
     private void insertarContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarContrasenaActionPerformed
         // TODO add your handling code here:
@@ -487,7 +487,7 @@ public class VistaProfesor extends javax.swing.JFrame implements Observer {
     }
 
     public void update(Observable updatedModel, Object param) {
-        nombreField.setText(model.getFilter().getNombre());
+        CedulaField.setText(model.getFilter().getNombre());
 
         tablaProfesor.setModel(model.getProfesores());
         this.revalidate();
@@ -499,7 +499,8 @@ public class VistaProfesor extends javax.swing.JFrame implements Observer {
     ControlProfesores controller;
     ModelProfesor model;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonNombre;
+    public javax.swing.JTextField CedulaField;
+    private javax.swing.JButton botonCedula;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnCancelar;
@@ -517,8 +518,7 @@ public class VistaProfesor extends javax.swing.JFrame implements Observer {
     public java.awt.TextField insertarNombre;
     public javax.swing.JTextField insertarTelefono;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel labelNombre;
-    public javax.swing.JTextField nombreField;
+    private javax.swing.JLabel labelCedula;
     private java.awt.Panel panelInsertaProfesor;
     private java.awt.Panel panelTabla;
     private javax.swing.JTable tablaProfesor;
