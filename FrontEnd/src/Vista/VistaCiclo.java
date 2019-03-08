@@ -54,9 +54,9 @@ public class VistaCiclo extends javax.swing.JFrame implements Observer {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        nombreField = new javax.swing.JTextField();
-        labelNombre = new javax.swing.JLabel();
-        botonNombre = new javax.swing.JButton();
+        IDField = new javax.swing.JTextField();
+        labelID = new javax.swing.JLabel();
+        botonID = new javax.swing.JButton();
         panelTabla = new java.awt.Panel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaCiclos = new javax.swing.JTable();
@@ -81,24 +81,24 @@ public class VistaCiclo extends javax.swing.JFrame implements Observer {
         setBackground(new java.awt.Color(0, 0, 0));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        nombreField.setToolTipText("Nombre");
-        nombreField.addActionListener(new java.awt.event.ActionListener() {
+        IDField.setToolTipText("Nombre");
+        IDField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreFieldActionPerformed(evt);
+                IDFieldActionPerformed(evt);
             }
         });
 
-        labelNombre.setText("Nombre");
+        labelID.setText("ID");
 
-        botonNombre.setText("Buscar");
-        botonNombre.addMouseListener(new java.awt.event.MouseAdapter() {
+        botonID.setText("Buscar");
+        botonID.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                botonNombreMouseClicked(evt);
+                botonIDMouseClicked(evt);
             }
         });
-        botonNombre.addActionListener(new java.awt.event.ActionListener() {
+        botonID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonNombreActionPerformed(evt);
+                botonIDActionPerformed(evt);
             }
         });
 
@@ -286,12 +286,12 @@ public class VistaCiclo extends javax.swing.JFrame implements Observer {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelNombre)
+                        .addComponent(labelID)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nombreField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(IDField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonNombre)
-                        .addGap(0, 336, Short.MAX_VALUE))
+                        .addComponent(botonID)
+                        .addGap(0, 397, Short.MAX_VALUE))
                     .addComponent(panelInsertaProfesor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -300,9 +300,9 @@ public class VistaCiclo extends javax.swing.JFrame implements Observer {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombreField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelNombre)
-                    .addComponent(botonNombre))
+                    .addComponent(IDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelID)
+                    .addComponent(botonID))
                 .addGap(24, 24, 24)
                 .addComponent(panelTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -310,14 +310,16 @@ public class VistaCiclo extends javax.swing.JFrame implements Observer {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        labelID.getAccessibleContext().setAccessibleName("Buscar por ID");
+
         getAccessibleContext().setAccessibleName("ventanaProductos");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nombreFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreFieldActionPerformed
+    private void IDFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombreFieldActionPerformed
+    }//GEN-LAST:event_IDFieldActionPerformed
 
     private void insertarIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarIdActionPerformed
         // TODO add your handling code here:
@@ -327,9 +329,9 @@ public class VistaCiclo extends javax.swing.JFrame implements Observer {
         // TODO add your handling code here:
     }//GEN-LAST:event_insertarNumeroActionPerformed
 
-    private void botonNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonNombreMouseClicked
+    private void botonIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonIDMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_botonNombreMouseClicked
+    }//GEN-LAST:event_botonIDMouseClicked
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         try {
@@ -348,14 +350,14 @@ public class VistaCiclo extends javax.swing.JFrame implements Observer {
         // TODO add your handling code here:
     }//GEN-LAST:event_insertarAnnoActionPerformed
 
-    private void botonNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNombreActionPerformed
+    private void botonIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIDActionPerformed
         try {
             this.controller.buscar();
-            this.nombreField.setText("");
+            this.IDField.setText("");
         } catch (GlobalException | NoDataException ex) {
             Logger.getLogger(VistaCiclo.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_botonNombreActionPerformed
+    }//GEN-LAST:event_botonIDActionPerformed
 
     private void insertarFechaFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarFechaFinalActionPerformed
         // TODO add your handling code here:
@@ -372,11 +374,11 @@ public class VistaCiclo extends javax.swing.JFrame implements Observer {
         
         this.insertarId.setText(Tablemodel.getValueAt(filaProfesorSeleccionada, 0).toString());
         this.insertarId.setEnabled(false);
-        this.insertaAnno.setText("");
-        this.insertaAnno.setText(Tablemodel.getValueAt(filaProfesorSeleccionada, 1).toString());
-        this.insertaNumero.setText(Tablemodel.getValueAt(filaProfesorSeleccionada, 2).toString());
-        this.insertaFechaInicio.setText(Tablemodel.getValueAt(filaProfesorSeleccionada, 3).toString());
-        this.insertaFechaFinal.setText(Tablemodel.getValueAt(filaProfesorSeleccionada, 4).toString());
+        this.insertarAnno.setText("");
+        this.insertarAnno.setText(Tablemodel.getValueAt(filaProfesorSeleccionada, 1).toString());
+        this.insertarNumero.setText(Tablemodel.getValueAt(filaProfesorSeleccionada, 2).toString());
+        this.insertarFechaInicio.setText(Tablemodel.getValueAt(filaProfesorSeleccionada, 3).toString());
+        this.insertarFechaFinal.setText(Tablemodel.getValueAt(filaProfesorSeleccionada, 4).toString());
     }//GEN-LAST:event_tablaCiclosMouseClicked
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -467,7 +469,8 @@ public class VistaCiclo extends javax.swing.JFrame implements Observer {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonNombre;
+    public javax.swing.JTextField IDField;
+    private javax.swing.JButton botonID;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnCancelar;
@@ -483,8 +486,7 @@ public class VistaCiclo extends javax.swing.JFrame implements Observer {
     public java.awt.TextField insertarId;
     public java.awt.TextField insertarNumero;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel labelNombre;
-    public javax.swing.JTextField nombreField;
+    private javax.swing.JLabel labelID;
     private java.awt.Panel panelInsertaProfesor;
     private java.awt.Panel panelTabla;
     private javax.swing.JTable tablaCiclos;

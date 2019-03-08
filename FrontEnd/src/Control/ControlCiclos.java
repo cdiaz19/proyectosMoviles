@@ -57,7 +57,7 @@ public class ControlCiclos {
     }
     
     public void buscar() throws GlobalException, NoDataException{
-        String cicloId = cicloView.insertarId.getText();
+        String cicloId = cicloView.IDField.getText();
         LinkedList lista = cicloServicio.listarCiclos();
         LinkedList aux = cicloModel.getCiclos().buscar(cicloId, lista);
         cicloModel.setCiclos(aux);
