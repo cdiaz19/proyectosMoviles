@@ -8,7 +8,7 @@
       <Color blue="0" green="0" red="0" type="rgb"/>
     </Property>
     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-      <Color id="Cursor Por defecto"/>
+      <Color id="Default Cursor"/>
     </Property>
   </Properties>
   <AccessibilityProperties>
@@ -43,7 +43,7 @@
                       <Component id="IDField" min="-2" pref="112" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="botonID" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="397" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="361" max="32767" attributes="0"/>
                   </Group>
                   <Component id="panelInsertaProfesor" alignment="0" max="32767" attributes="0"/>
               </Group>
@@ -83,7 +83,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="labelID">
       <Properties>
-        <Property name="text" type="java.lang.String" value="ID"/>
+        <Property name="text" type="java.lang.String" value="Nombre"/>
       </Properties>
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Buscar por ID"/>
@@ -135,15 +135,15 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="tablaCiclos">
+            <Component class="javax.swing.JTable" name="tablaCursos">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="5" rowCount="2">
                     <Column editable="true" title="ID" type="java.lang.String"/>
-                    <Column editable="true" title="Anno" type="java.lang.String"/>
-                    <Column editable="true" title="Numero" type="java.lang.String"/>
-                    <Column editable="true" title="Fecha Inicio" type="java.lang.String"/>
-                    <Column editable="true" title="Fecha Final" type="java.lang.String"/>
+                    <Column editable="true" title="Codigo" type="java.lang.String"/>
+                    <Column editable="true" title="Nombre" type="java.lang.String"/>
+                    <Column editable="true" title="Creditos" type="java.lang.Integer"/>
+                    <Column editable="true" title="Horas Semanales" type="java.lang.Integer"/>
                   </Table>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -181,7 +181,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tablaCiclosMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tablaCursosMouseClicked"/>
               </Events>
             </Component>
           </SubComponents>
@@ -203,19 +203,19 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="insertaFechaFinal" alignment="0" max="32767" attributes="0"/>
-                              <Component id="insertaFechaInicio" alignment="0" max="32767" attributes="0"/>
+                              <Component id="insertaLabelHorasSemanales" alignment="0" max="32767" attributes="0"/>
+                              <Component id="insertaLabelCeditos" alignment="0" max="32767" attributes="0"/>
                               <Component id="insertaId" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="insertaAnno" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="insertaNumero" alignment="0" max="32767" attributes="0"/>
+                              <Component id="insertaLabelCodigo" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="insertaLabelNombre" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="insertarNumero" max="32767" attributes="0"/>
+                              <Component id="insertarNombre" max="32767" attributes="0"/>
                               <Component id="insertarId" alignment="0" max="32767" attributes="0"/>
-                              <Component id="insertarAnno" alignment="0" max="32767" attributes="0"/>
-                              <Component id="insertarFechaInicio" alignment="0" pref="87" max="32767" attributes="0"/>
-                              <Component id="insertarFechaFinal" alignment="0" max="32767" attributes="0"/>
+                              <Component id="insertarCodigo" alignment="0" max="32767" attributes="0"/>
+                              <Component id="insertarCreditos" alignment="0" pref="87" max="32767" attributes="0"/>
+                              <Component id="insertarHorasSemanales" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -246,24 +246,24 @@
                                       <Component id="insertarId" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="insertaAnno" min="-2" max="-2" attributes="0"/>
+                                  <Component id="insertaLabelCodigo" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="insertarAnno" min="-2" max="-2" attributes="0"/>
+                              <Component id="insertarCodigo" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="insertaNumero" min="-2" max="-2" attributes="0"/>
+                          <Component id="insertaLabelNombre" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="insertarNumero" min="-2" max="-2" attributes="0"/>
+                      <Component id="insertarNombre" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="17" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="insertaFechaInicio" min="-2" max="-2" attributes="0"/>
-                      <Component id="insertarFechaInicio" min="-2" max="-2" attributes="0"/>
+                      <Component id="insertarCreditos" min="-2" max="-2" attributes="0"/>
+                      <Component id="insertaLabelCeditos" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="insertarFechaFinal" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="insertaFechaFinal" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="insertarHorasSemanales" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="insertaLabelHorasSemanales" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -282,14 +282,14 @@
             <Property name="text" type="java.lang.String" value="id"/>
           </Properties>
         </Component>
-        <Component class="java.awt.Label" name="insertaAnno">
+        <Component class="java.awt.Label" name="insertaLabelCodigo">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Anno"/>
+            <Property name="text" type="java.lang.String" value="Codigo"/>
           </Properties>
         </Component>
-        <Component class="java.awt.Label" name="insertaNumero">
+        <Component class="java.awt.Label" name="insertaLabelNombre">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Numero"/>
+            <Property name="text" type="java.lang.String" value="Nombre"/>
           </Properties>
         </Component>
         <Component class="java.awt.TextField" name="insertarId">
@@ -300,20 +300,20 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="java.awt.TextField" name="insertarAnno">
+        <Component class="java.awt.TextField" name="insertarCodigo">
           <AccessibilityProperties>
             <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
           </AccessibilityProperties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insertarAnnoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insertarCodigoActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="java.awt.TextField" name="insertarNumero">
+        <Component class="java.awt.TextField" name="insertarNombre">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insertarNumeroActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insertarNombreActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -327,24 +327,27 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="insertaFechaInicio">
+        <Component class="javax.swing.JLabel" name="insertaLabelCeditos">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Fecha Inicio"/>
+            <Property name="text" type="java.lang.String" value="Creditos"/>
           </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
+          </AccessibilityProperties>
         </Component>
-        <Component class="javax.swing.JTextField" name="insertarFechaInicio">
+        <Component class="javax.swing.JTextField" name="insertarCreditos">
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="insertaFechaFinal">
+        <Component class="javax.swing.JLabel" name="insertaLabelHorasSemanales">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Fecha Final"/>
+            <Property name="text" type="java.lang.String" value="Horas Semanales"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="insertarFechaFinal">
+        <Component class="javax.swing.JTextField" name="insertarHorasSemanales">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insertarFechaFinalActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insertarHorasSemanalesActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

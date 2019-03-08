@@ -13,6 +13,7 @@ import LogicaNegocio.ModelCiclo;
 import Vista.VistaCiclo;
 import static java.lang.Integer.parseInt;
 import java.util.LinkedList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -40,45 +41,68 @@ public class ControlCiclos {
     }
     
     public void iniciar() throws GlobalException, NoDataException{
-        LinkedList lista = cicloServicio.listarCiclos();
-        this.cicloModel.setCiclos(lista); 
-    }
-    
-    public void agregar() throws GlobalException, NoDataException{
-        Ciclo ciclo_agregado = new Ciclo(cicloView.insertarId.getText(), parseInt(cicloView.insertarAnno.getText()), parseInt(cicloView.insertarNumero.getText()), cicloView.insertarFechaInicio.getText(), cicloView.insertarFechaFinal.getText() );
-
-        cicloServicio.insertarCiclo(ciclo_agregado);
-        LinkedList<Ciclo> rows = cicloServicio.listarCiclos();
-        if (rows.isEmpty()){
-            cicloModel.getErrores().put("nombreFld", "Ningun registro coincide");
-            cicloModel.setMensaje("NINGUN REGISTRO COINCIDE");
+        try {
+            LinkedList lista = cicloServicio.listarCiclos();
+            this.cicloModel.setCiclos(lista); 
+        } catch (GlobalException | NoDataException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-        cicloModel.setCiclos(rows);
     }
     
-    public void buscar() throws GlobalException, NoDataException{
-        String cicloId = cicloView.IDField.getText();
-        LinkedList lista = cicloServicio.listarCiclos();
-        LinkedList aux = cicloModel.getCiclos().buscar(cicloId, lista);
-        cicloModel.setCiclos(aux);
-    }
-    
-    public void actualizar()throws GlobalException, NoDataException{
-        Ciclo ciclo_agregado = new Ciclo(cicloView.insertarId.getText(), parseInt(cicloView.insertarAnno.getText()), parseInt(cicloView.insertarNumero.getText()), cicloView.insertarFechaInicio.getText(), cicloView.insertarFechaFinal.getText() );
+    public void agregar() throws GlobalException, NoDataException {
+        try {
+            Ciclo ciclo_agregado = new Ciclo(cicloView.insertarId.getText(), parseInt(cicloView.insertarAnno.getText()), parseInt(cicloView.insertarNumero.getText()), cicloView.insertarFechaInicio.getText(), cicloView.insertarFechaFinal.getText() );
 
-        cicloServicio.modificarCiclo(ciclo_agregado);
-        LinkedList<Ciclo> rows = cicloServicio.listarCiclos();
-        if (rows.isEmpty()){
-            cicloModel.getErrores().put("nombreFld", "Ningun registro coincide");
-            cicloModel.setMensaje("NINGUN REGISTRO COINCIDE");
+            cicloServicio.insertarCiclo(ciclo_agregado);
+            LinkedList<Ciclo> rows = cicloServicio.listarCiclos();
+            
+            if (rows.isEmpty()) { 
+                JOptionPane.showMessageDialog(null, "Ningun registro coincide");
+            }
+            
+            cicloModel.setCiclos(rows);
+            
+        } catch (GlobalException | NoDataException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-        cicloModel.setCiclos(rows);
+    }
+    
+    public void buscar() throws GlobalException, NoDataException {
+        try { 
+            String cicloId = cicloView.IDField.getText();
+            LinkedList lista = cicloServicio.listarCiclos();
+            LinkedList aux = cicloModel.getCiclos().buscar(cicloId, lista);
+            cicloModel.setCiclos(aux);
+        } catch (GlobalException | NoDataException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }
+    
+    public void actualizar()throws GlobalException, NoDataException {
+        try {
+            Ciclo ciclo_agregado = new Ciclo(cicloView.insertarId.getText(), parseInt(cicloView.insertarAnno.getText()), parseInt(cicloView.insertarNumero.getText()), cicloView.insertarFechaInicio.getText(), cicloView.insertarFechaFinal.getText() );
+
+            cicloServicio.modificarCiclo(ciclo_agregado);
+            LinkedList<Ciclo> rows = cicloServicio.listarCiclos();
+            
+            if (rows.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Ningun registro coincide");
+            }
+            
+            cicloModel.setCiclos(rows);
+        } catch (GlobalException | NoDataException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
     }
     
     public void eliminar() throws GlobalException, NoDataException {
-        String cicloId = cicloView.insertarId.getText();
-        cicloServicio.eliminar(cicloId);
-        LinkedList lista = cicloServicio.listarCiclos();
-        cicloModel.setCiclos(lista); 
+        try {
+            String cicloId = cicloView.insertarId.getText();
+            cicloServicio.eliminar(cicloId);
+            LinkedList lista = cicloServicio.listarCiclos();
+            cicloModel.setCiclos(lista); 
+        } catch (GlobalException | NoDataException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
     }
 }
