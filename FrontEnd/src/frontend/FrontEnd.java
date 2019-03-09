@@ -7,20 +7,15 @@ package frontend;
 
 import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
-import Control.ControlCiclos;
-import Control.ControlProfesores;
+import Vista.VistaPrincipal;
 
 /**
  *
  * @author Alejandro
  */
-public class FrontEnd {
 
+public class FrontEnd {
     public static void main(String[] args) throws GlobalException, NoDataException {
-        // TODO code application logic here
-        ControlCiclos control = new ControlCiclos();
-        
+        VistaPrincipal control = new VistaPrincipal(); 
     }
-    public static final int MODO_AGREGAR = 0;
-    public static final int MODO_EDITAR = 1;
 }

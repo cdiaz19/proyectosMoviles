@@ -45,13 +45,15 @@
                       <Component id="botonID" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="panelInsertaProfesor" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                      <Component id="panelInsertaProfesor" min="-2" pref="311" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnCerrar" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                               <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                              <Component id="btnCerrar" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -80,9 +82,9 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Component id="btnCerrar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -152,25 +154,19 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="tablaCiclos">
+            <Component class="javax.swing.JTable" name="tablaCarrera">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="5" rowCount="2">
+                  <Table columnCount="4" rowCount="2">
                     <Column editable="true" title="ID" type="java.lang.String"/>
-                    <Column editable="true" title="Anno" type="java.lang.String"/>
-                    <Column editable="true" title="Numero" type="java.lang.String"/>
-                    <Column editable="true" title="Fecha Inicio" type="java.lang.String"/>
-                    <Column editable="true" title="Fecha Final" type="java.lang.String"/>
+                    <Column editable="true" title="Codigo" type="java.lang.String"/>
+                    <Column editable="true" title="Nombre" type="java.lang.String"/>
+                    <Column editable="true" title="Titulo" type="java.lang.String"/>
                   </Table>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
@@ -198,7 +194,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tablaCiclosMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tablaCarreraMouseClicked"/>
               </Events>
             </Component>
           </SubComponents>
@@ -216,30 +212,29 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="insertaFechaFinal" alignment="0" max="32767" attributes="0"/>
-                              <Component id="insertaFechaInicio" alignment="0" max="32767" attributes="0"/>
+                              <Component id="insertarLabelTitulo" alignment="0" max="32767" attributes="0"/>
                               <Component id="insertaId" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="insertaAnno" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="insertaNumero" alignment="0" max="32767" attributes="0"/>
+                              <Component id="insertaCodigo" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="insertarLabelNombre" alignment="0" pref="70" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="insertarNumero" max="32767" attributes="0"/>
+                              <Component id="insertarNombre" max="32767" attributes="0"/>
                               <Component id="insertarId" alignment="0" max="32767" attributes="0"/>
-                              <Component id="insertarAnno" alignment="0" max="32767" attributes="0"/>
-                              <Component id="insertarFechaInicio" alignment="0" pref="87" max="32767" attributes="0"/>
-                              <Component id="insertarFechaFinal" alignment="0" max="32767" attributes="0"/>
+                              <Component id="insertarCodigo" alignment="0" max="32767" attributes="0"/>
+                              <Component id="insertarTitulo" alignment="0" pref="87" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnAgregar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnActualizar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnEliminar" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -260,32 +255,27 @@
                                       <Component id="insertarId" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="insertaAnno" min="-2" max="-2" attributes="0"/>
+                                  <Component id="insertaCodigo" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="insertarAnno" min="-2" max="-2" attributes="0"/>
+                              <Component id="insertarCodigo" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="insertaNumero" min="-2" max="-2" attributes="0"/>
+                          <Component id="insertarLabelNombre" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="insertarNumero" min="-2" max="-2" attributes="0"/>
+                      <Component id="insertarNombre" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="17" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="insertaFechaInicio" min="-2" max="-2" attributes="0"/>
-                      <Component id="insertarFechaInicio" min="-2" max="-2" attributes="0"/>
+                      <Component id="insertarLabelTitulo" min="-2" max="-2" attributes="0"/>
+                      <Component id="insertarTitulo" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="insertarFechaFinal" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="insertaFechaFinal" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnAgregar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnActualizar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -296,14 +286,14 @@
             <Property name="text" type="java.lang.String" value="id"/>
           </Properties>
         </Component>
-        <Component class="java.awt.Label" name="insertaAnno">
+        <Component class="java.awt.Label" name="insertaCodigo">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Anno"/>
+            <Property name="text" type="java.lang.String" value="Codigo"/>
           </Properties>
         </Component>
-        <Component class="java.awt.Label" name="insertaNumero">
+        <Component class="java.awt.Label" name="insertarLabelNombre">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Numero"/>
+            <Property name="text" type="java.lang.String" value="Nombre"/>
           </Properties>
         </Component>
         <Component class="java.awt.TextField" name="insertarId">
@@ -314,20 +304,20 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="java.awt.TextField" name="insertarAnno">
+        <Component class="java.awt.TextField" name="insertarCodigo">
           <AccessibilityProperties>
             <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
           </AccessibilityProperties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insertarAnnoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insertarCodigoActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="java.awt.TextField" name="insertarNumero">
+        <Component class="java.awt.TextField" name="insertarNombre">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insertarNumeroActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insertarNombreActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -341,25 +331,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="insertaFechaInicio">
+        <Component class="javax.swing.JLabel" name="insertarLabelTitulo">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Fecha Inicio"/>
+            <Property name="text" type="java.lang.String" value="Titulo"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="insertarFechaInicio">
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="insertaFechaFinal">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Fecha Final"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="insertarFechaFinal">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insertarFechaFinalActionPerformed"/>
-          </Events>
+        <Component class="javax.swing.JTextField" name="insertarTitulo">
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>

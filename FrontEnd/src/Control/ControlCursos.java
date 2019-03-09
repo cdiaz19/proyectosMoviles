@@ -29,7 +29,7 @@ public class ControlCursos {
         this.cursoModel = model;
         iniciar();
         view.setController(this);
-        view.setModel(model);
+        view.setModel(cursoModel);
     }
     
     public void iniciar() throws GlobalException, NoDataException{

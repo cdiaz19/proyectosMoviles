@@ -21,14 +21,14 @@ import javax.swing.JOptionPane;
  * @author cdiaz
  */
 
-public class VistaCurso extends javax.swing.JFrame implements Observer {
+public class VistaCarrera extends javax.swing.JFrame implements Observer {
     ControlCiclos controller;
     ModelCiclo model;
 
     /**
      * Creates new form Vista
      */
-    public VistaCurso() {
+    public VistaCarrera() {
         initComponents();
         btnCancelar.setEnabled(false);
         btnActualizar.setEnabled(false);
@@ -59,20 +59,18 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
         botonID = new javax.swing.JButton();
         panelTabla = new java.awt.Panel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaCursos = new javax.swing.JTable();
+        tablaCarrera = new javax.swing.JTable();
         panelInsertaProfesor = new java.awt.Panel();
         insertaId = new java.awt.Label();
-        insertaLabelCodigo = new java.awt.Label();
-        insertaLabelNombre = new java.awt.Label();
+        insertaCodigo = new java.awt.Label();
+        insertarLabelNombre = new java.awt.Label();
         insertarId = new java.awt.TextField();
         insertarCodigo = new java.awt.TextField();
         insertarNombre = new java.awt.TextField();
-        insertaLabelCeditos = new javax.swing.JLabel();
-        insertarCreditos = new javax.swing.JTextField();
-        insertaLabelHorasSemanales = new javax.swing.JLabel();
-        insertarHorasSemanales = new javax.swing.JTextField();
-        btnActualizar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
+        insertarLabelTitulo = new javax.swing.JLabel();
+        insertarTitulo = new javax.swing.JTextField();
+        btnActualizar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
@@ -89,7 +87,7 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
             }
         });
 
-        labelID.setText("Nombre");
+        labelID.setText("ID");
 
         botonID.setText("Buscar");
         botonID.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -106,30 +104,30 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
         panelTabla.setBackground(new java.awt.Color(153, 153, 153));
         panelTabla.setForeground(new java.awt.Color(255, 153, 51));
 
-        tablaCursos.setModel(new javax.swing.table.DefaultTableModel(
+        tablaCarrera.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "ID", "Codigo", "Nombre", "Creditos", "Horas Semanales"
+                "ID", "Codigo", "Nombre", "Titulo"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        tablaCursos.setToolTipText("");
-        tablaCursos.addMouseListener(new java.awt.event.MouseAdapter() {
+        tablaCarrera.setToolTipText("");
+        tablaCarrera.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaCursosMouseClicked(evt);
+                tablaCarreraMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tablaCursos);
+        jScrollPane1.setViewportView(tablaCarrera);
 
         javax.swing.GroupLayout panelTablaLayout = new javax.swing.GroupLayout(panelTabla);
         panelTabla.setLayout(panelTablaLayout);
@@ -149,9 +147,9 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
 
         insertaId.setText("id");
 
-        insertaLabelCodigo.setText("Codigo");
+        insertaCodigo.setText("Codigo");
 
-        insertaLabelNombre.setText("Nombre");
+        insertarLabelNombre.setText("Nombre");
 
         insertarId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,27 +169,19 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
             }
         });
 
-        insertaLabelCeditos.setText("Creditos");
-
-        insertaLabelHorasSemanales.setText("Horas Semanales");
-
-        insertarHorasSemanales.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                insertarHorasSemanalesActionPerformed(evt);
+                btnAgregarActionPerformed(evt);
             }
         });
+
+        insertarLabelTitulo.setText("Titulo");
 
         btnActualizar.setText("Actualizar");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActualizarActionPerformed(evt);
-            }
-        });
-
-        btnAgregar.setText("Agregar");
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
             }
         });
 
@@ -211,26 +201,24 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
                     .addGroup(panelInsertaProfesorLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(insertaLabelHorasSemanales, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(insertaLabelCeditos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(insertarLabelTitulo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(insertaId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(insertaLabelCodigo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(insertaLabelNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(insertaCodigo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(insertarLabelNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
                         .addGap(24, 24, 24)
                         .addGroup(panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(insertarNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(insertarId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(insertarCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(insertarCreditos, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
-                            .addComponent(insertarHorasSemanales)))
+                            .addComponent(insertarTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)))
                     .addGroup(panelInsertaProfesorLayout.createSequentialGroup()
-                        .addGap(4, 4, 4)
+                        .addContainerGap()
                         .addComponent(btnAgregar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnActualizar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnActualizar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnEliminar)))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelInsertaProfesorLayout.setVerticalGroup(
             panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,29 +232,24 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
                                     .addComponent(insertaId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(insertarId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(insertaLabelCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(insertaCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(insertarCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(insertaLabelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(insertarLabelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(insertarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(insertarCreditos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(insertaLabelCeditos))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(insertarLabelTitulo)
+                    .addComponent(insertarTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(insertarHorasSemanales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(insertaLabelHorasSemanales))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnActualizar)
                     .addComponent(btnAgregar)
+                    .addComponent(btnActualizar)
                     .addComponent(btnEliminar))
-                .addGap(15, 15, 15))
+                .addGap(46, 46, 46))
         );
 
         insertarCodigo.getAccessibleContext().setAccessibleDescription("");
-        insertaLabelCeditos.getAccessibleContext().setAccessibleDescription("");
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -275,7 +258,7 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
             }
         });
 
-        btnCerrar.setText("Cancelar Ventana");
+        btnCerrar.setText("Cerrar Ventana");
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCerrarActionPerformed(evt);
@@ -289,21 +272,22 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelID)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(IDField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(botonID))
-                    .addComponent(panelTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelInsertaProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62)
+                        .addComponent(panelInsertaProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnCerrar)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnCancelar)
-                                .addGap(31, 31, 31)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(78, 78, 78)
+                                .addComponent(btnCancelar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(63, 63, 63)
+                                .addComponent(btnCerrar)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -324,9 +308,9 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCancelar)
-                        .addGap(48, 48, 48)
+                        .addGap(26, 26, 26)
                         .addComponent(btnCerrar)
-                        .addGap(74, 74, 74))))
+                        .addGap(93, 93, 93))))
         );
 
         labelID.getAccessibleContext().setAccessibleName("Buscar por ID");
@@ -358,10 +342,9 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
             this.insertarId.setText("");
             this.insertarCodigo.setText("");
             this.insertarNombre.setText("");
-            this.insertarCreditos.setText("");
-            this.insertarHorasSemanales.setText("");
+            this.insertarTitulo.setText("");
         } catch (GlobalException | NoDataException ex) {
-            Logger.getLogger(VistaCurso.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VistaCarrera.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
@@ -374,35 +357,29 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
             this.controller.buscar();
             this.IDField.setText("");
             this.insertarId.setText("");
-            this.insertarCodigo.setText("");
+            this.insertaCodigo.setText("");
             this.insertarNombre.setText("");
-            this.insertarCreditos.setText("");
-            this.insertarHorasSemanales.setText("");
+            this.insertarTitulo.setText("");
         } catch (GlobalException | NoDataException ex) {
-            Logger.getLogger(VistaCurso.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VistaCarrera.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_botonIDActionPerformed
 
-    private void insertarHorasSemanalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarHorasSemanalesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_insertarHorasSemanalesActionPerformed
-
-    private void tablaCursosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaCursosMouseClicked
+    private void tablaCarreraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaCarreraMouseClicked
         btnAgregar.setEnabled(false);
         btnActualizar.setEnabled(true);
         btnCancelar.setEnabled(true);
         btnEliminar.setEnabled(true);
-        TableCiclo Tablemodel = (TableCiclo) tablaCursos.getModel();
+        TableCiclo Tablemodel = (TableCiclo) tablaCarrera.getModel();
 
-        int filaCursoSeleccionada = tablaCursos.getSelectedRow();
+        int filaProfesorSeleccionada = tablaCarrera.getSelectedRow();
         
-        this.insertarId.setText(Tablemodel.getValueAt(filaCursoSeleccionada, 0).toString());
+        this.insertarId.setText(Tablemodel.getValueAt(filaProfesorSeleccionada, 0).toString());
         this.insertarId.setEnabled(false);
-        this.insertarCodigo.setText(Tablemodel.getValueAt(filaCursoSeleccionada, 1).toString());
-        this.insertarNombre.setText(Tablemodel.getValueAt(filaCursoSeleccionada, 2).toString());
-        this.insertarCreditos.setText(Tablemodel.getValueAt(filaCursoSeleccionada, 3).toString());
-        this.insertarHorasSemanales.setText(Tablemodel.getValueAt(filaCursoSeleccionada, 4).toString());
-    }//GEN-LAST:event_tablaCursosMouseClicked
+        this.insertarCodigo.setText(Tablemodel.getValueAt(filaProfesorSeleccionada, 1).toString());
+        this.insertarNombre.setText(Tablemodel.getValueAt(filaProfesorSeleccionada, 2).toString());
+        this.insertarTitulo.setText(Tablemodel.getValueAt(filaProfesorSeleccionada, 3).toString());
+    }//GEN-LAST:event_tablaCarreraMouseClicked
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         btnAgregar.setEnabled(true);
@@ -411,10 +388,9 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
         btnEliminar.setEnabled(false);
 
         this.insertarId.setText("");
-        this.insertarCodigo.setText("");
+        this.insertaCodigo.setText("");
         this.insertarNombre.setText("");
-        this.insertarCreditos.setText("");
-        this.insertarHorasSemanales.setText("");
+        this.insertarTitulo.setText("");
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
@@ -423,10 +399,9 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
             this.insertarId.setText("");
             this.insertarCodigo.setText("");
             this.insertarNombre.setText("");
-            this.insertarCreditos.setText("");
-            this.insertarHorasSemanales.setText("");     
+            this.insertarTitulo.setText("");
         } catch (GlobalException | NoDataException ex) {
-            Logger.getLogger(VistaCurso.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VistaCarrera.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
@@ -436,10 +411,9 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
             this.insertarId.setText("");
             this.insertarCodigo.setText("");
             this.insertarNombre.setText("");
-            this.insertarCreditos.setText("");
-            this.insertarHorasSemanales.setText("");
+            this.insertarTitulo.setText("");
         } catch (GlobalException | NoDataException ex) {
-            Logger.getLogger(VistaCurso.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VistaCarrera.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
@@ -464,13 +438,13 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaCarrera.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaCarrera.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaCarrera.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaCarrera.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -483,7 +457,7 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new VistaCurso().setVisible(true);
+            new VistaCarrera().setVisible(true);
         });
     }
 
@@ -493,7 +467,7 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
 
     @Override
     public void update(Observable updatedModel, Object param) {
-        tablaCursos.setModel(model.getCiclos());
+        tablaCarrera.setModel(model.getCiclos());
         this.revalidate();
         if (!model.getMensaje().equals("")) {
             JOptionPane.showMessageDialog(this, model.getMensaje(), "", JOptionPane.INFORMATION_MESSAGE);
@@ -508,20 +482,18 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnEliminar;
+    private java.awt.Label insertaCodigo;
     private java.awt.Label insertaId;
-    private javax.swing.JLabel insertaLabelCeditos;
-    private java.awt.Label insertaLabelCodigo;
-    private javax.swing.JLabel insertaLabelHorasSemanales;
-    private java.awt.Label insertaLabelNombre;
     public java.awt.TextField insertarCodigo;
-    public javax.swing.JTextField insertarCreditos;
-    public javax.swing.JTextField insertarHorasSemanales;
     public java.awt.TextField insertarId;
+    private java.awt.Label insertarLabelNombre;
+    private javax.swing.JLabel insertarLabelTitulo;
     public java.awt.TextField insertarNombre;
+    public javax.swing.JTextField insertarTitulo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelID;
     private java.awt.Panel panelInsertaProfesor;
     private java.awt.Panel panelTabla;
-    private javax.swing.JTable tablaCursos;
+    private javax.swing.JTable tablaCarrera;
     // End of variables declaration//GEN-END:variables
 }

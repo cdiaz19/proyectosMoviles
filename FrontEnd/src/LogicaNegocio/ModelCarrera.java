@@ -5,7 +5,7 @@
  */
 package LogicaNegocio;
 
-import LogicaDeNegocio.Ciclo;
+import LogicaDeNegocio.Carrera;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Observable;
@@ -16,36 +16,36 @@ import java.util.Observer;
  * @author cdiaz
  */
 
-public class ModelCiclo extends Observable {
-    Ciclo filter;
-    TableCiclo ciclos;
+public class ModelCarrera extends Observable {
+    Carrera filter;
+    TableCarrera carreras;
     HashMap<String, String> errores;
     String mensaje;
 
     public void init() {
-      this.filter = new Ciclo();
-      LinkedList<Ciclo> rows = new LinkedList();
+      this.filter = new Carrera();
+      LinkedList<Carrera> rows = new LinkedList();
       setCiclos(rows);
       clearErrors();
     }
 
-    public void setCiclos(LinkedList<Ciclo> ciclos) {
+    public void setCiclos(LinkedList<Carrera> carreras) {
       int[] cols = { 0, 1, 2, 3, 4, 5 };
-      this.ciclos = new TableCiclo(cols, ciclos);
+      this.carreras = new TableCarrera(cols, carreras);
       setChanged();
       notifyObservers();
     }
 
-    public Ciclo getFilter() {
+    public Carrera getFilter() {
       return this.filter;
     }
 
-    public void setFilter(Ciclo filter) {
+    public void setFilter(Carrera filter) {
       this.filter = filter;
     }
 
-    public TableCiclo getCiclos() {
-      return this.ciclos;
+    public TableCarrera getCiclos() {
+      return this.carreras;
     }
 
     public void addObserver(Observer o) {
@@ -73,5 +73,5 @@ public class ModelCiclo extends Observable {
     public void clearErrors() {
       setErrores(new HashMap());
       setMensaje("");
-    } 
+    }   
 }

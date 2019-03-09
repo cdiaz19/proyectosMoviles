@@ -7,7 +7,6 @@ package LogicaNegocio;
 
 import LogicaDeNegocio.Profesor;
 import java.util.LinkedList;
-import javax.swing.Icon;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -16,6 +15,10 @@ import javax.swing.table.AbstractTableModel;
  */
 
 public class TableProfesor extends AbstractTableModel {
+    
+    String[] colNames = new String[11];
+    LinkedList<Profesor> filas;
+    int[] columnas;
 
     public static final int ID = 0;
     public static final int NOMBRE = 1;
@@ -64,10 +67,6 @@ public class TableProfesor extends AbstractTableModel {
         }
         return "";
     }
-
-    String[] colNames = new String[11];
-    LinkedList<Profesor> filas;
-    int[] columnas;
 
     private void initColNames() {
         this.colNames[0] = "ID";
