@@ -12,7 +12,7 @@ import java.util.Random;
  * @author cdiaz
  */
 public class Curso {
-    private int id;
+    private String id;
     private String codigo;
     private String nombre;
     private int creditos;
@@ -25,7 +25,7 @@ public class Curso {
         horasSemanales = new Random().nextInt(12);
     }
 
-    public Curso(int id, String codigo, String nombre, int creditos, int horasSemanales) {
+    public Curso(String id, String codigo, String nombre, int creditos, int horasSemanales) {
         this.id = id;
         this.codigo = codigo;
         this.nombre = nombre;
@@ -33,11 +33,11 @@ public class Curso {
         this.horasSemanales = horasSemanales;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -75,6 +75,6 @@ public class Curso {
 
     @Override
     public String toString() {
-        return id + codigo + nombre + creditos + horasSemanales;
+        return id + " "+ codigo + " " + nombre + " " + creditos + " " + horasSemanales;
     }    
 }

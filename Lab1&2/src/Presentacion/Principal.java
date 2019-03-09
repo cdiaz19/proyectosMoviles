@@ -6,10 +6,11 @@
 package Presentacion;
 import LogicaDeNegocio.Profesor;
 import LogicaDeNegocio.Usuario;
-import AccesoADatos.ServicioCiclo;
+import AccesoADatos.ServicioCurso;
 import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
 import LogicaDeNegocio.Ciclo;
+import LogicaDeNegocio.Curso;
 import java.util.LinkedList;
 
 public class Principal
@@ -18,10 +19,9 @@ public class Principal
     throws GlobalException, NoDataException
   {
    //Ciclo ciclo=new Ciclo("1",4,2019,"19/06/2017","16/06/2018");
-    ServicioCiclo sc = ServicioCiclo.getInstancia();
+    ServicioCurso sc = ServicioCurso.getInstancia();
     //LinkedList<Profesor> p1 = sp.listarProfesores();
-    sc.eliminar("1");
-    LinkedList<Ciclo> c1 = sc.listarCiclos();
+    LinkedList<Curso> c1 = sc.listarCursos();
     System.out.print(c1);
   }
 }
