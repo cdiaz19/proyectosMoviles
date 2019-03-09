@@ -17,6 +17,7 @@ import java.util.LinkedList;
 public class ServicioCurso extends Servicio {
     
     private static final String LISTARCURSOS = "{?=call listarCursos()}";
+    private static final String INSERTARCURSOS = "{call insertarCurso(?,?,?,?,?)}";
      public static ServicioCurso getInstancia() {
         return INSTANCIA == null ? (INSTANCIA = new ServicioCurso()) : INSTANCIA;
     }
@@ -87,6 +88,44 @@ public class ServicioCurso extends Servicio {
             throw new NoDataException("No hay datos");
         }
         return coleccion;
+    }
+      public void insertarCurso(Curso curso)
+            throws GlobalException, NoDataException {
+        try {
+            conectar();
+        } catch (ClassNotFoundException e) {
+            throw new GlobalException("No se ha localizado el driver");
+        } catch (SQLException e) {
+            throw new NoDataException("La base de datos no se encuentra disponible");
+        }
+        CallableStatement pstmt = null;
+
+        try {
+            pstmt = this.conexion.prepareCall(INSERTARCURSOS);
+            pstmt.setString(1, curso.getId());
+            pstmt.setString(2, curso.getCodigo());
+            pstmt.setString(3, curso.getNombre());
+            pstmt.setInt(4, curso.getCreditos());
+            pstmt.setInt(5, curso.getHorasSemanales());
+            
+            boolean resultado = pstmt.execute();
+            if (resultado == true) {
+                throw new NoDataException("No se realizo la inserci�n");
+            }
+            return;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new GlobalException("Llave duplicada");
+        } finally {
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+                desconectar();
+            } catch (SQLException e) {
+                throw new GlobalException("Estatutos invalidos o nulos");
+            }
+        }
     }
       
       private static ServicioCurso INSTANCIA = null;
