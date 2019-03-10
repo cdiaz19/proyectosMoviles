@@ -2,6 +2,7 @@ package Control;
 
 import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
+import AccesoADatos.ServicioCurso;
 import LogicaDeNegocio.Curso;
 import LogicaNegocio.ModelCurso;
 import Vista.VistaCurso;
@@ -34,7 +35,7 @@ public class ControlCursos {
     
     public void iniciar() throws GlobalException, NoDataException{
         try {
-            LinkedList lista = cursoServicio.listarCiclos();
+            LinkedList lista = cursoServicio.listarCursos();
             this.cursoModel.setCursos(lista); 
         } catch (GlobalException | NoDataException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
@@ -43,10 +44,10 @@ public class ControlCursos {
     
     public void agregar() throws GlobalException, NoDataException {
         try {
-            Curso ciclo_agregado = new Curso();
+            Curso curso_agregado = new Curso();
 
-            cursoServicio.insertarCiclo(ciclo_agregado);
-            LinkedList<Curso> rows = cursoServicio.listarCiclos();
+            cursoServicio.insertarCurso(curso_agregado);
+            LinkedList<Curso> rows = cursoServicio.listarCursos();
             
             if (rows.isEmpty()) { 
                 JOptionPane.showMessageDialog(null, "Ningun registro coincide");
@@ -62,7 +63,7 @@ public class ControlCursos {
     public void buscar() throws GlobalException, NoDataException {
         try { 
             String cicloId = cursoView.IDField.getText();
-            LinkedList lista = cursoServicio.listarCiclos();
+            LinkedList lista = cursoServicio.listarCursos();
             LinkedList aux = cursoModel.getCursos().buscar(cicloId, lista);
             cursoModel.setCursos(aux);
         } catch (GlobalException | NoDataException ex) {
@@ -74,14 +75,14 @@ public class ControlCursos {
         try {
             Curso ciclo_agregado = new Curso();
 
-            cursoServicio.modificarCiclo(ciclo_agregado);
-            LinkedList<Curso> rows = cursoServicio.listarCiclos();
+            cursoServicio.modificarCurso(ciclo_agregado);
+            LinkedList<Curso> rows = cursoServicio.listarCursos();
             
             if (rows.isEmpty()){
                 JOptionPane.showMessageDialog(null, "Ningun registro coincide");
             }
             
-            cursoModel.setCiclos(rows);
+            cursoModel.setCursos(rows);
         } catch (GlobalException | NoDataException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
@@ -91,7 +92,7 @@ public class ControlCursos {
         try {
             String cicloId = cursoView.insertarId.getText();
             cursoServicio.eliminar(cicloId);
-            LinkedList lista = cursoServicio.listarCiclos();
+            LinkedList lista = cursoServicio.listarCursos();
             cursoModel.setCursos(lista); 
         } catch (GlobalException | NoDataException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());

@@ -4,29 +4,34 @@
  * and open the template in the editor.
  */
 package AccesoADatos;
-import LogicaDeNegocio.Curso;
+
+import LogicaDeNegocio.Carrera;
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
+
 /**
  *
  * @author Alejandro
  */
-public class ServicioCurso extends Servicio {
+public class ServicioCarrera extends Servicio {
+    private static final String LISTARCARRERAS = "{?=call listarCarreras()}";
+    private static final String INSERTARCARRERA = "{call insertarCarrera(?,?,?,?)}";
+    private static final String MODIFICARCARRERA = "{call modificarCarrera(?,?,?,?)}";
+    private static final String BUSCARPORCODE = "{?=call buscarCodeNombre(?)}";
+    private static final String BUSCARPORNOMBRE = "{?=call buscarCarreraNombre(?)}";
+    private static final String ELIMINARCARRERA = "{call eliminarCarrera(?)}";
     
-    private static final String LISTARCURSOS = "{?=call listarCursos()}";
-    private static final String INSERTARCURSOS = "{call insertarCurso(?,?,?,?,?)}";
-    private static final String MODIFICARCURSO = "{call modificarCurso(?,?,?,?,?)}";
-    private static final String BUSCARPORCODE = "{?=call buscarCursoCodigo(?)}";
-    private static final String ELIMINARCURSO = "{call eliminarCurso(?)}";
     
-     public static ServicioCurso getInstancia() {
-        return INSTANCIA == null ? (INSTANCIA = new ServicioCurso()) : INSTANCIA;
+    
+    
+    public static ServicioCarrera getInstancia() {
+        return INSTANCIA == null ? (INSTANCIA = new ServicioCarrera()) : INSTANCIA;
     }
-      
-      public LinkedList<Curso> listarCursos()
+    
+    public LinkedList<Carrera> listarCarreras()
             throws GlobalException, NoDataException {
         try {
             conectar();
@@ -37,24 +42,23 @@ public class ServicioCurso extends Servicio {
         }
 
         ResultSet rs = null;
-        LinkedList<Curso> coleccion = new LinkedList();
-        Curso curso= null;
+        LinkedList<Carrera> coleccion = new LinkedList();
+        Carrera carrera= null;
         CallableStatement pstmt = null;
         try {
-            pstmt = this.conexion.prepareCall(LISTARCURSOS);
+            pstmt = this.conexion.prepareCall(LISTARCARRERAS);
             pstmt.registerOutParameter(1, -10);
             pstmt.execute();
             rs = (ResultSet) pstmt.getObject(1);
             while (rs.next()) {
-                curso = new Curso(
+                carrera = new Carrera(
                             rs.getString("id"),
                             rs.getString("codigo"),
                             rs.getString("nombre"),
-                            rs.getInt("creditos"),
-                            rs.getInt("horasSemanales") 
+                            rs.getString("titulo") 
                             
                             );
-                coleccion.add(curso);
+                coleccion.add(carrera);
             }
             try {
                 if (rs != null) {
@@ -93,7 +97,7 @@ public class ServicioCurso extends Servicio {
         }
         return coleccion;
     }
-      public void insertarCurso(Curso curso)
+    public void insertarCarrera(Carrera carrera)
             throws GlobalException, NoDataException {
         try {
             conectar();
@@ -105,12 +109,11 @@ public class ServicioCurso extends Servicio {
         CallableStatement pstmt = null;
 
         try {
-            pstmt = this.conexion.prepareCall(INSERTARCURSOS);
-            pstmt.setString(1, curso.getId());
-            pstmt.setString(2, curso.getCodigo());
-            pstmt.setString(3, curso.getNombre());
-            pstmt.setInt(4, curso.getCreditos());
-            pstmt.setInt(5, curso.getHorasSemanales());
+            pstmt = this.conexion.prepareCall(INSERTARCARRERA);
+            pstmt.setString(1, carrera.getId());
+            pstmt.setString(2, carrera.getCodigo());
+            pstmt.setString(3, carrera.getNombre());
+            pstmt.setString(4, carrera.getTitulo());
             
             boolean resultado = pstmt.execute();
             if (resultado == true) {
@@ -131,7 +134,7 @@ public class ServicioCurso extends Servicio {
             }
         }
     }
-    public void modificarCurso(Curso curso)
+    public void modificarCarrera(Carrera carrera)
             throws GlobalException, NoDataException {
         try {
             conectar();
@@ -143,12 +146,11 @@ public class ServicioCurso extends Servicio {
         PreparedStatement pstmt = null;
 
         try {
-            pstmt = this.conexion.prepareStatement(MODIFICARCURSO);
-            pstmt.setString(1, curso.getId());
-            pstmt.setString(2, curso.getCodigo());
-            pstmt.setString(3, curso.getNombre());
-            pstmt.setInt(4, curso.getCreditos());
-            pstmt.setInt(5, curso.getHorasSemanales());
+            pstmt = this.conexion.prepareStatement(MODIFICARCARRERA);
+            pstmt.setString(1, carrera.getId());
+            pstmt.setString(2, carrera.getCodigo());
+            pstmt.setString(3, carrera.getNombre());
+            pstmt.setString(4, carrera.getTitulo());
             int resultado = pstmt.executeUpdate();
             if (resultado != 1) {
                 throw new NoDataException("No se realizo la actualizaci�n");
@@ -168,8 +170,7 @@ public class ServicioCurso extends Servicio {
             }
         }
     }
-    
-    public LinkedList<Curso> buscarPorCodigo(String codigo)
+    public LinkedList<Carrera> buscarPorCodigo(String codigo)
             throws GlobalException, NoDataException {
         try {
             conectar();
@@ -180,7 +181,7 @@ public class ServicioCurso extends Servicio {
         }
         ResultSet rs = null;
         LinkedList coleccion = new LinkedList();
-        Curso curso = null;
+        Carrera carrera = null;
         CallableStatement pstmt = null;
         try {
             pstmt = this.conexion.prepareCall(BUSCARPORCODE);
@@ -190,15 +191,14 @@ public class ServicioCurso extends Servicio {
             
             rs = (ResultSet) pstmt.getObject(1);
             while (rs.next()) {
-                curso = new Curso(
+                carrera = new Carrera(
                             rs.getString("id"),
                             rs.getString("codigo"),
                             rs.getString("nombre"),
-                            rs.getInt("creditos"),
-                            rs.getInt("horasSemanales") 
+                            rs.getString("titulo") 
                             
                             );
-                coleccion.add(curso);
+                coleccion.add(carrera);
             }
             try {
                 if (rs != null) {
@@ -237,6 +237,74 @@ public class ServicioCurso extends Servicio {
         }
         return coleccion;
     }
+    public LinkedList<Carrera> buscarPorNombre(String nombre)
+            throws GlobalException, NoDataException {
+        try {
+            conectar();
+        } catch (ClassNotFoundException e) {
+            throw new GlobalException("No se ha localizado el driver");
+        } catch (SQLException e) {
+            throw new NoDataException("La base de datos no se encuentra disponible");
+        }
+        ResultSet rs = null;
+        LinkedList coleccion = new LinkedList();
+        Carrera carrera = null;
+        CallableStatement pstmt = null;
+        try {
+            pstmt = this.conexion.prepareCall(BUSCARPORNOMBRE);
+            pstmt.registerOutParameter(1, -10);
+            pstmt.setString(2, nombre);
+            pstmt.execute();
+            
+            rs = (ResultSet) pstmt.getObject(1);
+            while (rs.next()) {
+                carrera = new Carrera(
+                            rs.getString("id"),
+                            rs.getString("codigo"),
+                            rs.getString("nombre"),
+                            rs.getString("titulo") 
+                            
+                            );
+                coleccion.add(carrera);
+            }
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+                desconectar();
+            } catch (SQLException e) {
+                throw new GlobalException("Estatutos invalidos o nulos");
+            }
+            if (coleccion == null) {
+                //break label287;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+            throw new GlobalException("Sentencia no valida");
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+                desconectar();
+            } catch (SQLException e) {
+                throw new GlobalException("Estatutos invalidos o nulos");
+            }
+        }
+        if (coleccion.size() == 0) {
+            label287:
+            throw new NoDataException("No hay datos");
+        }
+        return coleccion;
+    }
+    
     public void eliminar(String id)
     throws GlobalException, NoDataException
   {
@@ -255,7 +323,7 @@ public class ServicioCurso extends Servicio {
     PreparedStatement pstmt = null;
     try
     {
-      pstmt = this.conexion.prepareStatement(ELIMINARCURSO);
+      pstmt = this.conexion.prepareStatement(ELIMINARCARRERA);
       pstmt.setString(1, id);
       
       int resultado = pstmt.executeUpdate();
@@ -283,7 +351,8 @@ public class ServicioCurso extends Servicio {
       }
     }
   }
-      
-      
-      private static ServicioCurso INSTANCIA = null;
+    
+    
+    private static ServicioCarrera INSTANCIA = null;
+    
 }

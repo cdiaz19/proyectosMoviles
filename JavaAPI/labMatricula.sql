@@ -340,6 +340,15 @@ RETURN cursorCarrera;
 END;
 /
 
+-- DESTROY CARRERA
+create or replace procedure eliminarCarrera(idCarrera IN varchar)
+as
+begin
+  delete from carrera where id=idCarrera;
+end;
+/
+
+
 -- al editar una carrera debe poderse dar mantenimiento a la lista de cursos que la forman(CURSOS CRUD and SORT)
 CREATE OR REPLACE FUNCTION listarCursosPorCarrera(idCarrera IN varchar)
 RETURN Types.ref_cursor

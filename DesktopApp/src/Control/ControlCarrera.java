@@ -7,6 +7,7 @@ package Control;
 
 import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
+import AccesoADatos.ServicioCarrera;
 import LogicaDeNegocio.Carrera;
 import LogicaNegocio.ModelCarrera;
 import Vista.VistaCarrera;
@@ -40,8 +41,8 @@ public class ControlCarrera {
     
     public void iniciar() throws GlobalException, NoDataException{
         try {
-            LinkedList lista = carreraServicio.listarCiclos();
-            this.carreraModel.setCiclos(lista); 
+            LinkedList lista = carreraServicio.listarCarreras();
+            this.carreraModel.setCarreras(lista); 
         } catch (GlobalException | NoDataException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
@@ -51,14 +52,14 @@ public class ControlCarrera {
         try {
             Carrera carrera_agregado = new Carrera();
 
-            carreraServicio.insertarCiclo(carrera_agregado);
-            LinkedList<Carrera> rows = carreraServicio.listarCiclos();
+            carreraServicio.insertarCarrera(carrera_agregado);
+            LinkedList<Carrera> rows = carreraServicio.listarCarreras();
             
             if (rows.isEmpty()) { 
                 JOptionPane.showMessageDialog(null, "Ningun registro coincide");
             }
             
-            carreraModel.setCiclos(rows);
+            carreraModel.setCarreras(rows);
             
         } catch (GlobalException | NoDataException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
@@ -68,9 +69,9 @@ public class ControlCarrera {
     public void buscar() throws GlobalException, NoDataException {
         try { 
             String carreraId = carreraView.IDField.getText();
-            LinkedList lista = carreraServicio.listarCiclos();
-            LinkedList aux = carreraModel.getCiclos().buscar(carreraId, lista);
-            carreraModel.setCiclos(aux);
+            LinkedList lista = carreraServicio.listarCarreras();
+            LinkedList aux = carreraModel.getCarreras().buscar(carreraId, lista);
+            carreraModel.setCarreras(aux);
         } catch (GlobalException | NoDataException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
@@ -80,14 +81,14 @@ public class ControlCarrera {
         try {
             Carrera carrera_agregado = new Carrera();
 
-            carreraServicio.modificarCiclo(carrera_agregado);
-            LinkedList<Carrera> rows = carreraServicio.listarCiclos();
+            carreraServicio.modificarCarrera(carrera_agregado);
+            LinkedList<Carrera> rows = carreraServicio.listarCarreras();
             
             if (rows.isEmpty()){
                 JOptionPane.showMessageDialog(null, "Ningun registro coincide");
             }
             
-            carreraModel.setCiclos(rows);
+            carreraModel.setCarreras(rows);
         } catch (GlobalException | NoDataException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
@@ -97,8 +98,8 @@ public class ControlCarrera {
         try {
             String carreraId = carreraView.insertarId.getText();
             carreraServicio.eliminar(carreraId);
-            LinkedList lista = carreraServicio.listarCiclos();
-            carreraModel.setCiclos(lista); 
+            LinkedList lista = carreraServicio.listarCarreras();
+            carreraModel.setCarreras(lista); 
         } catch (GlobalException | NoDataException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }

@@ -25,11 +25,11 @@ public class ModelCarrera extends Observable {
     public void init() {
       this.filter = new Carrera();
       LinkedList<Carrera> rows = new LinkedList();
-      setCiclos(rows);
+      setCarreras(rows);
       clearErrors();
     }
 
-    public void setCiclos(LinkedList<Carrera> carreras) {
+    public void setCarreras(LinkedList<Carrera> carreras) {
       int[] cols = { 0, 1, 2, 3, 4, 5 };
       this.carreras = new TableCarrera(cols, carreras);
       setChanged();
@@ -44,7 +44,7 @@ public class ModelCarrera extends Observable {
       this.filter = filter;
     }
 
-    public TableCarrera getCiclos() {
+    public TableCarrera getCarreras() {
       return this.carreras;
     }
 

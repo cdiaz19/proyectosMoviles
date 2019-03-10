@@ -7,9 +7,9 @@ package Vista;
 
 import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
-import Control.ControlCiclos;
-import LogicaNegocio.ModelCiclo;
-import LogicaNegocio.TableCiclo;
+import Control.ControlCarrera;
+import LogicaNegocio.ModelCarrera;
+import LogicaNegocio.TableCarrera;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;
@@ -22,8 +22,8 @@ import javax.swing.JOptionPane;
  */
 
 public class VistaCarrera extends javax.swing.JFrame implements Observer {
-    ControlCiclos controller;
-    ModelCiclo model;
+    ControlCarrera controller;
+    ModelCarrera model;
 
     /**
      * Creates new form Vista
@@ -36,11 +36,11 @@ public class VistaCarrera extends javax.swing.JFrame implements Observer {
         setVisible(true);
     }
 
-    public void setController(ControlCiclos controller) {
+    public void setController(ControlCarrera controller) {
         this.controller = controller;
     }
 
-    public void setModel(ModelCiclo model) {
+    public void setModel(ModelCarrera model) {
         this.model = model;
         model.addObserver(this);
     }
@@ -370,7 +370,7 @@ public class VistaCarrera extends javax.swing.JFrame implements Observer {
         btnActualizar.setEnabled(true);
         btnCancelar.setEnabled(true);
         btnEliminar.setEnabled(true);
-        TableCiclo Tablemodel = (TableCiclo) tablaCarrera.getModel();
+        TableCarrera Tablemodel = (TableCarrera) tablaCarrera.getModel();
 
         int filaProfesorSeleccionada = tablaCarrera.getSelectedRow();
         
@@ -461,13 +461,13 @@ public class VistaCarrera extends javax.swing.JFrame implements Observer {
         });
     }
 
-    public ModelCiclo getModel() {
+    public ModelCarrera getModel() {
         return model;
     }
 
     @Override
     public void update(Observable updatedModel, Object param) {
-        tablaCarrera.setModel(model.getCiclos());
+        tablaCarrera.setModel(model.getCarreras());
         this.revalidate();
         if (!model.getMensaje().equals("")) {
             JOptionPane.showMessageDialog(this, model.getMensaje(), "", JOptionPane.INFORMATION_MESSAGE);

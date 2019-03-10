@@ -7,9 +7,9 @@ package Vista;
 
 import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
-import Control.ControlCiclos;
-import LogicaNegocio.ModelCiclo;
-import LogicaNegocio.TableCiclo;
+import Control.ControlCursos;
+import LogicaNegocio.ModelCurso;
+import LogicaNegocio.TableCurso;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;
@@ -22,8 +22,8 @@ import javax.swing.JOptionPane;
  */
 
 public class VistaCurso extends javax.swing.JFrame implements Observer {
-    ControlCiclos controller;
-    ModelCiclo model;
+    ControlCursos controller;
+    ModelCurso model;
 
     /**
      * Creates new form Vista
@@ -36,11 +36,11 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
         setVisible(true);
     }
 
-    public void setController(ControlCiclos controller) {
+    public void setController(ControlCursos controller) {
         this.controller = controller;
     }
 
-    public void setModel(ModelCiclo model) {
+    public void setModel(ModelCurso model) {
         this.model = model;
         model.addObserver(this);
     }
@@ -392,7 +392,7 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
         btnActualizar.setEnabled(true);
         btnCancelar.setEnabled(true);
         btnEliminar.setEnabled(true);
-        TableCiclo Tablemodel = (TableCiclo) tablaCursos.getModel();
+        TableCurso Tablemodel = (TableCurso) tablaCursos.getModel();
 
         int filaCursoSeleccionada = tablaCursos.getSelectedRow();
         
@@ -487,13 +487,13 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
         });
     }
 
-    public ModelCiclo getModel() {
+    public ModelCurso getModel() {
         return model;
     }
 
     @Override
     public void update(Observable updatedModel, Object param) {
-        tablaCursos.setModel(model.getCiclos());
+        //tablaCursos.setModel(model.getCursos());
         this.revalidate();
         if (!model.getMensaje().equals("")) {
             JOptionPane.showMessageDialog(this, model.getMensaje(), "", JOptionPane.INFORMATION_MESSAGE);

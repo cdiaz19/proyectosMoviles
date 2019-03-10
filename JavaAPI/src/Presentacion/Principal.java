@@ -9,6 +9,8 @@ import LogicaDeNegocio.Usuario;
 import AccesoADatos.ServicioCurso;
 import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
+import AccesoADatos.ServicioCarrera;
+import LogicaDeNegocio.Carrera;
 import LogicaDeNegocio.Ciclo;
 import LogicaDeNegocio.Curso;
 import java.util.LinkedList;
@@ -18,10 +20,13 @@ public class Principal
   public static void main(String[] args)
     throws GlobalException, NoDataException
   {
-   //Ciclo ciclo=new Ciclo("1",4,2019,"19/06/2017","16/06/2018");
-    ServicioCurso sc = ServicioCurso.getInstancia();
+   //Curso curso=new Curso("1","175","MATEM",1,8);
+    ServicioCarrera sc = ServicioCarrera.getInstancia();
+    //Carrera carrera=new Carrera("3","FIC","FISICA","BACHI");
+    //sc.modificarCarrera(carrera);
+    //sc.eliminar("1");
     //LinkedList<Profesor> p1 = sp.listarProfesores();
-    LinkedList<Curso> c1 = sc.listarCursos();
+    LinkedList<Carrera> c1 = sc.listarCarreras();
     System.out.print(c1);
   }
 }
