@@ -25,15 +25,8 @@ public class ModelCurso extends Observable {
     public void init() {
        this.filter = new Curso();
        LinkedList<Curso> rows = new LinkedList();
-       setProfesores(rows);
+       setCursos(rows);
        clearErrors();
-    }
-
-    public void setProfesores(LinkedList<Curso> cursos) {
-       int[] cols = { 0, 1, 2, 3, 4, 5 };
-       this.cursos = new TableCurso(cols, cursos);
-       setChanged();
-       notifyObservers();
     }
     
     public void setCursos(LinkedList<Curso> cursos) {

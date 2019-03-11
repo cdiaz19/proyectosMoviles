@@ -15,6 +15,7 @@ import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -493,7 +494,7 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
 
     @Override
     public void update(Observable updatedModel, Object param) {
-        //tablaCursos.setModel(model.getCursos());
+        tablaCursos.setModel((TableModel) model.getCursos());
         this.revalidate();
         if (!model.getMensaje().equals("")) {
             JOptionPane.showMessageDialog(this, model.getMensaje(), "", JOptionPane.INFORMATION_MESSAGE);
