@@ -7,22 +7,24 @@ package LogicaNegocio;
 
 import LogicaDeNegocio.Curso;
 import java.util.LinkedList;
+import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author cdiaz
+ * @author Alejandro
  */
 
-public class TableCurso {
+public class TableCurso extends AbstractTableModel {
+    
     String[] colNames = new String[11];
     LinkedList<Curso> filas;
     int[] columnas;
-    
+
     public static final int ID = 0;
     public static final int CODIGO = 1;
     public static final int NOMBRE = 2;
     public static final int CREDITOS = 3;
-    public static final int HORASSEMANALES = 4;
+    public static final int HORAS = 4;
 
     public TableCurso(int[] cols, LinkedList<Curso> rows) {
         this.columnas = cols;
@@ -56,25 +58,25 @@ public class TableCurso {
             case 2:
                 return curso.getNombre();
             case 3:
-                return Integer.valueOf(curso.getCreditos());
+                return curso.getCreditos();
             case 4:
-                return Integer.valueOf(curso.getHorasSemanales());
+                return curso.getHorasSemanales();
         }
         return "";
     }
 
     private void initColNames() {
         this.colNames[0] = "ID";
-        this.colNames[1] = "Codigo";
-        this.colNames[2] = "Nombre";
-        this.colNames[3] = "Creditos";
-        this.colNames[4] = "Horas Semanales";
+        this.colNames[1] = "CODIGO";
+        this.colNames[2] = "NOMBRE";
+        this.colNames[3] = "CREDITOS";
+        this.colNames[4] = "HORAS";
     }
 
-    public LinkedList<Curso> buscar(String cedula, LinkedList<Curso> original) {
+    public LinkedList<Curso> buscar(String id, LinkedList<Curso> original) {
         LinkedList<Curso> aux = new LinkedList();
         for (Curso e : original) {
-            if (e.getNombre().equals(cedula)) {
+            if (e.getId().equals(id)) {
                 aux.add(e);
             }
         }

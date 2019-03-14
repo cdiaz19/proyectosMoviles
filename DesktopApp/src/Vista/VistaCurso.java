@@ -15,13 +15,11 @@ import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.table.TableModel;
 
 /**
  *
- * @author cdiaz
+ * @author Kevin
  */
-
 public class VistaCurso extends javax.swing.JFrame implements Observer {
     ControlCursos controller;
     ModelCurso model;
@@ -55,42 +53,42 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        IDField = new javax.swing.JTextField();
+        IdField = new javax.swing.JTextField();
         labelID = new javax.swing.JLabel();
         botonID = new javax.swing.JButton();
         panelTabla = new java.awt.Panel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaCursos = new javax.swing.JTable();
-        panelInsertaProfesor = new java.awt.Panel();
+        tablaCurso = new javax.swing.JTable();
+        panelInsertaCurso = new java.awt.Panel();
         insertaId = new java.awt.Label();
-        insertaLabelCodigo = new java.awt.Label();
-        insertaLabelNombre = new java.awt.Label();
+        insertaCodigo = new java.awt.Label();
+        insertaNombre = new java.awt.Label();
         insertarId = new java.awt.TextField();
         insertarCodigo = new java.awt.TextField();
         insertarNombre = new java.awt.TextField();
-        insertaLabelCeditos = new javax.swing.JLabel();
+        insertaCreditos = new javax.swing.JLabel();
         insertarCreditos = new javax.swing.JTextField();
-        insertaLabelHorasSemanales = new javax.swing.JLabel();
-        insertarHorasSemanales = new javax.swing.JTextField();
-        btnActualizar = new javax.swing.JButton();
+        insertaHoras = new javax.swing.JLabel();
+        insertarHoras = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Ciclos");
+        setTitle("Cursos");
         setBackground(new java.awt.Color(0, 0, 0));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        IDField.setToolTipText("Nombre");
-        IDField.addActionListener(new java.awt.event.ActionListener() {
+        IdField.setToolTipText("Nombre");
+        IdField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IDFieldActionPerformed(evt);
+                IdFieldActionPerformed(evt);
             }
         });
 
-        labelID.setText("Nombre");
+        labelID.setText("ID");
 
         botonID.setText("Buscar");
         botonID.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -107,13 +105,13 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
         panelTabla.setBackground(new java.awt.Color(153, 153, 153));
         panelTabla.setForeground(new java.awt.Color(255, 153, 51));
 
-        tablaCursos.setModel(new javax.swing.table.DefaultTableModel(
+        tablaCurso.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Codigo", "Nombre", "Creditos", "Horas Semanales"
+                "ID", "Codigo", "Nombre", "Creditos", "Horas"
             }
         ) {
             Class[] types = new Class [] {
@@ -124,13 +122,13 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
                 return types [columnIndex];
             }
         });
-        tablaCursos.setToolTipText("");
-        tablaCursos.addMouseListener(new java.awt.event.MouseAdapter() {
+        tablaCurso.setToolTipText("");
+        tablaCurso.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaCursosMouseClicked(evt);
+                tablaCursoMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tablaCursos);
+        jScrollPane1.setViewportView(tablaCurso);
 
         javax.swing.GroupLayout panelTablaLayout = new javax.swing.GroupLayout(panelTabla);
         panelTabla.setLayout(panelTablaLayout);
@@ -146,13 +144,13 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
                 .addContainerGap(55, Short.MAX_VALUE))
         );
 
-        panelInsertaProfesor.setBackground(new java.awt.Color(204, 204, 204));
+        panelInsertaCurso.setBackground(new java.awt.Color(204, 204, 204));
 
         insertaId.setText("id");
 
-        insertaLabelCodigo.setText("Codigo");
+        insertaCodigo.setText("codigo");
 
-        insertaLabelNombre.setText("Nombre");
+        insertaNombre.setText("Nombre");
 
         insertarId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,20 +170,13 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
             }
         });
 
-        insertaLabelCeditos.setText("Creditos");
+        insertaCreditos.setText("Creditos");
 
-        insertaLabelHorasSemanales.setText("Horas Semanales");
+        insertaHoras.setText("Horas Semanales");
 
-        insertarHorasSemanales.addActionListener(new java.awt.event.ActionListener() {
+        insertarHoras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                insertarHorasSemanalesActionPerformed(evt);
-            }
-        });
-
-        btnActualizar.setText("Actualizar");
-        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizarActionPerformed(evt);
+                insertarHorasActionPerformed(evt);
             }
         });
 
@@ -196,6 +187,13 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
             }
         });
 
+        btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,83 +201,83 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
             }
         });
 
-        javax.swing.GroupLayout panelInsertaProfesorLayout = new javax.swing.GroupLayout(panelInsertaProfesor);
-        panelInsertaProfesor.setLayout(panelInsertaProfesorLayout);
-        panelInsertaProfesorLayout.setHorizontalGroup(
-            panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelInsertaProfesorLayout.createSequentialGroup()
-                .addGroup(panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelInsertaProfesorLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(insertaLabelHorasSemanales, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(insertaLabelCeditos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout panelInsertaCursoLayout = new javax.swing.GroupLayout(panelInsertaCurso);
+        panelInsertaCurso.setLayout(panelInsertaCursoLayout);
+        panelInsertaCursoLayout.setHorizontalGroup(
+            panelInsertaCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInsertaCursoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelInsertaCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelInsertaCursoLayout.createSequentialGroup()
+                        .addGroup(panelInsertaCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(insertaHoras, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(insertaCreditos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(insertaId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(insertaLabelCodigo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(insertaLabelNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(insertaCodigo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(insertaNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(24, 24, 24)
-                        .addGroup(panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(panelInsertaCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(insertarNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(insertarId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(insertarCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(insertarCreditos, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
-                            .addComponent(insertarHorasSemanales)))
-                    .addGroup(panelInsertaProfesorLayout.createSequentialGroup()
-                        .addGap(4, 4, 4)
+                            .addComponent(insertarHoras))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(panelInsertaCursoLayout.createSequentialGroup()
                         .addComponent(btnAgregar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnActualizar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnActualizar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnEliminar)))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap())
         );
-        panelInsertaProfesorLayout.setVerticalGroup(
-            panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInsertaProfesorLayout.createSequentialGroup()
+        panelInsertaCursoLayout.setVerticalGroup(
+            panelInsertaCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInsertaCursoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelInsertaProfesorLayout.createSequentialGroup()
-                        .addGroup(panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(panelInsertaProfesorLayout.createSequentialGroup()
-                                .addGroup(panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(panelInsertaCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelInsertaCursoLayout.createSequentialGroup()
+                        .addGroup(panelInsertaCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panelInsertaCursoLayout.createSequentialGroup()
+                                .addGroup(panelInsertaCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(insertaId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(insertarId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(insertaLabelCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(insertaCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(insertarCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(insertaLabelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(insertaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(insertarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addGroup(panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(insertarCreditos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(insertaLabelCeditos))
+                .addGap(1, 1, 1)
+                .addGroup(panelInsertaCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(insertaCreditos)
+                    .addComponent(insertarCreditos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(insertarHorasSemanales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(insertaLabelHorasSemanales))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelInsertaProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnActualizar)
+                .addGroup(panelInsertaCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(insertarHoras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(insertaHoras))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addGroup(panelInsertaCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar)
+                    .addComponent(btnActualizar)
                     .addComponent(btnEliminar))
-                .addGap(15, 15, 15))
+                .addGap(36, 36, 36))
         );
 
+        insertarId.getAccessibleContext().setAccessibleName("");
         insertarCodigo.getAccessibleContext().setAccessibleDescription("");
-        insertaLabelCeditos.getAccessibleContext().setAccessibleDescription("");
+
+        btnCerrar.setText("Cerrar Ventana");
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
-            }
-        });
-
-        btnCerrar.setText("Cancelar Ventana");
-        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCerrarActionPerformed(evt);
             }
         });
 
@@ -293,18 +291,19 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelID)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(IDField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(IdField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(botonID))
-                    .addComponent(panelTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelInsertaProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62)
+                        .addGap(25, 25, 25)
+                        .addComponent(panelInsertaCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnCerrar)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnCancelar)
-                                .addGap(31, 31, 31)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(btnCancelar))))
+                    .addComponent(panelTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -312,42 +311,32 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(IDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(IdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelID)
                     .addComponent(botonID))
+                .addGap(24, 24, 24)
+                .addComponent(panelTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(panelTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelInsertaProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(72, 72, 72)
                         .addComponent(btnCancelar)
-                        .addGap(48, 48, 48)
+                        .addGap(45, 45, 45)
                         .addComponent(btnCerrar)
-                        .addGap(74, 74, 74))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelInsertaCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
-
-        labelID.getAccessibleContext().setAccessibleName("Buscar por ID");
 
         getAccessibleContext().setAccessibleName("ventanaProductos");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void IDFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDFieldActionPerformed
+    private void IdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_IDFieldActionPerformed
-
-    private void insertarIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_insertarIdActionPerformed
-
-    private void insertarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_insertarNombreActionPerformed
+    }//GEN-LAST:event_IdFieldActionPerformed
 
     private void botonIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonIDMouseClicked
         // TODO add your handling code here:
@@ -360,52 +349,49 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
             this.insertarCodigo.setText("");
             this.insertarNombre.setText("");
             this.insertarCreditos.setText("");
-            this.insertarHorasSemanales.setText("");
-        } catch (GlobalException | NoDataException ex) {
-            Logger.getLogger(VistaCurso.class.getName()).log(Level.SEVERE, null, ex);
+            this.insertarHoras.setText("");
+            
+        } catch (GlobalException ex) {
+            Logger.getLogger(VistaProfesor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(VistaProfesor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
-
-    private void insertarCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarCodigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_insertarCodigoActionPerformed
 
     private void botonIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIDActionPerformed
         try {
             this.controller.buscar();
-            this.IDField.setText("");
-            this.insertarId.setText("");
-            this.insertarCodigo.setText("");
-            this.insertarNombre.setText("");
-            this.insertarCreditos.setText("");
-            this.insertarHorasSemanales.setText("");
-        } catch (GlobalException | NoDataException ex) {
-            Logger.getLogger(VistaCurso.class.getName()).log(Level.SEVERE, null, ex);
+            this.IdField.setText("");
+        } catch (GlobalException ex) {
+            Logger.getLogger(VistaProfesor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(VistaProfesor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_botonIDActionPerformed
 
-    private void insertarHorasSemanalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarHorasSemanalesActionPerformed
+    private void tablaCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaCursoMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_insertarHorasSemanalesActionPerformed
-
-    private void tablaCursosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaCursosMouseClicked
         btnAgregar.setEnabled(false);
         btnActualizar.setEnabled(true);
         btnCancelar.setEnabled(true);
         btnEliminar.setEnabled(true);
-        TableCurso Tablemodel = (TableCurso) tablaCursos.getModel();
+        TableCurso Tablemodel = (TableCurso) tablaCurso.getModel();
 
-        int filaCursoSeleccionada = tablaCursos.getSelectedRow();
+        int filaProfesorSeleccionada = tablaCurso.getSelectedRow();
         
-        this.insertarId.setText(Tablemodel.getValueAt(filaCursoSeleccionada, 0).toString());
+        this.insertarId.setText(Tablemodel.getValueAt(filaProfesorSeleccionada, 0).toString());
         this.insertarId.setEnabled(false);
-        this.insertarCodigo.setText(Tablemodel.getValueAt(filaCursoSeleccionada, 1).toString());
-        this.insertarNombre.setText(Tablemodel.getValueAt(filaCursoSeleccionada, 2).toString());
-        this.insertarCreditos.setText(Tablemodel.getValueAt(filaCursoSeleccionada, 3).toString());
-        this.insertarHorasSemanales.setText(Tablemodel.getValueAt(filaCursoSeleccionada, 4).toString());
-    }//GEN-LAST:event_tablaCursosMouseClicked
+        this.insertarCodigo.setText(Tablemodel.getValueAt(filaProfesorSeleccionada, 1).toString());
+        this.insertarCodigo.setEnabled(false);
+        this.insertarNombre.setText(Tablemodel.getValueAt(filaProfesorSeleccionada, 2).toString());
+        this.insertarCreditos.setText(Tablemodel.getValueAt(filaProfesorSeleccionada, 3).toString());
+        this.insertarHoras.setText(Tablemodel.getValueAt(filaProfesorSeleccionada, 4).toString());
+        
+
+    }//GEN-LAST:event_tablaCursoMouseClicked
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
         btnAgregar.setEnabled(true);
         btnActualizar.setEnabled(false);
         btnCancelar.setEnabled(false);
@@ -415,7 +401,7 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
         this.insertarCodigo.setText("");
         this.insertarNombre.setText("");
         this.insertarCreditos.setText("");
-        this.insertarHorasSemanales.setText("");
+        this.insertarHoras.setText("");
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
@@ -425,28 +411,46 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
             this.insertarCodigo.setText("");
             this.insertarNombre.setText("");
             this.insertarCreditos.setText("");
-            this.insertarHorasSemanales.setText("");     
-        } catch (GlobalException | NoDataException ex) {
-            Logger.getLogger(VistaCurso.class.getName()).log(Level.SEVERE, null, ex);
+            this.insertarHoras.setText("");
+            
+        } catch (GlobalException ex) {
+            Logger.getLogger(VistaProfesor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(VistaProfesor.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         try {
             this.controller.eliminar();
-            this.insertarId.setText("");
-            this.insertarCodigo.setText("");
-            this.insertarNombre.setText("");
-            this.insertarCreditos.setText("");
-            this.insertarHorasSemanales.setText("");
-        } catch (GlobalException | NoDataException ex) {
-            Logger.getLogger(VistaCurso.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (GlobalException ex) {
+            Logger.getLogger(VistaProfesor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(VistaProfesor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void insertarHorasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarHorasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_insertarHorasActionPerformed
+
+    private void insertarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_insertarNombreActionPerformed
+
+    private void insertarCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_insertarCodigoActionPerformed
+
+    private void insertarIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_insertarIdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -465,26 +469,22 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaProfesor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaProfesor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaProfesor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaProfesor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new VistaCurso().setVisible(true);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new VistaProfesor().setVisible(true);
+            }
         });
     }
 
@@ -492,37 +492,38 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
         return model;
     }
 
-    @Override
     public void update(Observable updatedModel, Object param) {
-        tablaCursos.setModel((TableModel) model.getCursos());
+        IdField.setText(model.getFilter().getNombre());
+
+        tablaCurso.setModel(model.getCursos());
         this.revalidate();
         if (!model.getMensaje().equals("")) {
             JOptionPane.showMessageDialog(this, model.getMensaje(), "", JOptionPane.INFORMATION_MESSAGE);
         }
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JTextField IDField;
+    public javax.swing.JTextField IdField;
     private javax.swing.JButton botonID;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnEliminar;
+    private java.awt.Label insertaCodigo;
+    private javax.swing.JLabel insertaCreditos;
+    private javax.swing.JLabel insertaHoras;
     private java.awt.Label insertaId;
-    private javax.swing.JLabel insertaLabelCeditos;
-    private java.awt.Label insertaLabelCodigo;
-    private javax.swing.JLabel insertaLabelHorasSemanales;
-    private java.awt.Label insertaLabelNombre;
+    private java.awt.Label insertaNombre;
     public java.awt.TextField insertarCodigo;
     public javax.swing.JTextField insertarCreditos;
-    public javax.swing.JTextField insertarHorasSemanales;
+    public javax.swing.JTextField insertarHoras;
     public java.awt.TextField insertarId;
     public java.awt.TextField insertarNombre;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelID;
-    private java.awt.Panel panelInsertaProfesor;
+    private java.awt.Panel panelInsertaCurso;
     private java.awt.Panel panelTabla;
-    private javax.swing.JTable tablaCursos;
+    private javax.swing.JTable tablaCurso;
     // End of variables declaration//GEN-END:variables
 }

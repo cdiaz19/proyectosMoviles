@@ -1,4 +1,10 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Control;
+
 
 import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
@@ -11,61 +17,62 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author cdiaz
+ * @author Alejandro
  */
+
 public class ControlCursos {
-    ServicioCurso cursoServicio;
-    VistaCurso cursoView;
-    ModelCurso cursoModel; 
+    ServicioCurso domainModel;
+    VistaCurso view;
+    ModelCurso model;
     
     public ControlCursos() throws GlobalException, NoDataException {
         this(new ModelCurso(),new VistaCurso());
     }
-    
+
     public ControlCursos(ModelCurso model,VistaCurso view) throws GlobalException, NoDataException {
         model.init();
-        this.cursoServicio= ServicioCurso.getInstancia();
-        
-        this.cursoView = view;
-        this.cursoModel = model;
+        this.domainModel= ServicioCurso.getInstancia();
+
+        this.view = view;
+        this.model = model;
         iniciar();
         view.setController(this);
-        view.setModel(cursoModel);
+        view.setModel(model);
     }
     
     public void iniciar() throws GlobalException, NoDataException{
         try {
-            LinkedList lista = cursoServicio.listarCursos();
-            this.cursoModel.setCursos(lista); 
+            LinkedList lista = domainModel.listarCursos();
+            this.model.setCursos(lista); 
+        } catch (GlobalException | NoDataException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }
+    
+    public void buscar() throws GlobalException, NoDataException{
+        try {
+            String id = view.IdField.getText();
+            LinkedList lista = domainModel.listarCursos();
+            LinkedList aux = model.getCursos().buscar(id, lista);
+            model.setCursos(aux);
         } catch (GlobalException | NoDataException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
     }
     
     public void agregar() throws GlobalException, NoDataException {
-        try {
-            Curso curso_agregado = new Curso();
-
-            cursoServicio.insertarCurso(curso_agregado);
-            LinkedList<Curso> rows = cursoServicio.listarCursos();
+        try { 
             
-            if (rows.isEmpty()) { 
+            Curso curso_agregado = new Curso(view.insertarId.getText(),view.insertarCodigo.getText(),view.insertarNombre.getText(),Integer.parseInt(view.insertarCodigo.getText()), Integer.parseInt(view.insertarHoras.getText()));
+
+            domainModel.insertarCurso(curso_agregado);
+            LinkedList<Curso> rows = domainModel.listarCursos();
+            
+            if (rows.isEmpty()){
                 JOptionPane.showMessageDialog(null, "Ningun registro coincide");
             }
             
-            cursoModel.setCursos(rows);
-            
-        } catch (GlobalException | NoDataException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-    }
-    
-    public void buscar() throws GlobalException, NoDataException {
-        try { 
-            String cicloId = cursoView.IDField.getText();
-            LinkedList lista = cursoServicio.listarCursos();
-            LinkedList aux = cursoModel.getCursos().buscar(cicloId, lista);
-            cursoModel.setCursos(aux);
+            model.setCursos(rows);
         } catch (GlobalException | NoDataException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
@@ -73,16 +80,15 @@ public class ControlCursos {
     
     public void actualizar()throws GlobalException, NoDataException {
         try {
-            Curso ciclo_agregado = new Curso();
-
-            cursoServicio.modificarCurso(ciclo_agregado);
-            LinkedList<Curso> rows = cursoServicio.listarCursos();
+            Curso curso_agregado = new Curso(view.insertarId.getText(),view.insertarCodigo.getText(),view.insertarNombre.getText(),Integer.parseInt(view.insertarCodigo.getText()), Integer.parseInt(view.insertarHoras.getText()));
+            domainModel.modificarCurso(curso_agregado);
+            LinkedList<Curso> rows = domainModel.listarCursos();
             
             if (rows.isEmpty()){
                 JOptionPane.showMessageDialog(null, "Ningun registro coincide");
             }
             
-            cursoModel.setCursos(rows);
+            model.setCursos(rows);
         } catch (GlobalException | NoDataException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
@@ -90,12 +96,20 @@ public class ControlCursos {
     
     public void eliminar() throws GlobalException, NoDataException {
         try {
-            String cicloId = cursoView.insertarId.getText();
-            cursoServicio.eliminar(cicloId);
-            LinkedList lista = cursoServicio.listarCursos();
-            cursoModel.setCursos(lista); 
+            String cursoId = view.insertarId.getText();
+            domainModel.eliminar(cursoId);
+             LinkedList<Curso> rows = domainModel.listarCursos();
+             
+            if (rows.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Ningun registro coincide");
+            }
+            
+            model.setCursos(rows);
         } catch (GlobalException | NoDataException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
+    }
+    
+    public void salir(){ 
     }
 }
