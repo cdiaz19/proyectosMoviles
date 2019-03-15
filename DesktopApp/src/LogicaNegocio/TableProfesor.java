@@ -13,9 +13,8 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author Alejandro
  */
-
 public class TableProfesor extends AbstractTableModel {
-    
+
     String[] colNames = new String[11];
     LinkedList<Profesor> filas;
     int[] columnas;
@@ -81,6 +80,16 @@ public class TableProfesor extends AbstractTableModel {
         LinkedList<Profesor> aux = new LinkedList();
         for (Profesor e : original) {
             if (e.getUsuario().getCedula().equals(cedula)) {
+                aux.add(e);
+            }
+        }
+        return aux;
+    }
+
+    public LinkedList<Profesor> buscarPorNombre(String nombre, LinkedList<Profesor> original) {
+        LinkedList<Profesor> aux = new LinkedList();
+        for (Profesor e : original) {
+            if (e.getNombre().equals(nombre)) {
                 aux.add(e);
             }
         }

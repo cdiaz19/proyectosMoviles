@@ -60,6 +60,17 @@ public class ControlProfesores {
         }
     }
     
+    public void buscarPorNombre() throws GlobalException, NoDataException{
+        try {
+            String nombre = view.nombreField.getText();
+            LinkedList lista = domainModel.listarProfesores();
+            LinkedList aux = model.getProfesores().buscarPorNombre(nombre, lista);
+            model.setProfesores(aux);
+        } catch (GlobalException | NoDataException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }
+    
     public void agregar() throws GlobalException, NoDataException {
         try { 
             Usuario usuario_agregado = new Usuario(view.insertarId.getText(),view.insertarCedula.getText(),view.insertarContrasena.getText());
