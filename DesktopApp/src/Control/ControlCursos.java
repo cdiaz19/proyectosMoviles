@@ -63,7 +63,7 @@ public class ControlCursos {
     public void agregar() throws GlobalException, NoDataException {
         try { 
             
-            Curso curso_agregado = new Curso(view.insertarId.getText(),view.insertarCodigo.getText(),view.insertarNombre.getText(),Integer.parseInt(view.insertarCodigo.getText()), Integer.parseInt(view.insertarHoras.getText()));
+            Curso curso_agregado = new Curso(view.insertarId.getText(),view.insertarCodigo.getText(),view.insertarNombre.getText(),Integer.parseInt(view.insertarCreditos.getText()), Integer.parseInt(view.insertarHoras.getText()));
 
             domainModel.insertarCurso(curso_agregado);
             LinkedList<Curso> rows = domainModel.listarCursos();
@@ -80,7 +80,7 @@ public class ControlCursos {
     
     public void actualizar()throws GlobalException, NoDataException {
         try {
-            Curso curso_agregado = new Curso(view.insertarId.getText(),view.insertarCodigo.getText(),view.insertarNombre.getText(),Integer.parseInt(view.insertarCodigo.getText()), Integer.parseInt(view.insertarHoras.getText()));
+            Curso curso_agregado = new Curso(view.insertarId.getText(),view.insertarCodigo.getText(),view.insertarNombre.getText(),Integer.parseInt(view.insertarCreditos.getText()), Integer.parseInt(view.insertarHoras.getText()));
             domainModel.modificarCurso(curso_agregado);
             LinkedList<Curso> rows = domainModel.listarCursos();
             
