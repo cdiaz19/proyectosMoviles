@@ -50,7 +50,7 @@ public class ControlCarrera {
     
     public void agregar() throws GlobalException, NoDataException {
         try {
-            Carrera carrera_agregado = new Carrera();
+            Carrera carrera_agregado = new Carrera(carreraView.insertarId.getText(),carreraView.insertarCodigo.getText(),carreraView.insertarNombre.getText(),carreraView.insertarTitulo.getText());
 
             carreraServicio.insertarCarrera(carrera_agregado);
             LinkedList<Carrera> rows = carreraServicio.listarCarreras();
@@ -79,7 +79,7 @@ public class ControlCarrera {
     
     public void actualizar()throws GlobalException, NoDataException {
         try {
-            Carrera carrera_agregado = new Carrera();
+            Carrera carrera_agregado = new Carrera(carreraView.insertarId.getText(),carreraView.insertarCodigo.getText(),carreraView.insertarNombre.getText(),carreraView.insertarTitulo.getText());
 
             carreraServicio.modificarCarrera(carrera_agregado);
             LinkedList<Carrera> rows = carreraServicio.listarCarreras();
