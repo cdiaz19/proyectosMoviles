@@ -25,7 +25,7 @@ public class ControlCarrera {
     ServicioCarrera carreraServicio;
     VistaCarrera carreraView;
     ModelCarrera carreraModel; 
-    ModelListaCurso listaCursoModel;
+    ControlListaCurso listaCursoControl;
     
     public ControlCarrera() throws GlobalException, NoDataException {
         this(new ModelCarrera(),new VistaCarrera());
@@ -112,15 +112,9 @@ public class ControlCarrera {
     
     public void listaCursosPorCarrera() throws GlobalException, NoDataException {
         try {
-            listaCursoModel = new ModelListaCurso();
-            listaCursoModel.init();
-            
             String carreraId = carreraView.insertarId.getText();
-            LinkedList listaCurso = carreraServicio.listarCursosCarrera(carreraId);
-            
-            listaCursoModel.setListaCurso(listaCurso);
-            //VistaListaCurso vistaListaCurso = new VistaListaCurso();
-            //vistaListaCurso.isVisible();
+            listaCursoControl = new ControlListaCurso(carreraId);
+
         }catch (GlobalException | NoDataException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         } 

@@ -6,6 +6,7 @@
 package Vista;
 
 
+import Control.ControlListaCurso;
 import LogicaNegocio.ModelListaCurso;
 import java.util.Observable;
 import java.util.Observer;
@@ -17,17 +18,19 @@ import javax.swing.JOptionPane;
  */
 public class VistaListaCurso extends javax.swing.JFrame implements Observer {
     ModelListaCurso model;
+    ControlListaCurso controller;
 
     /**
      * Creates new form Vista
      */
     public VistaListaCurso() {
         initComponents();
-        btnCancelar.setEnabled(false);
-        btnActualizar.setEnabled(false);
-        btnEliminar.setEnabled(false);
         
         setVisible(true);
+    }
+    
+    public void setController(ControlListaCurso controller) {
+        this.controller = controller;
     }
 
     public void setModel(ModelListaCurso model) {
@@ -50,22 +53,7 @@ public class VistaListaCurso extends javax.swing.JFrame implements Observer {
         panelTabla = new java.awt.Panel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaListaCurso = new javax.swing.JTable();
-        panelInsertaCurso = new java.awt.Panel();
-        insertaId = new java.awt.Label();
-        insertaCodigo = new java.awt.Label();
-        insertaNombre = new java.awt.Label();
-        insertarId = new java.awt.TextField();
-        insertarCodigo = new java.awt.TextField();
-        insertarNombre = new java.awt.TextField();
-        insertaCreditos = new javax.swing.JLabel();
-        insertarCreditos = new javax.swing.JTextField();
-        insertaHoras = new javax.swing.JLabel();
-        insertarHoras = new javax.swing.JTextField();
-        btnAgregar = new javax.swing.JButton();
-        btnActualizar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cursos");
@@ -135,140 +123,10 @@ public class VistaListaCurso extends javax.swing.JFrame implements Observer {
                 .addContainerGap(55, Short.MAX_VALUE))
         );
 
-        panelInsertaCurso.setBackground(new java.awt.Color(204, 204, 204));
-
-        insertaId.setText("id");
-
-        insertaCodigo.setText("codigo");
-
-        insertaNombre.setText("Nombre");
-
-        insertarId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                insertarIdActionPerformed(evt);
-            }
-        });
-
-        insertarCodigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                insertarCodigoActionPerformed(evt);
-            }
-        });
-
-        insertarNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                insertarNombreActionPerformed(evt);
-            }
-        });
-
-        insertaCreditos.setText("Creditos");
-
-        insertaHoras.setText("Horas Semanales");
-
-        insertarHoras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                insertarHorasActionPerformed(evt);
-            }
-        });
-
-        btnAgregar.setText("Agregar");
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
-            }
-        });
-
-        btnActualizar.setText("Actualizar");
-        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizarActionPerformed(evt);
-            }
-        });
-
-        btnEliminar.setText("Eliminar");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelInsertaCursoLayout = new javax.swing.GroupLayout(panelInsertaCurso);
-        panelInsertaCurso.setLayout(panelInsertaCursoLayout);
-        panelInsertaCursoLayout.setHorizontalGroup(
-            panelInsertaCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelInsertaCursoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelInsertaCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelInsertaCursoLayout.createSequentialGroup()
-                        .addGroup(panelInsertaCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(insertaHoras, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(insertaCreditos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(insertaId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(insertaCodigo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(insertaNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(24, 24, 24)
-                        .addGroup(panelInsertaCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(insertarNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(insertarId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(insertarCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(insertarCreditos, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
-                            .addComponent(insertarHoras))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(panelInsertaCursoLayout.createSequentialGroup()
-                        .addComponent(btnAgregar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnActualizar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnEliminar)))
-                .addContainerGap())
-        );
-        panelInsertaCursoLayout.setVerticalGroup(
-            panelInsertaCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInsertaCursoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelInsertaCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelInsertaCursoLayout.createSequentialGroup()
-                        .addGroup(panelInsertaCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(panelInsertaCursoLayout.createSequentialGroup()
-                                .addGroup(panelInsertaCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(insertaId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(insertarId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(insertaCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(insertarCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(insertaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(insertarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelInsertaCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(insertarCreditos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(insertaCreditos))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelInsertaCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(insertaHoras)
-                    .addComponent(insertarHoras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelInsertaCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgregar)
-                    .addComponent(btnActualizar)
-                    .addComponent(btnEliminar))
-                .addGap(36, 36, 36))
-        );
-
-        insertarId.getAccessibleContext().setAccessibleName("");
-        insertarCodigo.getAccessibleContext().setAccessibleDescription("");
-
         btnCerrar.setText("Cerrar Ventana");
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCerrarActionPerformed(evt);
-            }
-        });
-
-        btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
             }
         });
 
@@ -277,24 +135,20 @@ public class VistaListaCurso extends javax.swing.JFrame implements Observer {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelID)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(IdField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonID))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(panelInsertaCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
+                        .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnCerrar)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(btnCancelar))))
-                    .addComponent(panelTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(labelID)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(IdField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(botonID))
+                            .addComponent(panelTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(207, 207, 207)
+                        .addComponent(btnCerrar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -307,17 +161,9 @@ public class VistaListaCurso extends javax.swing.JFrame implements Observer {
                     .addComponent(botonID))
                 .addGap(24, 24, 24)
                 .addComponent(panelTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(btnCancelar)
-                        .addGap(45, 45, 45)
-                        .addComponent(btnCerrar)
-                        .addContainerGap(104, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelInsertaCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                .addGap(24, 24, 24)
+                .addComponent(btnCerrar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleName("ventanaProductos");
@@ -333,10 +179,6 @@ public class VistaListaCurso extends javax.swing.JFrame implements Observer {
         // TODO add your handling code here:
     }//GEN-LAST:event_botonIDMouseClicked
 
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-
-    }//GEN-LAST:event_btnAgregarActionPerformed
-
     private void botonIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIDActionPerformed
     
     }//GEN-LAST:event_botonIDActionPerformed
@@ -346,40 +188,9 @@ public class VistaListaCurso extends javax.swing.JFrame implements Observer {
 
     }//GEN-LAST:event_tablaListaCursoMouseClicked
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnActualizarActionPerformed
-
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
-
-    private void insertarHorasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarHorasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_insertarHorasActionPerformed
-
-    private void insertarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_insertarNombreActionPerformed
-
-    private void insertarCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarCodigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_insertarCodigoActionPerformed
-
-    private void insertarIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_insertarIdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -434,24 +245,9 @@ public class VistaListaCurso extends javax.swing.JFrame implements Observer {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTextField IdField;
     private javax.swing.JButton botonID;
-    private javax.swing.JButton btnActualizar;
-    private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnCerrar;
-    private javax.swing.JButton btnEliminar;
-    private java.awt.Label insertaCodigo;
-    private javax.swing.JLabel insertaCreditos;
-    private javax.swing.JLabel insertaHoras;
-    private java.awt.Label insertaId;
-    private java.awt.Label insertaNombre;
-    public java.awt.TextField insertarCodigo;
-    public javax.swing.JTextField insertarCreditos;
-    public javax.swing.JTextField insertarHoras;
-    public java.awt.TextField insertarId;
-    public java.awt.TextField insertarNombre;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelID;
-    private java.awt.Panel panelInsertaCurso;
     private java.awt.Panel panelTabla;
     private javax.swing.JTable tablaListaCurso;
     // End of variables declaration//GEN-END:variables
