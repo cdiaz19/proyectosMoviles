@@ -28,46 +28,49 @@
 <table id="datos" class="table">
     <caption>Lista De Carreras</caption>
 	<tr>
-		<th>Id</th>
-		<th>Codigo</th>
-		<th>Nombre</th>
-                <th>Titulo</th>
-		<th>Modificar</th>
-		<th>Eliminar</th>
+            <th>Id</th>
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Titulo</th>
+            <th>Modificar</th>
+            <th>Eliminar</th>
+            <th>Lista de Cursos</th>
 	</tr>
 	<tr>
-		<% 
-		for (int i = 0; i < carreraList.size(); i++) {
-                    
-		%>
-			<td><%= carreraList.get(i).getId()  %></td>
-                        <td><%= carreraList.get(i).getCodigo()  %></td>
-                        <td><%= carreraList.get(i).getNombre()  %></td>
-                        <td><%= carreraList.get(i).getTitulo()  %></td>
-                        
-			<td>
-                            <form method="POST" action="ServletCarrera">
-                                <button class="edit"></button>
-                                <input type="hidden" name="action" value="editForm" >
-                                <input type="hidden" name="ID" value="<%= carreraList.get(i).getCodigo() %>" >
-                            </form>
-                            
-                        </td>
-			<td>
-                            <form method="POST" action="ServletCarrera">
-                                <button class="effacer" onclick="if(!confirm('Desea eliminar ?')) return false;"></button>
-                                <input type="hidden" name="action" value="delete" >
-                                <input type="hidden" name="ID" value="<%= carreraList.get(i).getId() %>" >
-                            </form>
-                            
-                        </td>
-		</tr>
-		<%
-			}
-		%>	
+            <% for (int i = 0; i < carreraList.size(); i++) { %>
+                <td><%= carreraList.get(i).getId()  %></td>
+                <td><%= carreraList.get(i).getCodigo()  %></td>
+                <td><%= carreraList.get(i).getNombre()  %></td>
+                <td><%= carreraList.get(i).getTitulo()  %></td>
+
+                <td>
+                    <form method="POST" action="ServletCarrera">
+                        <button class="edit"></button>
+                        <input type="hidden" name="action" value="editForm" >
+                        <input type="hidden" name="ID" value="<%= carreraList.get(i).getCodigo() %>" >
+                    </form>
+                </td>
+                <td>
+                    <form method="POST" action="ServletCarrera">
+                        <button class="effacer" onclick="if(!confirm('Desea eliminar ?')) return false;"></button>
+                        <input type="hidden" name="action" value="delete" >
+                        <input type="hidden" name="ID" value="<%= carreraList.get(i).getId() %>" >
+                    </form>
+
+                </td>
+                <td>
+                    <form method="POST" action="ServletCarrera">
+                        <button class="edit"></button>
+                        <input type="hidden" name="action" value=listaCursosForm" >
+                        <input type="hidden" name="ID" value="<%= carreraList.get(i).getId() %>" >
+                    </form>
+                </td>
+            </tr>
+            <%
+		}
+            %>	
 </table>
 <div class="lien">
-    
     <p><a href="ServletCarrera?action=insert" >Insertar Carrera</a></p>
 </div>
 </body>

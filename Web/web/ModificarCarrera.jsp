@@ -22,7 +22,7 @@
         %>
 	<form method="POST" action="ServletCarrera" name="modifica">
 		<input type="hidden" name="action" value="edit" /> 
-                <input type="hidden" name="id" value="<%= carreraList.get(0).getCodigo() %>" /> 
+                <input type="hidden" name="id" value="<%= carreraList.get(0).getId() %>" /> 
                 <table class="tableModifier">
                         <caption>Modificar Carrera</caption>
 			<tr>
@@ -42,7 +42,7 @@
 				<td class="r"><input type="text" name="titulo" value="<%= carreraList.get(0).getTitulo() %>"/></td>
 			</tr>
 			<tr>
-				<td class="l"><input type="submit" value="edit" /></td>
+				<td class="l"><input type="submit" value="modifica" /></td>
 				<td class="r"><input type="reset" value="cancel" /></td>
 			</tr>
 		</table>
