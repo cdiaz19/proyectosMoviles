@@ -33,6 +33,7 @@ public class VistaCarrera extends javax.swing.JFrame implements Observer {
         btnCancelar.setEnabled(false);
         btnActualizar.setEnabled(false);
         btnEliminar.setEnabled(false);
+        btnListaCursos.setEnabled(false);
         setVisible(true);
     }
 
@@ -388,6 +389,7 @@ public class VistaCarrera extends javax.swing.JFrame implements Observer {
         btnActualizar.setEnabled(true);
         btnCancelar.setEnabled(true);
         btnEliminar.setEnabled(true);
+        btnListaCursos.setEnabled(true);
         TableCarrera Tablemodel = (TableCarrera) tablaCarrera.getModel();
 
         int filaProfesorSeleccionada = tablaCarrera.getSelectedRow();
@@ -404,9 +406,10 @@ public class VistaCarrera extends javax.swing.JFrame implements Observer {
         btnActualizar.setEnabled(false);
         btnCancelar.setEnabled(false);
         btnEliminar.setEnabled(false);
+        btnListaCursos.setEnabled(false);
 
         this.insertarId.setText("");
-        this.insertaCodigo.setText("");
+        this.insertarCodigo.setText("");
         this.insertarNombre.setText("");
         this.insertarTitulo.setText("");
     }//GEN-LAST:event_btnCancelarActionPerformed
