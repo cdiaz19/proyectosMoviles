@@ -5,9 +5,17 @@
         <welcome-file>ListarCarreras.jsp</welcome-file>
     </welcome-file-list>
     <servlet>
+        <servlet-name>ServletProfesor</servlet-name>
+        <servlet-class>Control.ServletProfesor</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ServletCarrera</servlet-name>
         <servlet-class>Control.ServletCarrera</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletProfesor</servlet-name>
+        <url-pattern>/ServletProfesor</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ServletCarrera</servlet-name>
         <url-pattern>/ServletCarrera</url-pattern>
