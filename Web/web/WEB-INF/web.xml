@@ -12,6 +12,10 @@
         <servlet-name>ServletCarrera</servlet-name>
         <servlet-class>Control.ServletCarrera</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletCurso</servlet-name>
+        <servlet-class>Control.ServletCurso</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletProfesor</servlet-name>
         <url-pattern>/ServletProfesor</url-pattern>
@@ -19,5 +23,9 @@
     <servlet-mapping>
         <servlet-name>ServletCarrera</servlet-name>
         <url-pattern>/ServletCarrera</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletCurso</servlet-name>
+        <url-pattern>/ServletCurso</url-pattern>
     </servlet-mapping>
 </web-app>

@@ -71,7 +71,6 @@
 		%>	
 </table>
 <div class="lien">
-    
     <p><a href="ServletProfesor?action=insert" >Insertar Carrera</a></p>
 </div>
 </body>

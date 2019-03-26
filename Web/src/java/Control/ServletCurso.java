@@ -10,23 +10,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import LogicaDeNegocio.Carrera;
-import AccesoADatos.ServicioCarrera;
+import AccesoADatos.ServicioCurso;
+import LogicaDeNegocio.Curso;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ServletCarrera extends HttpServlet {
+public class ServletCurso extends HttpServlet {
 
     private static final String UserRecord = null;
-    private static String INSERT = "/InsertarCarrera.jsp";
-    private static String EDIT = "/ModificarCarrera.jsp";
-    private static String LISTACARRERA = "/ListarCarreras.jsp";
-    private static String LISTACURSOSCARRERA = "/ListarCursosCarrera.jsp";
-    private ServicioCarrera dao;
+    private static String INSERTA = "/InsertarCuros.jsp";
+    private static String EDITA = "/ModificarCurso.jsp";
+    private static String LISTARCURSOS = "/ListarCursos.jsp";
+    private ServicioCurso dao;
 
-    public ServletCarrera() {
+    public ServletCurso() {
         super();
-        dao = ServicioCarrera.getInstancia();
+        dao = ServicioCurso.getInstancia();
     }
 
     @Override
@@ -40,40 +39,48 @@ public class ServletCarrera extends HttpServlet {
 
         if (uId != null && action.equalsIgnoreCase("insert")) {
 
-            Carrera carrera = new Carrera(request.getParameter("id"), request.getParameter("codigo"), request.getParameter("nombre"), request.getParameter("titulo"));
+            Curso curso = new Curso(
+                    request.getParameter("id"), 
+                    request.getParameter("codigo"), 
+                    request.getParameter("nombre"), 
+                    Integer.parseInt(request.getParameter("creditos")),
+                    Integer.parseInt(request.getParameter("horasSemanales")));
             try {
-                dao.insertarCarrera(carrera);
+                dao.insertarCurso(curso);
             } catch (GlobalException | NoDataException ex) {
-                Logger.getLogger(ServletCarrera.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ServletCurso.class.getName()).log(Level.SEVERE, null, ex);
             }
-            redirect = LISTACARRERA;
+            redirect = LISTARCURSOS;
 
         } else if (action.equalsIgnoreCase("delete")) {
             String idAEliminar = request.getParameter("ID");
             try {
                 dao.eliminar(idAEliminar);
             } catch (GlobalException | NoDataException ex) {
-                Logger.getLogger(ServletCarrera.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ServletCurso.class.getName()).log(Level.SEVERE, null, ex);
             }
-            redirect = LISTACARRERA;
+            redirect = LISTARCURSOS;
 
         } else if (action.equalsIgnoreCase("editForm")) {
             request.setAttribute("id", request.getParameter("ID"));
-            redirect = EDIT;
+            redirect = EDITA;
         } else if (action.equalsIgnoreCase("edit")) {
-            Carrera carrera = new Carrera(request.getParameter("id"), request.getParameter("codigo"), request.getParameter("nombre"), request.getParameter("titulo"));
-
+            Curso curso = new Curso(
+                    request.getParameter("id"), 
+                    request.getParameter("codigo"), 
+                    request.getParameter("nombre"), 
+                    Integer.parseInt(request.getParameter("creditos")),
+                    Integer.parseInt(request.getParameter("horasSemanales")));
             try {
-                dao.modificarCarrera(carrera);
+                dao.modificarCurso(curso);
             } catch (GlobalException | NoDataException ex) {
-                Logger.getLogger(ServletCarrera.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ServletCurso.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            redirect = LISTACARRERA;
+            redirect = LISTARCURSOS;
 
         } else {
-            request.setAttribute("id", request.getParameter("ID"));
-            redirect = LISTACURSOSCARRERA;
+            redirect = INSERTA;
         }
 
         RequestDispatcher rd = request.getRequestDispatcher(redirect);
