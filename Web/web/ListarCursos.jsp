@@ -46,7 +46,7 @@
                     <form method="POST" action="ServletCurso">
                         <button class="edit"></button>
                         <input type="hidden" name="action" value="editForm" >
-                        <input type="hidden" name="ID" value="<%= cursoList.get(i).getId()%>" >
+                        <input type="hidden" name="ID" value="<%= cursoList.get(i).getCodigo()%>" >
                     </form>
 
                 </td>

@@ -72,8 +72,9 @@ public class ServletCarrera extends HttpServlet {
             redirect = LISTACARRERA;
 
         } else {
-            request.setAttribute("id", request.getParameter("ID"));
-            redirect = LISTACURSOSCARRERA;
+            //request.setAttribute("id", request.getParameter("ID"));
+            //redirect = LISTACURSOSCARRERA;
+            redirect = INSERT;
         }
 
         RequestDispatcher rd = request.getRequestDispatcher(redirect);

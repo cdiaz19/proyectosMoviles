@@ -385,13 +385,13 @@ END;
 /
 
 -- SHOW SCHOOL YEAR
-CREATE OR REPLACE FUNCTION buscarCiclo(numCiclo IN int)
+CREATE OR REPLACE FUNCTION buscarCiclo(idCiclo IN VARCHAR)
 RETURN Types.ref_cursor
 AS
   cursorCiclo types.ref_cursor;
 BEGIN
   OPEN cursorCiclo FOR
-    SELECT id, anno, numero, fechaInicio, fechaFinal from ciclo WHERE numero=numCiclo;
+    SELECT id, anno, numero, fechaInicio, fechaFinal from ciclo WHERE id=idCiclo;
 RETURN cursorCiclo;
 END;
 /

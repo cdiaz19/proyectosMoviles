@@ -3,8 +3,8 @@
     Created on : 25-mar-2019, 1:31:01
     Author     : Alejandro
 --%>
-<%@page import="AccesoADatos.ServicioCarrera"%>
-<%@page import="LogicaDeNegocio.Carrera"%>
+<%@page import="AccesoADatos.ServicioCurso"%>
+<%@page import="LogicaDeNegocio.Curso"%>
 <%@ page import="java.util.LinkedList" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,34 +12,38 @@
     <head>
     <link rel="stylesheet" href="css/style.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Modificar Carrera</title>
+        <title>Modificar Curso</title>
     </head>
     <body>
         <%
-            ServicioCarrera sc = ServicioCarrera.getInstancia();
-            LinkedList<Carrera> carreraList = sc.buscarPorCodigo((String)request.getAttribute("id"));
+            ServicioCurso sc = ServicioCurso.getInstancia();
+            LinkedList<Curso> cursoList = sc.buscarPorCodigo((String)request.getAttribute("id"));
             
         %>
 	<form method="POST" action="ServletCarrera" name="modifica">
 		<input type="hidden" name="action" value="edit" /> 
-                <input type="hidden" name="id" value="<%= carreraList.get(0).getId() %>" /> 
+                <input type="hidden" name="id" value="<%= cursoList.get(0).getId() %>" /> 
                 <table class="tableModifier">
-                        <caption>Modificar Carrera</caption>
+                        <caption>Modificar Curso</caption>
 			<tr>
 				<td class="l"> Id : </td>
-                                <td class="r"><input type="text" name="id" disabled value="<%= carreraList.get(0).getId() %>"/></td>
+                                <td class="r"><input type="text" name="id" disabled value="<%= cursoList.get(0).getId() %>"/></td>
 			</tr>
 			<tr>
-				<td class="l">Codigo : </td>
-                                <td class="r"><input type="text" name="codigo" value="<%= carreraList.get(0).getCodigo() %>"/></td>
+				<td class="l">Credito : </td>
+                                <td class="r"><input type="text" name="codigo" value="<%= cursoList.get(0).getCodigo() %>"/></td>
 			</tr>
 			<tr>
 				<td class="l">Nombre : </td>
-				<td class="r"><input type="text" name="nombre" value="<%= carreraList.get(0).getNombre() %>"/></td>
+				<td class="r"><input type="text" name="nombre" value="<%= cursoList.get(0).getNombre() %>"/></td>
 			</tr>
                         <tr>
-				<td class="l">Titulo : </td>
-				<td class="r"><input type="text" name="titulo" value="<%= carreraList.get(0).getTitulo() %>"/></td>
+				<td class="l">Creditos : </td>
+				<td class="r"><input type="number" name="creditos" value="<%= cursoList.get(0).getCreditos() %>"/></td>
+			</tr>
+                        <tr>
+				<td class="l">HorasSemanales : </td>
+				<td class="r"><input type="number" name="horasSemanales" value="<%= cursoList.get(0).getHorasSemanales() %>"/></td>
 			</tr>
 			<tr>
 				<td class="l"><input type="submit" value="modifica" /></td>

@@ -2,11 +2,15 @@
 <web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
     <display-name>jspServletJdbcExemple</display-name>
     <welcome-file-list>
-        <welcome-file>ListarCarreras.jsp</welcome-file>
+        <welcome-file>index.html</welcome-file>
     </welcome-file-list>
     <servlet>
         <servlet-name>ServletProfesor</servlet-name>
         <servlet-class>Control.ServletProfesor</servlet-class>
+    </servlet>
+     <servlet>
+        <servlet-name>ServletCiclo</servlet-name>
+        <servlet-class>Control.ServletCiclo</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ServletCarrera</servlet-name>
@@ -16,6 +20,10 @@
         <servlet-name>ServletCurso</servlet-name>
         <servlet-class>Control.ServletCurso</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletCiclo</servlet-name>
+        <url-pattern>/ServletCiclo</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ServletProfesor</servlet-name>
         <url-pattern>/ServletProfesor</url-pattern>

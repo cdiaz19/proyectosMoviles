@@ -173,7 +173,7 @@ public class ServicioCiclo extends Servicio {
     }
 
 
-    public LinkedList<Ciclo> buscarPorCiclo(int numero)
+    public LinkedList<Ciclo> buscarPorCiclo(String id)
             throws GlobalException, NoDataException {
         try {
             conectar();
@@ -189,7 +189,7 @@ public class ServicioCiclo extends Servicio {
         try {
             pstmt = this.conexion.prepareCall(BUSCARPORCICLO);
             pstmt.registerOutParameter(1, -10);
-            pstmt.setInt(2, numero);
+            pstmt.setString(2, id);
             pstmt.execute();
             
             rs = (ResultSet) pstmt.getObject(1);

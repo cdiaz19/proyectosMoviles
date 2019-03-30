@@ -10,22 +10,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import AccesoADatos.ServicioCurso;
-import LogicaDeNegocio.Curso;
+import LogicaDeNegocio.Ciclo;
+import AccesoADatos.ServicioCiclo;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ServletCurso extends HttpServlet {
+public class ServletCiclo extends HttpServlet {
 
     private static final String UserRecord = null;
-    private static String INSERTA = "/InsertarCurso.jsp";
-    private static String EDITA = "/ModificarCurso.jsp";
-    private static String LISTARCURSOS = "/ListarCursos.jsp";
-    private ServicioCurso dao;
+    private static String INSERT = "/InsertarCiclo.jsp";
+    private static String EDIT = "/ModificarCiclo.jsp";
+    private static String LISTARCICLOS = "/ListarCiclo.jsp";
+    private ServicioCiclo dao;
 
-    public ServletCurso() {
+    public ServletCiclo() {
         super();
-        dao = ServicioCurso.getInstancia();
+        dao = ServicioCiclo.getInstancia();
     }
 
     @Override
@@ -38,49 +38,48 @@ public class ServletCurso extends HttpServlet {
         String action = request.getParameter("action");
 
         if (uId != null && action.equalsIgnoreCase("insert")) {
+            String an = request.getParameter("anno");
+            String num = request.getParameter("numero");
+            int anno = Integer.parseInt(an);
+            int numero = Integer.parseInt(num);
+            Ciclo ciclo = new Ciclo(request.getParameter("id"), anno, numero, request.getParameter("fechaInicio"), request.getParameter("fechaFin"));
 
-            Curso curso = new Curso(
-                    request.getParameter("id"), 
-                    request.getParameter("codigo"), 
-                    request.getParameter("nombre"), 
-                    Integer.parseInt(request.getParameter("creditos")),
-                    Integer.parseInt(request.getParameter("horasSemanales")));
             try {
-                dao.insertarCurso(curso);
+                dao.insertarCiclo(ciclo);
             } catch (GlobalException | NoDataException ex) {
-                Logger.getLogger(ServletCurso.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ServletCarrera.class.getName()).log(Level.SEVERE, null, ex);
             }
-            redirect = LISTARCURSOS;
+            redirect = LISTARCICLOS;
 
         } else if (action.equalsIgnoreCase("delete")) {
             String idAEliminar = request.getParameter("ID");
             try {
                 dao.eliminar(idAEliminar);
             } catch (GlobalException | NoDataException ex) {
-                Logger.getLogger(ServletCurso.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ServletCarrera.class.getName()).log(Level.SEVERE, null, ex);
             }
-            redirect = LISTARCURSOS;
+            redirect = LISTARCICLOS;
 
         } else if (action.equalsIgnoreCase("editForm")) {
             request.setAttribute("id", request.getParameter("ID"));
-            redirect = EDITA;
+            redirect = EDIT;
         } else if (action.equalsIgnoreCase("edit")) {
-            Curso curso = new Curso(
-                    request.getParameter("id"), 
-                    request.getParameter("codigo"), 
-                    request.getParameter("nombre"), 
-                    Integer.parseInt(request.getParameter("creditos")),
-                    Integer.parseInt(request.getParameter("horasSemanales")));
+            String an = request.getParameter("anno");
+            String num = request.getParameter("numero");
+            int anno = Integer.parseInt(an);
+            int numero = Integer.parseInt(num);
+            Ciclo ciclo = new Ciclo(request.getParameter("id"), anno, numero, request.getParameter("fechaInicio"), request.getParameter("fechaFin"));
+
             try {
-                dao.modificarCurso(curso);
+                dao.modificarCiclo(ciclo);
             } catch (GlobalException | NoDataException ex) {
-                Logger.getLogger(ServletCurso.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ServletCarrera.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            redirect = LISTARCURSOS;
+            redirect = LISTARCICLOS;
 
         } else {
-            redirect = INSERTA;
+            redirect = INSERT;
         }
 
         RequestDispatcher rd = request.getRequestDispatcher(redirect);
