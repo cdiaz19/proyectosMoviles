@@ -19,7 +19,7 @@
             ServicioCurso sc = ServicioCurso.getInstancia();
             LinkedList<Curso> cursoList = sc.buscarPorCodigo((String) request.getAttribute("id"));
         %>
-        <form method="POST" action="ServletCarrera" name="modifica">
+        <form method="POST" action="ServletCurso" name="modifica">
             <input type="hidden" name="action" value="edit" /> 
             <input type="hidden" name="id" value="<%= cursoList.get(0).getId()%>" /> 
             <table class="tableModifier">
