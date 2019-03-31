@@ -65,6 +65,7 @@
         </table>
         <div class="lien">
             <p><a href="ServletCurso?action=insert" >Insertar Curso</a></p>
+            <p><a href="javascript:history.back(-1)" >Volver</a></p>
         </div>
     </body>
 </html>

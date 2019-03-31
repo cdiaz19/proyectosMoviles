@@ -23,19 +23,20 @@
                     <td><input type="text" name="id" placeholder="Id"/></td>
                 </tr>
                 <tr>
-                    <td><input type="text" name="codigo" placeholder="codigo" /></td>
+                    <td><input type="text" name="codigo" placeholder="codigo" required/></td>
                 </tr>
                 <tr>
-                    <td><input type="text" name="nombre"  placeholder="nombre" /></td>
+                    <td><input type="text" name="nombre"  placeholder="nombre" required/></td>
                 </tr>
                 <tr>
-                    <td><input type="number" name="creditos"  placeholder="creditos" /></td>
+                    <td><input type="number" name="creditos"  placeholder="creditos" required/></td>
                 </tr>
                 <tr>
-                    <td><input type="number" name="horasSemanales"  placeholder="horasSemanales" /></td>
+                    <td><input type="number" name="horasSemanales"  placeholder="horasSemanales" required/></td>
                 </tr>
                 <tr>
-                    <td><input type="submit" value="insertar" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="anular" /></td>
+                    <td><input type="submit" value="insertar" /></td>
+                    <td><p><a href="javascript:history.back(-1)" >Volver</a></p></td>
                 </tr>
             </table>
         </form>

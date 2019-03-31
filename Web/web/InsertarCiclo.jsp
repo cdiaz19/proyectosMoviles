@@ -20,22 +20,23 @@
 		<table>
                         <caption>Insertar un nuevo Ciclo</caption>
 			<tr>
-                                <td><input type="text" name="id" placeholder="Id"/></td>
+                                <td><input type="text" name="id" placeholder="Id" required/></td>
 			</tr>
 			<tr>
-                                <td><input type="text" name="anno" placeholder="anno" /></td>
+                                <td><input type="text" name="anno" placeholder="anno" required/></td>
 			</tr>
 			<tr>
-				<td><input type="text" name="numero"  placeholder="numero" /></td>
+				<td><input type="text" name="numero"  placeholder="numero" required/></td>
 			</tr>
                         <tr>
-				<td><input type="text" name="fechaInicio"  placeholder="fechaInicio" /></td>
+				<td><input type="date" name="fechaInicio"  placeholder="fechaInicio" required/></td>
 			</tr>
                         <tr>
-				<td><input type="text" name="fechaFin"  placeholder="fechaFin" /></td>
+				<td><input type="date" name="fechaFin"  placeholder="fechaFin" required/></td>
 			</tr>
 			<tr>
-                            <td><input type="submit" value="insertar" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="anular" /></td>
+                            <td><input type="submit" value="insertar" /></td>
+                            <td><p><a href="javascript:history.back(-1)" >Volver</a></p></td>
 			</tr>
 		</table>
 	</form>

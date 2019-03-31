@@ -26,19 +26,20 @@
                                 <td><input type="text" name="cedula" placeholder="cedula" /></td>
 			</tr>
 			<tr>
-				<td><input type="text" name="nombre"  placeholder="nombre" /></td>
+				<td><input type="text" name="nombre"  placeholder="nombre" required/></td>
 			</tr>
                         <tr>
-				<td><input type="email" name="correo"  placeholder="correo" /></td>
+				<td><input type="email" name="correo"  placeholder="correo" required/></td>
 			</tr>
                         <tr>
-				<td><input type="text" name="telefono"  placeholder="telefono" /></td>
+				<td><input type="text" name="telefono"  placeholder="telefono" required/></td>
 			</tr>
                         <tr>
-				<td><input type="text" name="contrasena"  placeholder="contrasena" /></td>
+				<td><input type="password" name="contrasena"  placeholder="contrasena" required/></td>
 			</tr>
 			<tr>
-                            <td><input type="submit" value="insertar" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="anular" /></td>
+                            <td><input type="submit" value="insertar" /></td>
+                            <td><p><a href="javascript:history.back(-1)" >Volver</a></p></td>
 			</tr>
 		</table>
 	</form>

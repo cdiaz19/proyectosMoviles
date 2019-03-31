@@ -20,19 +20,20 @@
 		<table>
                         <caption>Insertar una Nueva Carrera</caption>
 			<tr>
-                                <td><input type="text" name="id" placeholder="Id"/></td>
+                            <td><input type="text" name="id" placeholder="Id" required/></td>
 			</tr>
 			<tr>
-                                <td><input type="text" name="codigo" placeholder="codigo" /></td>
+                                <td><input type="text" name="codigo" placeholder="codigo" required/></td>
 			</tr>
 			<tr>
-				<td><input type="text" name="nombre"  placeholder="nombre" /></td>
+				<td><input type="text" name="nombre"  placeholder="nombre" required/></td>
 			</tr>
                         <tr>
-				<td><input type="text" name="titulo"  placeholder="tiulo" /></td>
+				<td><input type="text" name="titulo"  placeholder="tiulo" required/></td>
 			</tr>
 			<tr>
-                            <td><input type="submit" value="insertar" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="anular" /></td>
+                            <td><input type="submit" value="insertar" /></td>
+                            <td><p><a href="javascript:history.back(-1)" >Volver</a></p></td>
 			</tr>
 		</table>
 	</form>

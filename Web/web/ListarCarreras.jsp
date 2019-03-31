@@ -61,7 +61,7 @@
                 <td>
                     <form method="POST" action="ServletCarrera">
                         <button class="edit"></button>
-                        <input type="hidden" name="action" value=listaCursosForm" >
+                        <input type="hidden" name="action" value="listaCursosForm" >
                         <input type="hidden" name="ID" value="<%= carreraList.get(i).getId() %>" >
                     </form>
                 </td>
@@ -72,6 +72,7 @@
 </table>
 <div class="lien">
     <p><a href="ServletCarrera?action=insert" >Insertar Carrera</a></p>
+    <p><a href="javascript:history.back(-1)" >Volver</a></p>
 </div>
 </body>
 </html>

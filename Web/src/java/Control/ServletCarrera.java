@@ -37,7 +37,7 @@ public class ServletCarrera extends HttpServlet {
         String uId = request.getParameter("id");
 
         String action = request.getParameter("action");
-
+        
         if (uId != null && action.equalsIgnoreCase("insert")) {
 
             Carrera carrera = new Carrera(request.getParameter("id"), request.getParameter("codigo"), request.getParameter("nombre"), request.getParameter("titulo"));
@@ -71,9 +71,11 @@ public class ServletCarrera extends HttpServlet {
 
             redirect = LISTACARRERA;
 
-        } else {
-            //request.setAttribute("id", request.getParameter("ID"));
-            //redirect = LISTACURSOSCARRERA;
+        } else if (action.equalsIgnoreCase("listaCursosForm")) {
+            System.out.print("foo");
+            request.setAttribute("id", request.getParameter("ID"));
+            redirect = LISTACURSOSCARRERA;
+        } else{
             redirect = INSERT;
         }
 

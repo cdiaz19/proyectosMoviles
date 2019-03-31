@@ -72,6 +72,7 @@
 </table>
 <div class="lien">
     <p><a href="ServletProfesor?action=insert" >Insertar Carrera</a></p>
+    <p><a href="javascript:history.back(-1)" >Volver</a></p>
 </div>
 </body>
 </html>

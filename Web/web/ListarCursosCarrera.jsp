@@ -34,17 +34,12 @@
             <th>Ciclo</th>
 	</tr>
 	<tr>
-            <c:if test="{ carreraList.isEmpty() }">
-                <td>La Carrera no Tiene Cursos</td>
-            </c:if>
-            <c:if test="{ !carreraList.isEmpty()}">
-               <% for (int i = 0; i < carreraList.size(); i++) { %>
-                <td><%= carreraList.get(i).getId() %></td>
-                <td><%= carreraList.get(i).getAnno() %></td>
-                <td><%= carreraList.get(i).getCarreraId() %></td>
-                <td><%= carreraList.get(i).getCursoId() %></td>
-                <td><%= carreraList.get(i).getCicloId() %></td> 
-            </c:if>
+            <% for (int i = 0; i < carreraList.size(); i++) {%>
+            <td><%= carreraList.get(i).getId()%></td>
+            <td><%= carreraList.get(i).getAnno()%></td>
+            <td><%= carreraList.get(i).getCarreraId()%></td>
+            <td><%= carreraList.get(i).getCursoId()%></td>
+            <td><%= carreraList.get(i).getCicloId()%></td> 
         </tr>
             <%
 		}
@@ -52,6 +47,7 @@
 </table>
 <div class="lien">
     <p><a href="javascript:history.back(-1)" >Volver a Listar Carreras</a></p>
+    <p><a href="javascript:history.back(-1)" >Volver</a></p>
 </div>
 </body>
 </html>
