@@ -5,6 +5,8 @@
  */
 package ConsoleApps;
 
+import AccesoADatos.GlobalException;
+import AccesoADatos.NoDataException;
 import Control.ControlPrincipal;
 import java.sql.SQLException;
 
@@ -13,7 +15,7 @@ import java.sql.SQLException;
  * @author cdiaz
  */
 public class Main {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, GlobalException, NoDataException {
         ControlPrincipal controlPrincipal = new ControlPrincipal();
     }
 }

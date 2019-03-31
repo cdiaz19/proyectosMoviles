@@ -26,7 +26,7 @@ public class ServicioProfesor extends Servicio {
     private static final String MODIFICARPROFESOR = "{call modificarProfesor(?,?,?,?,?,?)}";
     private static final String BUSCARPROFESOR = "{?=call buscarProfesor(?)}";
     private static final String BUSCARNOMBRES = "{call buscarNombres(?)}";
-    private static final String BUSCARCEDULAPROFESOR = "{call buscarCedulaProfesor(?)}";
+    private static final String BUSCARCEDULAPROFESOR = "{?=call buscarPorCedulaProfesor(?)}";
     private static final String ELIMINARPROFESOR = "{call eliminarProfesor(?)}";
 
     public static ServicioProfesor getInstancia() {
@@ -54,14 +54,14 @@ public class ServicioProfesor extends Servicio {
             pstmt.execute();
             rs = (ResultSet) pstmt.getObject(1);
             while (rs.next()) {
-                usuario = new Usuario(rs.getString("id"),rs.getString("cedula"),rs.getString("contrasena"));
+                usuario = new Usuario(rs.getString("id"), rs.getString("cedula"), rs.getString("contrasena"));
                 profesor = new Profesor(
-                            rs.getString("id"), 
-                            rs.getString("nombre"), 
-                            rs.getString("correo"),
-                            rs.getInt("telefono"),
-                            usuario
-                            );
+                        rs.getString("id"),
+                        rs.getString("nombre"),
+                        rs.getString("correo"),
+                        rs.getInt("telefono"),
+                        usuario
+                );
                 coleccion.add(profesor);
             }
             try {
@@ -122,7 +122,7 @@ public class ServicioProfesor extends Servicio {
             pstmt.setString(5, profesor.getUsuario().getId());
             pstmt.setString(6, profesor.getUsuario().getCedula());
             pstmt.setString(7, profesor.getUsuario().getContrasena());
-            
+
             boolean resultado = pstmt.execute();
             if (resultado == true) {
                 throw new NoDataException("No se realizo la inserci�n");
@@ -182,7 +182,6 @@ public class ServicioProfesor extends Servicio {
         }
     }
 
-
     public LinkedList<Profesor> buscarProfesor(String codigo)
             throws GlobalException, NoDataException {
         try {
@@ -202,16 +201,16 @@ public class ServicioProfesor extends Servicio {
             pstmt.registerOutParameter(1, -10);
             pstmt.setString(2, codigo);
             pstmt.execute();
-            
+
             rs = (ResultSet) pstmt.getObject(1);
             while (rs.next()) {
-                usuario = new Usuario(rs.getString("id"),rs.getString("cedula"),rs.getString("contrasena"));
+                usuario = new Usuario(rs.getString("id"), rs.getString("cedula"), rs.getString("contrasena"));
                 profesor = new Profesor(
-                            rs.getString("id"), 
-                            rs.getString("nombre"), 
-                            rs.getString("correo"),
-                            rs.getInt("telefono"),
-                            usuario);
+                        rs.getString("id"),
+                        rs.getString("nombre"),
+                        rs.getString("correo"),
+                        rs.getInt("telefono"),
+                        usuario);
                 coleccion.add(profesor);
             }
             try {
@@ -274,13 +273,13 @@ public class ServicioProfesor extends Servicio {
             System.out.print(pstmt.getMetaData());
             rs = (ResultSet) pstmt.getObject(1);
             while (rs.next()) {
-                usuario = new Usuario(rs.getString("id"),rs.getString("cedula"),rs.getString("contrasena"));
+                usuario = new Usuario(rs.getString("id"), rs.getString("cedula"), rs.getString("contrasena"));
                 profesor = new Profesor(
-                            rs.getString("id"), 
-                            rs.getString("nombre"), 
-                            rs.getString("correo"),
-                            rs.getInt("telefono"),
-                            usuario);
+                        rs.getString("id"),
+                        rs.getString("nombre"),
+                        rs.getString("correo"),
+                        rs.getInt("telefono"),
+                        usuario);
                 coleccion.add(profesor);
             }
             try {
@@ -319,10 +318,10 @@ public class ServicioProfesor extends Servicio {
             throw new NoDataException("No hay datos");
         }
         return coleccion;
-    
+
     }
-    
-    public LinkedList<Profesor> buscarCedulaProfesor(String nombres)
+
+    public LinkedList<Profesor> buscarporCedula(String codigo)
             throws GlobalException, NoDataException {
         try {
             conectar();
@@ -339,17 +338,18 @@ public class ServicioProfesor extends Servicio {
         try {
             pstmt = this.conexion.prepareCall(BUSCARCEDULAPROFESOR);
             pstmt.registerOutParameter(1, -10);
-            pstmt.setString(2, nombres);
+            pstmt.setString(2, codigo);
             pstmt.execute();
+
             rs = (ResultSet) pstmt.getObject(1);
             while (rs.next()) {
-                usuario = new Usuario(rs.getString("usuarioId"));
+                usuario = new Usuario(rs.getString("id"), rs.getString("cedula"), rs.getString("contrasena"));
                 profesor = new Profesor(
-                            rs.getString("id"), 
-                            rs.getString("nombre"), 
-                            rs.getString("correo"),
-                            rs.getInt("telefono"),
-                            usuario);
+                        rs.getString("id"),
+                        rs.getString("nombre"),
+                        rs.getString("correo"),
+                        rs.getInt("telefono"),
+                        usuario);
                 coleccion.add(profesor);
             }
             try {
@@ -389,53 +389,40 @@ public class ServicioProfesor extends Servicio {
         }
         return coleccion;
     }
-    
+
     public void eliminar(String codigo)
-    throws GlobalException, NoDataException
-  {
-    try
-    {
-      conectar();
-    }
-    catch (ClassNotFoundException e)
-    {
-      throw new GlobalException("No se ha localizado el driver");
-    }
-    catch (SQLException e)
-    {
-      throw new NoDataException("La base de datos no se encuentra disponible");
-    }
-    PreparedStatement pstmt = null;
-    try
-    {
-      pstmt = this.conexion.prepareStatement("{call eliminarProfesor(?)}");
-      pstmt.setString(1, codigo);
-      
-      int resultado = pstmt.executeUpdate();
-      if (resultado != 1) {
-        throw new NoDataException("No se realizo el borrado");
-      }
-      System.out.println("\nEliminaci�n Satisfactoria!"); return;
-    }
-    catch (SQLException e)
-    {
-      throw new GlobalException("Sentencia no valida");
-    }
-    finally
-    {
-      try
-      {
-        if (pstmt != null) {
-          pstmt.close();
+            throws GlobalException, NoDataException {
+        try {
+            conectar();
+        } catch (ClassNotFoundException e) {
+            throw new GlobalException("No se ha localizado el driver");
+        } catch (SQLException e) {
+            throw new NoDataException("La base de datos no se encuentra disponible");
         }
-        desconectar();
-      }
-      catch (SQLException e)
-      {
-        throw new GlobalException("Estatutos invalidos o nulos");
-      }
+        PreparedStatement pstmt = null;
+        try {
+            pstmt = this.conexion.prepareStatement("{call eliminarProfesor(?)}");
+            pstmt.setString(1, codigo);
+
+            int resultado = pstmt.executeUpdate();
+            if (resultado != 1) {
+                throw new NoDataException("No se realizo el borrado");
+            }
+            System.out.println("\nEliminaci�n Satisfactoria!");
+            return;
+        } catch (SQLException e) {
+            throw new GlobalException("Sentencia no valida");
+        } finally {
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+                desconectar();
+            } catch (SQLException e) {
+                throw new GlobalException("Estatutos invalidos o nulos");
+            }
+        }
     }
-  }
 
     private static ServicioProfesor INSTANCIA = null;
 }

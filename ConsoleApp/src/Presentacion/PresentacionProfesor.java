@@ -1,0 +1,107 @@
+package Presentacion;
+
+import AccesoADatos.GlobalException;
+import AccesoADatos.NoDataException;
+import Control.ControlPrincipal;
+import Control.ControlPresentaProfesor;
+import Control.ControlProfesor;
+import LogicaDeNegocio.Profesor;
+import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author cdiaz
+ */
+public class PresentacionProfesor {
+
+    ControlProfesor control = new ControlProfesor();
+
+    public PresentacionProfesor() {
+    }
+
+    public void MostrarMenu() throws SQLException, GlobalException, NoDataException {
+        Scanner userInput = new Scanner(System.in);
+        String READ_MENU;
+
+        // Display menu graphics
+        System.out.println("*****************************************");
+        System.out.println("|   Mantenimientos Profesores .         |");
+        System.out.println("*****************************************");
+        System.out.println("| Opciones:                             |");
+        System.out.println("|        1. Listar Profesores           |");
+        System.out.println("|        2. Buscar Profesor             |");
+        System.out.println("|        3. Ingresar Profesor           |");
+        System.out.println("|        4. Actualizar Profesor         |");
+        System.out.println("|        5. Eliminar Profesores         |");
+        System.out.println("|        6. Cerrar Mantenimiento        |");
+        System.out.println("*****************************************");
+
+        System.out.print("Seleccione opcion: ");
+
+        READ_MENU = userInput.next();
+
+        switch (READ_MENU) {
+            case "1":
+                mostrarProfesores();
+                break;
+            case "2":
+                buscarPorCedula();
+//                Read read = new Read();
+                break;
+            case "3":
+//                Update update = new Update();
+                break;
+            case "4":
+//                Delete delete = new Delete();
+                break;
+            case "5":
+                ControlPrincipal controlPrincipal = new ControlPrincipal();
+                break;
+            default:
+                System.out.println("Invalid selection");
+                break;
+        }
+    }
+
+    public void mostrarProfesores() throws GlobalException, NoDataException {
+        LinkedList<Profesor> profesor = this.control.listar();
+        int cont = 0;
+        for (int i = 0; i < profesor.size(); i++) {
+            cont++;
+            System.out.print("--------------------------------\n");
+            System.out.print("--------------------------------\n");
+            System.out.print("Profesor Numero: " + cont + "\n");
+            System.out.print("Id: " + profesor.get(i).getId() + "\n");
+            System.out.print("Cedula: " + profesor.get(i).getUsuario().getCedula() + "\n");
+            System.out.print("Nombre: " + profesor.get(i).getNombre() + "\n");
+            System.out.print("Correo: " + profesor.get(i).getCorreo() + "\n");
+            System.out.print("Telefono: " + profesor.get(i).getTelefono() + "\n");
+            System.out.print("Contrasena: " + profesor.get(i).getUsuario().getContrasena() + "\n");
+
+        }
+
+    }
+
+    public void buscarPorCedula() throws GlobalException, NoDataException {
+        System.out.print("Digite la cedula del profesor a Buscar: ");
+        Scanner entrada = new Scanner(System.in);
+        String cedula = entrada.nextLine();
+        entrada.close();
+        LinkedList<Profesor> profesor = this.control.buscarPorCedula(cedula);
+
+        System.out.print("--------------------------------\n");
+        System.out.print("--------------------------------\n");
+        System.out.print("Id: " + profesor.get(0).getId() + "\n");
+        System.out.print("Cedula: " + profesor.get(0).getUsuario().getCedula() + "\n");
+        System.out.print("Nombre: " + profesor.get(0).getNombre() + "\n");
+        System.out.print("Correo: " + profesor.get(0).getCorreo() + "\n");
+        System.out.print("Telefono: " + profesor.get(0).getTelefono() + "\n");
+        System.out.print("Contrasena: " + profesor.get(0).getUsuario().getContrasena() + "\n");
+
+    }
+}
+    
+    
+    

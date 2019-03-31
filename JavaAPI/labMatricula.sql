@@ -164,13 +164,13 @@ END;
 /
 
 -- SHOW PROFESSOR FIND BY Identify Card
-CREATE OR REPLACE FUNCTION buscarCedulaProfesor(cedulaBuscar IN usuario.cedula%TYPE)
+CREATE OR REPLACE FUNCTION buscarPorCedulaProfesor(cedulaProf IN varchar)
 RETURN Types.ref_cursor
 AS
   cursorProfesor types.ref_cursor;
 BEGIN
   OPEN cursorProfesor FOR
-    select p.id, p.nombre, u.cedula, p.correo, u.contrasena, p.telefono from profesor p, usuario u where u.cedula=cedulaBuscar;
+    select p.id, p.nombre, u.cedula, p.correo, u.contrasena, p.telefono from profesor p join usuario u on p.id=u.id WHERE u.cedula=cedulaProf;
 RETURN cursorProfesor;
 END;
 /

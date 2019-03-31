@@ -5,6 +5,10 @@
  */
 package Control;
 
+/**
+ *
+ * @author Alejandro
+ */
 import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
 import java.sql.SQLException;
@@ -19,7 +23,7 @@ public class ControlPrincipal {
     public ControlPrincipal() throws SQLException, GlobalException, NoDataException {
         DisplayMenu();
     }
-    
+
     public static void DisplayMenu() throws SQLException, GlobalException, NoDataException {
         Scanner userInput = new Scanner(System.in);
         String READ_MENU;
@@ -42,7 +46,7 @@ public class ControlPrincipal {
 
         switch (READ_MENU) {
             case "1":
-                ControlProfesores controlProfesores = new ControlProfesores();
+                ControlPresentaProfesor controlProfesores = new ControlPresentaProfesor();
                 break;
             case "2":
 //                Read read = new Read();
@@ -58,7 +62,8 @@ public class ControlPrincipal {
                 break;
             default:
                 System.out.println("Invalid selection");
-                break; 
+                break;
         }
     }
 }
+
