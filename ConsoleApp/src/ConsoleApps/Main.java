@@ -15,6 +15,7 @@ import java.sql.SQLException;
  * @author cdiaz
  */
 public class Main {
+
     public static void main(String[] args) throws SQLException, GlobalException, NoDataException {
         ControlPrincipal controlPrincipal = new ControlPrincipal();
     }

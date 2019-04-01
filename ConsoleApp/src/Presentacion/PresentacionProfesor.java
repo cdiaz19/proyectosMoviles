@@ -6,6 +6,7 @@ import Control.ControlPrincipal;
 import Control.ControlPresentaProfesor;
 import Control.ControlProfesor;
 import LogicaDeNegocio.Profesor;
+import LogicaDeNegocio.Usuario;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -48,21 +49,73 @@ public class PresentacionProfesor {
                 break;
             case "2":
                 buscarPorCedula();
-//                Read read = new Read();
                 break;
             case "3":
-//                Update update = new Update();
+                ingresarNuevoProfesor();
                 break;
             case "4":
-//                Delete delete = new Delete();
+                actualizarProfesor();
                 break;
             case "5":
+                eliminarProfesor();
+                break;
+            case "6":
                 ControlPrincipal controlPrincipal = new ControlPrincipal();
                 break;
             default:
                 System.out.println("Invalid selection");
                 break;
         }
+    }
+
+    public void actualizarProfesor() {
+        Scanner entrada = new Scanner(System.in);
+        System.out.print("Digite el Id del Profesor que desea modificar: ");
+        String id = entrada.nextLine();
+        System.out.print("Digite la cedula del Profesor: ");
+        String cedula = entrada.nextLine();
+        System.out.print("Digite el nombre del Profesor: ");
+        String nombre = entrada.nextLine();
+        System.out.print("Digite el Correo del profesor del Profesor: ");
+        String correo = entrada.nextLine();
+        System.out.print("Digite el Telefono del profesor del Profesor: ");
+        Integer telefono = Integer.parseInt(entrada.nextLine());
+        System.out.print("Digite la contrasena del profesor del Profesor: ");
+        String contrasena = entrada.nextLine();
+        entrada.close();
+        Usuario usuario = new Usuario(id, cedula, contrasena);
+        Profesor profesor = new Profesor(id, nombre, correo, telefono, usuario);
+        this.control.modificarProfesor(profesor, usuario);
+    }
+
+    public void eliminarProfesor() {
+        Scanner entrada = new Scanner(System.in);
+        System.out.print("Digite el Id del Profesor a Eliminar: ");
+        String id = entrada.nextLine();
+        entrada.close();
+        this.control.eliminar(id);
+
+    }
+
+    public void ingresarNuevoProfesor() {
+        Scanner entrada = new Scanner(System.in);
+        System.out.print("Digite el Id del Profesor: ");
+        String id = entrada.nextLine();
+        System.out.print("Digite la cedula del Profesor: ");
+        String cedula = entrada.nextLine();
+        System.out.print("Digite el nombre del Profesor: ");
+        String nombre = entrada.nextLine();
+        System.out.print("Digite el Correo del profesor del Profesor: ");
+        String correo = entrada.nextLine();
+        System.out.print("Digite el Telefono del profesor del Profesor: ");
+        Integer telefono = Integer.parseInt(entrada.nextLine());
+        System.out.print("Digite la contrasena del profesor del Profesor: ");
+        String contrasena = entrada.nextLine();
+        entrada.close();
+        Usuario usuario = new Usuario(id, cedula, contrasena);
+        Profesor profesor = new Profesor(id, nombre, correo, telefono, usuario);
+        this.control.insertarProfesor(profesor, usuario);
+
     }
 
     public void mostrarProfesores() throws GlobalException, NoDataException {
@@ -102,6 +155,5 @@ public class PresentacionProfesor {
 
     }
 }
-    
     
     

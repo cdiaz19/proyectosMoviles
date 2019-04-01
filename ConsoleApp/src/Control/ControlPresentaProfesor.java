@@ -7,12 +7,8 @@ package Control;
 
 import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
-import AccesoADatos.ServicioProfesor;
-import LogicaDeNegocio.Profesor;
-
 import Presentacion.PresentacionProfesor;
 import java.sql.SQLException;
-import java.util.LinkedList;
 
 /**
  *
@@ -30,5 +26,4 @@ public class ControlPresentaProfesor {
     public ControlPresentaProfesor(PresentacionProfesor view) {
         this.view = view;
     }
-
 }
