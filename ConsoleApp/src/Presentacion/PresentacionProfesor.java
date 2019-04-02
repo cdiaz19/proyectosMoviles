@@ -68,7 +68,7 @@ public class PresentacionProfesor {
         }
     }
 
-    public void actualizarProfesor() {
+    public void actualizarProfesor() throws SQLException, GlobalException, NoDataException {
         Scanner entrada = new Scanner(System.in);
         System.out.print("Digite el Id del Profesor que desea modificar: ");
         String id = entrada.nextLine();
@@ -86,18 +86,21 @@ public class PresentacionProfesor {
         Usuario usuario = new Usuario(id, cedula, contrasena);
         Profesor profesor = new Profesor(id, nombre, correo, telefono, usuario);
         this.control.modificarProfesor(profesor, usuario);
+        System.out.print("\n");
+        MostrarMenu();
     }
 
-    public void eliminarProfesor() {
+    public void eliminarProfesor() throws SQLException, GlobalException, NoDataException {
         Scanner entrada = new Scanner(System.in);
         System.out.print("Digite el Id del Profesor a Eliminar: ");
         String id = entrada.nextLine();
         entrada.close();
         this.control.eliminar(id);
+        System.out.print("\n");
 
     }
 
-    public void ingresarNuevoProfesor() {
+    public void ingresarNuevoProfesor() throws SQLException, GlobalException, NoDataException {
         Scanner entrada = new Scanner(System.in);
         System.out.print("Digite el Id del Profesor: ");
         String id = entrada.nextLine();
@@ -115,10 +118,10 @@ public class PresentacionProfesor {
         Usuario usuario = new Usuario(id, cedula, contrasena);
         Profesor profesor = new Profesor(id, nombre, correo, telefono, usuario);
         this.control.insertarProfesor(profesor, usuario);
-
+        System.out.print("\n");
     }
 
-    public void mostrarProfesores() throws GlobalException, NoDataException {
+    public void mostrarProfesores() throws GlobalException, NoDataException, SQLException {
         LinkedList<Profesor> profesor = this.control.listar();
         int cont = 0;
         for (int i = 0; i < profesor.size(); i++) {
@@ -132,12 +135,13 @@ public class PresentacionProfesor {
             System.out.print("Correo: " + profesor.get(i).getCorreo() + "\n");
             System.out.print("Telefono: " + profesor.get(i).getTelefono() + "\n");
             System.out.print("Contrasena: " + profesor.get(i).getUsuario().getContrasena() + "\n");
+            System.out.print("\n");
 
         }
-
+        MostrarMenu();
     }
 
-    public void buscarPorCedula() throws GlobalException, NoDataException {
+    public void buscarPorCedula() throws GlobalException, NoDataException, SQLException {
         System.out.print("Digite la cedula del profesor a Buscar: ");
         Scanner entrada = new Scanner(System.in);
         String cedula = entrada.nextLine();
@@ -152,7 +156,6 @@ public class PresentacionProfesor {
         System.out.print("Correo: " + profesor.get(0).getCorreo() + "\n");
         System.out.print("Telefono: " + profesor.get(0).getTelefono() + "\n");
         System.out.print("Contrasena: " + profesor.get(0).getUsuario().getContrasena() + "\n");
-
     }
 }
     

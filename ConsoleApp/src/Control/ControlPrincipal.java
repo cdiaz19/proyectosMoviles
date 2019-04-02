@@ -46,13 +46,13 @@ public class ControlPrincipal {
 
         switch (READ_MENU) {
             case "1":
-                ControlPresentaProfesor controlProfesores = new ControlPresentaProfesor();
+                ControlPresentaProfesor controlPresentaProfesor = new ControlPresentaProfesor();
                 break;
             case "2":
-//                Read read = new Read();
+                ControlPresentaCiclo controlPresentaCiclo = new ControlPresentaCiclo();
                 break;
             case "3":
-//                Update update = new Update();
+                ControlPresentaCurso controlPresentaCurso= new ControlPresentaCurso();
                 break;
             case "4":
 //                Delete delete = new Delete();
