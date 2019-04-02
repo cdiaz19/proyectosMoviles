@@ -41,7 +41,7 @@ public class ControlProfesor {
 
     public LinkedList buscarPorCedula(String cedula) throws GlobalException, NoDataException {
         LinkedList lista = this.profesor.buscarporCedula(cedula);
-        return lista;
+        return lista; 
     }
 
     public void modificarProfesor(Profesor profe, Usuario usu) {

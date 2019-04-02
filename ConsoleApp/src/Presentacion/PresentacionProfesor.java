@@ -97,10 +97,9 @@ public class PresentacionProfesor {
         entrada.close();
         this.control.eliminar(id);
         System.out.print("\n");
-
     }
 
-    public void ingresarNuevoProfesor() throws SQLException, GlobalException, NoDataException {
+    public void ingresarNuevoProfesor() throws SQLException {
         Scanner entrada = new Scanner(System.in);
         System.out.print("Digite el Id del Profesor: ");
         String id = entrada.nextLine();
@@ -117,27 +116,33 @@ public class PresentacionProfesor {
         entrada.close();
         Usuario usuario = new Usuario(id, cedula, contrasena);
         Profesor profesor = new Profesor(id, nombre, correo, telefono, usuario);
+        
         this.control.insertarProfesor(profesor, usuario);
         System.out.print("\n");
     }
 
     public void mostrarProfesores() throws GlobalException, NoDataException, SQLException {
-        LinkedList<Profesor> profesor = this.control.listar();
-        int cont = 0;
-        for (int i = 0; i < profesor.size(); i++) {
-            cont++;
-            System.out.print("--------------------------------\n");
-            System.out.print("--------------------------------\n");
-            System.out.print("Profesor Numero: " + cont + "\n");
-            System.out.print("Id: " + profesor.get(i).getId() + "\n");
-            System.out.print("Cedula: " + profesor.get(i).getUsuario().getCedula() + "\n");
-            System.out.print("Nombre: " + profesor.get(i).getNombre() + "\n");
-            System.out.print("Correo: " + profesor.get(i).getCorreo() + "\n");
-            System.out.print("Telefono: " + profesor.get(i).getTelefono() + "\n");
-            System.out.print("Contrasena: " + profesor.get(i).getUsuario().getContrasena() + "\n");
-            System.out.print("\n");
+        try {
+            LinkedList<Profesor> profesor = this.control.listar();
+            int cont = 0;
+            for (int i = 0; i < profesor.size(); i++) {
+                cont++;
+                System.out.print("--------------------------------\n");
+                System.out.print("--------------------------------\n");
+                System.out.print("Profesor Numero: " + cont + "\n");
+                System.out.print("Id: " + profesor.get(i).getId() + "\n");
+                System.out.print("Cedula: " + profesor.get(i).getUsuario().getCedula() + "\n");
+                System.out.print("Nombre: " + profesor.get(i).getNombre() + "\n");
+                System.out.print("Correo: " + profesor.get(i).getCorreo() + "\n");
+                System.out.print("Telefono: " + profesor.get(i).getTelefono() + "\n");
+                System.out.print("Contrasena: " + profesor.get(i).getUsuario().getContrasena() + "\n");
+                System.out.print("\n");
 
+            }
+        } catch (GlobalException | NoDataException ex) {
+            System.err.println(ex);
         }
+        
         MostrarMenu();
     }
 
@@ -146,16 +151,22 @@ public class PresentacionProfesor {
         Scanner entrada = new Scanner(System.in);
         String cedula = entrada.nextLine();
         entrada.close();
-        LinkedList<Profesor> profesor = this.control.buscarPorCedula(cedula);
+        
+        try {
+            LinkedList<Profesor> profesor = this.control.buscarPorCedula(cedula);
 
-        System.out.print("--------------------------------\n");
-        System.out.print("--------------------------------\n");
-        System.out.print("Id: " + profesor.get(0).getId() + "\n");
-        System.out.print("Cedula: " + profesor.get(0).getUsuario().getCedula() + "\n");
-        System.out.print("Nombre: " + profesor.get(0).getNombre() + "\n");
-        System.out.print("Correo: " + profesor.get(0).getCorreo() + "\n");
-        System.out.print("Telefono: " + profesor.get(0).getTelefono() + "\n");
-        System.out.print("Contrasena: " + profesor.get(0).getUsuario().getContrasena() + "\n");
+            System.out.print("--------------------------------\n");
+            System.out.print("--------------------------------\n");
+            System.out.print("Id: " + profesor.get(0).getId() + "\n");
+            System.out.print("Cedula: " + profesor.get(0).getUsuario().getCedula() + "\n");
+            System.out.print("Nombre: " + profesor.get(0).getNombre() + "\n");
+            System.out.print("Correo: " + profesor.get(0).getCorreo() + "\n");
+            System.out.print("Telefono: " + profesor.get(0).getTelefono() + "\n");
+            System.out.print("Contrasena: " + profesor.get(0).getUsuario().getContrasena() + "\n");
+          
+        } catch (GlobalException | NoDataException ex) {
+            System.err.println(ex);
+        }
     }
 }
     

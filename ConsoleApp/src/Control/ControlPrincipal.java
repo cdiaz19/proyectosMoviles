@@ -52,10 +52,10 @@ public class ControlPrincipal {
                 ControlPresentaCiclo controlPresentaCiclo = new ControlPresentaCiclo();
                 break;
             case "3":
-                ControlPresentaCurso controlPresentaCurso= new ControlPresentaCurso();
+                ControlPresentaCurso controlPresentaCurso = new ControlPresentaCurso();
                 break;
             case "4":
-//                Delete delete = new Delete();
+                ControlPresentaCarrera controlPresentaCarrera = new ControlPresentaCarrera();
                 break;
             case "5":
                 System.exit(0);
@@ -66,4 +66,3 @@ public class ControlPrincipal {
         }
     }
 }
-
