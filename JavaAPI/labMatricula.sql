@@ -35,7 +35,7 @@ CONSTRAINTS pkCurso PRIMARY KEY (id)
 CREATE TABLE usuario(
 id VARCHAR(10),
 cedula VARCHAR(10),
-contrasena VARCHAR(8),
+contrasena VARCHAR(3000),
 CONSTRAINTS pkUsuario PRIMARY KEY (id)
 );
 

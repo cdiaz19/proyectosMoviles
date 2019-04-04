@@ -14,6 +14,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /**
  *
@@ -31,6 +34,24 @@ public class ServicioProfesor extends Servicio {
 
     public static ServicioProfesor getInstancia() {
         return INSTANCIA == null ? (INSTANCIA = new ServicioProfesor()) : INSTANCIA;
+    }
+    
+    
+    
+    private static String getMD5(String input) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = md.digest(input.getBytes());
+            BigInteger number = new BigInteger(1, messageDigest);
+            String hashtext = number.toString(16);
+
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
+            return hashtext;
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public LinkedList<Profesor> listarProfesores()
@@ -115,13 +136,14 @@ public class ServicioProfesor extends Servicio {
 
         try {
             pstmt = this.conexion.prepareCall(INSERTARPROFESOR);
+            
             pstmt.setString(1, profesor.getId());
             pstmt.setString(2, profesor.getNombre());
             pstmt.setString(3, profesor.getCorreo());
             pstmt.setInt(4, profesor.getTelefono());
             pstmt.setString(5, profesor.getUsuario().getId());
             pstmt.setString(6, profesor.getUsuario().getCedula());
-            pstmt.setString(7, profesor.getUsuario().getContrasena());
+            pstmt.setString(7, getMD5(profesor.getUsuario().getContrasena()));
 
             boolean resultado = pstmt.execute();
             if (resultado == true) {
@@ -161,7 +183,7 @@ public class ServicioProfesor extends Servicio {
             pstmt.setString(3, profesor.getCorreo());
             pstmt.setInt(4, profesor.getTelefono());
             pstmt.setString(5, usuario.getCedula());
-            pstmt.setString(6, usuario.getContrasena());
+            pstmt.setString(6, getMD5(usuario.getContrasena()));
             int resultado = pstmt.executeUpdate();
             if (resultado != 1) {
                 throw new NoDataException("No se realizo la actualizaci�n");
