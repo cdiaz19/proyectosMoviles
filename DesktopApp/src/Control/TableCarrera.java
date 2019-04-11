@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LogicaNegocio;
+package Control;
 
 import LogicaDeNegocio.Carrera;
 import java.util.LinkedList;
@@ -78,5 +78,13 @@ public class TableCarrera extends AbstractTableModel {
         }
         return aux;
     }
-    
+    public LinkedList<Carrera> buscarPorNombre(String nombreCarrera, LinkedList<Carrera> original) {
+        LinkedList<Carrera> aux = new LinkedList();
+        for (Carrera e : original) {
+            if (e.getNombre().equals(nombreCarrera)) {
+                aux.add(e);
+            }
+        }
+        return aux;
+    }
 }

@@ -395,6 +395,16 @@ BEGIN
 RETURN cursorCiclo;
 END;
 /
+CREATE OR REPLACE FUNCTION buscarCicloPorAnno(annoCiclo IN int)
+RETURN Types.ref_cursor
+AS
+  cursorCiclo types.ref_cursor;
+BEGIN
+  OPEN cursorCiclo FOR
+    SELECT id, anno, numero, fechaInicio, fechaFinal from ciclo WHERE anno=annoCiclo;
+RETURN cursorCiclo;
+END;
+/
 
 -- UPDATE SCHOOL YEAR
 CREATE OR REPLACE PROCEDURE modificarCiclo(idCiclo IN ciclo.id%TYPE, annoNuevo IN ciclo.anno%TYPE, numeroNuevo IN ciclo.numero%TYPE,

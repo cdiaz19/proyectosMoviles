@@ -8,8 +8,8 @@ package Vista;
 import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
 import Control.ControlCiclos;
-import LogicaNegocio.ModelCiclo;
-import LogicaNegocio.TableCiclo;
+import Control.ModelCiclo;
+import Control.TableCiclo;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;
@@ -76,6 +76,9 @@ public class VistaCiclo extends javax.swing.JFrame implements Observer {
         btnEliminar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
+        labelAnno = new javax.swing.JLabel();
+        AnnoBField = new javax.swing.JTextField();
+        BottonBuscarAnno = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ciclos");
@@ -280,6 +283,21 @@ public class VistaCiclo extends javax.swing.JFrame implements Observer {
             }
         });
 
+        labelAnno.setText("Anno");
+
+        AnnoBField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnnoBFieldActionPerformed(evt);
+            }
+        });
+
+        BottonBuscarAnno.setText("Buscar");
+        BottonBuscarAnno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BottonBuscarAnnoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -293,7 +311,13 @@ public class VistaCiclo extends javax.swing.JFrame implements Observer {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(IDField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonID))
+                        .addComponent(botonID)
+                        .addGap(141, 141, 141)
+                        .addComponent(labelAnno, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(AnnoBField, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BottonBuscarAnno))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(panelInsertaProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(56, 56, 56)
@@ -311,7 +335,10 @@ public class VistaCiclo extends javax.swing.JFrame implements Observer {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(IDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelID)
-                    .addComponent(botonID))
+                    .addComponent(botonID)
+                    .addComponent(labelAnno)
+                    .addComponent(AnnoBField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BottonBuscarAnno))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
@@ -328,6 +355,7 @@ public class VistaCiclo extends javax.swing.JFrame implements Observer {
         );
 
         labelID.getAccessibleContext().setAccessibleName("Buscar por ID");
+        BottonBuscarAnno.getAccessibleContext().setAccessibleName("BuscarAnno");
 
         getAccessibleContext().setAccessibleName("ventanaProductos");
 
@@ -370,12 +398,12 @@ public class VistaCiclo extends javax.swing.JFrame implements Observer {
     private void botonIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIDActionPerformed
         try {
             this.controller.buscar();
-            this.IDField.setText("");
+            this.AnnoBField.setText("");
             this.insertarId.setText("");
-            this.insertaAnno.setText("");
-            this.insertaNumero.setText("");
-            this.insertaFechaInicio.setText("");
-            this.insertaFechaFinal.setText("");
+            this.insertarAnno.setText("");
+            this.insertarNumero.setText("");
+            this.insertarFechaInicio.setText("");
+            this.insertarFechaFinal.setText("");
         } catch (GlobalException | NoDataException ex) {
             Logger.getLogger(VistaCiclo.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -408,16 +436,18 @@ public class VistaCiclo extends javax.swing.JFrame implements Observer {
         btnCancelar.setEnabled(false);
         btnEliminar.setEnabled(false);
 
-        this.insertarId.setText("");
-        this.insertaAnno.setText("");
-        this.insertaNumero.setText("");
-        this.insertaFechaInicio.setText("");
-        this.insertaFechaFinal.setText("");
+            this.AnnoBField.setText("");
+            this.insertarId.setText("");
+            this.insertarAnno.setText("");
+            this.insertarNumero.setText("");
+            this.insertarFechaInicio.setText("");
+            this.insertarFechaFinal.setText("");
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         try {
             this.controller.actualizar();
+            this.AnnoBField.setText("");
             this.insertarId.setText("");
             this.insertarAnno.setText("");
             this.insertarNumero.setText("");
@@ -431,6 +461,7 @@ public class VistaCiclo extends javax.swing.JFrame implements Observer {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         try {
             this.controller.eliminar();
+            this.AnnoBField.setText("");
             this.insertarId.setText("");
             this.insertarAnno.setText("");
             this.insertarNumero.setText("");
@@ -446,6 +477,25 @@ public class VistaCiclo extends javax.swing.JFrame implements Observer {
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void AnnoBFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnnoBFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AnnoBFieldActionPerformed
+
+    private void BottonBuscarAnnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BottonBuscarAnnoActionPerformed
+        try {
+            this.controller.buscarPorAnno();
+            this.AnnoBField.setText("");
+            this.insertarId.setText("");
+            this.insertarAnno.setText("");
+            this.insertarNumero.setText("");
+            this.insertarFechaInicio.setText("");
+            this.insertarFechaFinal.setText("");
+        } catch (GlobalException | NoDataException ex) {
+            Logger.getLogger(VistaCiclo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BottonBuscarAnnoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -498,6 +548,8 @@ public class VistaCiclo extends javax.swing.JFrame implements Observer {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JTextField AnnoBField;
+    private javax.swing.JButton BottonBuscarAnno;
     public javax.swing.JTextField IDField;
     private javax.swing.JButton botonID;
     private javax.swing.JButton btnActualizar;
@@ -516,6 +568,7 @@ public class VistaCiclo extends javax.swing.JFrame implements Observer {
     public java.awt.TextField insertarId;
     public java.awt.TextField insertarNumero;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelAnno;
     private javax.swing.JLabel labelID;
     private java.awt.Panel panelInsertaProfesor;
     private java.awt.Panel panelTabla;

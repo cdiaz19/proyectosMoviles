@@ -3,11 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Presentacion;
+package Main;
+
 import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
+import Vista.VistaPrincipal;
 
-public class Principal {
-  public static void main(String[] args) throws GlobalException, NoDataException { 
-  }
+/**
+ *
+ * @author Alejandro
+ */
+
+public class Main {
+    public static void main(String[] args) throws GlobalException, NoDataException {
+        VistaPrincipal control = new VistaPrincipal(); 
+    }
 }

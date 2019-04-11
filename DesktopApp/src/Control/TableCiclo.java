@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LogicaNegocio;
+package Control;
 
 import LogicaDeNegocio.Ciclo;
 import java.util.LinkedList;
@@ -78,6 +78,16 @@ public class TableCiclo extends AbstractTableModel {
         LinkedList<Ciclo> aux = new LinkedList();
         for (Ciclo e : original) {
             if (e.getId().equals(id)) {
+                aux.add(e);
+            }
+        }
+        return aux;
+    }
+    public LinkedList<Ciclo> buscarPorAnno(String anno, LinkedList<Ciclo> original) {
+        int annoCiclo=Integer.parseInt(anno);
+        LinkedList<Ciclo> aux = new LinkedList();
+        for (Ciclo e : original) {
+            if (e.getAnno()==annoCiclo) {
                 aux.add(e);
             }
         }

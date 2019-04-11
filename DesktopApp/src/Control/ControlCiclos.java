@@ -9,7 +9,6 @@ import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
 import AccesoADatos.ServicioCiclo;
 import LogicaDeNegocio.Ciclo;
-import LogicaNegocio.ModelCiclo;
 import Vista.VistaCiclo;
 import static java.lang.Integer.parseInt;
 import java.util.LinkedList;
@@ -77,6 +76,17 @@ public class ControlCiclos {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
     }
+    public void buscarPorAnno() throws GlobalException, NoDataException {
+        try { 
+            String cicloAnno = cicloView.AnnoBField.getText();
+            LinkedList lista = cicloServicio.listarCiclos();
+            LinkedList aux = cicloModel.getCiclos().buscarPorAnno(cicloAnno, lista);
+            cicloModel.setCiclos(aux);
+        } catch (GlobalException | NoDataException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }
+    
     
     public void actualizar()throws GlobalException, NoDataException {
         try {

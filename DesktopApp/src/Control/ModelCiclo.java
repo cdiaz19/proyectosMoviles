@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LogicaNegocio;
+package Control;
 
-import LogicaDeNegocio.Carrera;
-import LogicaDeNegocio.ListaCurso;
+import LogicaDeNegocio.Ciclo;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Observable;
@@ -17,36 +16,36 @@ import java.util.Observer;
  * @author cdiaz
  */
 
-public class ModelListaCurso extends Observable {
-    ListaCurso filter;
-    TableListaCurso listaCursos;
+public class ModelCiclo extends Observable {
+    Ciclo filter;
+    TableCiclo ciclos;
     HashMap<String, String> errores;
     String mensaje;
 
     public void init() {
-      this.filter = new ListaCurso();
-      LinkedList<ListaCurso> rows = new LinkedList();
-      setListaCurso(rows);
+      this.filter = new Ciclo();
+      LinkedList<Ciclo> rows = new LinkedList();
+      setCiclos(rows);
       clearErrors();
     }
 
-    public void setListaCurso(LinkedList<ListaCurso> listaCurso) {
+    public void setCiclos(LinkedList<Ciclo> ciclos) {
       int[] cols = { 0, 1, 2, 3, 4, 5 };
-      this.listaCursos = new TableListaCurso(cols, listaCurso);
+      this.ciclos = new TableCiclo(cols, ciclos);
       setChanged();
       notifyObservers();
     }
 
-    public ListaCurso getFilter() {
+    public Ciclo getFilter() {
       return this.filter;
     }
 
-    public void setFilter(ListaCurso filter) {
+    public void setFilter(Ciclo filter) {
       this.filter = filter;
     }
 
-    public TableListaCurso getListaCurso() {
-      return this.listaCursos;
+    public TableCiclo getCiclos() {
+      return this.ciclos;
     }
 
     public void addObserver(Observer o) {
@@ -74,5 +73,5 @@ public class ModelListaCurso extends Observable {
     public void clearErrors() {
       setErrores(new HashMap());
       setMensaje("");
-    }   
+    } 
 }

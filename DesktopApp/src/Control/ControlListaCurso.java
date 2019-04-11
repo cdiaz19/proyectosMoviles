@@ -8,7 +8,6 @@ package Control;
 import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
 import AccesoADatos.ServicioCarrera;
-import LogicaNegocio.ModelListaCurso;
 import Vista.VistaListaCurso;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;

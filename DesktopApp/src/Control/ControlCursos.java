@@ -10,7 +10,6 @@ import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
 import AccesoADatos.ServicioCurso;
 import LogicaDeNegocio.Curso;
-import LogicaNegocio.ModelCurso;
 import Vista.VistaCurso;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;

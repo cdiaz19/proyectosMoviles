@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LogicaNegocio;
+package Control;
 
-import LogicaNegocio.TableProfesor;
+
 import LogicaDeNegocio.Profesor;
 import java.util.HashMap;
 import java.util.LinkedList;

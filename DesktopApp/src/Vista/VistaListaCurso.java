@@ -7,7 +7,7 @@ package Vista;
 
 
 import Control.ControlListaCurso;
-import LogicaNegocio.ModelListaCurso;
+import Control.ModelListaCurso;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JOptionPane;

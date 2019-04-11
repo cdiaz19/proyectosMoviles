@@ -22,6 +22,7 @@ public class ServicioCiclo extends Servicio {
     private static final String INSERTARCICLOS = "{call insertarCiclo(?,?,?,?,?)}";
     private static final String MODIFICARCICLO = "{call modificarCiclo(?,?,?,?,?)}";
     private static final String BUSCARPORCICLO = "{?=call buscarCiclo(?)}";
+    private static final String BUSCARPORANNO = "{?=call buscarCicloPorAnno(?)}";
     private static final String ELIMINARCICLO = "{call eliminarCiclo(?)}";
 
     public static ServicioCiclo getInstancia() {
@@ -241,7 +242,73 @@ public class ServicioCiclo extends Servicio {
         return coleccion;
     }
     
-    
+    public LinkedList<Ciclo> buscarPorAnno(String anno)
+            throws GlobalException, NoDataException {
+        try {
+            conectar();
+        } catch (ClassNotFoundException e) {
+            throw new GlobalException("No se ha localizado el driver");
+        } catch (SQLException e) {
+            throw new NoDataException("La base de datos no se encuentra disponible");
+        }
+        ResultSet rs = null;
+        LinkedList coleccion = new LinkedList();
+        Ciclo ciclo = null;
+        CallableStatement pstmt = null;
+        try {
+            pstmt = this.conexion.prepareCall(BUSCARPORANNO);
+            pstmt.registerOutParameter(1, -10);
+            pstmt.setString(2, anno);
+            pstmt.execute();
+            
+            rs = (ResultSet) pstmt.getObject(1);
+            while (rs.next()) {
+                ciclo = new Ciclo(
+                            rs.getString("id"), 
+                            rs.getInt("anno"),
+                            rs.getInt("numero"), 
+                            rs.getString("fechaInicio"),
+                            rs.getString("fechaFinal")
+                            );
+                coleccion.add(ciclo);
+            }
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+                desconectar();
+            } catch (SQLException e) {
+                throw new GlobalException("Estatutos invalidos o nulos");
+            }
+            if (coleccion == null) {
+                //break label287;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+            throw new GlobalException("Sentencia no valida");
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+                desconectar();
+            } catch (SQLException e) {
+                throw new GlobalException("Estatutos invalidos o nulos");
+            }
+        }
+        if (coleccion.size() == 0) {
+            label287:
+            throw new NoDataException("No hay datos");
+        }
+        return coleccion;
+    }
     
     public void eliminar(String id)
     throws GlobalException, NoDataException

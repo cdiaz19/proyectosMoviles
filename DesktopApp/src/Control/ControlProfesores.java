@@ -5,7 +5,7 @@
  */
 package Control;
 
-import LogicaNegocio.ModelProfesor;
+
 import AccesoADatos.ServicioProfesor;
 import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;

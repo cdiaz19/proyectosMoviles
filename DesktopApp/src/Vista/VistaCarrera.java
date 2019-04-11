@@ -8,8 +8,8 @@ package Vista;
 import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
 import Control.ControlCarrera;
-import LogicaNegocio.ModelCarrera;
-import LogicaNegocio.TableCarrera;
+import Control.ModelCarrera;
+import Control.TableCarrera;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;
@@ -76,6 +76,9 @@ public class VistaCarrera extends javax.swing.JFrame implements Observer {
         btnListaCursos = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
+        LabelBuscaNiombre = new javax.swing.JLabel();
+        NombreBuscaField = new javax.swing.JTextField();
+        BottonBuscarNombre = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Carreras");
@@ -280,6 +283,15 @@ public class VistaCarrera extends javax.swing.JFrame implements Observer {
             }
         });
 
+        LabelBuscaNiombre.setText("Nombre");
+
+        BottonBuscarNombre.setText("Buscar");
+        BottonBuscarNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BottonBuscarNombreActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -293,7 +305,13 @@ public class VistaCarrera extends javax.swing.JFrame implements Observer {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(IDField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonID))
+                        .addComponent(botonID)
+                        .addGap(144, 144, 144)
+                        .addComponent(LabelBuscaNiombre, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(NombreBuscaField, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BottonBuscarNombre))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(panelInsertaProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(63, 63, 63)
@@ -311,7 +329,10 @@ public class VistaCarrera extends javax.swing.JFrame implements Observer {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(IDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelID)
-                    .addComponent(botonID))
+                    .addComponent(botonID)
+                    .addComponent(LabelBuscaNiombre)
+                    .addComponent(NombreBuscaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BottonBuscarNombre))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
@@ -328,6 +349,9 @@ public class VistaCarrera extends javax.swing.JFrame implements Observer {
         );
 
         labelID.getAccessibleContext().setAccessibleName("Buscar por ID");
+        LabelBuscaNiombre.getAccessibleContext().setAccessibleName("LabelBuscaNiombre");
+        NombreBuscaField.getAccessibleContext().setAccessibleName("NombreBuscaField");
+        BottonBuscarNombre.getAccessibleContext().setAccessibleName("BottonBuscarNombre");
 
         getAccessibleContext().setAccessibleName("ventanaProductos");
 
@@ -355,6 +379,7 @@ public class VistaCarrera extends javax.swing.JFrame implements Observer {
             !this.insertarNombre.getText().isEmpty() || !this.insertarTitulo.getText().isEmpty()) {
             try {
             this.controller.agregar();
+            this.NombreBuscaField.setText("");
             this.insertarId.setText("");
             this.insertarCodigo.setText("");
             this.insertarNombre.setText("");
@@ -374,9 +399,9 @@ public class VistaCarrera extends javax.swing.JFrame implements Observer {
     private void botonIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIDActionPerformed
         try {
             this.controller.buscar();
-            this.IDField.setText("");
+            this.NombreBuscaField.setText("");
             this.insertarId.setText("");
-            this.insertaCodigo.setText("");
+            this.insertarCodigo.setText("");
             this.insertarNombre.setText("");
             this.insertarTitulo.setText("");
         } catch (GlobalException | NoDataException ex) {
@@ -408,15 +433,17 @@ public class VistaCarrera extends javax.swing.JFrame implements Observer {
         btnEliminar.setEnabled(false);
         btnListaCursos.setEnabled(false);
 
-        this.insertarId.setText("");
-        this.insertarCodigo.setText("");
-        this.insertarNombre.setText("");
-        this.insertarTitulo.setText("");
+            this.NombreBuscaField.setText("");
+            this.insertarId.setText("");
+            this.insertarCodigo.setText("");
+            this.insertarNombre.setText("");
+            this.insertarTitulo.setText("");
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         try {
             this.controller.actualizar();
+            this.NombreBuscaField.setText("");
             this.insertarId.setText("");
             this.insertarCodigo.setText("");
             this.insertarNombre.setText("");
@@ -429,6 +456,7 @@ public class VistaCarrera extends javax.swing.JFrame implements Observer {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         try {
             this.controller.eliminar();
+            this.NombreBuscaField.setText("");
             this.insertarId.setText("");
             this.insertarCodigo.setText("");
             this.insertarNombre.setText("");
@@ -449,6 +477,20 @@ public class VistaCarrera extends javax.swing.JFrame implements Observer {
             Logger.getLogger(VistaCarrera.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnListaCursosActionPerformed
+
+    private void BottonBuscarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BottonBuscarNombreActionPerformed
+           try {
+            this.controller.buscarPorNombre();
+            this.NombreBuscaField.setText("");
+            this.insertarId.setText("");
+            this.insertarCodigo.setText("");
+            this.insertarNombre.setText("");
+            this.insertarTitulo.setText("");
+        } catch (GlobalException | NoDataException ex) {
+            Logger.getLogger(VistaCarrera.class.getName()).log(Level.SEVERE, null, ex);
+        }       
+        
+    }//GEN-LAST:event_BottonBuscarNombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -504,7 +546,10 @@ public class VistaCarrera extends javax.swing.JFrame implements Observer {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BottonBuscarNombre;
     public javax.swing.JTextField IDField;
+    private javax.swing.JLabel LabelBuscaNiombre;
+    public javax.swing.JTextField NombreBuscaField;
     private javax.swing.JButton botonID;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregar;

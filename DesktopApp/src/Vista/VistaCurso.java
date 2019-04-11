@@ -8,8 +8,8 @@ package Vista;
 import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
 import Control.ControlCursos;
-import LogicaNegocio.ModelCurso;
-import LogicaNegocio.TableCurso;
+import Control.ModelCurso;
+import Control.TableCurso;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;
@@ -88,7 +88,7 @@ public class VistaCurso extends javax.swing.JFrame implements Observer {
             }
         });
 
-        labelID.setText("ID");
+        labelID.setText("Codigo");
 
         botonID.setText("Buscar");
         botonID.addMouseListener(new java.awt.event.MouseAdapter() {

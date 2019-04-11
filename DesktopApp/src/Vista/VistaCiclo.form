@@ -8,7 +8,7 @@
       <Color blue="0" green="0" red="0" type="rgb"/>
     </Property>
     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-      <Color id="Default Cursor"/>
+      <Color id="Cursor Por defecto"/>
     </Property>
   </Properties>
   <AccessibilityProperties>
@@ -43,6 +43,12 @@
                       <Component id="IDField" min="-2" pref="112" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="botonID" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
+                      <Component id="labelAnno" min="-2" pref="38" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="AnnoBField" min="-2" pref="76" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="BottonBuscarAnno" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="panelInsertaProfesor" min="-2" max="-2" attributes="0"/>
@@ -68,6 +74,9 @@
                   <Component id="IDField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="labelID" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botonID" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelAnno" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="AnnoBField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="BottonBuscarAnno" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -396,6 +405,30 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCerrarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelAnno">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Anno"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="AnnoBField">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AnnoBFieldActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="BottonBuscarAnno">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Buscar"/>
+      </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="BuscarAnno"/>
+      </AccessibilityProperties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BottonBuscarAnnoActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

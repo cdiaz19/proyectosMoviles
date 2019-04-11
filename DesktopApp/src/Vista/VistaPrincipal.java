@@ -11,7 +11,7 @@ import Control.ControlCarrera;
 import Control.ControlCiclos;
 import Control.ControlCursos;
 import Control.ControlProfesores;
-import LogicaNegocio.ModelCiclo;
+import Control.ModelCiclo;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;

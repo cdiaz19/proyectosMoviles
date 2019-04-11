@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LogicaNegocio;
+package Control;
 
 import LogicaDeNegocio.Curso;
 import java.util.LinkedList;
@@ -73,10 +73,10 @@ public class TableCurso extends AbstractTableModel {
         this.colNames[4] = "HORAS";
     }
 
-    public LinkedList<Curso> buscar(String id, LinkedList<Curso> original) {
+    public LinkedList<Curso> buscar(String codigo, LinkedList<Curso> original) {
         LinkedList<Curso> aux = new LinkedList();
         for (Curso e : original) {
-            if (e.getId().equals(id)) {
+            if (e.getCodigo().equals(codigo)) {
                 aux.add(e);
             }
         }

@@ -9,8 +9,6 @@ import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
 import AccesoADatos.ServicioCarrera;
 import LogicaDeNegocio.Carrera;
-import LogicaNegocio.ModelCarrera;
-import LogicaNegocio.ModelListaCurso;
 import Vista.VistaCarrera;
 import Vista.VistaListaCurso;
 import java.util.LinkedList;
@@ -80,7 +78,6 @@ public class ControlCarrera {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
     }
-    
     public void actualizar()throws GlobalException, NoDataException {
         try {
             Carrera carrera_agregado = new Carrera(carreraView.insertarId.getText(),carreraView.insertarCodigo.getText(),carreraView.insertarNombre.getText(),carreraView.insertarTitulo.getText());
@@ -118,5 +115,16 @@ public class ControlCarrera {
         }catch (GlobalException | NoDataException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         } 
+    }
+
+    public void buscarPorNombre()throws GlobalException, NoDataException {
+       try { 
+            String nombreCarrera= carreraView.NombreBuscaField.getText();
+            LinkedList lista = carreraServicio.listarCarreras();
+            LinkedList aux = carreraModel.getCarreras().buscarPorNombre(nombreCarrera, lista);
+            carreraModel.setCarreras(aux);
+        } catch (GlobalException | NoDataException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
     }
 }
