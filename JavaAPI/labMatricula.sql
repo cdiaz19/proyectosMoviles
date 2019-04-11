@@ -56,7 +56,7 @@ CONSTRAINTS fkUsuario
 CREATE TABLE carrera(
 id VARCHAR(10),
 codigo VARCHAR(50),
-nombre VARCHAR(25),
+nombre VARCHAR(50),
 titulo VARCHAR(50),
 CONSTRAINTS pkCarrera PRIMARY KEY (id)
 );
@@ -81,22 +81,33 @@ CONSTRAINTS fkCurso
 );
 
 
-INSERT INTO usuario values('1','304740935','12345678');
-INSERT INTO profesor values('1','Georges','george@example.com',222222, 1);
+INSERT INTO usuario values('1','304740935','25d55ad283aa400af464c76d713c07ad');
+INSERT INTO usuario values('2','233664480','9a1e6dff7dbc2da64a3577c8b9a24854');
+INSERT INTO usuario values('3','740065718','c48ed0e890542d5ffa082d49f3be5585');
+INSERT INTO profesor values('1','Georges Salazar','george@example.com',222222, 1);
+INSERT INTO profesor values('2','Pedro Jimenez','pedro@example.com',25602112, 2);
+INSERT INTO profesor values('3','Maria del Mar','maria@example.com',26695210,3);
+
 
 INSERT INTO ciclo values('1',2018, 1, '6/02/2018', '6/06/2018');
-INSERT INTO ciclo values('2',2018, 1, '6/02/2018', '6/06/2018');
+INSERT INTO ciclo values('2',2018, 2, '8/07/2018', '30/11/2018');
+INSERT INTO ciclo values('3',2017, 1, '6/02/2017', '6/06/2017');
+INSERT INTO ciclo values('4',2017, 2, '8/07/2017', '30/11/2017');
 
 INSERT INTO curso values('1','123','Mate I', 3, 8);
 INSERT INTO curso values('2','456','Mate II', 3, 12);
+INSERT INTO curso values('3','789','Calculo II', 3, 12);
 
 INSERT INTO carrera values('1','INF','Informatica', 'Bachiller');
 INSERT INTO carrera values('2','BIO','Biologia', 'Licenciatura');
+INSERT INTO carrera values('3','CP','Ciencias Politicas', 'Licenciatura');
+INSERT INTO carrera values('4','ED','Educacion Fisica', 'Bachillerato');
+INSERT INTO carrera values('5','IN-GE','Ingenieria en Gestion Ambiental', 'Bachillerato');
 
 INSERT INTO listaCurso values('1','2019',1, 1, 1);
 INSERT INTO listaCurso values('2','2018',2, 2, 1);
 INSERT INTO listaCurso values('3','2019',1, 1, 2);
-
+INSERT INTO listaCurso values('4','2019',5, 1, 3);
 
 --------------------------------- Mantenimientos ---------------------------------
 --CURSOR REFERENCE
