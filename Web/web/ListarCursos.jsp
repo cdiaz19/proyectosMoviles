@@ -20,6 +20,8 @@
         <title>Lista De Cursos</title>
     </head>
     <body>
+        <label>Buscar Cursos:</label>
+        <input id="searchTerm" type="text" onkeyup="doSearch()"/>
         <%
             ServicioCurso sc = ServicioCurso.getInstancia();
             LinkedList<Curso> cursoList = sc.listarCursos();

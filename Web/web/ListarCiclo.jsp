@@ -19,7 +19,7 @@
         <title>Lista De Ciclos</title>
     </head>
     <body>
-        <label>Buscar Profesor:</label>
+        <label>Buscar Ciclo:</label>
         <input id="searchTerm" type="text" onkeyup="doSearch()"/>
         <%
             ServicioCiclo sc = ServicioCiclo.getInstancia();
