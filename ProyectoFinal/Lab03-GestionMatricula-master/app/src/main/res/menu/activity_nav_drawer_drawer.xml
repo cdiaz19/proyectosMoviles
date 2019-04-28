@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_videojuegos"
+            android:enabled="false"
+            android:icon="@drawable/ic_menu_oferta_academica"
+            android:title="VideoJuegos" />
+        <item
+            android:id="@+id/nav_orden"
+            android:enabled="false"
+            android:icon="@drawable/ic_menu_matricula"
+            android:title="Ordenes" />
+        <item
+            android:id="@+id/nav_bodega"
+            android:enabled="false"
+            android:icon="@drawable/ic_menu_registro_notas"
+            android:title="Bodega" />
+        <item
+            android:id="@+id/nav_consultaHistorial"
+            android:enabled="false"
+            android:icon="@drawable/ic_menu_historial"
+            android:title="Consulta de Pedidos" />
+    </group>
+
+    <item android:title="Mantenimientos">
+        <menu>
+            <item
+                android:id="@+id/nav_videojuego"
+                android:enabled="false"
+                android:icon="@drawable/ic_menu_listas"
+                android:title="VideosJuegos" />
+            <item
+                android:id="@+id/nav_categorias"
+                android:enabled="false"
+                android:icon="@drawable/ic_menu_listas"
+                android:title="Categorias" />
+            <item
+                android:id="@+id/nav_ordenes"
+                android:enabled="false"
+                android:icon="@drawable/ic_menu_listas"
+                android:title="Clientes" />
+            <item
+                android:id="@+id/nav_pedidos"
+                android:enabled="false"
+                android:icon="@drawable/ic_menu_listas"
+                android:title="Pedidos" />
+            <item
+                android:id="@+id/nav_usuarios"
+                android:enabled="false"
+                android:icon="@drawable/ic_menu_listas"
+                android:title="Usuarios" />
+            <item
+                android:id="@+id/nav_seguridad"
+                android:enabled="false"
+                android:icon="@drawable/ic_menu_seguridad"
+                android:title="Seguridad" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_menu_salir"
+                android:title="Cerrar Sesion" />
+        </menu>
+    </item>
+
+</menu>
