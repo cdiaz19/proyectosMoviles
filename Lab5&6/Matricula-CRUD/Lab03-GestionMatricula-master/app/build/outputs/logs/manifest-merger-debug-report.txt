@@ -1,0 +1,316 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:2:1-135:12
+INJECTED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:2:1-135:12
+INJECTED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:2:1-135:12
+INJECTED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:2:1-135:12
+MERGED from [com.android.support:design:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/3089fcf34dd260cab84a96bba50aeb77/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/9f419beb4b939aa6478eb3e8de54179d/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/74c53d32cee8325aa0ffa6153a5ce9e8/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/d4999443816414aa271ac33c86f6a28e/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:cardview-v7:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.1.0.aar/c1bb9e6805ffed69d8eeb9b6ffcb88ea/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/d8e9cdb7b3e7b9c386386a7f7d582828/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/0e7497f10d82e5ddd0ddc3b2b64a850d/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:transition:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/d3d29a57b6cbbd5be747c7bcd3f746d1/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/178120461e1dec068364431e969e021e/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-fragment:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/37f750dacc6e03f15c4f7ebedc634eb7/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-ui:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/991632cff567ad5ca1a7516a48fa3086/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/368c881a9ea9abdb4d1c7b5ed9592e6a/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-utils:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/4b41e1e8d55bf604d8837877ce378625/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-compat:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/692192caa8e684418fb3b098a9a33c0a/AndroidManifest.xml:17:1-31:12
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/e4a071942849c76aca5f70159d9075bd/AndroidManifest.xml:17:1-30:12
+INJECTED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:2:1-135:12
+INJECTED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:2:1-135:12
+INJECTED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:2:1-135:12
+	package
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:3:5-37
+		INJECTED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:2:1-135:12
+		INJECTED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:2:1-135:12
+		INJECTED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.GET_ACCOUNTS
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:6:5-71
+	android:name
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:6:22-68
+uses-permission#android.permission.READ_PROFILE
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:7:5-71
+	android:name
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:7:22-68
+uses-permission#android.permission.READ_CONTACTS
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:8:5-72
+	android:name
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:8:22-69
+application
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:10:5-133:19
+MERGED from [com.android.support:design:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/3089fcf34dd260cab84a96bba50aeb77/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:design:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/3089fcf34dd260cab84a96bba50aeb77/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/9f419beb4b939aa6478eb3e8de54179d/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/9f419beb4b939aa6478eb3e8de54179d/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/74c53d32cee8325aa0ffa6153a5ce9e8/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/74c53d32cee8325aa0ffa6153a5ce9e8/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/d4999443816414aa271ac33c86f6a28e/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/d4999443816414aa271ac33c86f6a28e/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:cardview-v7:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.1.0.aar/c1bb9e6805ffed69d8eeb9b6ffcb88ea/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:cardview-v7:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.1.0.aar/c1bb9e6805ffed69d8eeb9b6ffcb88ea/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/d8e9cdb7b3e7b9c386386a7f7d582828/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/d8e9cdb7b3e7b9c386386a7f7d582828/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/0e7497f10d82e5ddd0ddc3b2b64a850d/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/0e7497f10d82e5ddd0ddc3b2b64a850d/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:transition:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/d3d29a57b6cbbd5be747c7bcd3f746d1/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:transition:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/d3d29a57b6cbbd5be747c7bcd3f746d1/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-v4:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/178120461e1dec068364431e969e021e/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-v4:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/178120461e1dec068364431e969e021e/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/37f750dacc6e03f15c4f7ebedc634eb7/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/37f750dacc6e03f15c4f7ebedc634eb7/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/991632cff567ad5ca1a7516a48fa3086/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/991632cff567ad5ca1a7516a48fa3086/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/368c881a9ea9abdb4d1c7b5ed9592e6a/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/368c881a9ea9abdb4d1c7b5ed9592e6a/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/4b41e1e8d55bf604d8837877ce378625/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/4b41e1e8d55bf604d8837877ce378625/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/692192caa8e684418fb3b098a9a33c0a/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/692192caa8e684418fb3b098a9a33c0a/AndroidManifest.xml:25:5-29:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/e4a071942849c76aca5f70159d9075bd/AndroidManifest.xml:24:5-28:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/e4a071942849c76aca5f70159d9075bd/AndroidManifest.xml:24:5-28:19
+	android:supportsRtl
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:15:9-35
+	android:label
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:13:9-41
+	android:roundIcon
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:14:9-54
+	android:icon
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:12:9-43
+	android:allowBackup
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:11:9-35
+	android:theme
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:16:9-40
+activity#com.example.lenovo.lab.Activity.LoginActivity
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:19:9-27:20
+	android:label
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:21:13-45
+	android:name
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:20:13-51
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:22:13-26:29
+action#android.intent.action.MAIN
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:23:17-69
+	android:name
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:23:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:25:17-77
+	android:name
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:25:27-74
+activity#com.example.lenovo.lab.Activity.NavDrawerActivity
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:30:9-33:59
+	android:label
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:32:13-62
+	android:theme
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:33:13-56
+	android:name
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:31:13-55
+activity#com.example.lenovo.lab.Activity.AdmCarreraActivity
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:36:9-46:20
+	android:theme
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:38:13-56
+	android:name
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:37:13-56
+meta-data#android.app.searchable
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:39:13-41:54
+	android:resource
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:41:17-51
+	android:name
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:40:17-54
+intent-filter#action:name:android.intent.action.SEARCH
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:43:13-45:29
+action#android.intent.action.SEARCH
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:44:17-71
+	android:name
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:44:25-68
+activity#com.example.lenovo.lab.Activity.AddUpdCarreraActivity
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:47:9-49:50
+	android:label
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:49:13-47
+	android:name
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:48:13-59
+activity#com.example.lenovo.lab.Activity.AdmCursoActivity
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:52:9-58:20
+	android:theme
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:54:13-56
+	android:name
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:53:13-54
+activity#com.example.lenovo.lab.Activity.AddUpdCursoActivity
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:59:9-61:48
+	android:label
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:61:13-45
+	android:name
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:60:13-57
+activity#com.example.lenovo.lab.Activity.AdmProfesorActivity
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:64:9-70:20
+	android:theme
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:66:13-56
+	android:name
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:65:13-57
+activity#com.example.lenovo.lab.Activity.AddUpdProfesorActivity
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:71:9-73:51
+	android:label
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:73:13-48
+	android:name
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:72:13-60
+activity#com.example.lenovo.lab.Activity.AdmCicloActivity
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:78:9-84:20
+	android:theme
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:80:13-56
+	android:name
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:79:13-54
+activity#com.example.lenovo.lab.Activity.AddUpdCicloActivity
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:85:9-87:48
+	android:label
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:87:13-45
+	android:name
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:86:13-57
+activity#com.example.lenovo.lab.Activity.AdmGrupoActivity
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:90:9-96:20
+	android:theme
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:92:13-56
+	android:name
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:91:13-54
+activity#com.example.lenovo.lab.Activity.AddUpdGrupoActivity
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:97:9-99:48
+	android:label
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:99:13-45
+	android:name
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:98:13-57
+activity#com.example.lenovo.lab.Activity.OfertaAcademicaActivity
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:100:9-102:55
+	android:label
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:102:13-52
+	android:name
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:101:13-61
+activity#com.example.lenovo.lab.Activity.AdmSeguridadActivity
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:104:9-114:20
+	android:theme
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:106:13-56
+	android:name
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:105:13-58
+activity#com.example.lenovo.lab.Activity.AddUpdSeguridadActivity
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:115:9-117:52
+	android:label
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:117:13-49
+	android:name
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:116:13-61
+activity#com.example.lenovo.lab.Activity.HistorialActivity
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:118:9-64
+	android:name
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:118:19-61
+activity#com.example.lenovo.lab.Activity.RegistroNotasActivity
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:119:9-68
+	android:name
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:119:19-65
+activity#com.example.lenovo.lab.Activity.MatriculaActivity
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:122:9-124:59
+	android:theme
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:124:13-56
+	android:name
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:123:13-55
+activity#com.example.lenovo.lab.Activity.AddMatriculaActivity
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:125:9-127:59
+	android:theme
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:127:13-56
+	android:name
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:126:13-58
+activity#com.example.lenovo.lab.Activity.ShowHistorialActivity
+ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:130:9-132:59
+	android:theme
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:132:13-56
+	android:name
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml:131:13-59
+uses-sdk
+INJECTED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml
+INJECTED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml
+MERGED from [com.android.support:design:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/3089fcf34dd260cab84a96bba50aeb77/AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:design:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/3089fcf34dd260cab84a96bba50aeb77/AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/9f419beb4b939aa6478eb3e8de54179d/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/9f419beb4b939aa6478eb3e8de54179d/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/74c53d32cee8325aa0ffa6153a5ce9e8/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/74c53d32cee8325aa0ffa6153a5ce9e8/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/d4999443816414aa271ac33c86f6a28e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/d4999443816414aa271ac33c86f6a28e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.1.0.aar/c1bb9e6805ffed69d8eeb9b6ffcb88ea/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.1.0.aar/c1bb9e6805ffed69d8eeb9b6ffcb88ea/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/d8e9cdb7b3e7b9c386386a7f7d582828/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/d8e9cdb7b3e7b9c386386a7f7d582828/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/0e7497f10d82e5ddd0ddc3b2b64a850d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/0e7497f10d82e5ddd0ddc3b2b64a850d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/d3d29a57b6cbbd5be747c7bcd3f746d1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/d3d29a57b6cbbd5be747c7bcd3f746d1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/178120461e1dec068364431e969e021e/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/178120461e1dec068364431e969e021e/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/37f750dacc6e03f15c4f7ebedc634eb7/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-fragment:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/37f750dacc6e03f15c4f7ebedc634eb7/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-core-ui:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/991632cff567ad5ca1a7516a48fa3086/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-ui:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/991632cff567ad5ca1a7516a48fa3086/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/368c881a9ea9abdb4d1c7b5ed9592e6a/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/368c881a9ea9abdb4d1c7b5ed9592e6a/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-utils:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/4b41e1e8d55bf604d8837877ce378625/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-utils:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/4b41e1e8d55bf604d8837877ce378625/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/692192caa8e684418fb3b098a9a33c0a/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/692192caa8e684418fb3b098a9a33c0a/AndroidManifest.xml:21:5-23:58
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/e4a071942849c76aca5f70159d9075bd/AndroidManifest.xml:20:5-22:41
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/e4a071942849c76aca5f70159d9075bd/AndroidManifest.xml:20:5-22:41
+INJECTED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml
+INJECTED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml
+	tools:overrideLibrary
+		ADDED from [com.android.support:design:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/3089fcf34dd260cab84a96bba50aeb77/AndroidManifest.xml:23:9-59
+	android:targetSdkVersion
+		INJECTED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml
+		ADDED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&6/Matricula-CRUD/Lab03-GestionMatricula-master/app/src/main/AndroidManifest.xml
+meta-data#android.support.VERSION
+ADDED from [com.android.support:design:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/3089fcf34dd260cab84a96bba50aeb77/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/9f419beb4b939aa6478eb3e8de54179d/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/9f419beb4b939aa6478eb3e8de54179d/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/d4999443816414aa271ac33c86f6a28e/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/d4999443816414aa271ac33c86f6a28e/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:cardview-v7:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.1.0.aar/c1bb9e6805ffed69d8eeb9b6ffcb88ea/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:cardview-v7:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.1.0.aar/c1bb9e6805ffed69d8eeb9b6ffcb88ea/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/d8e9cdb7b3e7b9c386386a7f7d582828/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/d8e9cdb7b3e7b9c386386a7f7d582828/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/0e7497f10d82e5ddd0ddc3b2b64a850d/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/0e7497f10d82e5ddd0ddc3b2b64a850d/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:transition:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/d3d29a57b6cbbd5be747c7bcd3f746d1/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:transition:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/d3d29a57b6cbbd5be747c7bcd3f746d1/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-v4:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/178120461e1dec068364431e969e021e/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-v4:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/178120461e1dec068364431e969e021e/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-fragment:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/37f750dacc6e03f15c4f7ebedc634eb7/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-fragment:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/37f750dacc6e03f15c4f7ebedc634eb7/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-ui:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/991632cff567ad5ca1a7516a48fa3086/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-ui:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/991632cff567ad5ca1a7516a48fa3086/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/368c881a9ea9abdb4d1c7b5ed9592e6a/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/368c881a9ea9abdb4d1c7b5ed9592e6a/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/4b41e1e8d55bf604d8837877ce378625/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/4b41e1e8d55bf604d8837877ce378625/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/692192caa8e684418fb3b098a9a33c0a/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/692192caa8e684418fb3b098a9a33c0a/AndroidManifest.xml:26:9-28:38
+	android:value
+		ADDED from [com.android.support:design:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/3089fcf34dd260cab84a96bba50aeb77/AndroidManifest.xml:28:13-35
+	android:name
+		ADDED from [com.android.support:design:26.1.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/3089fcf34dd260cab84a96bba50aeb77/AndroidManifest.xml:27:13-51
+meta-data#android.arch.lifecycle.VERSION
+ADDED from [android.arch.lifecycle:runtime:1.0.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/e4a071942849c76aca5f70159d9075bd/AndroidManifest.xml:25:9-27:47
+	android:value
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/e4a071942849c76aca5f70159d9075bd/AndroidManifest.xml:27:13-44
+	android:name
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] /Users/cdiaz/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/e4a071942849c76aca5f70159d9075bd/AndroidManifest.xml:26:13-58
