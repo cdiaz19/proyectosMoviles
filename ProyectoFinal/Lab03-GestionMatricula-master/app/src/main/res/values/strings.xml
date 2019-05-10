@@ -23,7 +23,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-    <string name="my_carrera">Carreras</string>
+    <string name="my_carrera">Categorias</string>
     <string name="my_curso">Cursos</string>
     <string name="my_profesor">Clientes</string>
     <string name="my_alumno">Alumnos</string>

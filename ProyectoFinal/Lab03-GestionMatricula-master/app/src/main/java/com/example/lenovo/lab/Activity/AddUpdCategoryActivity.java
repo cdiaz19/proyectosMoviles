@@ -22,7 +22,7 @@ public class AddUpdCategoryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_upd_carrera);
+        setContentView(R.layout.activity_add_upd_categoria);
 
         editable = true;
 
@@ -68,7 +68,7 @@ public class AddUpdCategoryActivity extends AppCompatActivity {
         if (validateForm()) {
             //do something
             Categoria car = new Categoria(codFld.getText().toString(), nomFld.getText().toString());
-            Intent intent = new Intent(getBaseContext(), AdmCarreraActivity.class);
+            Intent intent = new Intent(getBaseContext(), AdmCategoriaActivity.class);
             //sending carrera data
             intent.putExtra("addCarrera", car);
             startActivity(intent);
@@ -79,7 +79,7 @@ public class AddUpdCategoryActivity extends AppCompatActivity {
     public void editCategoria() {
         if (validateForm()) {
             Categoria car = new Categoria(codFld.getText().toString(), nomFld.getText().toString());
-            Intent intent = new Intent(getBaseContext(), AdmCarreraActivity.class);
+            Intent intent = new Intent(getBaseContext(), AdmCategoriaActivity.class);
             //sending carrera data
             intent.putExtra("editCarrera", car);
             startActivity(intent);

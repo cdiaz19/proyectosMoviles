@@ -14,7 +14,7 @@ import com.example.lenovo.lab.Adapter.ClienteAdapter;
 import com.example.lenovo.lab.Adapter.CarrerasAdapter;
 import com.example.lenovo.lab.Adapter.CicloAdapter;
 import com.example.lenovo.lab.Adapter.CursoAdapter;
-import com.example.lenovo.lab.Adapter.GrupoAdapter;
+import com.example.lenovo.lab.Adapter.VideoJuegoAdapter;
 import com.example.lenovo.lab.Adapter.MatriculaAdapter;
 import com.example.lenovo.lab.Adapter.ProfesorAdapter;
 import com.example.lenovo.lab.Adapter.SeguridadAdapter;
@@ -68,11 +68,11 @@ public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
                 backgroundViewEdit = ((CursoAdapter.MyViewHolder) viewHolder).viewBackgroundEdit;
                 backgroundViewDelete = ((CursoAdapter.MyViewHolder) viewHolder).viewBackgroundDelete;
                 foregroundView = ((CursoAdapter.MyViewHolder) viewHolder).viewForeground;
-            } else if (this.listener.getClass().getSimpleName().equals("AdmCarreraActivity")) {
+            } else if (this.listener.getClass().getSimpleName().equals("AdmCategoriaActivity")) {
                 backgroundViewEdit = ((CarrerasAdapter.MyViewHolder) viewHolder).viewBackgroundEdit;
                 backgroundViewDelete = ((CarrerasAdapter.MyViewHolder) viewHolder).viewBackgroundDelete;
                 foregroundView = ((CarrerasAdapter.MyViewHolder) viewHolder).viewForeground;
-            } else if (this.listener.getClass().getSimpleName().equals("AdmProfesorActivity")) {
+            } else if (this.listener.getClass().getSimpleName().equals("AdmClienteActivity")) {
                 backgroundViewEdit = ((ProfesorAdapter.MyViewHolder) viewHolder).viewBackgroundEdit;
                 backgroundViewDelete = ((ProfesorAdapter.MyViewHolder) viewHolder).viewBackgroundDelete;
                 foregroundView = ((ProfesorAdapter.MyViewHolder) viewHolder).viewForeground;
@@ -85,9 +85,9 @@ public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
                 backgroundViewDelete = ((CicloAdapter.MyViewHolder) viewHolder).viewBackgroundDelete;
                 foregroundView = ((CicloAdapter.MyViewHolder) viewHolder).viewForeground;
             } else if (this.listener.getClass().getSimpleName().equals("AdmGrupoActivity")) {
-                backgroundViewEdit = ((GrupoAdapter.MyViewHolder) viewHolder).viewBackgroundEdit;
-                backgroundViewDelete = ((GrupoAdapter.MyViewHolder) viewHolder).viewBackgroundDelete;
-                foregroundView = ((GrupoAdapter.MyViewHolder) viewHolder).viewForeground;
+                backgroundViewEdit = ((VideoJuegoAdapter.MyViewHolder) viewHolder).viewBackgroundEdit;
+                backgroundViewDelete = ((VideoJuegoAdapter.MyViewHolder) viewHolder).viewBackgroundDelete;
+                foregroundView = ((VideoJuegoAdapter.MyViewHolder) viewHolder).viewForeground;
             } else if (this.listener.getClass().getSimpleName().equals("AdmSeguridadActivity")) {
                 backgroundViewEdit = ((SeguridadAdapter.MyViewHolder) viewHolder).viewBackgroundEdit;
                 backgroundViewDelete = ((SeguridadAdapter.MyViewHolder) viewHolder).viewBackgroundDelete;

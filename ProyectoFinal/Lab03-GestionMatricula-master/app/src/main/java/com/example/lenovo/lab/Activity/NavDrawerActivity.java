@@ -15,7 +15,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lenovo.lab.R;
@@ -148,7 +147,7 @@ public class NavDrawerActivity extends AppCompatActivity
             abrirOfertaAcademica();
         } else if (id == R.id.nav_orden) {
             Toast.makeText(getApplicationContext(), "Orden", Toast.LENGTH_SHORT).show();
-            abrirAdmAlumno();
+            abrirAdmVideoJuegos();
         } else if (id == R.id.nav_bodega) {
             Toast.makeText(getApplicationContext(), "Bodega", Toast.LENGTH_SHORT).show();
             abrirRegistroNotas();
@@ -160,19 +159,19 @@ public class NavDrawerActivity extends AppCompatActivity
                 abrirHistorial();
         } else if (id == R.id.nav_videojuego) {
             Toast.makeText(getApplicationContext(), "Video Juegos", Toast.LENGTH_SHORT).show();
-            abrirAdmAlumno();
+            abrirAdmVideoJuegos();
         } else if (id == R.id.nav_usuarios) {
             Toast.makeText(getApplicationContext(), "Usuarios", Toast.LENGTH_SHORT).show();
             abrirAdmCiclo();
-        } else if (id == R.id.nav_videojuego) {
+        } else if (id == R.id.nav_pedidos) {
             Toast.makeText(getApplicationContext(), "Video Juegos", Toast.LENGTH_SHORT).show();
             abrirAdmCurso();
         } else if (id == R.id.nav_ordenes) {
-            Toast.makeText(getApplicationContext(), "Ordenes", Toast.LENGTH_SHORT).show();
-            abrirAdmProfesor();
+            Toast.makeText(getApplicationContext(), "Clientes", Toast.LENGTH_SHORT).show();
+            abrirAdmCliente();
         } else if (id == R.id.nav_categorias) {
             Toast.makeText(getApplicationContext(), "Categorias", Toast.LENGTH_SHORT).show();
-            abrirAdmCarrera();
+            abrirAdmCategoria();
         } else if (id == R.id.nav_logout) {
             Toast.makeText(getApplicationContext(), "Log Out", Toast.LENGTH_SHORT).show();
             abrirLogin();
@@ -192,8 +191,8 @@ public class NavDrawerActivity extends AppCompatActivity
         startActivity(a);
     }
 
-    public void abrirAdmCarrera() {
-        Intent intent = new Intent(this, AdmCarreraActivity.class);
+    public void abrirAdmCategoria() {
+        Intent intent = new Intent(this, AdmCategoriaActivity.class);
         startActivity(intent);
     }
 
@@ -202,13 +201,13 @@ public class NavDrawerActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-    public void abrirAdmProfesor() {
-        Intent intent = new Intent(this, AdmProfesorActivity.class);
+    public void abrirAdmCliente() {
+        Intent intent = new Intent(this, AdmClienteActivity.class);
         startActivity(intent);
     }
 
-    public void abrirAdmAlumno() {
-        Intent intent = new Intent(this, AdmAlumnoActivity.class);
+    public void abrirAdmVideoJuegos() {
+        Intent intent = new Intent(this, AdmVideoJuegoActivity.class);
         startActivity(intent);
     }
 

@@ -76,7 +76,7 @@ public class AddUpdProfesorActivity extends AppCompatActivity {
             Profesor prof = new Profesor(cedFld.getText().toString(), nomFld.getText().toString(),
                     emailFld.getText().toString(),
                     Integer.parseInt(telFld.getText().toString()));
-            Intent intent = new Intent(getBaseContext(), AdmProfesorActivity.class);
+            Intent intent = new Intent(getBaseContext(), AdmClienteActivity.class);
             //sending Profesor data
             intent.putExtra("addProfesor", prof);
             startActivity(intent);
@@ -89,7 +89,7 @@ public class AddUpdProfesorActivity extends AppCompatActivity {
             Profesor prof = new Profesor(cedFld.getText().toString(), nomFld.getText().toString(),
                     emailFld.getText().toString(),
                     Integer.parseInt(telFld.getText().toString()));
-            Intent intent = new Intent(getBaseContext(), AdmProfesorActivity.class);
+            Intent intent = new Intent(getBaseContext(), AdmClienteActivity.class);
             //sending Profesor data
             intent.putExtra("editProfesor", prof);
             startActivity(intent);

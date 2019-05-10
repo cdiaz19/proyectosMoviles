@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import com.example.lenovo.lab.LogicaNeg.Categoria;
 import com.example.lenovo.lab.LogicaNeg.Ciclo;
-import com.example.lenovo.lab.LogicaNeg.Curso;
 import com.example.lenovo.lab.LogicaNeg.Grupo;
 import com.example.lenovo.lab.AccesoDatos.ModelData;
 import com.example.lenovo.lab.R;
@@ -55,7 +54,7 @@ public class OfertaAcademicaActivity extends AppCompatActivity {
             if(sp_ciclos.getSelectedItem().toString().substring(0,1).equals("S"))
                 numero = "Segundo";
             Grupo gru = new Grupo(new Ciclo(año, numero), sp_cursos.getSelectedItem().toString(), "", "", "", null, null);
-            Intent intent = new Intent(getBaseContext(), AdmGrupoActivity.class);
+            Intent intent = new Intent(getBaseContext(), AdmVideoJuegoActivity.class);
             intent.putExtra("filtGrupo", gru);
             startActivity(intent);
         }

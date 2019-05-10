@@ -9,7 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.lenovo.lab.LogicaNeg.Curso;
+import com.example.lenovo.lab.LogicaNeg.Categoria;
+import com.example.lenovo.lab.LogicaNeg.VideoJuego;
 import com.example.lenovo.lab.R;
 
 public class AddUpdCursoActivity extends AppCompatActivity {
@@ -45,12 +46,10 @@ public class AddUpdCursoActivity extends AppCompatActivity {
 
             editable = extras.getBoolean("editable");
             if (editable) {   // is editing some row
-                Curso aux = (Curso) getIntent().getSerializableExtra("curso");
+                VideoJuego aux = (VideoJuego) getIntent().getSerializableExtra("curso");
                 codFld.setText(aux.getCodigo());
                 codFld.setEnabled(false);
                 nomFld.setText(aux.getNombre());
-                creditosFld.setText(Integer.toString(aux.getCreditos()));
-                horasFld.setText(Integer.toString(aux.getHoras()));
                 //edit action
                 fBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -73,9 +72,9 @@ public class AddUpdCursoActivity extends AppCompatActivity {
     public void addCurso() {
         if (validateForm()) {
             //do something
-            Curso cur = new Curso(codFld.getText().toString(), nomFld.getText().toString(),
-                    Integer.parseInt(creditosFld.getText().toString()),
-                    Integer.parseInt(horasFld.getText().toString()));
+
+            VideoJuego cur = new VideoJuego("VJ", nomFld.getText().toString(), Integer.parseInt(creditosFld.getText().toString()), "", 0
+                                            ,horasFld.getText().toString(), null);
             Intent intent = new Intent(getBaseContext(), AdmCursoActivity.class);
             //sending curso data
             intent.putExtra("addCurso", cur);
@@ -86,9 +85,8 @@ public class AddUpdCursoActivity extends AppCompatActivity {
 
     public void editCurso() {
         if (validateForm()) {
-            Curso cur = new Curso(codFld.getText().toString(), nomFld.getText().toString(),
-                    Integer.parseInt(creditosFld.getText().toString()),
-                    Integer.parseInt(horasFld.getText().toString()));
+            VideoJuego cur = new VideoJuego("VJ", nomFld.getText().toString(), Integer.parseInt(creditosFld.getText().toString()), "", 0
+                                            ,horasFld.getText().toString(), null);
             Intent intent = new Intent(getBaseContext(), AdmCursoActivity.class);
             //sending curso data
             intent.putExtra("editCurso", cur);

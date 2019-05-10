@@ -22,7 +22,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.lenovo.lab.LogicaNeg.Curso;
+import com.example.lenovo.lab.LogicaNeg.VideoJuego;
 import com.example.lenovo.lab.Adapter.CursoAdapter;
 import com.example.lenovo.lab.AccesoDatos.ModelData;
 import com.example.lenovo.lab.R;
@@ -35,7 +35,7 @@ public class AdmCursoActivity extends AppCompatActivity implements RecyclerItemT
 
     private RecyclerView mRecyclerView;
     private CursoAdapter mAdapter;
-    private List<Curso> cursoList;
+    private List<VideoJuego> videoJuegoList;
     private CoordinatorLayout coordinatorLayout;
     private SearchView searchView;
     private FloatingActionButton fab;
@@ -52,10 +52,10 @@ public class AdmCursoActivity extends AppCompatActivity implements RecyclerItemT
         getSupportActionBar().setTitle(getString(R.string.my_curso));
 
         mRecyclerView = findViewById(R.id.recycler_cursosFld);
-        cursoList = new ArrayList<>();
+        videoJuegoList = new ArrayList<>();
         model= new ModelData();
-        cursoList= model.getCursoList();
-        mAdapter = new CursoAdapter(cursoList, this);
+        videoJuegoList = model.getVideoJuegoList();
+        mAdapter = new CursoAdapter(videoJuegoList, this);
         coordinatorLayout = findViewById(R.id.coordinator_layoutC);
 
         // white background notification bar
@@ -95,7 +95,7 @@ public class AdmCursoActivity extends AppCompatActivity implements RecyclerItemT
         if (direction == ItemTouchHelper.START) {
             if (viewHolder instanceof CursoAdapter.MyViewHolder) {
                 // get the removed item name to display it in snack bar
-                String name = cursoList.get(viewHolder.getAdapterPosition()).getNombre();
+                String name = videoJuegoList.get(viewHolder.getAdapterPosition()).getNombre();
 
                 // save the index deleted
                 final int deletedIndex = viewHolder.getAdapterPosition();
@@ -116,7 +116,7 @@ public class AdmCursoActivity extends AppCompatActivity implements RecyclerItemT
             }
         } else {
             //If is editing a row object
-            Curso aux = mAdapter.getSwipedItem(viewHolder.getAdapterPosition());
+            VideoJuego aux = mAdapter.getSwipedItem(viewHolder.getAdapterPosition());
             //send data to Edit Activity
             Intent intent = new Intent(this, AddUpdCursoActivity.class);
             intent.putExtra("editable", true);
@@ -133,7 +133,7 @@ public class AdmCursoActivity extends AppCompatActivity implements RecyclerItemT
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds cursoList to the action bar if it is present.
+        // Inflate the menu; this adds videoJuegoList to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_search, menu);
 
         // Associate searchable configuration with the SearchView   !IMPORTANT
@@ -200,29 +200,35 @@ public class AdmCursoActivity extends AppCompatActivity implements RecyclerItemT
     }
 
     @Override
-    public void onContactSelected(Curso curso) { //TODO get the select item of recycleView
-        Toast.makeText(getApplicationContext(), "Selected: " + curso.getCodigo() + ", " + curso.getNombre(), Toast.LENGTH_LONG).show();
+    public void onContactSelected(VideoJuego videoJuego) { //TODO get the select item of recycleView
+        Toast.makeText(getApplicationContext(), "Selected: " + videoJuego.getCodigo() + ", " + videoJuego.getNombre(), Toast.LENGTH_LONG).show();
     }
 
     private void checkIntentInformation() {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            Curso aux;
-            aux = (Curso) getIntent().getSerializableExtra("addCurso");
+            VideoJuego aux;
+            aux = (VideoJuego) getIntent().getSerializableExtra("addCurso");
             if (aux == null) {
-                aux = (Curso) getIntent().getSerializableExtra("editCurso");
+                aux = (VideoJuego) getIntent().getSerializableExtra("editCurso");
                 if (aux != null) {
                     //found an item that can be updated
                     boolean founded = false;
-                    for (Curso curso : cursoList) {
-                        if (curso.getCodigo().equals(aux.getCodigo())) {
-                            curso.setNombre(aux.getNombre());
-                            curso.setCreditos(aux.getCreditos());
-                            curso.setHoras(aux.getHoras());
+                    for (VideoJuego videoJuego : videoJuegoList) {
+                        if (videoJuego.getCodigo().equals(aux.getCodigo())) {
+                            videoJuego.setNombre(aux.getNombre());
+                            videoJuego.setPrecio (aux.getPrecio());
+                            videoJuego.setRentor(aux.getRentor());
+                            videoJuego.setPlazo(aux.getPlazo());
+                            videoJuego.setRentor(aux.getRentor());
+                            videoJuego.setEmpresa(aux.getEmpresa());
+                            videoJuego.setCategoria(aux.getCategoria());
+
                             founded = true;
                             break;
                         }
                     }
+
                     //check if exist
                     if (founded) {
                         Toast.makeText(getApplicationContext(), aux.getNombre() + " editado correctamente", Toast.LENGTH_LONG).show();
@@ -231,8 +237,8 @@ public class AdmCursoActivity extends AppCompatActivity implements RecyclerItemT
                     }
                 }
             } else {
-                //found a new Curso Object
-                cursoList.add(aux);
+                //found a new VideoJuego Object
+                videoJuegoList.add(aux);
                 Toast.makeText(getApplicationContext(), aux.getNombre() + " agregado correctamente", Toast.LENGTH_LONG).show();
             }
         }

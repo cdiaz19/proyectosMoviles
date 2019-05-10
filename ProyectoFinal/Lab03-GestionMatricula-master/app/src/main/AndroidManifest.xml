@@ -34,7 +34,7 @@
 
         <!-- ######################### Categoria ######################### -->
         <activity
-            android:name=".Activity.AdmCarreraActivity"
+            android:name=".Activity.AdmCategoriaActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.app.searchable"
@@ -48,7 +48,7 @@
             android:name=".Activity.AddUpdCategoryActivity"
             android:label="@string/my_carrera" />
 
-        <!-- ########################## Curso ########################## -->
+        <!-- ########################## VideoJuego ########################## -->
         <activity
             android:name=".Activity.AdmCursoActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -62,7 +62,7 @@
 
         <!-- ########################## Profesor ########################## -->
         <activity
-            android:name=".Activity.AdmProfesorActivity"
+            android:name=".Activity.AdmClienteActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
@@ -96,21 +96,21 @@
             android:name=".Activity.AddUpdCicloActivity"
             android:label="@string/my_ciclo" />
 
-        <!-- ########################## Grupo ########################## -->
+        <!-- ########################## VideoJuegos ########################## -->
         <activity
-            android:name=".Activity.AdmGrupoActivity"
+            android:name=".Activity.AdmVideoJuegoActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activity.AddUpdGrupoActivity"
-            android:label="@string/my_grupo" />
+            android:name=".Activity.AddUpdVideoJuegoActivity"
+            android:label="VideoJuego" />
         <activity
             android:name=".Activity.OfertaAcademicaActivity"
-            android:label="@string/ofertaAcademica" />
-        <!-- ########################## Grupo ########################## -->
+            android:label="VideoJuegos" />
+        <!-- ########################## VideoJuegos ########################## -->
         <activity
             android:name=".Activity.AdmSeguridadActivity"
             android:theme="@style/AppTheme.NoActionBar">

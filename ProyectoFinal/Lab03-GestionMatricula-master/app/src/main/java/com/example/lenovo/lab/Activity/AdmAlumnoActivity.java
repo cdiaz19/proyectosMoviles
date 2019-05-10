@@ -23,9 +23,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.lenovo.lab.Adapter.VideoJuegoAdapter;
 import com.example.lenovo.lab.LogicaNeg.Cliente;
 import com.example.lenovo.lab.Adapter.ClienteAdapter;
 import com.example.lenovo.lab.AccesoDatos.ModelData;
+import com.example.lenovo.lab.LogicaNeg.VideoJuego;
 import com.example.lenovo.lab.R;
 import com.example.lenovo.lab.Helper.RecyclerItemTouchHelper;
 
@@ -36,7 +38,7 @@ public class AdmAlumnoActivity extends AppCompatActivity implements RecyclerItem
 
     private RecyclerView mRecyclerView;
     private ClienteAdapter mAdapter;
-    private List<Cliente> clienteList;
+    private List<VideoJuego> clienteList;
     private CoordinatorLayout coordinatorLayout;
     private SearchView searchView;
     private FloatingActionButton fab;
@@ -50,13 +52,13 @@ public class AdmAlumnoActivity extends AppCompatActivity implements RecyclerItem
         setSupportActionBar(toolbar);
 
         //toolbar fancy stuff
-        getSupportActionBar().setTitle(getString(R.string.my_alumno));
+        getSupportActionBar().setTitle("VideoJuegos");
 
         mRecyclerView = findViewById(R.id.recycler_alumnoFld);
         clienteList = new ArrayList<>();
         model = new ModelData();
-        clienteList = model.getClienteList();
-        mAdapter = new ClienteAdapter(clienteList, this);
+        clienteList = model.getVideoJuegoList();
+//        mAdapter = new VideoJuegoAdapter(clienteList, this);
         coordinatorLayout = findViewById(R.id.coordinator_layoutA);
 
         // white background notification bar
@@ -235,18 +237,18 @@ public class AdmAlumnoActivity extends AppCompatActivity implements RecyclerItem
     private void checkIntentInformation() {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            Cliente aux;
-            aux = (Cliente) getIntent().getSerializableExtra("addalumno");
+            VideoJuego aux;
+            aux = (VideoJuego) getIntent().getSerializableExtra("addalumno");
             if (aux == null) {
-                aux = (Cliente) getIntent().getSerializableExtra("editalumno");
+                aux = (VideoJuego) getIntent().getSerializableExtra("editalumno");
                 if (aux != null) {
                     //found an item that can be updated
                     boolean founded = false;
-                    for (Cliente cliente : clienteList) {
-                        if (cliente.getCedula().equals(aux.getCedula())) {
+                    for (VideoJuego cliente : clienteList) {
+                        if (cliente.getCodigo().equals(aux.getCodigo())) {
                             cliente.setNombre(aux.getNombre());
-                            cliente.setEmail(aux.getEmail());
-                            cliente.setTelefono(aux.getTelefono());
+                            cliente.setEmpresa(aux.getEmpresa());
+                            cliente.setPrecio(aux.getPrecio());
                             founded = true;
                             break;
                         }

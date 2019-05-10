@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d2014822-cae2-481c-a6a5-d0346492ab14" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab03-GestionMatricula-master/app/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab03-GestionMatricula-master/app/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/app/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/app/proguard-rules.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/app/src/androidTest/java/com/example/constraintlayout/ExampleInstrumentedTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/app/src/main/java/com/example/constraintlayout/MainActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/app/src/test/java/com/example/constraintlayout/ExampleUnitTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Laboratorio5&amp;6/Ejemplos/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Matricula-CRUD.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Matricula-CRUD.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab03-GestionMatricula-master/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Lab03-GestionMatricula-master/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ProyectoFinal/Lab03-GestionMatricula-master/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ProyectoFinal/Lab03-GestionMatricula-master/.idea/misc.xml" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="1885407945">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.0" value="2" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1680" />
+    <option name="height" value="985" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Matricula-CRUD" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Matricula-CRUD" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Matricula-CRUD" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Matricula-CRUD" type="462c0819:PsiDirectoryNode" />
+              <item name="Lab03-GestionMatricula-master" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Matricula-CRUD" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Matricula-CRUD" type="462c0819:PsiDirectoryNode" />
+              <item name="Lab03-GestionMatricula-master" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Matricula-CRUD" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Matricula-CRUD" type="462c0819:PsiDirectoryNode" />
+              <item name="Lab03-GestionMatricula-master" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+    </panes>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="/Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&amp;6/Matricula-CRUD/Lab03-GestionMatricula-master/app/build.gradle" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Lab03-GestionMatricula-master/app/build.gradle" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle./Users/cdiaz/Desktop/Personal/moviles/proyectosMoviles/Lab5&amp;6/Matricula-CRUD/Lab03-GestionMatricula-master/app/build.gradle" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d2014822-cae2-481c-a6a5-d0346492ab14" name="Default Changelist" comment="" />
+      <created>1557498215797</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1557498215797</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1680" height="985" extended-state="6" />
+    <layout>
+      <window_info id="Build Variants" side_tool="true" />
+      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.33394384" />
+      <window_info id="Structure" order="2" side_tool="true" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Android Profiler" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Logcat" />
+      <window_info anchor="bottom" id="Run" order="0" weight="0.32922733" />
+      <window_info anchor="bottom" id="TODO" order="1" />
+      <window_info anchor="bottom" id="Debug" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="5" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Messages" order="6" />
+      <window_info anchor="right" id="Device File Explorer" side_tool="true" />
+      <window_info anchor="right" id="Capture Analysis" order="0" />
+      <window_info anchor="right" id="Theme Preview" order="1" />
+      <window_info anchor="right" id="Palette&#9;" order="2" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+</project>
