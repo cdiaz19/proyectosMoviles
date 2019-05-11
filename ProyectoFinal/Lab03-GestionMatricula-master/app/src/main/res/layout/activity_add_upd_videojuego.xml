@@ -26,11 +26,39 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/cicloAddUpdGru"
+            android:id="@+id/cicloAddUpdGru"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Codigo de Categoria"
+            android:inputType="textPersonName" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/nomCatAddUpdGru"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Categoria"
+                android:hint="Nombre de la Categoria"
+                android:inputType="textPersonName" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/catVJAddUpdGru"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Categoria VideoJuego"
                 android:inputType="textPersonName" />
         </android.support.design.widget.TextInputLayout>
 

@@ -84,16 +84,16 @@
             android:name=".Activity.AddUpdClienteActivity"
             android:label="@string/my_alumno" />
 
-        <!-- ########################## Ciclo ########################## -->
+        <!-- ########################## Pedido ########################## -->
         <activity
-            android:name=".Activity.AdmCicloActivity"
+            android:name=".Activity.AdmPedidoActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activity.AddUpdCicloActivity"
+            android:name=".Activity.AddUpdPedidoActivity"
             android:label="@string/my_ciclo" />
 
         <!-- ########################## VideoJuegos ########################## -->

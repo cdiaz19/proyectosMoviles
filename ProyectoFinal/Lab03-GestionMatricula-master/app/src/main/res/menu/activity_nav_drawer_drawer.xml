@@ -44,15 +44,10 @@
                 android:icon="@drawable/ic_menu_listas"
                 android:title="Clientes" />
             <item
-                android:id="@+id/nav_pedidos"
-                android:enabled="false"
-                android:icon="@drawable/ic_menu_listas"
-                android:title="Pedidos" />
-            <item
                 android:id="@+id/nav_usuarios"
                 android:enabled="false"
                 android:icon="@drawable/ic_menu_listas"
-                android:title="Usuarios" />
+                android:title="Pedidos" />
             <item
                 android:id="@+id/nav_seguridad"
                 android:enabled="false"

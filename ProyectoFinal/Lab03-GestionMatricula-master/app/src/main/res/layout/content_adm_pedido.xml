@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_adm_ciclo"
-    tools:context="com.example.lenovo.lab.Activity.AdmCicloActivity">
+    tools:showIn="@layout/activity_adm_pedido"
+    tools:context="com.example.lenovo.lab.Activity.AdmPedidoActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_cicloFld"

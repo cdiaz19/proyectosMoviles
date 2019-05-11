@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.lenovo.lab.Activity.AddUpdCicloActivity">
+    tools:context="com.example.lenovo.lab.Activity.AddUpdPedidoActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,8 +30,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/añoAddUpdCi"
-                android:inputType="textPersonName" />
+                android:hint="Cantidad"
+                android:inputType="phone" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -43,7 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/numeroAddUpdCi"
+                android:hint="Nombre Video Juego"
                 android:inputType="textPersonName" />
         </android.support.design.widget.TextInputLayout>
 
@@ -56,8 +56,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/finicioAddUpdCi"
-                android:inputType="phone" />
+                android:hint="Nombre del Rentor"
+                android:inputType="textPersonName" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -69,7 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/ffinalAddUpdCi"
+                android:hint="Precio Total"
                 android:inputType="phone" />
         </android.support.design.widget.TextInputLayout>
 

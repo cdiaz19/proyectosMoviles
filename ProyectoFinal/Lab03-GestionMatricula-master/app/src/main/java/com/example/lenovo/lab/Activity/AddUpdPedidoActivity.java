@@ -9,10 +9,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.lenovo.lab.LogicaNeg.Ciclo;
+import com.example.lenovo.lab.LogicaNeg.Pedido;
 import com.example.lenovo.lab.R;
 
-public class AddUpdCicloActivity extends AppCompatActivity {
+public class AddUpdPedidoActivity extends AppCompatActivity {
     private FloatingActionButton fBtn;
     private boolean editable = true;
     private EditText añoFld;
@@ -23,7 +23,7 @@ public class AddUpdCicloActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_upd_ciclo);
+        setContentView(R.layout.activity_add_upd_pedido);
         editable = true;
 
         // button check
@@ -45,17 +45,16 @@ public class AddUpdCicloActivity extends AppCompatActivity {
 
             editable = extras.getBoolean("editable");
             if (editable) {   // is editing some row
-                Ciclo aux = (Ciclo) getIntent().getSerializableExtra("ciclo");
-                añoFld.setText(Integer.toString(aux.getAño()));
-                añoFld.setEnabled(false);
-                numFld.setText(aux.getNumero());
-                iniFld.setText(aux.getFinicio());
-                finFld.setText(aux.getFfinal());
+                Pedido aux = (Pedido) getIntent().getSerializableExtra("ciclo");
+                añoFld.setText(Integer.toString(aux.getCantidad()));
+                numFld.setText(aux.getNombre());
+                iniFld.setText(aux.getPrecio());
+                finFld.setText(aux.getRentor());
                 //edit action
                 fBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        editCiclo();
+                        editPedido();
                     }
                 });
             } else {         // is adding new Categoria object
@@ -63,32 +62,32 @@ public class AddUpdCicloActivity extends AppCompatActivity {
                 fBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        addCiclo();
+                        addPedido();
                     }
                 });
             }
         }
     }
 
-    public void addCiclo() {
+    public void addPedido() {
         if (validateForm()) {
             //do something
-            Ciclo prof = new Ciclo(Integer.parseInt(añoFld.getText().toString()), numFld.getText().toString(),
+            Pedido prof = new Pedido(Integer.parseInt(añoFld.getText().toString()), numFld.getText().toString(),
                     iniFld.getText().toString(),finFld.getText().toString());
-            Intent intent = new Intent(getBaseContext(), AdmCicloActivity.class);
-            //sending Ciclo data
+            Intent intent = new Intent(getBaseContext(), AdmPedidoActivity.class);
+            //sending Pedido data
             intent.putExtra("addciclo", prof);
             startActivity(intent);
             finish(); //prevent go back
         }
     }
 
-    public void editCiclo() {
+    public void editPedido() {
         if (validateForm()) {
-            Ciclo prof = new Ciclo(Integer.parseInt(añoFld.getText().toString()), numFld.getText().toString(),
+            Pedido prof = new Pedido(Integer.parseInt(añoFld.getText().toString()), numFld.getText().toString(),
                     iniFld.getText().toString(),finFld.getText().toString());
-            Intent intent = new Intent(getBaseContext(), AdmCicloActivity.class);
-            //sending Ciclo data
+            Intent intent = new Intent(getBaseContext(), AdmPedidoActivity.class);
+            //sending Pedido data
             intent.putExtra("editciclo", prof);
             startActivity(intent);
             finish(); //prevent go back
@@ -98,19 +97,19 @@ public class AddUpdCicloActivity extends AppCompatActivity {
     public boolean validateForm() {
         int error = 0;
         if (TextUtils.isEmpty(this.añoFld.getText())) {
-            añoFld.setError("Año requerido");
+            añoFld.setError("Es requerido");
             error++;
         }
         if (TextUtils.isEmpty(this.numFld.getText())) {
-            numFld.setError("Numero requerida");
+            numFld.setError("Es requerida");
             error++;
         }
         if (TextUtils.isEmpty(this.iniFld.getText())) {
-            iniFld.setError("Inicio requerido");
+            iniFld.setError("Es requerido");
             error++;
         }
         if (TextUtils.isEmpty(this.finFld.getText())) {
-            finFld.setError("Final requerido");
+            finFld.setError("Es requerido");
             error++;
         }
         if (error > 0) {

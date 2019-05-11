@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.lenovo.lab.LogicaNeg.Ciclo;
+import com.example.lenovo.lab.LogicaNeg.Pedido;
 import com.example.lenovo.lab.LogicaNeg.Grupo;
 import com.example.lenovo.lab.AccesoDatos.ModelData;
 import com.example.lenovo.lab.R;
@@ -53,12 +53,12 @@ public class HistorialActivity extends AppCompatActivity {
     }
 
     private void searchNotas() {
-        Ciclo filter = new Ciclo(Integer.parseInt(annioSpinner.getSelectedItem().toString()), cicloSpinner.getSelectedItem().toString());
+        Pedido filter = new Pedido(Integer.parseInt(annioSpinner.getSelectedItem().toString()), cicloSpinner.getSelectedItem().toString());
         model = new ModelData();
         grupos = model.getGrupoList(); //retrieve data again
         Iterator<Grupo> it = grupos.iterator();
         while (it.hasNext()) {
-            if (!it.next().getCiclo().equals(filter)) {
+            if (!it.next().getPedido().equals(filter)) {
                 it.remove();
             }
         }
@@ -70,16 +70,16 @@ public class HistorialActivity extends AppCompatActivity {
     }
 
     private void initSpinners() {
-        ArrayList<Ciclo> ciclos = new ArrayList<>();
+        ArrayList<Pedido> pedidos = new ArrayList<>();
         for (Grupo aux : grupos) {
-            ciclos.add(aux.getCiclo());
+            pedidos.add(aux.getPedido());
         }
         ArrayList<String> anniosList = new ArrayList<>(), ciclosList = new ArrayList<>();
         ciclosList.add("Primer");
         ciclosList.add("Segundo");
 
-        for (Ciclo aux : ciclos) {
-            anniosList.add(aux.getAño() + "");
+        for (Pedido aux : pedidos) {
+            anniosList.add(aux.getCantidad() + "");
         }
         Set<String> set = new HashSet<String>(anniosList);
         anniosList = new ArrayList<String>();

@@ -23,7 +23,7 @@
             android:id="@+id/carreraTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/txtViewCarrera" />
+            android:text="Categorias" />
 
         <Spinner
             android:id="@+id/sp_carreras"

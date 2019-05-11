@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 public class Grupo implements Serializable {
 
-    public Grupo(Ciclo ciclo, String curso, String numero, String horario, String profesor, ArrayList<String> estudiantes, ArrayList<Double> notas) {
-        this.ciclo = ciclo;
+    public Grupo(Pedido pedido, String curso, String numero, String horario, String profesor, ArrayList<String> estudiantes, ArrayList<Double> notas) {
+        this.pedido = pedido;
         this.curso = curso;
         this.numero = numero;
         this.horario = horario;
@@ -20,7 +20,7 @@ public class Grupo implements Serializable {
     }
 
     public Grupo() {
-        this.ciclo = null;
+        this.pedido = null;
         this.curso = "";
         this.numero = "";
         this.horario = "";
@@ -29,12 +29,12 @@ public class Grupo implements Serializable {
         this.notas = null;
     }
 
-    public Ciclo getCiclo() {
-        return ciclo;
+    public Pedido getPedido() {
+        return pedido;
     }
 
-    public void setCiclo(Ciclo ciclo) {
-        this.ciclo = ciclo;
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
     }
 
     public String getCurso() {
@@ -94,7 +94,7 @@ public class Grupo implements Serializable {
         return numero + " - " + curso;
         /*
         return "Grupo{" +
-                "ciclo=" + ciclo +
+                "pedido=" + pedido +
                 ", curso='" + curso + '\'' +
                 ", numero='" + numero + '\'' +
                 ", horario='" + horario + '\'' +
@@ -129,7 +129,7 @@ public class Grupo implements Serializable {
         return "0";
     }
 
-    private Ciclo ciclo;
+    private Pedido pedido;
     private String curso;
     private String numero;
     private String horario;

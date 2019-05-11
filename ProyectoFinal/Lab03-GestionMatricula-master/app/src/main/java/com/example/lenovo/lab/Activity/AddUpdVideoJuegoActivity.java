@@ -18,10 +18,12 @@ public class AddUpdVideoJuegoActivity extends AppCompatActivity {
     private FloatingActionButton fBtn;
     private boolean editable;
     private EditText cicFld;
+    private EditText nomFld;
+    private EditText catVJFld;
     private EditText curFld;
     private EditText numFld;
     private EditText proFld;
-    private Categoria critFiltG;
+    private VideoJuego critFiltG;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,8 @@ public class AddUpdVideoJuegoActivity extends AppCompatActivity {
 
         //cleaning stuff
         cicFld = findViewById(R.id.cicloAddUpdGru);
+        nomFld = findViewById(R.id.nomCatAddUpdGru);
+        catVJFld = findViewById(R.id.catVJAddUpdGru);
         curFld = findViewById(R.id.cursoAddUpdGru);
         numFld = findViewById(R.id.numeroAddUpdGru);
         proFld = findViewById(R.id.profesorAddUpdGru);
@@ -41,10 +45,8 @@ public class AddUpdVideoJuegoActivity extends AppCompatActivity {
         //receiving data from admGrupoActivity
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            critFiltG = (Categoria) getIntent().getSerializableExtra("filtGrupo");
+            critFiltG = (VideoJuego) getIntent().getSerializableExtra("filtGrupo");
             editable = extras.getBoolean("editable");
-            System.out.print("========");
-            System.out.print(editable);
             if (editable) {   // is editing some row
                 VideoJuego aux = (VideoJuego) getIntent().getSerializableExtra("grupo");
                 cicFld.setText(aux.getCategoria().toString());
@@ -75,22 +77,15 @@ public class AddUpdVideoJuegoActivity extends AppCompatActivity {
 
     public void addVideoJuego() {
         if (validateForm()) {
-            Toast.makeText(getApplicationContext(), "foooo", Toast.LENGTH_LONG).show();
             //do something
             String largoC = cicFld.getText().toString();
-            VideoJuego gru = new VideoJuego("NEX", "Asdasd",
-                    21312, "", 0, "Asdasdas", new Categoria("NEX", "asdsada"));
-
-
-            // FALTAAAA
-            
-//            VideoJuego gru = new VideoJuego("NEX", curFld.getText().toString(),
-//                    Integer.parseInt(numFld.getText().toString()), "", 0, proFld.getText().toString(), new Categoria("NEX", largoC));
+            String nombre = nomFld.getText().toString();
+            VideoJuego gru = new VideoJuego(catVJFld.getText().toString(), curFld.getText().toString(),
+                    Integer.parseInt(numFld.getText().toString()), "", 0, proFld.getText().toString(), new Categoria(largoC, nombre));
             Toast.makeText(getApplicationContext(), gru.getNombre(), Toast.LENGTH_LONG).show();
             Intent intent = new Intent(getBaseContext(), AdmVideoJuegoActivity.class);
-            //sending VideoJuego data
-            intent.putExtra("addVideoJuego", gru);
-            intent.putExtra("filtGrupo", critFiltG);
+            //sending carrera data
+            intent.putExtra("addCarrera", gru);
             startActivity(intent);
             finish(); //prevent go back
         }
@@ -98,11 +93,14 @@ public class AddUpdVideoJuegoActivity extends AppCompatActivity {
 
     public void editVideoJuego() {
         if (validateForm()) {
-            VideoJuego gru = new VideoJuego("NEXT!", curFld.getText().toString(),
-                    Integer.parseInt(numFld.getText().toString()),"" , 0, proFld.getText().toString(), new Categoria("", cicFld.getText().toString()));
+            String largoC = cicFld.getText().toString();
+            String nombre = nomFld.getText().toString();
+            VideoJuego gru = new VideoJuego(catVJFld.getText().toString(), curFld.getText().toString(),
+                    Integer.parseInt(numFld.getText().toString()), "", 0, proFld.getText().toString(), new Categoria(largoC, nombre));
+            Toast.makeText(getApplicationContext(), gru.getNombre(), Toast.LENGTH_LONG).show();
             Intent intent = new Intent(getBaseContext(), AdmVideoJuegoActivity.class);
             //sending curso data
-            intent.putExtra("editVideoJuego", gru);
+            intent.putExtra("editGrupo", gru);
             intent.putExtra("filtGrupo", critFiltG);
             startActivity(intent);
             finish(); //prevent go back

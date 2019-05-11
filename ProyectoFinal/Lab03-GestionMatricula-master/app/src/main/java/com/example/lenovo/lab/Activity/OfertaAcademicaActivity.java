@@ -11,9 +11,10 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.lenovo.lab.LogicaNeg.Categoria;
-import com.example.lenovo.lab.LogicaNeg.Ciclo;
+import com.example.lenovo.lab.LogicaNeg.Pedido;
 import com.example.lenovo.lab.LogicaNeg.Grupo;
 import com.example.lenovo.lab.AccesoDatos.ModelData;
+import com.example.lenovo.lab.LogicaNeg.VideoJuego;
 import com.example.lenovo.lab.R;
 
 public class OfertaAcademicaActivity extends AppCompatActivity {
@@ -23,7 +24,7 @@ public class OfertaAcademicaActivity extends AppCompatActivity {
     private Spinner sp_cursos;
     private FloatingActionButton fAB;
     private ModelData model;
-    private int cantCursos = 0;
+    private int cantCursos = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,15 +46,13 @@ public class OfertaAcademicaActivity extends AppCompatActivity {
     }
 
     public void goToGrupos() {
+        int cantCursos =  model.getCategoriaList().size();
+
         if (cantCursos < 1) {
             Toast.makeText(getApplicationContext(), "No hay cursos en esta carrera", Toast.LENGTH_SHORT).show();
         } else {                      // TODO change this
-            int largo = sp_ciclos.getSelectedItem().toString().length();
-            int año = Integer.parseInt(sp_ciclos.getSelectedItem().toString().substring(largo-4, largo));
-            String numero = "Primer";
-            if(sp_ciclos.getSelectedItem().toString().substring(0,1).equals("S"))
-                numero = "Segundo";
-            Grupo gru = new Grupo(new Ciclo(año, numero), sp_cursos.getSelectedItem().toString(), "", "", "", null, null);
+            String largo = sp_carreras.getSelectedItem().toString();
+            VideoJuego gru = new VideoJuego(sp_cursos.getSelectedItem().toString(), "", 0, "", 0, null, new Categoria("aa", largo));
             Intent intent = new Intent(getBaseContext(), AdmVideoJuegoActivity.class);
             intent.putExtra("filtGrupo", gru);
             startActivity(intent);

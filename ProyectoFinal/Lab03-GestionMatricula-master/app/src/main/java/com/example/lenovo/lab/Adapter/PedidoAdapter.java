@@ -9,7 +9,7 @@ import android.widget.Filterable;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.lenovo.lab.LogicaNeg.Ciclo;
+import com.example.lenovo.lab.LogicaNeg.Pedido;
 import com.example.lenovo.lab.R;
 
 import java.util.ArrayList;
@@ -21,11 +21,11 @@ import java.util.List;
  * Created by User on 21/03/2018.
  */
 
-public class CicloAdapter extends RecyclerView.Adapter<CicloAdapter.MyViewHolder> implements Filterable {
-    private List<Ciclo> cicloList;
-    private List<Ciclo> cicloListFiltered;
+public class PedidoAdapter extends RecyclerView.Adapter<PedidoAdapter.MyViewHolder> implements Filterable {
+    private List<Pedido> pedidoList;
+    private List<Pedido> pedidoListFiltered;
     private CicloAdapterListener listener;
-    private Ciclo deletedItem;
+    private Pedido deletedItem;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView titulo1, titulo2, description;
@@ -45,21 +45,21 @@ public class CicloAdapter extends RecyclerView.Adapter<CicloAdapter.MyViewHolder
                 @Override
                 public void onClick(View view) {
                     // send selected contact in callback
-                    listener.onContactSelected(cicloListFiltered.get(getAdapterPosition()));
+                    listener.onContactSelected(pedidoListFiltered.get(getAdapterPosition()));
                 }
             });
         }
     }
 
-    public CicloAdapter(List<Ciclo> cicloList, CicloAdapterListener listener) {
-        this.cicloList = cicloList;
+    public PedidoAdapter(List<Pedido> pedidoList, CicloAdapterListener listener) {
+        this.pedidoList = pedidoList;
         this.listener = listener;
         //init filter
-        this.cicloListFiltered = cicloList;
+        this.pedidoListFiltered = pedidoList;
     }
 
     @Override
-    public CicloAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public PedidoAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_list_row, parent, false);
 
@@ -67,24 +67,24 @@ public class CicloAdapter extends RecyclerView.Adapter<CicloAdapter.MyViewHolder
     }
 
     @Override
-    public void onBindViewHolder(CicloAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(PedidoAdapter.MyViewHolder holder, int position) {
         // rendering view
-        final Ciclo ciclo = cicloListFiltered.get(position);
-        holder.titulo1.setText(ciclo.getAño() + "");
-        holder.titulo2.setText(ciclo.getNumero());
-        holder.description.setText(ciclo.getFinicio() + " - " + ciclo.getFfinal());
+        final Pedido pedido = pedidoListFiltered.get(position);
+        holder.titulo1.setText(pedido.getNombre() + "");
+        holder.titulo2.setText(String.valueOf(pedido.getCantidad()));
+        holder.description.setText(pedido.getRentor() + " - " + pedido.getPrecio());
     }
 
     @Override
     public int getItemCount() {
-        return cicloListFiltered.size();
+        return pedidoListFiltered.size();
     }
 
     public void removeItem(int position) {
-        deletedItem = cicloListFiltered.remove(position);
-        Iterator<Ciclo> iter = cicloList.iterator();
+        deletedItem = pedidoListFiltered.remove(position);
+        Iterator<Pedido> iter = pedidoList.iterator();
         while (iter.hasNext()) {
-            Ciclo aux = iter.next();
+            Pedido aux = iter.next();
             if (deletedItem.equals(aux))
                 iter.remove();
         }
@@ -94,44 +94,44 @@ public class CicloAdapter extends RecyclerView.Adapter<CicloAdapter.MyViewHolder
 
     public void restoreItem(int position) {
 
-        if (cicloListFiltered.size() == cicloList.size()) {
-            cicloListFiltered.add(position, deletedItem);
+        if (pedidoListFiltered.size() == pedidoList.size()) {
+            pedidoListFiltered.add(position, deletedItem);
         } else {
-            cicloListFiltered.add(position, deletedItem);
-            cicloList.add(deletedItem);
+            pedidoListFiltered.add(position, deletedItem);
+            pedidoList.add(deletedItem);
         }
         notifyDataSetChanged();
         // notify item added by position
         notifyItemInserted(position);
     }
 
-    public Ciclo getSwipedItem(int index) {
-        if (this.cicloList.size() == this.cicloListFiltered.size()) { //not filtered yet
-            return cicloList.get(index);
+    public Pedido getSwipedItem(int index) {
+        if (this.pedidoList.size() == this.pedidoListFiltered.size()) { //not filtered yet
+            return pedidoList.get(index);
         } else {
-            return cicloListFiltered.get(index);
+            return pedidoListFiltered.get(index);
         }
     }
 
     public void onItemMove(int fromPosition, int toPosition) {
-        if (cicloList.size() == cicloListFiltered.size()) { // without filter
+        if (pedidoList.size() == pedidoListFiltered.size()) { // without filter
             if (fromPosition < toPosition) {
                 for (int i = fromPosition; i < toPosition; i++) {
-                    Collections.swap(cicloList, i, i + 1);
+                    Collections.swap(pedidoList, i, i + 1);
                 }
             } else {
                 for (int i = fromPosition; i > toPosition; i--) {
-                    Collections.swap(cicloList, i, i - 1);
+                    Collections.swap(pedidoList, i, i - 1);
                 }
             }
         } else {
             if (fromPosition < toPosition) {
                 for (int i = fromPosition; i < toPosition; i++) {
-                    Collections.swap(cicloListFiltered, i, i + 1);
+                    Collections.swap(pedidoListFiltered, i, i + 1);
                 }
             } else {
                 for (int i = fromPosition; i > toPosition; i--) {
-                    Collections.swap(cicloListFiltered, i, i - 1);
+                    Collections.swap(pedidoListFiltered, i, i - 1);
                 }
             }
         }
@@ -145,32 +145,32 @@ public class CicloAdapter extends RecyclerView.Adapter<CicloAdapter.MyViewHolder
             protected FilterResults performFiltering(CharSequence charSequence) {
                 String charString = charSequence.toString();
                 if (charString.isEmpty()) {
-                    cicloListFiltered = cicloList;
+                    pedidoListFiltered = pedidoList;
                 } else {
-                    List<Ciclo> filteredList = new ArrayList<>();
-                    for (Ciclo row : cicloList) {
+                    List<Pedido> filteredList = new ArrayList<>();
+                    for (Pedido row : pedidoList) {
                         // filter use two parameters
-                        if (Integer.toString(row.getAño()).contains(charString)) {
+                        if (row.getNombre().contains(charString)) {
                             filteredList.add(row);
                         }
                     }
-                    cicloListFiltered = filteredList;
+                    pedidoListFiltered = filteredList;
                 }
 
                 FilterResults filterResults = new FilterResults();
-                filterResults.values = cicloListFiltered;
+                filterResults.values = pedidoListFiltered;
                 return filterResults;
             }
 
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                cicloListFiltered = (ArrayList<Ciclo>) filterResults.values;
+                pedidoListFiltered = (ArrayList<Pedido>) filterResults.values;
                 notifyDataSetChanged();
             }
         };
     }
 
     public interface CicloAdapterListener {
-        void onContactSelected(Ciclo ciclo);
+        void onContactSelected(Pedido pedido);
     }
 }

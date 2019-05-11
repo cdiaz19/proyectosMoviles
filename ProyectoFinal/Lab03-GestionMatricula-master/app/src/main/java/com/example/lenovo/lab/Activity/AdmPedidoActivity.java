@@ -22,8 +22,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.lenovo.lab.LogicaNeg.Ciclo;
-import com.example.lenovo.lab.Adapter.CicloAdapter;
+import com.example.lenovo.lab.LogicaNeg.Pedido;
+import com.example.lenovo.lab.Adapter.PedidoAdapter;
 import com.example.lenovo.lab.AccesoDatos.ModelData;
 import com.example.lenovo.lab.R;
 import com.example.lenovo.lab.Helper.RecyclerItemTouchHelper;
@@ -31,11 +31,11 @@ import com.example.lenovo.lab.Helper.RecyclerItemTouchHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdmCicloActivity extends AppCompatActivity implements RecyclerItemTouchHelper.RecyclerItemTouchHelperListener, CicloAdapter.CicloAdapterListener {
+public class AdmPedidoActivity extends AppCompatActivity implements RecyclerItemTouchHelper.RecyclerItemTouchHelperListener, PedidoAdapter.CicloAdapterListener {
 
     private RecyclerView mRecyclerView;
-    private CicloAdapter mAdapter;
-    private List<Ciclo> cicloList;
+    private PedidoAdapter mAdapter;
+    private List<Pedido> pedidoList;
     private CoordinatorLayout coordinatorLayout;
     private SearchView searchView;
     private FloatingActionButton fab;
@@ -44,7 +44,7 @@ public class AdmCicloActivity extends AppCompatActivity implements RecyclerItemT
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_adm_ciclo);
+        setContentView(R.layout.activity_adm_pedido);
         Toolbar toolbar = findViewById(R.id.toolbarCi);
         setSupportActionBar(toolbar);
 
@@ -52,10 +52,10 @@ public class AdmCicloActivity extends AppCompatActivity implements RecyclerItemT
         getSupportActionBar().setTitle(getString(R.string.my_ciclo));
 
         mRecyclerView = findViewById(R.id.recycler_cicloFld);
-        cicloList = new ArrayList<>();
+        pedidoList = new ArrayList<>();
         model = new ModelData();
-        cicloList = model.getCicloList();
-        mAdapter = new CicloAdapter(cicloList, this);
+        pedidoList = model.getPedidoList();
+        mAdapter = new PedidoAdapter(pedidoList, this);
         coordinatorLayout = findViewById(R.id.coordinator_layoutCi);
 
         // white background notification bar
@@ -93,9 +93,9 @@ public class AdmCicloActivity extends AppCompatActivity implements RecyclerItemT
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position) {
         if (direction == ItemTouchHelper.START) {
-            if (viewHolder instanceof CicloAdapter.MyViewHolder) {
+            if (viewHolder instanceof PedidoAdapter.MyViewHolder) {
                 // get the removed item name to display it in snack bar
-                int name = cicloList.get(viewHolder.getAdapterPosition()).getAño();
+                String name = pedidoList.get(viewHolder.getAdapterPosition()).getNombre();
 
                 // save the index deleted
                 final int deletedIndex = viewHolder.getAdapterPosition();
@@ -104,10 +104,10 @@ public class AdmCicloActivity extends AppCompatActivity implements RecyclerItemT
 
                 // showing snack bar with Undo option
                 Snackbar snackbar = Snackbar.make(coordinatorLayout, name + " removido!", Snackbar.LENGTH_LONG);
-                snackbar.setAction("UNDO", new View.OnClickListener() {
+                snackbar.setAction("Deshacer", new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        // undo is selected, restore the deleted item from adapter
+                        // Deshacer is selected, restore the deleted item from adapter
                         mAdapter.restoreItem(deletedIndex);
                     }
                 });
@@ -116,9 +116,9 @@ public class AdmCicloActivity extends AppCompatActivity implements RecyclerItemT
             }
         } else {
             //If is editing a row object
-            Ciclo aux = mAdapter.getSwipedItem(viewHolder.getAdapterPosition());
+            Pedido aux = mAdapter.getSwipedItem(viewHolder.getAdapterPosition());
             //send data to Edit Activity
-            Intent intent = new Intent(this, AddUpdCicloActivity.class);
+            Intent intent = new Intent(this, AddUpdPedidoActivity.class);
             intent.putExtra("editable", true);
             intent.putExtra("ciclo", aux);
             mAdapter.notifyDataSetChanged(); //restart left swipe view
@@ -133,7 +133,7 @@ public class AdmCicloActivity extends AppCompatActivity implements RecyclerItemT
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds cicloList to the action bar if it is present.
+        // Inflate the menu; this adds pedidoList to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_search, menu);
 
         // Associate searchable configuration with the SearchView   !IMPORTANT
@@ -200,46 +200,46 @@ public class AdmCicloActivity extends AppCompatActivity implements RecyclerItemT
     }
 
     @Override
-    public void onContactSelected(Ciclo ciclo) { //TODO get the select item of recycleView
-        Toast.makeText(getApplicationContext(), "Selected: " + ciclo.getAño() + ", " + ciclo.getNumero(), Toast.LENGTH_LONG).show();
+    public void onContactSelected(Pedido pedido) { //TODO get the select item of recycleView
+        Toast.makeText(getApplicationContext(), "Pedido de : " + pedido.getNombre() + ", para:  " + pedido.getRentor(), Toast.LENGTH_LONG).show();
     }
 
     private void checkIntentInformation() {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            Ciclo aux;
-            aux = (Ciclo) getIntent().getSerializableExtra("addciclo");
+            Pedido aux;
+            aux = (Pedido) getIntent().getSerializableExtra("addciclo");
             if (aux == null) {
-                aux = (Ciclo) getIntent().getSerializableExtra("editciclo");
+                aux = (Pedido) getIntent().getSerializableExtra("editciclo");
                 if (aux != null) {
                     //found an item that can be updated
                     boolean founded = false;
-                    for (Ciclo ciclo : cicloList) {
-                        if (ciclo.getAño() == (aux.getAño())) {
-                            ciclo.setNumero(aux.getNumero());
-                            ciclo.setFinicio(aux.getFinicio());
-                            ciclo.setFfinal(aux.getFfinal());
+                    for (Pedido pedido : pedidoList) {
+                        if (pedido.getNombre() == (aux.getNombre())) {
+                            pedido.setCantidad(aux.getCantidad());
+                            pedido.setRentor(aux.getRentor());
+                            pedido.setPrecio(aux.getPrecio());
                             founded = true;
                             break;
                         }
                     }
                     //check if exist
                     if (founded) {
-                        Toast.makeText(getApplicationContext(), aux.getAño() + " editado correctamente", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), aux.getNombre() + " editado correctamente", Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(getApplicationContext(), aux.getAño() + " no encontrado", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), aux.getNombre() + " no encontrado", Toast.LENGTH_LONG).show();
                     }
                 }
             } else {
-                //found a new Ciclo Object
-                cicloList.add(aux);
-                Toast.makeText(getApplicationContext(), aux.getAño() + " agregado correctamente", Toast.LENGTH_LONG).show();
+                //found a new Pedido Object
+                pedidoList.add(aux);
+                Toast.makeText(getApplicationContext(), aux.getNombre() + " agregado correctamente", Toast.LENGTH_LONG).show();
             }
         }
     }
 
     private void goToAddUpdCiclo() {
-        Intent intent = new Intent(this, AddUpdCicloActivity.class);
+        Intent intent = new Intent(this, AddUpdPedidoActivity.class);
         intent.putExtra("editable", false);
         startActivity(intent);
     }

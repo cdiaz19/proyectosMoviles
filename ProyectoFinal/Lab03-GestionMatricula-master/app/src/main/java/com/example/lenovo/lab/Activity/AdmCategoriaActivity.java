@@ -23,7 +23,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.lenovo.lab.LogicaNeg.Categoria;
-import com.example.lenovo.lab.Adapter.CarrerasAdapter;
+import com.example.lenovo.lab.Adapter.CategoriasAdapter;
 import com.example.lenovo.lab.AccesoDatos.ModelData;
 import com.example.lenovo.lab.R;
 import com.example.lenovo.lab.Helper.RecyclerItemTouchHelper;
@@ -31,10 +31,10 @@ import com.example.lenovo.lab.Helper.RecyclerItemTouchHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdmCategoriaActivity extends AppCompatActivity implements RecyclerItemTouchHelper.RecyclerItemTouchHelperListener, CarrerasAdapter.CarreraAdapterListener {
+public class AdmCategoriaActivity extends AppCompatActivity implements RecyclerItemTouchHelper.RecyclerItemTouchHelperListener, CategoriasAdapter.CarreraAdapterListener {
 
     private RecyclerView mRecyclerView;
-    private CarrerasAdapter mAdapter;
+    private CategoriasAdapter mAdapter;
     private List<Categoria> categoriaList;
     private CoordinatorLayout coordinatorLayout;
     private SearchView searchView;
@@ -55,7 +55,7 @@ public class AdmCategoriaActivity extends AppCompatActivity implements RecyclerI
         categoriaList = new ArrayList<>();
         model = new ModelData();
         categoriaList = model.getCategoriaList();
-        mAdapter = new CarrerasAdapter(categoriaList, this);
+        mAdapter = new CategoriasAdapter(categoriaList, this);
         coordinatorLayout = findViewById(R.id.coordinator_layout);
 
         // white background notification bar
@@ -132,7 +132,7 @@ public class AdmCategoriaActivity extends AppCompatActivity implements RecyclerI
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position) {
         if (direction == ItemTouchHelper.START) {
-            if (viewHolder instanceof CarrerasAdapter.MyViewHolder) {
+            if (viewHolder instanceof CategoriasAdapter.MyViewHolder) {
                 // get the removed item name to display it in snack bar
                 String name = categoriaList.get(viewHolder.getAdapterPosition()).getNombre();
 

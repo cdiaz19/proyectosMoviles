@@ -75,8 +75,6 @@ public class NavDrawerActivity extends AppCompatActivity
                 holder.setEnabled(true);
                 holder = menu.findItem(R.id.nav_ordenes);
                 holder.setEnabled(true);
-                holder = menu.findItem(R.id.nav_pedidos);
-                holder.setEnabled(true);
                 holder = menu.findItem(R.id.nav_usuarios);
                 holder.setEnabled(true);
                 holder = menu.findItem(R.id.nav_seguridad);
@@ -149,8 +147,8 @@ public class NavDrawerActivity extends AppCompatActivity
             Toast.makeText(getApplicationContext(), "Orden", Toast.LENGTH_SHORT).show();
             abrirAdmVideoJuegos();
         } else if (id == R.id.nav_bodega) {
-            Toast.makeText(getApplicationContext(), "Bodega", Toast.LENGTH_SHORT).show();
-            abrirRegistroNotas();
+            Toast.makeText(getApplicationContext(), "Bodega de Video Juegos", Toast.LENGTH_SHORT).show();
+            abrirAdmVideoJuegos();
         } else if (id == R.id.nav_consultaHistorial) {
             Toast.makeText(getApplicationContext(), "Consulta de Historial", Toast.LENGTH_SHORT).show();
             if (privilegio.equals("administrador"))
@@ -161,11 +159,8 @@ public class NavDrawerActivity extends AppCompatActivity
             Toast.makeText(getApplicationContext(), "Video Juegos", Toast.LENGTH_SHORT).show();
             abrirAdmVideoJuegos();
         } else if (id == R.id.nav_usuarios) {
-            Toast.makeText(getApplicationContext(), "Usuarios", Toast.LENGTH_SHORT).show();
-            abrirAdmCiclo();
-        } else if (id == R.id.nav_pedidos) {
-            Toast.makeText(getApplicationContext(), "Video Juegos", Toast.LENGTH_SHORT).show();
-            abrirAdmCurso();
+            Toast.makeText(getApplicationContext(), "Pedidos", Toast.LENGTH_SHORT).show();
+            abrirAdmPedido();
         } else if (id == R.id.nav_ordenes) {
             Toast.makeText(getApplicationContext(), "Clientes", Toast.LENGTH_SHORT).show();
             abrirAdmCliente();
@@ -211,8 +206,8 @@ public class NavDrawerActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-    public void abrirAdmCiclo() {
-        Intent intent = new Intent(this, AdmCicloActivity.class);
+    public void abrirAdmPedido() {
+        Intent intent = new Intent(this, AdmPedidoActivity.class);
         startActivity(intent);
     }
 

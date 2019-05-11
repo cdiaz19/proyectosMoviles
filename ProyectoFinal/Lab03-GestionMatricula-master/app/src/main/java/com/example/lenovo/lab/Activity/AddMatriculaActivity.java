@@ -11,7 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.lenovo.lab.LogicaNeg.Ciclo;
+import com.example.lenovo.lab.LogicaNeg.Pedido;
 import com.example.lenovo.lab.LogicaNeg.Grupo;
 import com.example.lenovo.lab.AccesoDatos.ModelData;
 import com.example.lenovo.lab.R;
@@ -25,7 +25,7 @@ public class AddMatriculaActivity extends AppCompatActivity {
     private List<Grupo> grupoList;
     private ModelData model;
     private String alumno;
-    private Ciclo cicloActual;
+    private Pedido pedidoActual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -22,7 +22,7 @@ import java.util.List;
  * Created by Luis Carrillo Rodriguez on 17/3/2018.
  */
 
-public class CarrerasAdapter extends RecyclerView.Adapter<CarrerasAdapter.MyViewHolder> implements Filterable {
+public class CategoriasAdapter extends RecyclerView.Adapter<CategoriasAdapter.MyViewHolder> implements Filterable {
     private List<Categoria> categoriaList;
     private List<Categoria> categoriaListFiltered;
     private CarreraAdapterListener listener;
@@ -51,7 +51,7 @@ public class CarrerasAdapter extends RecyclerView.Adapter<CarrerasAdapter.MyView
         }
     }
 
-    public CarrerasAdapter(List<Categoria> categoriaList, CarreraAdapterListener listener) {
+    public CategoriasAdapter(List<Categoria> categoriaList, CarreraAdapterListener listener) {
         this.categoriaList = categoriaList;
         this.listener = listener;
         //init filter

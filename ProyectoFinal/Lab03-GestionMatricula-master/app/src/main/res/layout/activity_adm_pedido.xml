@@ -5,7 +5,7 @@
     android:id="@+id/coordinator_layoutCi"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.lenovo.lab.Activity.AdmCicloActivity">
+    tools:context="com.example.lenovo.lab.Activity.AdmPedidoActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_adm_ciclo" />
+    <include layout="@layout/content_adm_pedido" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/addBtnCi"

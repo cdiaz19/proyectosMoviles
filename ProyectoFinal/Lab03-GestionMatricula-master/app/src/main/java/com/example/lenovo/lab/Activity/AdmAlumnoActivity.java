@@ -58,7 +58,7 @@ public class AdmAlumnoActivity extends AppCompatActivity implements RecyclerItem
         clienteList = new ArrayList<>();
         model = new ModelData();
         clienteList = model.getVideoJuegoList();
-//        mAdapter = new VideoJuegoAdapter(clienteList, this);
+        //mAdapter = new VideoJuegoAdapter(clienteList, this);
         coordinatorLayout = findViewById(R.id.coordinator_layoutA);
 
         // white background notification bar

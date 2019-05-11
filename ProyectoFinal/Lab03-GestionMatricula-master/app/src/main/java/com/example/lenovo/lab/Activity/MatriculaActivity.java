@@ -18,10 +18,11 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.lenovo.lab.LogicaNeg.Ciclo;
+import com.example.lenovo.lab.LogicaNeg.Pedido;
 import com.example.lenovo.lab.LogicaNeg.Grupo;
 import com.example.lenovo.lab.Adapter.MatriculaAdapter;
 import com.example.lenovo.lab.AccesoDatos.ModelData;
+import com.example.lenovo.lab.LogicaNeg.VideoJuego;
 import com.example.lenovo.lab.R;
 import com.example.lenovo.lab.Helper.RecyclerItemTouchHelper;
 
@@ -40,7 +41,7 @@ public class MatriculaActivity extends AppCompatActivity implements RecyclerItem
     private FloatingActionButton fab;
     private ModelData model;
     private String alumno;
-    private Ciclo cicloActual;
+    private Pedido pedidoActual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +58,8 @@ public class MatriculaActivity extends AppCompatActivity implements RecyclerItem
         model = new ModelData();
         grupoList = model.getGrupoList();
         updAlumnoCed();
-        cicloActual = getCicloActual();
-        grupoList = filtrar();
+        pedidoActual = getPedidoActual();
+//        grupoList = filtrar();
 
         mAdapter = new MatriculaAdapter(grupoList, this);
         coordinatorLayout = findViewById(R.id.coordinator_layoutM);
@@ -168,31 +169,31 @@ public class MatriculaActivity extends AppCompatActivity implements RecyclerItem
         }
     }
 
-    public Ciclo getCicloActual() {
+    public Pedido getPedidoActual() {
         Date date = new Date();
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH);
         if (month < 5)
-            return new Ciclo(year, "Primer");
+            return new Pedido(year, "Primer");
         else
-            return new Ciclo(year, "Segundo");
+            return new Pedido(year, "Segundo");
     }
 
-    public List<Grupo> filtrar() {
-        List<Grupo> aux;
-        aux = filtroCiclo();
-        return filtroAlumno(aux);
-    }
-
-    public List<Grupo> filtroCiclo() {
-        List<Grupo> aux = new ArrayList<>();
-        for (Grupo i : grupoList)
-            if (i.getCiclo().getAño() == cicloActual.getAño() && i.getCiclo().getNumero().compareTo(cicloActual.getNumero()) == 0)
-                aux.add(i);
-        return aux;
-    }
+//    public List<Grupo> filtrar() {
+//        List<Grupo> aux;
+//        aux = filtroCiclo();
+//        return filtroAlumno(aux);
+//    }
+//
+//    public List<VideoJuego> filtroCiclo() {
+//        List<Grupo> aux = new ArrayList<>();
+//        for (Grupo i : grupoList)
+//            if (i.getPedido().get() == pedidoActual.getAño() && i.getPedido().getNumero().compareTo(pedidoActual.getNumero()) == 0)
+//                aux.add(i);
+//        return aux;
+//    }
 
     public List<Grupo> filtroAlumno(List<Grupo> aux) {
         List<Grupo> auc = new ArrayList<>();
