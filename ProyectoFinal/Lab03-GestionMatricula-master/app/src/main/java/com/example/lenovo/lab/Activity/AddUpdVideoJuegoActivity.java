@@ -86,6 +86,7 @@ public class AddUpdVideoJuegoActivity extends AppCompatActivity {
             Intent intent = new Intent(getBaseContext(), AdmVideoJuegoActivity.class);
             //sending carrera data
             intent.putExtra("addCarrera", gru);
+            intent.putExtra("filtGrupo", critFiltG);
             startActivity(intent);
             finish(); //prevent go back
         }

@@ -42,6 +42,7 @@ public class AdmVideoJuegoActivity extends AppCompatActivity implements Recycler
     private SearchView searchView;
     private FloatingActionButton fab;
     private ModelData model;
+    private VideoJuego critFiltG;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +85,7 @@ public class AdmVideoJuegoActivity extends AppCompatActivity implements Recycler
 
         //should use database info
 
-
+        critFiltG = new VideoJuego();
         // Receive the Categoria sent by AddUpdCategoryActivity
         checkIntentInformation();
 
@@ -95,6 +96,14 @@ public class AdmVideoJuegoActivity extends AppCompatActivity implements Recycler
     private void checkIntentInformation() {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
+            critFiltG = (VideoJuego) getIntent().getSerializableExtra("filtGrupo");
+            if (critFiltG != null){ // only the videojuegos the match with the criteria
+                for(VideoJuego g : model.getVideoJuegoList()){
+                    if(g.getCategoria().getCodigo().equals(critFiltG.getCategoria().getCodigo())){
+                        categoriaList.add(g);
+                    }
+                }
+            }
             VideoJuego aux;
             aux = (VideoJuego) getIntent().getSerializableExtra("addCarrera");
             if (aux == null) {
@@ -127,6 +136,7 @@ public class AdmVideoJuegoActivity extends AppCompatActivity implements Recycler
     private void goToAddUpdVideoJuegoActivity() {
         Intent intent = new Intent(this, AddUpdVideoJuegoActivity.class);
         intent.putExtra("editable", false);
+        intent.putExtra("filtGrupo", critFiltG);
         startActivity(intent);
     }
 
@@ -161,6 +171,7 @@ public class AdmVideoJuegoActivity extends AppCompatActivity implements Recycler
             //send data to Edit Activity
             Intent intent = new Intent(this, AddUpdCategoryActivity.class);
             intent.putExtra("editable", true);
+            intent.putExtra("filtGrupo", critFiltG);
             intent.putExtra("VideoJuego", aux);
             mAdapter.notifyDataSetChanged(); //restart left swipe view
             startActivity(intent);

@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.util.Log;
 
 import com.example.lenovo.lab.LogicaNeg.Categoria;
 import com.example.lenovo.lab.LogicaNeg.Pedido;
@@ -24,7 +25,7 @@ public class OfertaAcademicaActivity extends AppCompatActivity {
     private Spinner sp_cursos;
     private FloatingActionButton fAB;
     private ModelData model;
-    private int cantCursos = 2;
+    private int cantCursos = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,7 @@ public class OfertaAcademicaActivity extends AppCompatActivity {
 
         model = new ModelData();
 
-        loadCarreras();
+        loadCategorias();
     }
 
     public void goToGrupos() {
@@ -52,19 +53,17 @@ public class OfertaAcademicaActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "No hay cursos en esta carrera", Toast.LENGTH_SHORT).show();
         } else {                      // TODO change this
             String largo = sp_carreras.getSelectedItem().toString();
-            VideoJuego gru = new VideoJuego(sp_cursos.getSelectedItem().toString(), "", 0, "", 0, null, new Categoria("aa", largo));
+            VideoJuego gru = new VideoJuego("", "", 0, "", 0, null, new Categoria("STR", largo));
             Intent intent = new Intent(getBaseContext(), AdmVideoJuegoActivity.class);
             intent.putExtra("filtGrupo", gru);
             startActivity(intent);
         }
     }
-
-    public void loadCarreras() {
+    public void loadCategorias() {
         // im not sure about this
         ArrayAdapter<Categoria> adapter = new ArrayAdapter<Categoria>(this, R.layout.support_simple_spinner_dropdown_item, model.getCategoriaList());
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         sp_carreras.setAdapter(adapter);
-
         sp_carreras.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -79,4 +78,6 @@ public class OfertaAcademicaActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }
