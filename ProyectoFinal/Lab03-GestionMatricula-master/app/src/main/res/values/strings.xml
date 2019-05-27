@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Tienda Video-Juegos</string>
+    <string name="app_name">Rastakuman Store!</string>
 
     <!-- String related to shared preferences -->
     <string name="preference_user_key">com.example.lenovo.lab.USER</string>
@@ -8,8 +8,8 @@
     <!-- Strings related to login -->
     <string name="prompt_email">Correo Electronico</string>
     <string name="prompt_password">Contraseña</string>
-    <string name="action_sign_in">Iniciar</string>
-    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_sign_in">Iniciar Sesion</string>
+    <string name="action_sign_in_short">Iniciar Sesion</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
@@ -34,16 +34,16 @@
 
     <string name="ofertaAcademica">Video Juegos</string>
 
-    <string name="nombre">Nombre</string>
-    <string name="codigo">Codigo</string>
-    <string name="categoria">Carrera</string>
+    <string name="name">Nombre</string>
+    <string name="code">Codigo</string>
+    <string name="category">Carrera</string>
     <string name="action_search">Buscar</string>
     <string name="agregar">Agregar</string>
 
     <string name="delete">ELIMINAR</string>
     <string name="edit">EDITAR</string>
 
-    <string name="search_hint">Ingrese nombre…</string>
+    <string name="search_hint">Ingrese name…</string>
 
     <string name="nombreAddUptCar">Nombre</string>
     <string name="codigoAddUpdCar">Codigo</string>
@@ -86,11 +86,11 @@
     <string name="privilegioAddUpdSeguridad">Privilegio</string>
 
 
-    <string name="privileges_prompt">Seleccione privilegio</string>
+    <string name="privileges_prompt">Seleccione role</string>
     <string name="annio">Año</string>
     <string name="pedido">Ciclo</string>
-    <string name="privilegio">Privilegio</string>
-    <string name="cedula">Cedula</string>
+    <string name="role">Privilegio</string>
+    <string name="identify">Cedula</string>
     <string name="txtViewGrupo">Grupo</string>
     <string name="txtViewEstudiante">Estudiante</string>
     <string name="notaEditTxt">Nota</string>

@@ -67,7 +67,7 @@
         android:padding="@dimen/padd_10">
 
         <TextView
-            android:id="@+id/titleFirstLbl"
+            android:id="@+id/titleCodeLbl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"
@@ -77,11 +77,11 @@
             android:textSize="17dp" />
 
         <TextView
-            android:id="@+id/titleSecLbl"
+            android:id="@+id/titleNameLbl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/padd_10"
-            android:layout_toRightOf="@id/titleFirstLbl"
+            android:layout_toRightOf="@id/titleCodeLbl"
             android:ellipsize="end"
             android:fontFamily="sans-serif-medium"
             android:maxLines="1"
@@ -92,7 +92,7 @@
             android:id="@+id/descriptionLbl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/titleFirstLbl"
+            android:layout_below="@id/titleCodeLbl"
             android:layout_marginTop="5dp"
             android:textColor="@color/description"
             android:textSize="12dp" />

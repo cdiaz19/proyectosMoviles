@@ -23,13 +23,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="Bienvenido a Video Juegos Rastakuman"
+        android:text="Rastakuman Video Games Store!"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
         android:id="@+id/privilegioFld"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2019" />
+        android:text="420 in Video Games" />
 
 </LinearLayout>

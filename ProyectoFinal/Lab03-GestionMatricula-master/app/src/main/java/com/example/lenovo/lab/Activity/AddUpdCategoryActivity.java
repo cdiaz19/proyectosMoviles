@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.lenovo.lab.LogicaNeg.Categoria;
+import com.example.lenovo.lab.LogicaNeg.Category;
 import com.example.lenovo.lab.R;
 
 public class AddUpdCategoryActivity extends AppCompatActivity {
@@ -22,83 +22,79 @@ public class AddUpdCategoryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_upd_categoria);
-
+        setContentView(R.layout.activity_add_upd_category);
         editable = true;
 
-        // button check
-        fBtn = findViewById(R.id.addUpdCarreraBtn);
-
-        //cleaning stuff
-        codFld = findViewById(R.id.codigoAddUpdCar);
-        nomFld = findViewById(R.id.nombreAddUpdCar);
+        fBtn = findViewById(R.id.addUpdCategoryBtn);
+        codFld = findViewById(R.id.codeInAddUpdCar);
+        nomFld = findViewById(R.id.nameInAddUpdCar);
         codFld.setText("");
         nomFld.setText("");
 
-        //receiving data from admCarreraActivity
+        //receiving data from admCategoryActivity
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
 
             editable = extras.getBoolean("editable");
             if (editable) {   // is editing some row
-                Categoria aux = (Categoria) getIntent().getSerializableExtra("carrera");
-                codFld.setText(aux.getCodigo());
+                Category aux = (Category) getIntent().getSerializableExtra("category");
+                codFld.setText(aux.getCode());
                 codFld.setEnabled(false);
-                nomFld.setText(aux.getNombre());
+                nomFld.setText(aux.getName());
+
                 //edit action
                 fBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        editCategoria();
+                        editCategory();
                     }
                 });
-            } else {         // is adding new Categoria object
+            } else {
                 //add new action
                 fBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        addCategoria();
+                        addCategory();
                     }
                 });
             }
         }
     }
 
-    public void addCategoria() {
+    public void addCategory() {
         if (validateForm()) {
-            //do something
-            Categoria car = new Categoria(codFld.getText().toString(), nomFld.getText().toString());
-            Intent intent = new Intent(getBaseContext(), AdmCategoriaActivity.class);
-            //sending carrera data
-            intent.putExtra("addCarrera", car);
+
+            Category category = new Category(codFld.getText().toString(), nomFld.getText().toString());
+            Intent intent = new Intent(getBaseContext(), AdmCategoryActivity.class);
+            intent.putExtra("addCategory", category);
             startActivity(intent);
-            finish(); //prevent go back
+            finish();
         }
     }
 
-    public void editCategoria() {
+    public void editCategory() {
         if (validateForm()) {
-            Categoria car = new Categoria(codFld.getText().toString(), nomFld.getText().toString());
-            Intent intent = new Intent(getBaseContext(), AdmCategoriaActivity.class);
-            //sending carrera data
-            intent.putExtra("editCarrera", car);
+
+            Category category = new Category(codFld.getText().toString(), nomFld.getText().toString());
+            Intent intent = new Intent(getBaseContext(), AdmCategoryActivity.class);
+            intent.putExtra("editCategory", category);
             startActivity(intent);
-            finish(); //prevent go back
+            finish();
         }
     }
 
     public boolean validateForm() {
         int error = 0;
         if (TextUtils.isEmpty(this.nomFld.getText())) {
-            nomFld.setError("Nombre requerido");
+            nomFld.setError("Name is required!");
             error++;
         }
         if (TextUtils.isEmpty(this.codFld.getText())) {
-            codFld.setError("Codigo requerido");
+            codFld.setError("Name is required!");
             error++;
         }
         if (error > 0) {
-            Toast.makeText(getApplicationContext(), "Algunos errores", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Form has errors!", Toast.LENGTH_LONG).show();
             return false;
         }
         return true;
