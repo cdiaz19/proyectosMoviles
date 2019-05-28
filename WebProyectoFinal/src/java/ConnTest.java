@@ -6,6 +6,7 @@
 import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
 import AccesoADatos.ServicioVideojuego;
+import LogicaDeNegocio.Categoria;
 import LogicaDeNegocio.Videojuego;
 import com.google.gson.Gson;
 import java.io.IOException;
@@ -98,15 +99,37 @@ public class ConnTest extends HttpServlet {
     
     protected void doCreate(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        processRequest(request, response);
-        response.setContentType("text/html");
-        String isbn = request.getParameter("usu");
-        System.out.print(isbn);
-        PrintWriter out = response.getWriter();
         try {
-            out.println("insertado");
-        } finally {
-            out.close();
+//        processRequest(request, response);
+            response.setContentType("text/html");
+            String codigoJuego = request.getParameter("codigoJuego");
+            String nombre= request.getParameter("nombre");
+            int cantidad= Integer.parseInt(request.getParameter("cantidad"));
+            int precio =Integer.parseInt(request.getParameter("precio"));
+            String rentor= request.getParameter("rentor");
+            String plazo= request.getParameter("plazo");
+            String empresa= request.getParameter("empresa");
+            String categoriaid=request.getParameter("categoria_id");
+            String nombrecategoria=request.getParameter("nombre_categoria");
+            
+            Categoria categoria= new Categoria(categoriaid,nombrecategoria);
+            Videojuego videojuego= new Videojuego(codigoJuego,nombre,cantidad,precio,rentor,plazo,empresa,categoria);
+            
+            
+            daoVideojuego = ServicioVideojuego.getInstancia();
+            daoVideojuego.insertarVideojuego(categoria, videojuego);
+            
+            PrintWriter out = response.getWriter();
+            try {
+                out.println("insertado");
+            } finally {
+                out.close();
+            }
+            
+        }   catch (GlobalException ex) {
+            Logger.getLogger(ConnTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ConnTest.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
