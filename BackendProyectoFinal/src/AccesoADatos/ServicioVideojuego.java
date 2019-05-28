@@ -19,8 +19,8 @@ import java.util.LinkedList;
  */
 public class ServicioVideojuego extends Servicio {
     
-    private static final String INSERTAR = "{call insertarvideojuego(?,?,?,?,?,?,?,?)}";
-    private static final String MODIFICAR = "{call actualizarvideojuego(?,?,?,?,?,?,?,?)}";
+    private static final String INSERTAR = "{call insertarvideojuego(?,?,?,?,?,?)}";
+    private static final String MODIFICAR = "{call actualizarvideojuego(?,?,?,?,?,?)}";
     private static final String BUSCARPORCODIGO = "{?=call buscarvideojuego(?)}";
     private static final String BUSCARPORCATEGORIA = "{?=call buscarvideojuegoporcategoria(?)}";
     private static final String LISTAR = "{?=call listarvideojuegos()}";
@@ -43,10 +43,8 @@ public class ServicioVideojuego extends Servicio {
             pstmt.setString(2, videojuego.getNombre());
             pstmt.setInt(3, videojuego.getCantidad());
             pstmt.setInt(4, videojuego.getCantidad());
-            pstmt.setString(5, videojuego.getRentor());
-            pstmt.setString(6, videojuego.getPlazo());
-            pstmt.setString(7, videojuego.getEmpresa());
-            pstmt.setString(8, categoria.getCodigo());
+            pstmt.setString(5, videojuego.getEmpresa());
+            pstmt.setString(6, categoria.getCodigo());
             
             
 
@@ -88,10 +86,8 @@ public class ServicioVideojuego extends Servicio {
             pstmt.setString(2, videojuego.getNombre());
             pstmt.setInt(3, videojuego.getCantidad());
             pstmt.setInt(4, videojuego.getCantidad());
-            pstmt.setString(5, videojuego.getRentor());
-            pstmt.setString(6, videojuego.getPlazo());
-            pstmt.setString(7, videojuego.getEmpresa());
-            pstmt.setString(8, categoria.getCodigo());
+            pstmt.setString(5, videojuego.getEmpresa());
+            pstmt.setString(6, categoria.getCodigo());
             
             
            
@@ -149,8 +145,6 @@ public class ServicioVideojuego extends Servicio {
                             rs.getString("nombre"),
                             rs.getInt("cantidad"),
                             rs.getInt("precio"),
-                            rs.getString("rentor"),
-                            rs.getString("plazo"),
                             rs.getString("empresa"),
                             categoria
                             
@@ -225,8 +219,6 @@ public class ServicioVideojuego extends Servicio {
                             rs.getString("nombre"),
                             rs.getInt("cantidad"),
                             rs.getInt("precio"),
-                            rs.getString("rentor"),
-                            rs.getString("plazo"),
                             rs.getString("empresa"),
                             categoria
                             
@@ -302,8 +294,6 @@ public class ServicioVideojuego extends Servicio {
                             rs.getString("nombre"),
                             rs.getInt("cantidad"),
                             rs.getInt("precio"),
-                            rs.getString("rentor"),
-                            rs.getString("plazo"),
                             rs.getString("empresa"),
                             categoria
                             

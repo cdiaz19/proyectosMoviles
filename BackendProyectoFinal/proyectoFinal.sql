@@ -12,8 +12,6 @@ codigo_juego VARCHAR(10) NOT NULL,
 nombre VARCHAR(50)NOT NULL,
 cantidad int NOT NULL,
 precio int NOT NULL,
-rentor VARCHAR(50) NOT NULL,
-plazo VARCHAR(30) NOT NULL,
 empresa VARCHAR(30) NOT NULL,
 categoria_id VARCHAR(30) NOT NULL,
 CONSTRAINT pk_videojuego PRIMARY KEY (codigo_juego),
@@ -28,16 +26,14 @@ CREATE OR REPLACE FUNCTION insertarvideojuego (
   nombrejuego_IN VARCHAR,
   cantidad_IN int,
   precio_IN int,
-  rentor_IN VARCHAR,
-  plazo_IN VARCHAR,
   empresa_IN VARCHAR,
   categoriaID_IN VARCHAR
 )
 RETURNS VOID
 AS
 '
-    INSERT INTO videojuego(codigo_juego,nombre,cantidad,precio,rentor,plazo,empresa,categoria_id)
-  VALUES(codigojuego_IN,nombrejuego_IN,cantidad_IN,precio_IN,rentor_IN,plazo_IN,empresa_IN,categoriaID_IN);
+    INSERT INTO videojuego(codigo_juego,nombre,cantidad,precio,empresa,categoria_id)
+  VALUES(codigojuego_IN,nombrejuego_IN,cantidad_IN,precio_IN,empresa_IN,categoriaID_IN);
 '
 LANGUAGE SQL;
 
@@ -50,7 +46,7 @@ AS
 DECLARE
   ref refcursor;
 BEGIN
-   OPEN ref FOR SELECT v.codigo_juego,v.nombre,v.cantidad,v.precio,v.rentor,v.plazo,v.empresa,v.categoria_id,c.nombre AS "nombre_categoria" FROM videojuego v join categoria c on v.categoria_id=c.codigo WHERE v.codigo_juego=codigojuego_IN;
+   OPEN ref FOR SELECT v.codigo_juego,v.nombre,v.cantidad,v.precio,v.empresa,v.categoria_id,c.nombre AS "nombre_categoria" FROM videojuego v join categoria c on v.categoria_id=c.codigo WHERE v.codigo_juego=codigojuego_IN;
    RETURN ref;
 END;
 '
@@ -65,7 +61,7 @@ AS
 DECLARE
   ref refcursor;
 BEGIN
-   OPEN ref FOR SELECT v.codigo_juego,v.nombre,v.cantidad,v.precio,v.rentor,v.plazo,v.empresa,v.categoria_id,c.nombre AS "nombre_categoria" FROM videojuego v join categoria c on v.categoria_id=c.codigo WHERE v.categoria_id=categoriajuego_IN;
+   OPEN ref FOR SELECT v.codigo_juego,v.nombre,v.cantidad,v.precio,v.empresa,v.categoria_id,c.nombre AS "nombre_categoria" FROM videojuego v join categoria c on v.categoria_id=c.codigo WHERE v.categoria_id=categoriajuego_IN;
    RETURN ref;
 END;
 '
@@ -78,7 +74,7 @@ AS
 DECLARE
   ref refcursor;
 BEGIN
-   OPEN ref FOR SELECT v.codigo_juego,v.nombre,v.cantidad,v.precio,v.rentor,v.plazo,v.empresa,v.categoria_id,c.nombre AS "nombre_categoria" FROM videojuego v join categoria c on v.categoria_id=c.codigo;
+   OPEN ref FOR SELECT v.codigo_juego,v.nombre,v.cantidad,v.precio,v.empresa,v.categoria_id,c.nombre AS "nombre_categoria" FROM videojuego v join categoria c on v.categoria_id=c.codigo;
 RETURN ref;
 END;
 '
@@ -89,8 +85,6 @@ CREATE OR REPLACE FUNCTION actualizarvideojuego (
   nombrejuego_IN VARCHAR,
   cantidad_IN int,
   precio_IN int,
-  rentor_IN VARCHAR,
-  plazo_IN VARCHAR,
   empresa_IN VARCHAR,
   categoriaID_IN VARCHAR)
 RETURNS VOID
@@ -100,8 +94,6 @@ AS
     SET nombre=nombrejuego_IN,
     cantidad=cantidad_IN,
     precio=precio_IN,
-    rentor=rentor_IN,
-    plazo=plazo_IN,
     empresa=empresa_IN
     WHERE codigo_juego=codigojuego_IN;
 '

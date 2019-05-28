@@ -29,7 +29,7 @@ public class Principal {
         Categoria categoria= new Categoria("SHO","Shooter");
         //ServicioCategoria sc = ServicioCategoria.getInstancia();
         ServicioVideojuego sc = ServicioVideojuego.getInstancia();
-        //Videojuego videojuego= new Videojuego("CODBLACK","Call of Duty Black Ops 2",2,3500,"Express","2 meses", "Blizzar",categoria);
+        //Videojuego videojuego= new Videojuego("CODBLACK","Call of Duty Black Ops 2",2,3500,"Blizzar",categoria);
         //sc.insertarVideojuego(categoria, videojuego);
         //sc.eliminarVideojuego("COkD");
         //sc.modificarCategoria(categoria);

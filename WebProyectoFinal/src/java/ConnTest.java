@@ -45,7 +45,7 @@ public class ConnTest extends HttpServlet {
         case "/listarVideojuegos":
                 this.doReadAll(request, response);
                 break;
-            case "/mierda":
+            case "/insertarVid":
                 this.doCreate(request, response);
                 break;
         
@@ -106,16 +106,13 @@ public class ConnTest extends HttpServlet {
             String nombre= request.getParameter("nombre");
             int cantidad= Integer.parseInt(request.getParameter("cantidad"));
             int precio =Integer.parseInt(request.getParameter("precio"));
-            String rentor= request.getParameter("rentor");
-            String plazo= request.getParameter("plazo");
             String empresa= request.getParameter("empresa");
             String categoriaid=request.getParameter("categoria_id");
             String nombrecategoria=request.getParameter("nombre_categoria");
             
             Categoria categoria= new Categoria(categoriaid,nombrecategoria);
-            Videojuego videojuego= new Videojuego(codigoJuego,nombre,cantidad,precio,rentor,plazo,empresa,categoria);
-            
-            
+            Videojuego videojuego= new Videojuego(codigoJuego,nombre,cantidad,precio,empresa,categoria);
+           
             daoVideojuego = ServicioVideojuego.getInstancia();
             daoVideojuego.insertarVideojuego(categoria, videojuego);
             
