@@ -1,26 +1,37 @@
-----------------------Tablas-------------------------------------------------------------------------------
------------------TablaCategoria-----------------------------------------------------------------------------
-CREATE TABLE categoria (
-         codigo      VARCHAR(30) NOT NULL,
-         nombre   VARCHAR(30) NOT NULL,
-         CONSTRAINT pk_categoria PRIMARY KEY (codigo)
-       );
+DROP Table videojuego;
+DROP Table categoria;
 
------------------TablaVideojuegos-----------------------------------------------------------------------------
-CREATE TABLE videojuego(
-codigo_juego VARCHAR(10) NOT NULL,
-nombre VARCHAR(50)NOT NULL,
-cantidad int NOT NULL,
-precio int NOT NULL,
-empresa VARCHAR(30) NOT NULL,
-categoria_id VARCHAR(30) NOT NULL,
-CONSTRAINT pk_videojuego PRIMARY KEY (codigo_juego),
-CONSTRAINT fk_categoria
-  FOREIGN KEY (categoria_id)
-  REFERENCES categoria(codigo) ON DELETE CASCADE
+----------------------Tablas-------------------------------------------------
+-----------------TablaCategoria----------------------------------------------
+CREATE TABLE categoria (
+  codigo  VARCHAR(30) NOT NULL,
+  nombre  VARCHAR(30) NOT NULL,
+  CONSTRAINT pk_categoria PRIMARY KEY (codigo)
 );
-----------------Mantenimientos-------------------------------------------------------------------------------
-----------------MantenimientoDeVideojuegos-------------------------------------------------------------------------------
+
+-----------------TablaVideojuegos------------------------------------------
+CREATE TABLE videojuego (
+  codigo_juego VARCHAR(10) NOT NULL,
+  nombre VARCHAR(50)NOT NULL,
+  cantidad int NOT NULL,
+  precio int NOT NULL,
+  empresa VARCHAR(30) NOT NULL,
+  categoria_id VARCHAR(30) NOT NULL,
+  CONSTRAINT pk_videojuego PRIMARY KEY (codigo_juego),
+  CONSTRAINT fk_categoria
+    FOREIGN KEY (categoria_id)
+    REFERENCES categoria(codigo) ON DELETE CASCADE
+);
+----------------Datos Iniciales-------------------------------------------
+-- Categorias
+INSERT INTO categoria VALUES ('ACC', 'Accion');
+INSERT INTO categoria VALUES ('STR', 'Estrategia');
+
+-- VideoJuegos
+INSERT INTO videojuego VALUES ('GTAV', 'Grand Thelf Auto V', 20, 35000, 'RockStart', 'ACC');
+
+----------------Mantenimientos--------------------------------------------
+----------------MantenimientoDeVideojuegos--------------------------------
 CREATE OR REPLACE FUNCTION insertarvideojuego (
   codigojuego_IN VARCHAR,
   nombrejuego_IN VARCHAR,
@@ -172,8 +183,3 @@ AS
    DELETE FROM categoria WHERE codigo=codigo_IN;
 '
 LANGUAGE SQL;
-
-
-
-
-
