@@ -68,8 +68,8 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
   public void onBindViewHolder(MyViewHolder holder, final int position) {
     // basically a render
     final Category category = categoriesListFiltered.get(position);
-    holder.title1.setText(category.getCode());
-    holder.title2.setText(category.getName());
+    holder.title1.setText(category.getCodigo());
+    holder.title2.setText(category.getNombre());
   }
 
   @Override
@@ -147,7 +147,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
           List<Category> filteredList = new ArrayList<>();
           for (Category row : categoriesList) {
             // filter use two parameters
-            if (row.getCode().toLowerCase().contains(charString.toLowerCase()) || row.getName().toLowerCase().contains(charString.toLowerCase())) {
+            if (row.getCodigo().toLowerCase().contains(charString.toLowerCase()) || row.getNombre().toLowerCase().contains(charString.toLowerCase())) {
               filteredList.add(row);
             }
           }

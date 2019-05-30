@@ -6,45 +6,45 @@ import java.util.List;
 
 public class Category implements Serializable {
 
-  private String code, name;
+  private String codigo, nombre;
   private List<Category> categories;
 
   public Category() {
   }
 
-  public Category(String code, String name) {
-    this.code = code;
-    this.name = name;
+  public Category(String codigo, String nombre) {
+    this.codigo = codigo;
+    this.nombre = nombre;
     this.categories = new ArrayList<>();
   }
 
-  public String getCode() {
-    return code;
+  public String getCodigo() {
+    return codigo;
   }
 
   public List<Category> getCategories() {
     return categories;
   }
 
-  public void setCode(String code) {
-    this.code = code;
+  public void setCodigo(String codigo) {
+    this.codigo = codigo;
   }
 
-  public String getName() {
-    return name;
+  public String getNombre() {
+    return nombre;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
   }
 
   @Override
   public String toString() {
-    return name;
+    return nombre;
         /*
         return "Category{" +
-                "code='" + code + '\'' +
-                ", name='" + name + '\'' +
+                "codigo='" + codigo + '\'' +
+                ", nombre='" + nombre + '\'' +
                 '}';
                 */
   }
@@ -56,15 +56,15 @@ public class Category implements Serializable {
 
     Category category = (Category) o;
 
-    if (getCode() != null ? !getCode().equals(category.getCode()) : category.getCode() != null)
+    if (getCodigo() != null ? !getCodigo().equals(category.getCodigo()) : category.getCodigo() != null)
       return false;
-    return getName() != null ? getName().equals(category.getName()) : category.getName() == null;
+    return getNombre() != null ? getNombre().equals(category.getNombre()) : category.getNombre() == null;
   }
 
   @Override
   public int hashCode() {
-    int result = getCode() != null ? getCode().hashCode() : 0;
-    result = 31 * result + (getName() != null ? getName().hashCode() : 0);
+    int result = getCodigo() != null ? getCodigo().hashCode() : 0;
+    result = 31 * result + (getNombre() != null ? getNombre().hashCode() : 0);
     return result;
   }
 }

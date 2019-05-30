@@ -38,9 +38,9 @@ public class AddUpdCategoryActivity extends AppCompatActivity {
             editable = extras.getBoolean("editable");
             if (editable) {   // is editing some row
                 Category aux = (Category) getIntent().getSerializableExtra("category");
-                codFld.setText(aux.getCode());
+                codFld.setText(aux.getCodigo());
                 codFld.setEnabled(false);
-                nomFld.setText(aux.getName());
+                nomFld.setText(aux.getNombre());
 
                 //edit action
                 fBtn.setOnClickListener(new View.OnClickListener() {

@@ -54,11 +54,11 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/catAddUpdVG"
+                android:id="@+id/nameAddUpdVG"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Categoria VideoJuego"
+                android:hint="Nombre VideoJuego"
                 android:inputType="textPersonName" />
         </android.support.design.widget.TextInputLayout>
 
@@ -67,11 +67,11 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/nameAddUpdVG"
+                android:id="@+id/catAddUpdVG"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Nombre"
+                android:hint="Cantidad"
                 android:inputType="textPersonName" />
         </android.support.design.widget.TextInputLayout>
 

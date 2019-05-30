@@ -108,23 +108,23 @@ public class AdmCategoryActivity extends AppCompatActivity implements RecyclerIt
                     //found an item that can be updated
                     boolean founded = false;
                     for (Category category : categoriesList) {
-                        if (category.getCode().equals(aux.getCode())) {
-                            category.setName(aux.getName());
+                        if (category.getCodigo().equals(aux.getCodigo())) {
+                            category.setNombre(aux.getNombre());
                             founded = true;
                             break;
                         }
                     }
                     //check if exist
                     if (founded) {
-                        Toast.makeText(getApplicationContext(), aux.getName() + " edited!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), aux.getNombre() + " edited!", Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(getApplicationContext(), aux.getName() + " not finding!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), aux.getNombre() + " not finding!", Toast.LENGTH_LONG).show();
                     }
                 }
             } else {
                 //found a new Category Object
                 categoriesList.add(aux);
-                Toast.makeText(getApplicationContext(), aux.getName() + " added to List!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), aux.getNombre() + " added to List!", Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -134,7 +134,7 @@ public class AdmCategoryActivity extends AppCompatActivity implements RecyclerIt
         if (direction == ItemTouchHelper.START) {
             if (viewHolder instanceof CategoriesAdapter.MyViewHolder) {
                 // get the removed item name to display it in snack bar
-                String name = categoriesList.get(viewHolder.getAdapterPosition()).getName();
+                String name = categoriesList.get(viewHolder.getAdapterPosition()).getNombre();
 
                 // save the index deleted
                 final int deletedIndex = viewHolder.getAdapterPosition();
@@ -231,6 +231,6 @@ public class AdmCategoryActivity extends AppCompatActivity implements RecyclerIt
 
     @Override
     public void onContactSelected(Category category) { //TODO get the select item of recycleView
-        Toast.makeText(getApplicationContext(), "Seleccciono la Category: " + category.getCode() + ", " + category.getName(), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Seleccciono la Category: " + category.getCodigo() + ", " + category.getNombre(), Toast.LENGTH_LONG).show();
     }
 }

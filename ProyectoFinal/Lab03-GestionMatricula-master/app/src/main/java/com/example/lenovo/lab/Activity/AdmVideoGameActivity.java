@@ -89,7 +89,7 @@ public class AdmVideoGameActivity extends AppCompatActivity implements RecyclerI
       critFiltG = (VideoGame) getIntent().getSerializableExtra("filtGrupo");
       if (critFiltG != null){ // only the videojuegos the match with the criteria
         for(VideoGame g : model.getVideoGamesList()){
-          if(g.getCategory().getCode().equals(critFiltG.getCategory().getCode())){
+          if(g.getCategory().getCodigo().equals(critFiltG.getCategory().getCodigo())){
             videoGamesList.add(g);
           }
         }

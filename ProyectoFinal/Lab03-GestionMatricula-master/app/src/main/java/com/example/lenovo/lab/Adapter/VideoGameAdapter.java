@@ -66,7 +66,7 @@ public class VideoGameAdapter extends RecyclerView.Adapter<VideoGameAdapter.MyVi
         } else {
           List<VideoGame> filteredList = new ArrayList<>();
           for (VideoGame row : videoGamesList) {
-            if (row.getCode().toLowerCase().contains(charString.toLowerCase()) || row.getCategory().getName().toLowerCase().contains(charSequence)) {
+            if (row.getCode().toLowerCase().contains(charString.toLowerCase()) || row.getCategory().getNombre().toLowerCase().contains(charSequence)) {
               filteredList.add(row);
             }
           }
