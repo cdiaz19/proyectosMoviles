@@ -5,6 +5,8 @@
  */
 import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
+import AccesoADatos.Servicio;
+import AccesoADatos.ServicioCategoria;
 import AccesoADatos.ServicioVideojuego;
 import LogicaDeNegocio.Categoria;
 import LogicaDeNegocio.Videojuego;
@@ -24,10 +26,12 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author alejandro
  */
-@WebServlet(urlPatterns = {"/ConnTest","/listarVideojuegos","/mierda"})
+@WebServlet(urlPatterns = {"/ConnTest","/listarVideojuegos","/mierda","/listarCategorias"})
 public class ConnTest extends HttpServlet {
     private ServicioVideojuego daoVideojuego;
+    private ServicioCategoria servicioCategoria;
     private String videojuegosJsonString;
+    private String categoriasJsonString;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,8 +47,11 @@ public class ConnTest extends HttpServlet {
         String servletPath=request.getServletPath();
         switch(servletPath){
         case "/listarVideojuegos":
-                this.doReadAll(request, response);
+                this.doReadAllVid(request, response);
                 break;
+        case "/listarCategorias":
+                this.doReadAllCat(request, response);
+                break;    
             case "/insertarVid":
                 this.doCreate(request, response);
                 break;
@@ -53,7 +60,35 @@ public class ConnTest extends HttpServlet {
         
     }
     
-    protected void doReadAll(HttpServletRequest request, HttpServletResponse response)
+    protected void doReadAllCat(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        try {
+            
+            servicioCategoria = ServicioCategoria.getInstancia();
+            
+            response.setContentType("application/json;charset=UTF-8");
+            
+            //ServletOutputStream out = resp.getOutputStream();
+            LinkedList<Categoria> c1 = servicioCategoria.listarCategorias();
+            
+            
+            Gson gson = new Gson();
+            categoriasJsonString = gson.toJson(c1);
+            PrintWriter out = response.getWriter();
+            try {
+                out.println(categoriasJsonString);
+            } finally {
+                out.close();
+            }
+        }   catch (GlobalException ex) {
+            Logger.getLogger(ConnTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ConnTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    protected void doReadAllVid(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
         try {

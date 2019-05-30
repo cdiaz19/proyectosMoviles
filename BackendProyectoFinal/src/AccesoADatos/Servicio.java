@@ -26,7 +26,7 @@ public class Servicio {
 
     protected void conectar() throws SQLException, ClassNotFoundException {
         Class.forName("org.postgresql.Driver");
-        this.conexion = DriverManager.getConnection("jdbc:postgresql://localhost/proyectofinal", "cdiaz", "");
+        this.conexion = DriverManager.getConnection("jdbc:postgresql://localhost/proyectofinal", "user_proyecto", "root");
     }
 
     protected void desconectar() throws SQLException {

@@ -40,7 +40,7 @@ public class Category implements Serializable {
 
   @Override
   public String toString() {
-    return nombre;
+    return "codigo: " + codigo + "nombre: " + nombre;
         /*
         return "Category{" +
                 "codigo='" + codigo + '\'' +
