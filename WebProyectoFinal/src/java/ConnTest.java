@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author alejandro
  */
-@WebServlet(urlPatterns = {"/ConnTest","/listarVideojuegos","/mierda","/listarCategorias"})
+@WebServlet(urlPatterns = {"/ConnTest","/listarVideojuegos","/mierda","/listarCategorias","/insertarCategoria","/editCategoria","/deleteCategoria"})
 public class ConnTest extends HttpServlet {
     private ServicioVideojuego daoVideojuego;
     private ServicioCategoria servicioCategoria;
@@ -51,7 +51,19 @@ public class ConnTest extends HttpServlet {
                 break;
         case "/listarCategorias":
                 this.doReadAllCat(request, response);
+                break;
+            
+        case "/deleteCategoria":
+                this.doDeleteCat(request, response);
                 break;    
+            
+        case "/editCategoria":
+                this.doEditCat(request, response);
+                break;    
+            
+        case "/insertarCategoria":
+            this.doInsertCat(request,response);
+            break;
             case "/insertarVid":
                 this.doCreate(request, response);
                 break;
@@ -59,6 +71,96 @@ public class ConnTest extends HttpServlet {
         }
         
     }
+    
+    protected void doDeleteCat(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+//        processRequest(request, response);
+            response.setContentType("text/html");
+            String codigo = request.getParameter("codigo");
+            
+           
+           
+            servicioCategoria = ServicioCategoria.getInstancia();
+            servicioCategoria.eliminarCategoria(codigo);
+            
+            PrintWriter out = response.getWriter();
+            try {
+                out.println("eliminado");
+            } finally {
+                out.close();
+            }
+            
+        }   catch (GlobalException ex) {
+            Logger.getLogger(ConnTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ConnTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    
+    protected void doEditCat(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+//        processRequest(request, response);
+            response.setContentType("text/html");
+            String codigo = request.getParameter("codigo");
+            String nombre= request.getParameter("nombre");
+            
+            
+            Categoria categoria= new Categoria(codigo,nombre);
+           
+           
+            servicioCategoria = ServicioCategoria.getInstancia();
+            servicioCategoria.modificarCategoria(categoria);
+            
+            PrintWriter out = response.getWriter();
+            try {
+                out.println("editado");
+            } finally {
+                out.close();
+            }
+            
+        }   catch (GlobalException ex) {
+            Logger.getLogger(ConnTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ConnTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    
+    protected void doInsertCat(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+//        processRequest(request, response);
+            response.setContentType("text/html");
+            String codigo = request.getParameter("codigo");
+            String nombre= request.getParameter("nombre");
+            
+            
+            Categoria categoria= new Categoria(codigo,nombre);
+           
+           
+            servicioCategoria = ServicioCategoria.getInstancia();
+            servicioCategoria.insertarCategoria(categoria);
+            
+            PrintWriter out = response.getWriter();
+            try {
+                out.println("insertado");
+            } finally {
+                out.close();
+            }
+            
+        }   catch (GlobalException ex) {
+            Logger.getLogger(ConnTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ConnTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
     
     protected void doReadAllCat(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

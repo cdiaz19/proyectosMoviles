@@ -26,9 +26,10 @@ public class Principal {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws GlobalException, NoDataException {
-        Categoria categoria= new Categoria("SHO","Shooter");
-        //ServicioCategoria sc = ServicioCategoria.getInstancia();
-        ServicioVideojuego sc = ServicioVideojuego.getInstancia();
+        Categoria categoria= new Categoria("SHO21","Shooter12");
+        ServicioCategoria sc1 = ServicioCategoria.getInstancia();
+        //ServicioVideojuego sc = ServicioVideojuego.getInstancia();
+        sc1.insertarCategoria(categoria);
         //Videojuego videojuego= new Videojuego("CODBLACK","Call of Duty Black Ops 2",2,3500,"Blizzar",categoria);
         //sc.insertarVideojuego(categoria, videojuego);
         //sc.eliminarVideojuego("COkD");
@@ -36,8 +37,8 @@ public class Principal {
         //sc.eliminarCategoria("RPG");
        // sc.eliminarCarrera("05");
         //sc.insertarCategoria(categoria);
-        LinkedList<Videojuego> c1 = sc.listarVideojueos();
-        System.out.print(c1);
+        //LinkedList<Videojuego> c1 = sc.listarVideojueos();
+        //System.out.print(c1);
         //sc.modificarCarrera(carrera1);
         //LinkedList<Carrera> c1 = sc.buscarPorCodigo("05");
         //System.out.print(c1);

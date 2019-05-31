@@ -41,6 +41,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class AdmCategoryActivity extends AppCompatActivity implements RecyclerItemTouchHelper.RecyclerItemTouchHelperListener, CategoriesAdapter.CategoryAdapterListener {
 
@@ -50,11 +51,11 @@ public class AdmCategoryActivity extends AppCompatActivity implements RecyclerIt
     private RecyclerView mRecyclerView;
     private CategoriesAdapter mAdapter;
     List<Category> categoriesList;
-    List<Category> emp;
     private CoordinatorLayout coordinatorLayout;
     private SearchView searchView;
     private FloatingActionButton fab;
     private ModelData model;
+    private String json;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,11 +69,21 @@ public class AdmCategoryActivity extends AppCompatActivity implements RecyclerIt
 
         tempUrl = apiUrl + "listarCategorias";
         MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
-        myAsyncTasks.execute();
+        try {
+            json=myAsyncTasks.execute().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        final Gson gson = new Gson();
+        final Type tipoListaCategories = new TypeToken<List<Category>>(){}.getType();
+        final List<Category> categorias = gson.fromJson(json, tipoListaCategories);
+
 
         mRecyclerView = findViewById(R.id.recycler_carrerasFld);
         categoriesList = new ArrayList<>();
-        model = new ModelData();
+        model = new ModelData(categorias);
         categoriesList = model.getCategoriesList();
         mAdapter = new CategoriesAdapter(categoriesList, this);
         coordinatorLayout = findViewById(R.id.coordinator_layout);
@@ -98,7 +109,7 @@ public class AdmCategoryActivity extends AppCompatActivity implements RecyclerIt
         });
 
         // Receive the Category sent by AddUpdCategoryActivity and then refresh view.
-        checkIntentInformation();
+        //checkIntentInformation();
         mAdapter.notifyDataSetChanged();
     }
 
@@ -154,7 +165,13 @@ public class AdmCategoryActivity extends AppCompatActivity implements RecyclerIt
         if (direction == ItemTouchHelper.START) {
             if (viewHolder instanceof CategoriesAdapter.MyViewHolder) {
                 // get the removed item name to display it in snack bar
-                String name = categoriesList.get(viewHolder.getAdapterPosition()).getNombre();
+                String name = categoriesList.get(viewHolder.getAdapterPosition()).getCodigo();
+                tempUrl = apiUrl + "deleteCategoria?codigo="+name;
+                MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
+                myAsyncTasks.execute();
+
+
+
 
                 // save the index deleted
                 final int deletedIndex = viewHolder.getAdapterPosition();
@@ -176,10 +193,11 @@ public class AdmCategoryActivity extends AppCompatActivity implements RecyclerIt
         } else {
             //If is editing a row object
             Category aux = mAdapter.getSwipedItem(viewHolder.getAdapterPosition());
+            System.out.println("auxiliar"+aux);
             //send data to Edit Activity
             Intent intent = new Intent(this, AddUpdCategoryActivity.class);
             intent.putExtra("editable", true);
-            intent.putExtra("categoria", aux);
+            intent.putExtra("category", aux);
             mAdapter.notifyDataSetChanged(); //restart left swipe view
             startActivity(intent);
         }
@@ -298,10 +316,7 @@ public class AdmCategoryActivity extends AppCompatActivity implements RecyclerIt
                     // return the data to onPostExecute method
                     Log.w("", current);
 
-                    final Gson gson = new Gson();
-                    final Type tipoListaCategories = new TypeToken<List<Category>>(){}.getType();
-                    emp = gson.fromJson(current, tipoListaCategories);
-                    System.out.println(emp);
+
 
                     return current;
 
@@ -324,16 +339,23 @@ public class AdmCategoryActivity extends AppCompatActivity implements RecyclerIt
         protected void onPostExecute(String s) {
 
             try {
-                AlertDialog alertDialog = new AlertDialog.Builder(AdmCategoryActivity.this).create();
-                alertDialog.setTitle("Mensaje");
-                alertDialog.setMessage(s);
-                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
-                alertDialog.show();
+
+               // final Gson gson = new Gson();
+               // final Type tipoListaCategories = new TypeToken<List<Category>>(){}.getType();
+               // categoriesList = gson.fromJson(s, tipoListaCategories);
+                //System.out.println(categoriesList);
+
+
+                //AlertDialog alertDialog = new AlertDialog.Builder(AdmCategoryActivity.this).create();
+                //alertDialog.setTitle("Mensaje");
+                //alertDialog.setMessage(s);
+                //alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                  //      new DialogInterface.OnClickListener() {
+                    //        public void onClick(DialogInterface dialog, int which) {
+                      //          dialog.dismiss();
+                        //    }
+                        //});
+                //alertDialog.show();
 
             }
             catch (Exception ex){
@@ -343,4 +365,14 @@ public class AdmCategoryActivity extends AppCompatActivity implements RecyclerIt
 
 
     }
+
+
+    public  void getDataList(List<Category> cat) {
+
+
+
+    }
+
+
+
 }

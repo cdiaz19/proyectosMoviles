@@ -1,10 +1,23 @@
 package com.example.lenovo.lab.AccesoDatos;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.os.AsyncTask;
+import android.util.Log;
+
+import com.example.lenovo.lab.Activity.AdmCategoryActivity;
 import com.example.lenovo.lab.LogicaNeg.Category;
 import com.example.lenovo.lab.LogicaNeg.Client;
 import com.example.lenovo.lab.LogicaNeg.User;
 import com.example.lenovo.lab.LogicaNeg.VideoGame;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.reflect.Type;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,11 +32,21 @@ public class ModelData {
   private List<VideoGame> videoGamesList;
   private List<Client> clientList;
 
+
+  public ModelData(List<Category> cate) {
+    categoriesList = new ArrayList<>();
+    videoGamesList = new ArrayList<>();
+    clientList = new ArrayList<>();
+    prepareCategoriesData1(cate);
+    //prepareVideoGamesData();
+    prepareClientData();
+
+  }
+
   public ModelData() {
     categoriesList = new ArrayList<>();
     videoGamesList = new ArrayList<>();
     clientList = new ArrayList<>();
-
     prepareCategoriesData();
     prepareVideoGamesData();
     prepareClientData();
@@ -36,6 +59,16 @@ public class ModelData {
     usersList.add(new User("@client", "client", "client", "222"));
 
     return usersList;
+  }
+
+  public void prepareCategoriesData1(List<Category> cate) {
+
+    for (int i = 0; i < cate.size(); i++) {
+      Category category = new Category(cate.get(i).getCodigo(),cate.get(i).getNombre());
+      categoriesList.add(category);
+
+    }
+
   }
 
   public void prepareCategoriesData() {
@@ -102,4 +135,5 @@ public class ModelData {
   public void setClientList(List<Client> clientList) {
     this.clientList = clientList;
   }
+
 }
