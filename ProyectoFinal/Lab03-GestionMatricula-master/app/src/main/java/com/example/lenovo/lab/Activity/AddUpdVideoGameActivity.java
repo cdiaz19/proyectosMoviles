@@ -28,12 +28,12 @@ public class AddUpdVideoGameActivity extends AppCompatActivity {
   private boolean editable;
   private EditText codeCatFld;
   private EditText nameCatFld;
-  private EditText catVGFld;
+  private EditText cantVGFld;
+  private EditText codeVGFld;
   private EditText nameFld;
   private EditText priceFld;
   private EditText companyFld;
   private VideoGame critFiltG;
-  private EditText codiVid;
 
   String apiUrl = "http://10.0.2.2:8080/WEB-INF/";
   String tempUrl = "";
@@ -44,10 +44,10 @@ public class AddUpdVideoGameActivity extends AppCompatActivity {
     editable = true;
     fBtn = findViewById(R.id.addUpdVideoGameBtn);
     //cleaning stuff
-    codiVid = findViewById(R.id.codeVGAddUpdVG);
+    codeVGFld = findViewById(R.id.codeVGAddUpdVG);
     codeCatFld = findViewById(R.id.codeCatAddUpdVG);
     nameCatFld = findViewById(R.id.nameCatAddUpdVG);
-    catVGFld = findViewById(R.id.catAddUpdVG);
+    cantVGFld = findViewById(R.id.cantAddUpdVG);
     nameFld = findViewById(R.id.nameAddUpdVG);
     priceFld = findViewById(R.id.priceAddUpdVG);
     companyFld = findViewById(R.id.companyAddUpdVG);
@@ -63,8 +63,8 @@ public class AddUpdVideoGameActivity extends AppCompatActivity {
         codeCatFld.setEnabled(false);
         nameFld.setText(aux.getNombre());
         nameFld.setEnabled(false);
-        catVGFld.setText(aux.getCantidad());
-        catVGFld.setEnabled(false);
+        cantVGFld.setText(aux.getCantidad());
+        cantVGFld.setEnabled(false);
         priceFld.setText(aux.getPrecio());
         priceFld.setEnabled(false);
         companyFld.setText(aux.getEmpresa());
@@ -91,21 +91,24 @@ public class AddUpdVideoGameActivity extends AppCompatActivity {
 
   public void addVideoGame() {
     if (validateForm()) {
-      tempUrl = apiUrl + "insertarVid?nombre="+nameFld.getText().toString()
-              +"&codigoJuego="+codiVid.getText().toString()
-              +"&empresa="+companyFld.getText().toString()
-              +"&cantidad="+catVGFld.getText().toString()
-              +"&precio="+priceFld.getText().toString()+
-              "&categoria_id="+codeCatFld.getText().toString()
-              +"&nombre_categoria="+nameCatFld.getText().toString();
+      tempUrl = apiUrl + "insertarVid?nombre="+ nameFld.getText().toString()
+                        +"&codigoJuego="+ codeVGFld.getText().toString()
+                        +"&empresa="+ companyFld.getText().toString()
+                        +"&cantidad="+ cantVGFld.getText().toString()
+                        +"&precio="+ priceFld.getText().toString()
+                        +"&categoria_id="+ codeCatFld.getText().toString()
+                        +"&nombre_categoria="+ nameCatFld.getText().toString();
+
       MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
       myAsyncTasks.execute();
+
       String codeCat = codeCatFld.getText().toString();
       String nameCat = nameCatFld.getText().toString();
 
-      VideoGame videoGame = new VideoGame(codiVid.getText().toString(), nameFld.getText().toString(), companyFld.getText().toString(),
-        Integer.parseInt(catVGFld.getText().toString()),
-        Integer.parseInt(priceFld.getText().toString()), new Category(codeCat, nameCat));
+      VideoGame videoGame =
+        new VideoGame(codeVGFld.getText().toString(), nameFld.getText().toString(), companyFld.getText().toString(),
+                      Integer.parseInt(cantVGFld.getText().toString()),
+                      Integer.parseInt(priceFld.getText().toString()), new Category(codeCat, nameCat));
 
       Toast.makeText(getApplicationContext(), videoGame.getNombre(), Toast.LENGTH_LONG).show();
       Intent intent = new Intent(getBaseContext(), AdmVideoGameActivity.class);
@@ -123,8 +126,8 @@ public class AddUpdVideoGameActivity extends AppCompatActivity {
       String codeCat = codeCatFld.getText().toString();
       String nameCat = nameCatFld.getText().toString();
 
-      VideoGame videoGame = new VideoGame(catVGFld.getText().toString(), nameFld.getText().toString(), companyFld.getText().toString(),
-        Integer.parseInt(catVGFld.getText().toString()),
+      VideoGame videoGame = new VideoGame(cantVGFld.getText().toString(), nameFld.getText().toString(), companyFld.getText().toString(),
+        Integer.parseInt(cantVGFld.getText().toString()),
         Integer.parseInt(priceFld.getText().toString()), new Category(codeCat, nameCat));
 
       Toast.makeText(getApplicationContext(), videoGame.getNombre(), Toast.LENGTH_LONG).show();

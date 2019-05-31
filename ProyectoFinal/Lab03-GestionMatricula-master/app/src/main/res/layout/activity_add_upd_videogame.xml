@@ -84,12 +84,12 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/catAddUpdVG"
+                android:id="@+id/cantAddUpdVG"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Cantidad"
-                android:inputType="textPersonName" />
+                android:inputType="number" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout

@@ -47,7 +47,8 @@ public class VideoGameAdapter extends RecyclerView.Adapter<VideoGameAdapter.MyVi
 
     holder.codeVG.setText(videoGame.getCodigoJuego());
     holder.nameVG.setText(videoGame.getNombre());
-    holder.priceVG.setText("Price: " + String.valueOf(videoGame.getPrecio()));
+    holder.priceVG.setText("Price: " + String.valueOf(videoGame.getPrecio()) +
+                          "Stock: " + String.valueOf(videoGame.getCantidad()));
   }
 
   @Override

@@ -43,23 +43,10 @@ public class ModelData {
 
   }
 
-
-  public ModelData(List<VideoGame> games) {
-    categoriesList = new ArrayList<>();
-    videoGamesList = new ArrayList<>();
-    clientList = new ArrayList<>();
-    prepareVideoGamesData1(games);
-    //prepareVideoGamesData();
-    prepareClientData();
-
-  }
-
   public ModelData() {
     categoriesList = new ArrayList<>();
     videoGamesList = new ArrayList<>();
     clientList = new ArrayList<>();
-    prepareCategoriesData();
-    prepareVideoGamesData();
     prepareClientData();
 
   }
@@ -77,7 +64,6 @@ public class ModelData {
       for (int i = 0; i < cate.size(); i++) {
         Category category = new Category(cate.get(i).getCodigo(), cate.get(i).getNombre());
         categoriesList.add(category);
-
       }
     }
   }
@@ -85,47 +71,16 @@ public class ModelData {
 
   public void prepareVideoGamesData1(List<VideoGame> games) {
     if (games != null) {
-
       for (int i = 0; i < games.size(); i++) {
         Category category1 = new Category(games.get(i).getCategoria().getCodigo(), games.get(i).getCategoria().getNombre());
-        VideoGame videoGame = new VideoGame(games.get(i).getCodigoJuego(), games.get(i).getNombre(), games.get(i).getEmpresa(), games.get(i).getCantidad(), games.get(i).getPrecio(), category1);
-        videoGamesList.add(videoGame);
 
+        VideoGame videoGame = new VideoGame(games.get(i).getCodigoJuego(), games.get(i).getNombre(), games.get(i).getEmpresa(),
+                                            games.get(i).getCantidad(), games.get(i).getPrecio(), category1);
+        videoGamesList.add(videoGame);
       }
     }
   }
-  public void prepareCategoriesData() {
-    Category category = new Category("ACC", "Action");
-    categoriesList.add(category);
 
-    category = new Category("SHO", "Shooter");
-    categoriesList.add(category);
-
-    category = new Category("STR", "Strategic");
-    categoriesList.add(category);
-
-    category = new Category("SIN", "Simulation");
-    categoriesList.add(category);
-
-    category = new Category("SPO", "Sports");
-    categoriesList.add(category);
-  }
-
-  public void prepareVideoGamesData() {
-    Category category1 = new Category("ACC", "Accion");
-
-    VideoGame videoGame = new VideoGame("GTAV", "Grand Theaft Auto V", "RockStart", 45, 35000, category1);
-    videoGamesList.add(videoGame);
-    VideoGame videoGame1 = new VideoGame("GTAII", "Grand Theaft Auto II", "RockStart", 45, 10000, category1);
-    videoGamesList.add(videoGame1);
-    VideoGame videoGame2 = new VideoGame("GTAIV", "Grand Theaft Auto IV", "RockStart", 32, 25000, category1);
-    videoGamesList.add(videoGame2);
-
-    Category category2 = new Category("STR", "Estrategia");
-    VideoGame videoGame3 = new VideoGame("SPO", "Spoling", "Test", 23,  35000, category2);
-    videoGamesList.add(videoGame3);
-
-  }
 
   public void prepareClientData() {
     Client client = new Client("123", "Jose", 321, "@Jose");
@@ -158,5 +113,4 @@ public class ModelData {
   public void setClientList(List<Client> clientList) {
     this.clientList = clientList;
   }
-
 }
