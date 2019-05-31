@@ -165,7 +165,11 @@ public class AdmVideoGameActivity extends AppCompatActivity implements RecyclerI
     if (direction == ItemTouchHelper.START) {
       if (viewHolder instanceof VideoGameAdapter.MyViewHolder) {
         // get the removed item name to display it in snack bar
-        String name = videoGamesList.get(viewHolder.getAdapterPosition()).getNombre();
+        String name = videoGamesList.get(viewHolder.getAdapterPosition()).getCodigoJuego();
+        tempUrl = apiUrl + "deleteVid?codigoJuego="+name;
+        MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
+        myAsyncTasks.execute();
+
 
         // save the index deleted
         final int deletedIndex = viewHolder.getAdapterPosition();
@@ -186,7 +190,7 @@ public class AdmVideoGameActivity extends AppCompatActivity implements RecyclerI
     } else {
       VideoGame aux = mAdapter.getSwipedItem(viewHolder.getAdapterPosition());
 
-      Intent intent = new Intent(this, AddUpdCategoryActivity.class);
+      Intent intent = new Intent(this, AddUpdVideoGameActivity.class);
       intent.putExtra("editable", true);
       intent.putExtra("filtGrupo", critFiltG);
       intent.putExtra("videoGame", aux);

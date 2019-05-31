@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author alejandro
  */
-@WebServlet(urlPatterns = {"/ConnTest","/listarVideojuegos","/insertarVid","/listarCategorias","/insertarCategoria","/editCategoria","/deleteCategoria"})
+@WebServlet(urlPatterns = {"/ConnTest","/listarVideojuegos","/insertarVid","/editVid","/deleteVid","/listarCategorias","/insertarCategoria","/editCategoria","/deleteCategoria"})
 public class ConnTest extends HttpServlet {
     private ServicioVideojuego daoVideojuego;
     private ServicioCategoria servicioCategoria;
@@ -53,6 +53,12 @@ public class ConnTest extends HttpServlet {
                 this.doReadAllCat(request, response);
                 break;
             
+        case "/editVid":
+                this.doEditVid(request, response);
+                break;    
+        case "/insertarCategoria":
+            this.doInsertCat(request,response);
+            break;
         case "/deleteCategoria":
                 this.doDeleteCat(request, response);
                 break;    
@@ -61,8 +67,8 @@ public class ConnTest extends HttpServlet {
                 this.doEditCat(request, response);
                 break;    
             
-        case "/insertarCategoria":
-            this.doInsertCat(request,response);
+        case "/deleteVid":
+            this.doDeleteVid(request,response);
             break;
             case "/insertarVid":
                 this.doCreate(request, response);
@@ -70,6 +76,64 @@ public class ConnTest extends HttpServlet {
         
         }
         
+    }
+    
+    
+    protected void doDeleteVid(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+//        processRequest(request, response);
+            response.setContentType("text/html");
+            String codigo = request.getParameter("codigoJuego");
+            
+           
+           
+            daoVideojuego = ServicioVideojuego.getInstancia();
+            daoVideojuego.eliminarVideojuego(codigo);
+            
+            PrintWriter out = response.getWriter();
+            try {
+                out.println("eliminado");
+            } finally {
+                out.close();
+            }
+            
+        }   catch (GlobalException ex) {
+            Logger.getLogger(ConnTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ConnTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    protected void doEditCat(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+//        processRequest(request, response);
+            response.setContentType("text/html");
+            String codigo = request.getParameter("codigo");
+            String nombre= request.getParameter("nombre");
+            
+            
+            Categoria categoria= new Categoria(codigo,nombre);
+           
+           
+            servicioCategoria = ServicioCategoria.getInstancia();
+            servicioCategoria.modificarCategoria(categoria);
+            
+            PrintWriter out = response.getWriter();
+            try {
+                out.println("editado");
+            } finally {
+                out.close();
+            }
+            
+        }   catch (GlobalException ex) {
+            Logger.getLogger(ConnTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ConnTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
     
     protected void doDeleteCat(HttpServletRequest request, HttpServletResponse response)
@@ -100,20 +164,24 @@ public class ConnTest extends HttpServlet {
     }
     
     
-    protected void doEditCat(HttpServletRequest request, HttpServletResponse response)
+    protected void doEditVid(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
 //        processRequest(request, response);
             response.setContentType("text/html");
-            String codigo = request.getParameter("codigo");
+            String codigoJuego = request.getParameter("codigoJuego");
             String nombre= request.getParameter("nombre");
+            int cantidad= Integer.parseInt(request.getParameter("cantidad"));
+            int precio =Integer.parseInt(request.getParameter("precio"));
+            String empresa= request.getParameter("empresa");
+            String categoriaid=request.getParameter("categoria_id");
+            String nombrecategoria=request.getParameter("nombre_categoria");
             
-            
-            Categoria categoria= new Categoria(codigo,nombre);
+            Categoria categoria= new Categoria(categoriaid,nombrecategoria);
+            Videojuego videojuego= new Videojuego(codigoJuego,nombre,cantidad,precio,empresa,categoria);
            
-           
-            servicioCategoria = ServicioCategoria.getInstancia();
-            servicioCategoria.modificarCategoria(categoria);
+            daoVideojuego = ServicioVideojuego.getInstancia();
+            daoVideojuego.modificarVideojuego(categoria, videojuego);
             
             PrintWriter out = response.getWriter();
             try {
