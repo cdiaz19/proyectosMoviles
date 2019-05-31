@@ -1,10 +1,14 @@
 package com.example.lenovo.lab.Activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -12,6 +16,11 @@ import android.widget.Toast;
 import com.example.lenovo.lab.LogicaNeg.Category;
 import com.example.lenovo.lab.LogicaNeg.VideoGame;
 import com.example.lenovo.lab.R;
+
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class AddUpdVideoGameActivity extends AppCompatActivity {
 
@@ -24,15 +33,18 @@ public class AddUpdVideoGameActivity extends AppCompatActivity {
   private EditText priceFld;
   private EditText companyFld;
   private VideoGame critFiltG;
+  private EditText codiVid;
 
+  String apiUrl = "http://10.0.2.2:8080/WEB-INF/";
+  String tempUrl = "";
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_add_upd_videogame);
     editable = true;
     fBtn = findViewById(R.id.addUpdVideoGameBtn);
-
     //cleaning stuff
+    codiVid = findViewById(R.id.codeVGAddUpdVG);
     codeCatFld = findViewById(R.id.codeCatAddUpdVG);
     nameCatFld = findViewById(R.id.nameCatAddUpdVG);
     catVGFld = findViewById(R.id.catAddUpdVG);
@@ -79,11 +91,19 @@ public class AddUpdVideoGameActivity extends AppCompatActivity {
 
   public void addVideoGame() {
     if (validateForm()) {
-
+      tempUrl = apiUrl + "insertarVid?nombre="+nameFld.getText().toString()
+              +"&codigoJuego="+codiVid.getText().toString()
+              +"&empresa="+companyFld.getText().toString()
+              +"&cantidad="+catVGFld.getText().toString()
+              +"&precio="+priceFld.getText().toString()+
+              "&categoria_id="+codeCatFld.getText().toString()
+              +"&nombre_categoria="+nameCatFld.getText().toString();
+      MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
+      myAsyncTasks.execute();
       String codeCat = codeCatFld.getText().toString();
       String nameCat = nameCatFld.getText().toString();
 
-      VideoGame videoGame = new VideoGame(catVGFld.getText().toString(), nameFld.getText().toString(), companyFld.getText().toString(),
+      VideoGame videoGame = new VideoGame(codiVid.getText().toString(), nameFld.getText().toString(), companyFld.getText().toString(),
         Integer.parseInt(catVGFld.getText().toString()),
         Integer.parseInt(priceFld.getText().toString()), new Category(codeCat, nameCat));
 
@@ -141,4 +161,91 @@ public class AddUpdVideoGameActivity extends AppCompatActivity {
     }
     return true;
   }
+  public class MyAsyncTasks extends AsyncTask<String, String, String> {
+
+
+    @Override
+    protected void onPreExecute() {
+      super.onPreExecute();
+
+      // display a progress dialog for good user experiance
+            /*progressDialog = new ProgressDialog(MainActivity.this);
+            progressDialog.setMessage("Please Wait");
+            progressDialog.setCancelable(false);
+            progressDialog.show();*/
+    }
+
+    @Override
+    protected String doInBackground(String... params) {
+
+      // implement API in background and store the response in current variable
+      String current = "";
+      try {
+        URL url;
+        HttpURLConnection urlConnection = null;
+        try {
+          url = new URL(tempUrl);
+
+          urlConnection = (HttpURLConnection) url
+                  .openConnection();
+
+          InputStream in = urlConnection.getInputStream();
+
+          InputStreamReader isw = new InputStreamReader(in);
+
+          int data = isw.read();
+          while (data != -1) {
+            current += (char) data;
+            data = isw.read();
+            //System.out.print(current);
+
+          }
+          System.out.println(current);
+          // return the data to onPostExecute method
+          Log.w("", current);
+
+          return current;
+
+        } catch (Exception e) {
+          e.printStackTrace();
+        } finally {
+          if (urlConnection != null) {
+            urlConnection.disconnect();
+          }
+        }
+
+      } catch (Exception e) {
+        e.printStackTrace();
+        return "Exception: " + e.getMessage();
+      }
+      return current;
+    }
+
+    @Override
+    protected void onPostExecute(String s) {
+
+      try {
+        AlertDialog alertDialog = new AlertDialog.Builder(AddUpdVideoGameActivity.this).create();
+        alertDialog.setTitle("Mensaje");
+        alertDialog.setMessage(s);
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                  public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                  }
+                });
+        alertDialog.show();
+
+      }
+      catch (Exception ex){
+
+      }
+    }
+
+
+  }
+
+
+
+
 }

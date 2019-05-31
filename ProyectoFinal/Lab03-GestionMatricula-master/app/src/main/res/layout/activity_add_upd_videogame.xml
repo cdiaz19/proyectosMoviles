@@ -49,6 +49,23 @@
 
         </android.support.design.widget.TextInputLayout>
 
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/codeVGAddUpdVG"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Codigo del VideoJuego"
+                android:inputType="textPersonName" />
+        </android.support.design.widget.TextInputLayout>
+
+
+
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

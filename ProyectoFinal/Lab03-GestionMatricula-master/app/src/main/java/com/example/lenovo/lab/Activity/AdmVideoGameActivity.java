@@ -1,9 +1,12 @@
 package com.example.lenovo.lab.Activity;
 
+import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -17,6 +20,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,12 +31,22 @@ import com.example.lenovo.lab.AccesoDatos.ModelData;
 import com.example.lenovo.lab.LogicaNeg.VideoGame;
 import com.example.lenovo.lab.R;
 import com.example.lenovo.lab.Helper.RecyclerItemTouchHelper;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.reflect.Type;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class AdmVideoGameActivity extends AppCompatActivity implements RecyclerItemTouchHelper.RecyclerItemTouchHelperListener, VideoGameAdapter.VideoGameAdapterListener {
 
+  String apiUrl = "http://10.0.2.2:8080/WEB-INF/";
+  String tempUrl = "";
   private RecyclerView mRecyclerView;
   private VideoGameAdapter mAdapter;
   private List<VideoGame> videoGamesList;
@@ -41,6 +55,7 @@ public class AdmVideoGameActivity extends AppCompatActivity implements RecyclerI
   private FloatingActionButton fab;
   private ModelData model;
   private VideoGame critFiltG;
+  String json;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +65,25 @@ public class AdmVideoGameActivity extends AppCompatActivity implements RecyclerI
     setSupportActionBar(toolbar);
 
     getSupportActionBar().setTitle("Maintenance VideoGames");
+    tempUrl = apiUrl + "listarVideojuegos";
+    MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
+    try {
+      json=myAsyncTasks.execute().get();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    } catch (ExecutionException e) {
+      e.printStackTrace();
+    }
+    //System.out.println("jsonvideojuego"+json);
+    final Gson gson = new Gson();
+    final Type tipoListaVideojuegos = new TypeToken<List<VideoGame>>(){}.getType();
+    final List<VideoGame> videojuegos = gson.fromJson(json, tipoListaVideojuegos);
+
+
 
     mRecyclerView = findViewById(R.id.recycler_carrerasFld);
     videoGamesList = new ArrayList<>();
-    model = new ModelData();
+    model = new ModelData(null,videojuegos);
     videoGamesList = model.getVideoGamesList();
     mAdapter = new VideoGameAdapter(videoGamesList, this);
     coordinatorLayout = findViewById(R.id.coordinator_layout);
@@ -79,7 +109,7 @@ public class AdmVideoGameActivity extends AppCompatActivity implements RecyclerI
 
     critFiltG = new VideoGame();
     // Receive the VideoGame sent by AddUpdVideoGameActivity and then refresh the view with it.
-    checkIntentInformation();
+//    checkIntentInformation();
     mAdapter.notifyDataSetChanged();
   }
 
@@ -238,4 +268,91 @@ public class AdmVideoGameActivity extends AppCompatActivity implements RecyclerI
   public void onContactSelected(VideoGame videoGame) {
     Toast.makeText(getApplicationContext(), "Selected: " + videoGame.getCodigoJuego() + ", " + videoGame.getNombre(), Toast.LENGTH_LONG).show();
   }
+
+  public class MyAsyncTasks extends AsyncTask<String, String, String> {
+
+
+    @Override
+    protected void onPreExecute() {
+      super.onPreExecute();
+
+      // display a progress dialog for good user experiance
+            /*progressDialog = new ProgressDialog(MainActivity.this);
+            progressDialog.setMessage("Please Wait");
+            progressDialog.setCancelable(false);
+            progressDialog.show();*/
+    }
+
+    @Override
+    protected String doInBackground(String... params) {
+
+      // implement API in background and store the response in current variable
+      String current = "";
+      try {
+        URL url;
+        HttpURLConnection urlConnection = null;
+        try {
+          url = new URL(tempUrl);
+
+          urlConnection = (HttpURLConnection) url
+                  .openConnection();
+
+          InputStream in = urlConnection.getInputStream();
+
+          InputStreamReader isw = new InputStreamReader(in);
+
+          int data = isw.read();
+          while (data != -1) {
+            current += (char) data;
+            data = isw.read();
+            //System.out.print(current);
+
+          }
+          System.out.println(current);
+          // return the data to onPostExecute method
+          Log.w("", current);
+
+          return current;
+
+        } catch (Exception e) {
+          e.printStackTrace();
+        } finally {
+          if (urlConnection != null) {
+            urlConnection.disconnect();
+          }
+        }
+
+      } catch (Exception e) {
+        e.printStackTrace();
+        return "Exception: " + e.getMessage();
+      }
+      return current;
+    }
+
+    @Override
+    protected void onPostExecute(String s) {
+
+      try {
+        //AlertDialog alertDialog = new AlertDialog.Builder(AdmVideoGameActivity.this).create();
+        //alertDialog.setTitle("Mensaje");
+        //alertDialog.setMessage(s);
+        //alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+          //      new DialogInterface.OnClickListener() {
+            //      public void onClick(DialogInterface dialog, int which) {
+              //      dialog.dismiss();
+                //  }
+          //      });
+        //alertDialog.show();
+
+      }
+      catch (Exception ex){
+
+      }
+    }
+
+
+  }
+
+
+
 }

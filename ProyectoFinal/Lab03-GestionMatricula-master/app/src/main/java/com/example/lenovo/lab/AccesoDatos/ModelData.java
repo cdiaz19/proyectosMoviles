@@ -33,11 +33,22 @@ public class ModelData {
   private List<Client> clientList;
 
 
-  public ModelData(List<Category> cate) {
+  public ModelData(List<Category> cate,List<VideoGame> games) {
     categoriesList = new ArrayList<>();
     videoGamesList = new ArrayList<>();
     clientList = new ArrayList<>();
     prepareCategoriesData1(cate);
+    prepareVideoGamesData1(games);
+    prepareClientData();
+
+  }
+
+
+  public ModelData(List<VideoGame> games) {
+    categoriesList = new ArrayList<>();
+    videoGamesList = new ArrayList<>();
+    clientList = new ArrayList<>();
+    prepareVideoGamesData1(games);
     //prepareVideoGamesData();
     prepareClientData();
 
@@ -62,15 +73,27 @@ public class ModelData {
   }
 
   public void prepareCategoriesData1(List<Category> cate) {
+    if(cate!=null) {
+      for (int i = 0; i < cate.size(); i++) {
+        Category category = new Category(cate.get(i).getCodigo(), cate.get(i).getNombre());
+        categoriesList.add(category);
 
-    for (int i = 0; i < cate.size(); i++) {
-      Category category = new Category(cate.get(i).getCodigo(),cate.get(i).getNombre());
-      categoriesList.add(category);
-
+      }
     }
-
   }
 
+
+  public void prepareVideoGamesData1(List<VideoGame> games) {
+    if (games != null) {
+
+      for (int i = 0; i < games.size(); i++) {
+        Category category1 = new Category(games.get(i).getCategoria().getCodigo(), games.get(i).getCategoria().getNombre());
+        VideoGame videoGame = new VideoGame(games.get(i).getCodigoJuego(), games.get(i).getNombre(), games.get(i).getEmpresa(), games.get(i).getCantidad(), games.get(i).getPrecio(), category1);
+        videoGamesList.add(videoGame);
+
+      }
+    }
+  }
   public void prepareCategoriesData() {
     Category category = new Category("ACC", "Action");
     categoriesList.add(category);

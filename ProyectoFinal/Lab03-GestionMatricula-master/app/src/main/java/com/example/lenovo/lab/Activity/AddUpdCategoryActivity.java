@@ -25,7 +25,7 @@ public class AddUpdCategoryActivity extends AppCompatActivity {
 
 
 
-    String apiUrl = "http://10.0.2.2:8080/WebProyectoFinal/";
+    String apiUrl = "http://10.0.2.2:8080/WEB-INF/";
     String tempUrl = "";
     private FloatingActionButton fBtn;
     private boolean editable = true;

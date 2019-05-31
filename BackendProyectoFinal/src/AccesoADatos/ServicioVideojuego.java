@@ -42,7 +42,7 @@ public class ServicioVideojuego extends Servicio {
             pstmt.setString(1, videojuego.getCodigoJuego());
             pstmt.setString(2, videojuego.getNombre());
             pstmt.setInt(3, videojuego.getCantidad());
-            pstmt.setInt(4, videojuego.getCantidad());
+            pstmt.setInt(4, videojuego.getPrecio());
             pstmt.setString(5, videojuego.getEmpresa());
             pstmt.setString(6, categoria.getCodigo());
             

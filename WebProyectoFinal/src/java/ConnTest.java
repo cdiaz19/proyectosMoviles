@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author alejandro
  */
-@WebServlet(urlPatterns = {"/ConnTest","/listarVideojuegos","/mierda","/listarCategorias","/insertarCategoria","/editCategoria","/deleteCategoria"})
+@WebServlet(urlPatterns = {"/ConnTest","/listarVideojuegos","/insertarVid","/listarCategorias","/insertarCategoria","/editCategoria","/deleteCategoria"})
 public class ConnTest extends HttpServlet {
     private ServicioVideojuego daoVideojuego;
     private ServicioCategoria servicioCategoria;
