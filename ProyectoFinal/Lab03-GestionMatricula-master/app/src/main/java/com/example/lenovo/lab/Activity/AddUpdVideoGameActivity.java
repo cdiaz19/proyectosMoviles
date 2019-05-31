@@ -47,13 +47,15 @@ public class AddUpdVideoGameActivity extends AppCompatActivity {
       editable = extras.getBoolean("editable");
       if (editable) {   // is editing some row
         VideoGame aux = (VideoGame) getIntent().getSerializableExtra("videoGame");
-        codeCatFld.setText(aux.getCategory().toString());
+        codeCatFld.setText(aux.getCategoria().toString());
         codeCatFld.setEnabled(false);
-        nameFld.setText(aux.getName());
+        nameFld.setText(aux.getNombre());
         nameFld.setEnabled(false);
-        priceFld.setText(aux.getPrice());
+        catVGFld.setText(aux.getCantidad());
+        catVGFld.setEnabled(false);
+        priceFld.setText(aux.getPrecio());
         priceFld.setEnabled(false);
-        companyFld.setText(aux.getCompany());
+        companyFld.setText(aux.getEmpresa());
 
         //edit action
         fBtn.setOnClickListener(new View.OnClickListener() {
@@ -82,9 +84,10 @@ public class AddUpdVideoGameActivity extends AppCompatActivity {
       String nameCat = nameCatFld.getText().toString();
 
       VideoGame videoGame = new VideoGame(catVGFld.getText().toString(), nameFld.getText().toString(), companyFld.getText().toString(),
+        Integer.parseInt(catVGFld.getText().toString()),
         Integer.parseInt(priceFld.getText().toString()), new Category(codeCat, nameCat));
 
-      Toast.makeText(getApplicationContext(), videoGame.getName(), Toast.LENGTH_LONG).show();
+      Toast.makeText(getApplicationContext(), videoGame.getNombre(), Toast.LENGTH_LONG).show();
       Intent intent = new Intent(getBaseContext(), AdmVideoGameActivity.class);
 
       intent.putExtra("addVideoGame", videoGame);
@@ -101,9 +104,10 @@ public class AddUpdVideoGameActivity extends AppCompatActivity {
       String nameCat = nameCatFld.getText().toString();
 
       VideoGame videoGame = new VideoGame(catVGFld.getText().toString(), nameFld.getText().toString(), companyFld.getText().toString(),
+        Integer.parseInt(catVGFld.getText().toString()),
         Integer.parseInt(priceFld.getText().toString()), new Category(codeCat, nameCat));
 
-      Toast.makeText(getApplicationContext(), videoGame.getName(), Toast.LENGTH_LONG).show();
+      Toast.makeText(getApplicationContext(), videoGame.getNombre(), Toast.LENGTH_LONG).show();
       Intent intent = new Intent(getBaseContext(), AdmVideoGameActivity.class);
 
       intent.putExtra("editVideoGame", videoGame);

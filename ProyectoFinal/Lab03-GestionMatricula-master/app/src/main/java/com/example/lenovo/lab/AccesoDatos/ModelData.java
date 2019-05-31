@@ -91,15 +91,15 @@ public class ModelData {
   public void prepareVideoGamesData() {
     Category category1 = new Category("ACC", "Accion");
 
-    VideoGame videoGame = new VideoGame("GTAV", "Grand Theaft Auto V", "RockStart", 35000, category1);
+    VideoGame videoGame = new VideoGame("GTAV", "Grand Theaft Auto V", "RockStart", 45, 35000, category1);
     videoGamesList.add(videoGame);
-    VideoGame videoGame1 = new VideoGame("GTAII", "Grand Theaft Auto II", "RockStart", 10000, category1);
+    VideoGame videoGame1 = new VideoGame("GTAII", "Grand Theaft Auto II", "RockStart", 45, 10000, category1);
     videoGamesList.add(videoGame1);
-    VideoGame videoGame2 = new VideoGame("GTAIV", "Grand Theaft Auto IV", "RockStart", 25000, category1);
+    VideoGame videoGame2 = new VideoGame("GTAIV", "Grand Theaft Auto IV", "RockStart", 32, 25000, category1);
     videoGamesList.add(videoGame2);
 
     Category category2 = new Category("STR", "Estrategia");
-    VideoGame videoGame3 = new VideoGame("SPO", "Spoling", "Test",  35000, category2);
+    VideoGame videoGame3 = new VideoGame("SPO", "Spoling", "Test", 23,  35000, category2);
     videoGamesList.add(videoGame3);
 
   }

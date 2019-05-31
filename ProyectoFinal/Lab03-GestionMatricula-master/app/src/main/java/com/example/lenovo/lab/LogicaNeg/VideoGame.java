@@ -4,69 +4,79 @@ import java.io.Serializable;
 
 public class VideoGame implements Serializable{
 
-  private String code, name, company;
-  private int price;
-  private Category category;
+  private String codigoJuego, nombre, empresa;
+  private int precio, cantidad;
+  private Category categoria;
 
   public VideoGame() {
   }
 
-  public VideoGame(String code, String name, String company, int price, Category category) {
-    this.code = code;
-    this.name = name;
-    this.company = company;
-    this.price = price;
-    this.category = category;
+  public VideoGame(String codigoJuego, String nombre, String empresa, int cantidad, int precio, Category categoria) {
+    this.codigoJuego = codigoJuego;
+    this.nombre = nombre;
+    this.empresa = empresa;
+    this.precio = precio;
+    this.cantidad = cantidad;
+    this.categoria = categoria;
   }
 
-  public String getCode() {
-    return code;
+  public String getCodigoJuego() {
+    return codigoJuego;
   }
 
-  public void setCode(String code) {
-    this.code = code;
+  public void setCodigoJuego(String codigoJuego) {
+    this.codigoJuego = codigoJuego;
   }
 
-  public String getName() {
-    return name;
+  public String getNombre() {
+    return nombre;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
   }
 
-  public String getCompany() {
-    return company;
+  public String getEmpresa() {
+    return empresa;
   }
 
-  public void setCompany(String company) {
-    this.company = company;
+  public void setEmpresa(String empresa) {
+    this.empresa = empresa;
   }
 
-  public int getPrice() {
-    return price;
+  public int getCantidad() {
+    return cantidad;
   }
 
-  public void setPrice(int price) {
-    this.price = price;
+  public void setCantidad(int cantidad) {
+    this.cantidad = cantidad;
   }
 
-  public Category getCategory() {
-    return category;
+  public int getPrecio() {
+    return precio;
   }
 
-  public void setCategory(Category category) {
-    this.category = category;
+  public void setPrecio(int precio) {
+    this.precio = precio;
+  }
+
+  public Category getCategoria() {
+    return categoria;
+  }
+
+  public void setCategoria(Category categoria) {
+    this.categoria = categoria;
   }
 
   @Override
   public String toString() {
     return "VideoGame{" +
-      "code='" + code + '\'' +
-      ", name='" + name + '\'' +
-      ", company='" + company + '\'' +
-      ", price=" + price +
-      ", category=" + category +
+      "codigoJuego='" + codigoJuego + '\'' +
+      ", nombre='" + nombre + '\'' +
+      ", empresa='" + empresa + '\'' +
+      ", cantidad=" + cantidad +
+      ", precio=" + precio +
+      ", categoria=" + categoria +
       '}';
   }
 }

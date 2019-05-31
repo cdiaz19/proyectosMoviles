@@ -45,9 +45,9 @@ public class VideoGameAdapter extends RecyclerView.Adapter<VideoGameAdapter.MyVi
   public void onBindViewHolder(VideoGameAdapter.MyViewHolder holder, int position) {
     final VideoGame videoGame = videoGameListFiltered.get(position);
 
-    holder.codeVG.setText(videoGame.getCode());
-    holder.nameVG.setText(videoGame.getName());
-    holder.priceVG.setText("Price: " + String.valueOf(videoGame.getPrice()));
+    holder.codeVG.setText(videoGame.getCodigoJuego());
+    holder.nameVG.setText(videoGame.getNombre());
+    holder.priceVG.setText("Price: " + String.valueOf(videoGame.getPrecio()));
   }
 
   @Override
@@ -66,7 +66,7 @@ public class VideoGameAdapter extends RecyclerView.Adapter<VideoGameAdapter.MyVi
         } else {
           List<VideoGame> filteredList = new ArrayList<>();
           for (VideoGame row : videoGamesList) {
-            if (row.getCode().toLowerCase().contains(charString.toLowerCase()) || row.getCategory().getNombre().toLowerCase().contains(charSequence)) {
+            if (row.getCodigoJuego().toLowerCase().contains(charString.toLowerCase()) || row.getCategoria().getNombre().toLowerCase().contains(charSequence)) {
               filteredList.add(row);
             }
           }

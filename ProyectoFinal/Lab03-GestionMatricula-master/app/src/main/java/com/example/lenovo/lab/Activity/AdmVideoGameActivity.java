@@ -89,7 +89,7 @@ public class AdmVideoGameActivity extends AppCompatActivity implements RecyclerI
       critFiltG = (VideoGame) getIntent().getSerializableExtra("filtGrupo");
       if (critFiltG != null){ // only the videojuegos the match with the criteria
         for(VideoGame g : model.getVideoGamesList()){
-          if(g.getCategory().getCodigo().equals(critFiltG.getCategory().getCodigo())){
+          if(g.getCategoria().getCodigo().equals(critFiltG.getCategoria().getCodigo())){
             videoGamesList.add(g);
           }
         }
@@ -102,22 +102,22 @@ public class AdmVideoGameActivity extends AppCompatActivity implements RecyclerI
           //found an item that can be updated
           boolean founded = false;
           for (VideoGame videogame : videoGamesList) {
-            if (videogame.getName().equals(aux.getName())) {
-              videogame.setName(aux.getName());
+            if (videogame.getNombre().equals(aux.getNombre())) {
+              videogame.setNombre(aux.getNombre());
               founded = true;
               break;
             }
           }
           if (founded) {
-            Toast.makeText(getApplicationContext(), aux.getName() + " edited", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), aux.getNombre() + " edited", Toast.LENGTH_LONG).show();
           } else {
-            Toast.makeText(getApplicationContext(), aux.getName() + " not finding", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), aux.getNombre() + " not finding", Toast.LENGTH_LONG).show();
           }
         }
       } else {
         //found a new Category Object
         videoGamesList.add(aux);
-        Toast.makeText(getApplicationContext(), aux.getName() + " addded to List!", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), aux.getNombre() + " addded to List!", Toast.LENGTH_LONG).show();
       }
     }
   }
@@ -135,7 +135,7 @@ public class AdmVideoGameActivity extends AppCompatActivity implements RecyclerI
     if (direction == ItemTouchHelper.START) {
       if (viewHolder instanceof VideoGameAdapter.MyViewHolder) {
         // get the removed item name to display it in snack bar
-        String name = videoGamesList.get(viewHolder.getAdapterPosition()).getName();
+        String name = videoGamesList.get(viewHolder.getAdapterPosition()).getNombre();
 
         // save the index deleted
         final int deletedIndex = viewHolder.getAdapterPosition();
@@ -236,6 +236,6 @@ public class AdmVideoGameActivity extends AppCompatActivity implements RecyclerI
 
   @Override
   public void onContactSelected(VideoGame videoGame) {
-    Toast.makeText(getApplicationContext(), "Selected: " + videoGame.getCode() + ", " + videoGame.getName(), Toast.LENGTH_LONG).show();
+    Toast.makeText(getApplicationContext(), "Selected: " + videoGame.getCodigoJuego() + ", " + videoGame.getNombre(), Toast.LENGTH_LONG).show();
   }
 }
