@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_ofertaAcademica"
+            android:enabled="false"
+            android:icon="@drawable/ic_menu_oferta_academica"
+            android:title="Oferta Academica" />
+        <item
+            android:id="@+id/nav_registroHoras"
+            android:enabled="false"
+            android:icon="@drawable/ic_menu_registro_notas"
+            android:title="Registro de Notas" />
+        <item
+            android:id="@+id/nav_consultaHistorial"
+            android:enabled="false"
+            android:icon="@drawable/ic_menu_historial"
+            android:title="Consulta de Historial" />
+    </group>
+
+    <item android:title="Mantenimientos">
+        <menu>
+            <item
+                android:id="@+id/nav_curso"
+                android:enabled="false"
+                android:icon="@drawable/ic_menu_listas"
+                android:title="Cursos" />
+            <item
+                android:id="@+id/nav_carrera"
+                android:enabled="false"
+                android:icon="@drawable/ic_menu_listas"
+                android:title="Carreras" />
+            <item
+                android:id="@+id/nav_profesor"
+                android:enabled="false"
+                android:icon="@drawable/ic_menu_listas"
+                android:title="Profesores" />
+            <item
+                android:id="@+id/nav_alumno"
+                android:enabled="false"
+                android:icon="@drawable/ic_menu_listas"
+                android:title="Alumnos" />
+            <item
+                android:id="@+id/nav_ciclo"
+                android:enabled="false"
+                android:icon="@drawable/ic_menu_listas"
+                android:title="Ciclos" />
+            <item
+                android:id="@+id/nav_seguridad"
+                android:enabled="false"
+                android:icon="@drawable/ic_menu_seguridad"
+                android:title="Seguridad" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_menu_salir"
+                android:title="Log Out" />
+        </menu>
+    </item>
+
+</menu>
