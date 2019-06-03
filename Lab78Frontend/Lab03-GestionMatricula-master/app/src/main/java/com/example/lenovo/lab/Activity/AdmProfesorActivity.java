@@ -4,6 +4,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -17,6 +18,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,12 +29,22 @@ import com.example.lenovo.lab.LogicaNeg.Profesor;
 import com.example.lenovo.lab.Adapter.ProfesorAdapter;
 import com.example.lenovo.lab.R;
 import com.example.lenovo.lab.Helper.RecyclerItemTouchHelper;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.reflect.Type;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class AdmProfesorActivity extends AppCompatActivity implements RecyclerItemTouchHelper.RecyclerItemTouchHelperListener, ProfesorAdapter.ProfesorAdapterListener {
-
+    String apiUrl = "http://192.168.0.13:8080/Lab7-8Web/";
+    //String apiUrl = "http://10.0.2.2:8080/Lab7-8Web/";
+    String tempUrl = "";
     private RecyclerView mRecyclerView;
     private ProfesorAdapter mAdapter;
     private List<Profesor> profesorList;
@@ -40,6 +52,7 @@ public class AdmProfesorActivity extends AppCompatActivity implements RecyclerIt
     private SearchView searchView;
     private FloatingActionButton fab;
     private ModelData model;
+    private String json;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +64,22 @@ public class AdmProfesorActivity extends AppCompatActivity implements RecyclerIt
         //toolbar fancy stuff
         getSupportActionBar().setTitle(getString(R.string.my_profesor));
 
+        tempUrl = apiUrl + "listarProfesores";
+        MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
+        try {
+            json=myAsyncTasks.execute().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        final Gson gson = new Gson();
+        final Type tipoListaProfesor = new TypeToken<List<Profesor>>(){}.getType();
+        final List<Profesor> profesores = gson.fromJson(json, tipoListaProfesor);
+
         mRecyclerView = findViewById(R.id.recycler_profesorFld);
         profesorList = new ArrayList<>();
-        model=new ModelData();
+        model=new ModelData(null,null,null,profesores);
         profesorList=model.getProfesorList();
         mAdapter = new ProfesorAdapter(profesorList, this);
         coordinatorLayout = findViewById(R.id.coordinator_layoutP);
@@ -95,7 +121,10 @@ public class AdmProfesorActivity extends AppCompatActivity implements RecyclerIt
         if (direction == ItemTouchHelper.START) {
             if (viewHolder instanceof ProfesorAdapter.MyViewHolder) {
                 // get the removed item name to display it in snack bar
-                String name = profesorList.get(viewHolder.getAdapterPosition()).getNombre();
+                String name = profesorList.get(viewHolder.getAdapterPosition()).getCedula();
+                tempUrl = apiUrl + "eliminarProfesor?cedula="+name;
+                MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
+                myAsyncTasks.execute();
 
                 // save the index deleted
                 final int deletedIndex = viewHolder.getAdapterPosition();
@@ -242,6 +271,99 @@ public class AdmProfesorActivity extends AppCompatActivity implements RecyclerIt
         Intent intent = new Intent(this, AddUpdProfesorActivity.class);
         intent.putExtra("editable", false);
         startActivity(intent);
+    }
+
+    public class MyAsyncTasks extends AsyncTask<String, String, String> {
+
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            // display a progress dialog for good user experiance
+            /*progressDialog = new ProgressDialog(MainActivity.this);
+            progressDialog.setMessage("Please Wait");
+            progressDialog.setCancelable(false);
+            progressDialog.show();*/
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            // implement API in background and store the response in current variable
+            String current = "";
+            try {
+                URL url;
+                HttpURLConnection urlConnection = null;
+                try {
+                    url = new URL(tempUrl);
+
+                    urlConnection = (HttpURLConnection) url
+                            .openConnection();
+
+                    InputStream in = urlConnection.getInputStream();
+
+                    InputStreamReader isw = new InputStreamReader(in);
+
+                    int data = isw.read();
+                    while (data != -1) {
+                        current += (char) data;
+                        data = isw.read();
+                        //System.out.print(current);
+
+                    }
+                    System.out.println(current);
+                    // return the data to onPostExecute method
+                    Log.w("", current);
+
+
+
+                    return current;
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    if (urlConnection != null) {
+                        urlConnection.disconnect();
+                    }
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                return "Exception: " + e.getMessage();
+            }
+            return current;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+
+            try {
+
+                // final Gson gson = new Gson();
+                // final Type tipoListaCategories = new TypeToken<List<Category>>(){}.getType();
+                // categoriesList = gson.fromJson(s, tipoListaCategories);
+                //System.out.println(categoriesList);
+
+
+                //AlertDialog alertDialog = new AlertDialog.Builder(AdmCategoryActivity.this).create();
+                //alertDialog.setTitle("Mensaje");
+                //alertDialog.setMessage(s);
+                //alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                //      new DialogInterface.OnClickListener() {
+                //        public void onClick(DialogInterface dialog, int which) {
+                //          dialog.dismiss();
+                //    }
+                //});
+                //alertDialog.show();
+
+            }
+            catch (Exception ex){
+
+            }
+        }
+
+
     }
 
 

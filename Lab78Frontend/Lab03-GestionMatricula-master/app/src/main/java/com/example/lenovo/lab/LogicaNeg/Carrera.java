@@ -20,7 +20,7 @@ public class Carrera implements Serializable {
         this.codigo = codigo;
         this.nombre = nombre;
         this.titulo = titulo;
-        this.cursos = new ArrayList<>();
+       // this.cursos = new ArrayList<>();
     }
 
     public Carrera(String codigo, String nombre) {

@@ -7,32 +7,36 @@ import java.io.Serializable;
  */
 
 public class Ciclo implements Serializable {
-
-    private int año;
+    private String codigo;
+    private int anno;
     private String numero;
-    private String finicio;
-    private String ffinal;
+    private String fechaIncio;
+    private String fechaFinal;
 
-    public Ciclo(int año, String numero, String finicio, String ffinal) {
-        this.año = año;
+    public Ciclo(String codigo, int anno, String numero, String fechaIncio, String fechaFinal) {
+        this.codigo=codigo;
+        this.anno = anno;
         this.numero = numero;
-        this.finicio = finicio;
-        this.ffinal = ffinal;
+        this.fechaIncio = fechaIncio;
+        this.fechaFinal = fechaFinal;
     }
 
-    public Ciclo(int año, String numero) {
-        this.año = año;
+    public Ciclo(int anno, String numero) {
+        this.codigo="123";
+        this.anno = anno;
         this.numero = numero;
-        this.finicio = "";
-        this.ffinal = "";
+        this.fechaIncio = "";
+        this.fechaFinal = "";
     }
 
+    public String getCodigo(){return codigo;}
+    public void setCodigo(String codigo){this.codigo=codigo;}
     public int getAño() {
-        return año;
+        return anno;
     }
 
-    public void setAño(int año) {
-        this.año = año;
+    public void setAño(int anno) {
+        this.anno = anno;
     }
 
     public String getNumero() {
@@ -44,24 +48,24 @@ public class Ciclo implements Serializable {
     }
 
     public String getFinicio() {
-        return finicio;
+        return fechaIncio;
     }
 
-    public void setFinicio(String finicio) {
-        this.finicio = finicio;
+    public void setFinicio(String fechaInicio) {
+        this.fechaIncio = fechaInicio;
     }
 
     public String getFfinal() {
-        return ffinal;
+        return fechaFinal;
     }
 
-    public void setFfinal(String ffinal) {
-        this.ffinal = ffinal;
+    public void setFfinal(String fechaFinal) {
+        this.fechaFinal =fechaFinal;
     }
 
     @Override
     public String toString() {
-        return numero + " ciclo - " + año;
+        return numero + " ciclo - " + anno;
         /*
         return "Ciclo{" +
                 "año=" + año +

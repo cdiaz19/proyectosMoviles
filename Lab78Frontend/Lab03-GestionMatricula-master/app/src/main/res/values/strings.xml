@@ -49,6 +49,8 @@
     <string name="codigoAddUpdCar">Codigo</string>
     <string name="tituloAddUptCar">Titulo</string>
 
+    <string name="codigoCarreraAddUptCur">CodigoCarrera</string>
+    <string name="nombreCarreraAddUptCur">Nombre Carrera</string>
     <string name="nombreAddUptCur">Nombre</string>
     <string name="codigoAddUpdCur">Codigo</string>
     <string name="creditoAddUptCur">Creditos</string>
@@ -66,6 +68,7 @@
     <string name="fechaAddUpdAlum">Fecha de nacimiento</string>
     <string name="carreraAddUpdAlum">Carrera</string>
 
+    <string name="codigoAddUpdCi">Codigo</string>
     <string name="añoAddUpdCi">Año</string>
     <string name="numeroAddUpdCi">Numero</string>
     <string name="finicioAddUpdCi">Fecha inicio</string>

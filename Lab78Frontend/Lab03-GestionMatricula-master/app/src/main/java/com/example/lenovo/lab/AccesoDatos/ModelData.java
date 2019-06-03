@@ -24,6 +24,22 @@ public class ModelData {
     private List<Ciclo> cicloList;
     private List<Grupo> grupoList;
 
+
+    public ModelData(List<Ciclo> ciclos,List<Carrera> carreras,List<Curso> cursos,List<Profesor> profesores) {
+        carreraList = new ArrayList<>();
+        cursoList = new ArrayList<>();
+        alumnoList = new ArrayList<>();
+        profesorList = new ArrayList<>();
+        cicloList = new ArrayList<>();
+        grupoList = new ArrayList<>();
+        prepareCarreraData(carreras);
+        prepareAlumnoData();
+        prepareCursoData(cursos);
+        prepareCicloData(ciclos);
+        prepareProfesorData(profesores);
+        prepareGrupoData();
+    }
+
     public ModelData() {
         carreraList = new ArrayList<>();
         cursoList = new ArrayList<>();
@@ -31,11 +47,11 @@ public class ModelData {
         profesorList = new ArrayList<>();
         cicloList = new ArrayList<>();
         grupoList = new ArrayList<>();
-        prepareCarreraData();
+        //prepareCarreraData();
         prepareAlumnoData();
-        prepareCursoData();
-        prepareCicloData();
-        prepareProfesorData();
+        //prepareCursoData();
+        //prepareCicloData();
+       // prepareProfesorData();
         prepareGrupoData();
     }
 
@@ -90,135 +106,24 @@ public class ModelData {
         grupoList.add(grupo);
     }
 
-    public void prepareCarreraData() {
-        Carrera carrera = new Carrera("EIF", "Ingenieria en sistemas");
-        carrera.addCurso(new Curso("ST", "Soporte", 3, 4));
-        carrera.addCurso(new Curso("FD", "Fundamentos", 3, 4));
-        carrera.addCurso(new Curso("PG1", "Programacion I", 3, 4));
-        carrera.addCurso(new Curso("PG2", "Programacion II", 3, 4));
-        carrera.addCurso(new Curso("PG3", "Programacion III", 3, 4));
-        carrera.addCurso(new Curso("PG4", "Programacion IV", 3, 4));
-        carrera.addCurso(new Curso("EDA", "Estructuras Datos", 3, 4));
-        carrera.addCurso(new Curso("EDI", "Estructuras Discretas", 3, 4));
-        carrera.addCurso(new Curso("MV", "Moviles", 3, 4));
-        carrera.addCurso(new Curso("PP", "Paradigmas", 3, 4));
-        carrera.addCurso(new Curso("AQ", "Arquitectura", 3, 4));
-        carrera.addCurso(new Curso("RD", "Redes", 3, 4));
-        carreraList.add(carrera);
-
-        carrera = new Carrera("ADM", "Administracion");
-        carrera.addCurso(new Curso("FAD", "Fundamentos de Administracion", 3, 4));
-        carrera.addCurso(new Curso("C1", "Contabilidad I", 3, 4));
-        carreraList.add(carrera);
-
-        carrera = new Carrera("FIS", "Fisica");
-        carrera.addCurso(new Curso("FF", "Fundamentos de Fisica", 3, 4));
-        carrera.addCurso(new Curso("F1", "Fisica I", 3, 4));
-        carreraList.add(carrera);
-
-        carrera = new Carrera("MAT", "Matematica");
-        carrera.addCurso(new Curso("FM", "Fundamentos de Matematica", 3, 4));
-        carrera.addCurso(new Curso("HB1", "Historia Basica I", 3, 4));
-        carreraList.add(carrera);
-
-        carrera = new Carrera("Star Trek", "Science Fiction");
-        carrera.addCurso(new Curso("M1", "Matrix 1", 3, 4));
-        carrera.addCurso(new Curso("BDR", "Blade Runner 2049", 3, 4));
-        carreraList.add(carrera);
-
-        carrera = new Carrera("The LEGO Movie", "Animation");
-        carrera.addCurso(new Curso("ZOO", "Zootopia", 3, 4));
-        carrera.addCurso(new Curso("VIN", "Vecinos Invasores", 3, 4));
-        carreraList.add(carrera);
-
-        carrera = new Carrera("Back to the Future", "Classics");
-        carrera.addCurso(new Curso("TIT", "Titanic", 3, 4));
-        carrera.addCurso(new Curso("DDA", "Donnie Darko", 3, 4));
-        carreraList.add(carrera);
-
-        carrera = new Carrera("3 Idiots", "Commedy");
-        carrera.addCurso(new Curso("WDG", "War Dogs", 3, 4));
-        carrera.addCurso(new Curso("ANT", "Ant Man", 3, 4));
-        carreraList.add(carrera);
-
-        carrera = new Carrera("Guardians of the Galaxy", "Science Fiction & Fantasy");
-        carrera.addCurso(new Curso("JL", "Justice League", 3, 4));
-        carrera.addCurso(new Curso("AVG", "Avengers", 3, 4));
-        carreraList.add(carrera);
-
-
-        carrera = new Carrera("Batman", "Action");
-        carreraList.add(carrera);
+    public void prepareCarreraData(List<Carrera> carreras) {
+        if (carreras != null) {
+            for (int i = 0; i < carreras.size(); i++) {
+                Carrera carrera = new Carrera(carreras.get(i).getCodigo(),carreras.get(i).getNombre(),carreras.get(i).getTitulo());
+                carreraList.add(carrera);
+            }
+        }
     }
 
-    public void prepareCursoData() {
-        Curso curso = new Curso("ST", "Soporte", 3, 4);
-        cursoList.add(curso);
-        curso = new Curso("FD", "Fundamentos", 3, 4);
-        cursoList.add(curso);
-        curso = new Curso("PG1", "Programacion I", 3, 4);
-        cursoList.add(curso);
-        curso = new Curso("PG2", "Programacion II", 3, 4);
-        cursoList.add(curso);
-        curso = new Curso("PG3", "Programacion III", 3, 4);
-        cursoList.add(curso);
-        curso = new Curso("PG4", "Programacion IV", 3, 4);
-        cursoList.add(curso);
-        curso = new Curso("EDA", "Estructuras Datos", 3, 4);
-        cursoList.add(curso);
-        curso = new Curso("EDI", "Estructuras Discretas", 3, 4);
-        cursoList.add(curso);
+    public void prepareCursoData(List<Curso> cursos) {
+        if (cursos != null) {
+            for (int i = 0; i < cursos.size(); i++) {
+                Carrera carrera= new Carrera(cursos.get(i).getCarrera().getCodigo(),cursos.get(i).getCarrera().getNombre(),null);
+                Curso curso = new Curso(cursos.get(i).getCodigo(),cursos.get(i).getNombre(), cursos.get(i).getCreditos(),cursos.get(i).getHoras(),carrera);
+                cursoList.add(curso);
+            }
 
-        curso = new Curso("MV", "Moviles", 3, 4);
-        cursoList.add(curso);
-        curso = new Curso("PP", "Paradigmas", 3, 4);
-        cursoList.add(curso);
-
-        curso = new Curso("AQ", "Arquitectura", 3, 4);
-        cursoList.add(curso);
-
-        curso = new Curso("RD", "Redes", 3, 4);
-        cursoList.add(curso);
-        // de adm
-        curso = new Curso("FAD", "Fundamentos de Administracion", 3, 4);
-        cursoList.add(curso);
-        curso = new Curso("C1", "Contabilidad I", 3, 4);
-        cursoList.add(curso);
-        // de fisica
-        curso = new Curso("FF", "Fundamentos de Fisica", 3, 4);
-        cursoList.add(curso);
-        curso = new Curso("F1", "Fisica I", 3, 4);
-        cursoList.add(curso);
-        // de matematica
-        curso = new Curso("FM", "Fundamentos de Matematica", 3, 4);
-        cursoList.add(curso);
-        curso = new Curso("HB1", "Historia Basica I", 3, 4);
-        cursoList.add(curso);
-        // de science fiction
-        curso = new Curso("M1", "Matrix 1", 3, 4);
-        cursoList.add(curso);
-        curso = new Curso("BDR", "Blade Runner 2049", 3, 4);
-        cursoList.add(curso);
-        // de animation
-        curso = new Curso("ZOO", "Zootopia", 3, 4);
-        cursoList.add(curso);
-        curso = new Curso("VIN", "Vecinos Invasores", 3, 4);
-        cursoList.add(curso);
-        // de classics
-        curso = new Curso("TIT", "Titanic", 3, 4);
-        cursoList.add(curso);
-        curso = new Curso("DDA", "Donnie Darko", 3, 4);
-        cursoList.add(curso);
-        // de commedy
-        curso = new Curso("WDG", "War Dogs", 3, 4);
-        cursoList.add(curso);
-        curso = new Curso("ANT", "Ant Man", 3, 4);
-        cursoList.add(curso);
-        // de Science Fiction & Fantasy
-        curso = new Curso("JL", "Justice League", 3, 4);
-        cursoList.add(curso);
-        curso = new Curso("AVG", "Avengers", 3, 4);
-        cursoList.add(curso);
+        }
     }
 
     public void prepareAlumnoData() {
@@ -241,40 +146,29 @@ public class ModelData {
         alumnoList.add(alumno);
     }
 
-    public void prepareProfesorData() {
-        Profesor profesor = new Profesor("123", "Jose", "@jose", 678);
-        profesorList.add(profesor);
+    public void prepareProfesorData(List<Profesor> profesores) {
+        if (profesores != null) {
+            for (int i = 0; i < profesores.size(); i++) {
+                Profesor profesor = new Profesor(profesores.get(i).getCedula(), profesores.get(i).getNombre(), profesores.get(i).getEmail(), profesores.get(i).getTelefono());
+                profesorList.add(profesor);
 
-        profesor = new Profesor("234", "Juan", "@juan", 876);
-        profesorList.add(profesor);
+            }
 
-        profesor = new Profesor("345", "Mario", "@mario", 789);
-        profesorList.add(profesor);
 
-        profesor = new Profesor("456", "Jesus", "@Jesus", 978);
-        profesorList.add(profesor);
+        }
     }
 
-    public void prepareCicloData() {
-        Ciclo ciclo = new Ciclo(2018, "Primer", "12/02", "12/06");
-        cicloList.add(ciclo);
+    public void prepareCicloData(List<Ciclo> ciclos) {
+        if (ciclos != null) {
+            for (int i = 0; i < ciclos.size(); i++) {
+                System.out.println(ciclos.get(0).getFinicio());
+                Ciclo ciclo = new Ciclo(ciclos.get(i).getCodigo(), ciclos.get(i).getAño(), ciclos.get(i).getNumero(), ciclos.get(i).getFinicio(), ciclos.get(i).getFfinal());
+                cicloList.add(ciclo);
 
-        ciclo = new Ciclo(2018, "Segundo", "12/07", "12/11");
-        cicloList.add(ciclo);
 
-        ciclo = new Ciclo(2017, "Primer", "12/02", "12/06");
-        cicloList.add(ciclo);
-
-        ciclo = new Ciclo(2017, "Segundo", "12/07", "12/11");
-        cicloList.add(ciclo);
-
-        ciclo = new Ciclo(2016, "Primer", "12/02", "12/06");
-        cicloList.add(ciclo);
-
-        ciclo = new Ciclo(2016, "Segundo", "12/07", "12/11");
-        cicloList.add(ciclo);
+            }
+        }
     }
-
     public List<Carrera> getCarreraList() {
         return carreraList;
     }

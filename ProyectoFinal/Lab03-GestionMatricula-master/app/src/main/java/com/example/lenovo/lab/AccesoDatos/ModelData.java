@@ -33,6 +33,8 @@ public class ModelData {
   private List<Client> clientList;
 
 
+
+
   public ModelData(List<Category> cate,List<VideoGame> games) {
     categoriesList = new ArrayList<>();
     videoGamesList = new ArrayList<>();

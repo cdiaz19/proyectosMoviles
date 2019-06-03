@@ -21,6 +21,22 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
 
+
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/codigoAddUpdCi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/codigoAddUpdCi"
+                android:inputType="textPersonName" />
+        </android.support.design.widget.TextInputLayout>
+
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -31,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/añoAddUpdCi"
-                android:inputType="textPersonName" />
+                android:inputType="phone" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -44,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/numeroAddUpdCi"
-                android:inputType="textPersonName" />
+                android:inputType="phone" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -57,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/finicioAddUpdCi"
-                android:inputType="phone" />
+                android:inputType="textPersonName" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -70,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/ffinalAddUpdCi"
-                android:inputType="phone" />
+                android:inputType="textPersonName" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.FloatingActionButton

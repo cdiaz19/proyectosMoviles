@@ -12,12 +12,14 @@ public class Curso implements Serializable{
     private String nombre;
     private int creditos;
     private int horas;
+    private Carrera carrera;
 
-    public Curso(String codigo, String nombre, int creditos, int horas) {
+    public Curso(String codigo, String nombre, int creditos, int horas,Carrera carrera) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.creditos = creditos;
         this.horas = horas;
+        this.carrera = carrera;
     }
 
     public Curso(String codigo, String nombre) {
@@ -25,6 +27,14 @@ public class Curso implements Serializable{
         this.nombre = nombre;
         this.creditos=0;
         this.horas=0;
+    }
+
+    public Carrera getCarrera() {
+        return carrera;
+    }
+
+    public void setCarrera(Carrera carrera) {
+        this.carrera = carrera;
     }
 
     public String getNombre() {

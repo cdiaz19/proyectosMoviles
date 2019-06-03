@@ -26,10 +26,8 @@ public class MainActivity extends AppCompatActivity {
     Button botoninsertar, botonleer, botonnactualizar, botoneliminar, botonlistar;
     TextView txtView;
 
-    String apiUrl = "http://10.0.2.2:8080/WebProyectoFinal/";
+    String apiUrl = "http://10.0.2.2:8080/LabConnection2/";
     String tempUrl = "";
-    //String apiUrl = "https://samples.openweathermap.org/data/3.0/stations?appid=b1b15e88fa797225412429c1c50c122a1";
-    //String apiUrl = "https://samples.openweathermap.org/data/3.0/stations?appid=b1b15e88fa797225412429c1c50c122a1";
     String title, image, category;
     TextView titleTextView, categoryTextView;
     ProgressDialog progressDialog;
@@ -47,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         botonnactualizar = (Button) findViewById(R.id.button3);
         botoneliminar = (Button) findViewById(R.id.button4);
         botonlistar = (Button) findViewById(R.id.button5);
-        txtView = (TextView) findViewById(R.id.textView3);
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -62,7 +59,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                tempUrl = apiUrl + "insertarEstudiante";
+                String nombre="pepito";
+                String edad= "76";
+                tempUrl = apiUrl + "insertarEstudiante?nombre="+nombre+"&edad="+edad;
                 MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
                 myAsyncTasks.execute();
 
@@ -103,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                tempUrl = apiUrl + "listarVideojuegos";
+                tempUrl = apiUrl + "listarEstudiante";
                 MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
                 myAsyncTasks.execute();
 

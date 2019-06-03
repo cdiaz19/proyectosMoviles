@@ -52,7 +52,7 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:text="@string/textview" />
+            android:text="" />
 
     </android.support.design.widget.AppBarLayout>
 

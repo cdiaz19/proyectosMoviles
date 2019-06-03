@@ -34,8 +34,8 @@ public class Lab78Backend {
         ServicioCarrera scar=ServicioCarrera.getInstancia();
         Carrera carrera= new Carrera("CP","CIEN","Bachillerato");
         //scar.modificarCarrera(carrera);
-        Curso curso= new Curso("EIF2014","PROGRA mierda",3,6,carrera);
-        scur.modificarCurso(curso, carrera);
+        //Curso curso= new Curso("EIF2014","PROGRA mierda",3,6,carrera);
+        //scur.modificarCurso(curso, carrera);
         //Ciclo ciclo1= new Ciclo("1",2015,1,"12/15/2015","21/02/2017");
         //Profesor profesor= new Profesor("11579044","Alejandro1","@ALE567",2222554);
         //sc.insertarCiclo(ciclo1);
