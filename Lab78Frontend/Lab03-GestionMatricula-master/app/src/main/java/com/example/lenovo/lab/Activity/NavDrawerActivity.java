@@ -150,8 +150,9 @@ public class NavDrawerActivity extends AppCompatActivity
             else
                 abrirHistorial();
         } else if (id == R.id.nav_alumno) {
-            Toast.makeText(getApplicationContext(), "Alumnos", Toast.LENGTH_SHORT).show();
-            abrirAdmAlumno();
+            //
+            // Toast.makeText(getApplicationContext(), "Alumnos", Toast.LENGTH_SHORT).show();
+            //abrirAdmAlumno();
         } else if (id == R.id.nav_ciclo) {
             Toast.makeText(getApplicationContext(), "Ciclos", Toast.LENGTH_SHORT).show();
             abrirAdmCiclo();

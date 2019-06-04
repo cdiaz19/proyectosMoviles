@@ -26,7 +26,7 @@ public class AddUpdProfesorActivity extends AppCompatActivity {
     private EditText cedFld;
     private EditText emailFld;
     private EditText telFld;
-    String apiUrl = "http://192.168.0.13:8080/Lab7-8Web/";
+    String apiUrl = "http://192.168.43.141:8080/Lab7-8Web/";
     //String apiUrl = "http://10.0.2.2:8080/Lab7-8Web/";
     String tempUrl = "";
 

@@ -20,7 +20,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class AddUpdCarreraActivity extends AppCompatActivity {
-    String apiUrl = "http://192.168.0.13:8080/Lab7-8Web/";
+    String apiUrl = "http://192.168.43.141:8080/Lab7-8Web/";
     //String apiUrl = "http://10.0.2.2:8080/Lab7-8Web/";
     String tempUrl = "";
     private FloatingActionButton fBtn;
