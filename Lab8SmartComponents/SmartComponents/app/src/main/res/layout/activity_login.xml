@@ -34,12 +34,12 @@
             android:paddingRight="24dp"
             android:paddingTop="56dp">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="82dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="24dp"
-                android:src="@drawable/logo" />
+            <!--<ImageView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="82dp"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:layout_marginBottom="24dp"-->
+                <!--android:src="@drawable/logo" />-->
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -96,7 +96,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 android:gravity="center"
-                android:text="¿No tienes cuenta aún? ¡Crea una!"
                 android:textColor="@color/gris"
                 android:textSize="16dip" />
 

@@ -7,19 +7,19 @@
         <item
             android:id="@+id/nav_camera"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Registrar Paquete" />
+            android:title="Registrar" />
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Ver Paquetes" />
+            android:title="Listar" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Alerta de llegada" />
+            android:title="Alertas" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Dudas/Sugerencias" />
+            android:title="Contactoss" />
     </group>
 
     <item android:title="...">
@@ -27,7 +27,7 @@
             <item
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Salir" />
+                android:title="Cerrar Sesion" />
         </menu>
     </item>
 </menu>

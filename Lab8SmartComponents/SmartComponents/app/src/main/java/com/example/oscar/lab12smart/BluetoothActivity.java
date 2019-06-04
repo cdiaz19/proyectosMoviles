@@ -73,8 +73,6 @@ public class BluetoothActivity extends AppCompatActivity {
                 }
             }
         });
-
-
     }
 
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {

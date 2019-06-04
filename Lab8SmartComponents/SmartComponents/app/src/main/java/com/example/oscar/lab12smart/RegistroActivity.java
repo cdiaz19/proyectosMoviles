@@ -11,7 +11,7 @@ import android.widget.ImageView;
 
 import java.io.InputStream;
 
-public class RegistroActivity extends AppCompatActivity{
+public class RegistroActivity extends AppCompatActivity {
 
     private ImageButton smartCamera;
     private ImageButton enviarAlerta;
@@ -37,6 +37,7 @@ public class RegistroActivity extends AppCompatActivity{
                 llamarIntent();
             }
         });
+
         enviarAlerta=(ImageButton)findViewById(R.id.enviarAlerta);
         enviarAlerta.setOnClickListener(new View.OnClickListener() {
             @Override

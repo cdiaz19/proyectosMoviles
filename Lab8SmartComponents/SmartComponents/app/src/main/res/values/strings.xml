@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lab12Smart</string>
+    <string name="app_name">Lab8 - Smart Components</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Correo</string>

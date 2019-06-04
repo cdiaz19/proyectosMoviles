@@ -22,10 +22,7 @@ public class ContactoActivity extends AppCompatActivity {
         llamar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Intent.ACTION_CALL, Uri.parse("tel:86669564"));
-              /*  if(ActivityCompat.checkSelfPermission(ContactoActivity.this, Manifest.permission.CALL_PHONE)!= PackageManager.PERMISSION_GRANTED){
-                    return;
-                }*/
+                Intent i = new Intent(Intent.ACTION_CALL, Uri.parse("tel:88207411"));
                 if (ActivityCompat.checkSelfPermission(ContactoActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                     return;
                 }

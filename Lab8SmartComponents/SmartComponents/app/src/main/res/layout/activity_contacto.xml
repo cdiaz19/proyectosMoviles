@@ -13,13 +13,13 @@
         tools:layout_editor_absoluteY="0dp">
 
         <TextView
-            android:id="@+id/textView7"
-            android:layout_width="268dp"
-            android:layout_height="69dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="34dp"
-            android:text="Para dudas o sugerencias por favor comunicarse con nosotros. Sera un gusto antenderle" />
+          android:id="@+id/textView7"
+          android:layout_width="300dp"
+          android:layout_height="103dp"
+          android:layout_alignParentTop="true"
+          android:layout_centerHorizontal="true"
+          android:layout_marginTop="34dp"
+          android:text="Para dudas o sugerencias puede comunicarse con nosotros, a un solo click de distancia." />
 
         <ImageButton
             android:id="@+id/llamar"

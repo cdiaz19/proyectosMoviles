@@ -16,107 +16,103 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/email_login_form"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp"
-            android:paddingTop="56dp">
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Agregar Foto"
-                android:textSize="25dp" />
+          android:id="@+id/email_login_form"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:paddingLeft="24dp"
+          android:paddingTop="56dp"
+          android:paddingRight="24dp">
 
             <ImageButton
-                android:id="@+id/smartCamera"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="24dp"
-                android:layout_marginTop="24dp"
-                android:layout_weight="0.13"
-                android:backgroundTint="@android:color/holo_blue_dark"
-                android:padding="12dp"
-                app:srcCompat="@drawable/ic_menu_camera" />
+              android:id="@+id/smartCamera"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:layout_marginTop="24dp"
+              android:layout_marginBottom="24dp"
+              android:layout_weight="0.13"
+              android:background="#F0155F"
+              android:backgroundTint="@android:color/holo_blue_dark"
+              android:padding="12dp"
+              app:srcCompat="@drawable/ic_menu_camera" />
 
             <ImageView
-                android:id="@+id/imageViewCamera"
-                android:layout_width="match_parent"
-                android:layout_height="135dp"
-                app:srcCompat="@android:drawable/ic_menu_gallery" />
+              android:id="@+id/imageViewCamera"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              app:srcCompat="@android:drawable/ic_menu_gallery" />
 
             <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Agregar Descripcion"
-                android:textSize="25dp" />
+              android:id="@+id/textView3"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Agregar"
+              android:textSize="25dp" />
 
             <EditText
-                android:id="@+id/editText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Nombre"
-                android:inputType="text" />
+              android:id="@+id/editText"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:ems="10"
+              android:hint="Nombre"
+              android:inputType="text" />
 
             <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Enviar Alerta"
-                android:textSize="25dp" />
+              android:id="@+id/textView4"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Forma de Enviar Alerta"
+              android:textSize="25dp" />
 
             <ImageButton
-                android:id="@+id/enviarAlerta"
-                android:layout_width="110dp"
-                android:layout_height="55dp"
-                android:layout_gravity="left"
-                android:layout_weight="0.13"
-                android:backgroundTint="@android:color/holo_blue_dark"
-                app:srcCompat="@android:drawable/sym_action_chat" />
-            <ImageButton
-                android:id="@+id/enviarBluetooth"
-                android:layout_width="110dp"
-                android:layout_height="55dp"
-                android:layout_gravity="right"
-                android:layout_weight="0.13"
-                android:layout_marginTop="-55dp"
-                android:backgroundTint="@android:color/holo_blue_dark"
-                app:srcCompat="@android:drawable/stat_sys_data_bluetooth" />
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Eliminar Paquete"
-                android:textSize="25dp" />
+              android:id="@+id/enviarAlerta"
+              android:layout_width="110dp"
+              android:layout_height="55dp"
+              android:layout_gravity="left"
+              android:layout_weight="0.13"
+              android:backgroundTint="@android:color/holo_blue_dark"
+              app:srcCompat="@android:drawable/sym_action_chat" />
 
             <ImageButton
-                android:id="@+id/imageButton_modificar"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_weight="0.13"
-                android:backgroundTint="@android:color/holo_blue_dark"
-                app:srcCompat="@android:drawable/ic_menu_edit" />
+              android:id="@+id/enviarBluetooth"
+              android:layout_width="110dp"
+              android:layout_height="55dp"
+              android:layout_gravity="right"
+              android:layout_marginTop="-55dp"
+              android:layout_weight="0.13"
+              android:backgroundTint="@android:color/holo_blue_dark"
+              app:srcCompat="@android:drawable/stat_sys_data_bluetooth" />
 
             <TextView
-                android:id="@+id/textView6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Eliminar Paquete"
-                android:textSize="25dp" />
+              android:id="@+id/textView5"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Editar "
+              android:textSize="25dp" />
 
             <ImageButton
-                android:id="@+id/imageButton_borrar"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_weight="0.13"
-                android:backgroundTint="@android:color/holo_blue_dark"
-                app:srcCompat="@android:drawable/ic_menu_delete" />
+              android:id="@+id/imageButton_modificar"
+              android:layout_width="match_parent"
+              android:layout_height="45dp"
+              android:layout_weight="0.13"
+              android:backgroundTint="@android:color/holo_blue_dark"
+              app:srcCompat="@android:drawable/ic_menu_edit" />
+
+            <TextView
+              android:id="@+id/textView6"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Eliminar "
+              android:textSize="25dp" />
+
+            <ImageButton
+              android:id="@+id/imageButton_borrar"
+              android:layout_width="match_parent"
+              android:layout_height="45dp"
+              android:layout_weight="0.13"
+              android:backgroundTint="@android:color/holo_blue_dark"
+              app:srcCompat="@android:drawable/ic_menu_delete" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
