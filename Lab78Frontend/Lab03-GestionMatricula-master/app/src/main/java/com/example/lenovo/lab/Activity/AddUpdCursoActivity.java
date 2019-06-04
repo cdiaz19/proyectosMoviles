@@ -31,8 +31,8 @@ public class AddUpdCursoActivity extends AppCompatActivity {
     private EditText horasFld;
     private EditText codCar;
     private EditText nombCar;
-    //String apiUrl = "http://192.168.0.13:8080/Lab7-8Web/";
-    String apiUrl = "http://10.0.2.2:8080/Lab7-8Web/";
+    String apiUrl = "http://192.168.0.13:8080/Lab7-8Web/";
+    //String apiUrl = "http://10.0.2.2:8080/Lab7-8Web/";
     String tempUrl = "";
 
     @Override
@@ -95,9 +95,10 @@ public class AddUpdCursoActivity extends AppCompatActivity {
     public void addCurso() {
         if (validateForm()) {
 
-            tempUrl = apiUrl + "insertarCurso?codigo="+codFld.getText().toString()+"&nombre="+nomFld.getText().toString()+"&creditos="+creditosFld.getText().toString()
+            String tempUrl1 = apiUrl + "insertarCurso?codigo="+codFld.getText().toString()+"&nombre="+nomFld.getText().toString()+"&creditos="+creditosFld.getText().toString()
                     +"&horas="+horasFld.getText().toString()+"&codCar="+codCar.getText().toString()+"&nomCar="+nombCar.getText().toString();
-            tempUrl = tempUrl.replaceAll(" ", "%20");
+            tempUrl = tempUrl1.replaceAll(" ", "%20");
+            System.out.println("url"+tempUrl);
             MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
             myAsyncTasks.execute();
             //do something

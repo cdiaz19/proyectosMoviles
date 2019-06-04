@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BluetoothActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="104dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="268dp"
+            android:layout_height="69dp"
+            android:layout_gravity="center"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="34dp"
+            android:text="                   BLUETOOTH TOOLS" />
+
+        <ImageButton
+            android:id="@+id/llamarBLUETOOTH"
+            android:layout_width="77dp"
+            android:layout_height="87dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            app:srcCompat="@android:drawable/stat_sys_data_bluetooth"
+            tools:layout_editor_absoluteX="156dp"
+            tools:layout_editor_absoluteY="123dp" />
+
+        <ListView
+            android:id="@+id/ListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="150dp"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

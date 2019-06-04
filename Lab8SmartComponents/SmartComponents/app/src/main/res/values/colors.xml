@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="gris">#382e2e</color>
+    <color name="fondoDrawer">#3d8e30</color>
+    <color name="viewBg">#b4ceae</color>
+    <color name="album_title">#2ca83c</color>
+    <color name="normal">#36b91f</color>
+    <color name="pulsado">#ced717</color>
+    <color name="preferencial">#0538c2</color>
+    <color name="focus">#66676b</color>
+</resources>
