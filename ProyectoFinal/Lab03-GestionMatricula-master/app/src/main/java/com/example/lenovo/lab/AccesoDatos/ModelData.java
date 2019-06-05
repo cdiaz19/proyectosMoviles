@@ -51,14 +51,14 @@ public class ModelData {
     categoriesList = new ArrayList<>();
     videoGamesList = new ArrayList<>();
     clientList = new ArrayList<>();
-    prepareClientData();
+//    prepareClientData();
 
   }
 
   public List<User> getUsuariosList() {
     usersList = new ArrayList<>();
-    usersList.add(new User("@admin", "admin", "administrator", "111"));
-    usersList.add(new User("@client", "client", "client", "222"));
+    usersList.add(new User("@admin", "admin", "administrator"));
+    usersList.add(new User("@client", "client", "client"));
 
     return usersList;
   }
@@ -88,8 +88,10 @@ public class ModelData {
   public void prepareClientsData1(List<Client> clients) {
     if (clients != null) {
       for (int i = 0; i < clients.size(); i++) {
+        User user = new User(clients.get(i).getUser().getEmail(), clients.get(i).getUser().getPassword(), clients.get(i).getUser().getRole());
+
         Client client = new Client(clients.get(i).getNombre(), clients.get(i).getCedula(),
-                                    clients.get(i).getTelefono(), clients.get(i).getCorreo());
+                                    clients.get(i).getTelefono(), user);
         clientList.add(client);
       }
     }
@@ -98,12 +100,15 @@ public class ModelData {
   public void prepareOrdersData1(List<Order> orders) {
     if (orders != null) {
       for (int i = 0; i < orders.size(); i++) {
+        User user = new User(orders.get(i).getClient().getUser().getEmail(), orders.get(i).getClient().getUser().getPassword(),
+                              orders.get(i).getClient().getUser().getRole());
+
         Client client = new Client(orders.get(i).getClient().getCedula(), orders.get(i).getClient().getNombre(),
-                                    orders.get(i).getClient().getTelefono(), orders.get(i).getClient().getCorreo());
+                                    orders.get(i).getClient().getTelefono(), user);
 
         VideoGame videoGame = new VideoGame(orders.get(i).getVideoGame().getCodigoJuego(), orders.get(i).getVideoGame().getNombre(),
-          orders.get(i).getVideoGame().getEmpresa(), orders.get(i).getVideoGame().getCantidad(), orders.get(i).getVideoGame().getPrecio(),
-          orders.get(i).getVideoGame().getCategoria());
+                                            orders.get(i).getVideoGame().getEmpresa(), orders.get(i).getVideoGame().getCantidad(),
+                                            orders.get(i).getVideoGame().getPrecio(), orders.get(i).getVideoGame().getCategoria());
 
         Order order = new Order(orders.get(i).getFecha(), orders.get(i).getCantidad(), orders.get(i).getTotal(), videoGame, client);
 
@@ -113,13 +118,13 @@ public class ModelData {
   }
 
 
-  public void prepareClientData() {
-    Client client = new Client("123", "Jose", 321, "@Jose");
-    clientList.add(client);
-
-    client = new Client("234", "Miguel", 3241, "@Miguel");
-    clientList.add(client);
-  }
+//  public void prepareClientData() {
+//    Client client = new Client("123", "Jose", 321, "@Jose");
+//    clientList.add(client);
+//
+//    client = new Client("234", "Miguel", 3241, "@Miguel");
+//    clientList.add(client);
+//  }
 
   public List<Category> getCategoriesList() {
     return categoriesList;

@@ -10,16 +10,21 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.lenovo.lab.LogicaNeg.Client;
+import com.example.lenovo.lab.LogicaNeg.User;
 import com.example.lenovo.lab.R;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AddUpdClientActivity extends AppCompatActivity {
 
@@ -32,6 +37,8 @@ public class AddUpdClientActivity extends AppCompatActivity {
   private EditText cedFld;
   private EditText emailFld;
   private EditText telFld;
+  private EditText passFld;
+  private Spinner spinner;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +54,14 @@ public class AddUpdClientActivity extends AppCompatActivity {
     cedFld = findViewById(R.id.cedulaAddUpdAlum);
     emailFld = findViewById(R.id.emailAddUpdAlum);
     telFld=findViewById(R.id.telefonoAddUpdAlum);
+    passFld=findViewById(R.id.passAddUpdAlum);
     nomFld.setText("");
     cedFld.setText("");
     emailFld.setText("");
     telFld.setText("");
+
+    // Init Spinner
+    initSpinner();
 
     //receiving data from admAlumnoActivity
     Bundle extras = getIntent().getExtras();
@@ -59,10 +70,10 @@ public class AddUpdClientActivity extends AppCompatActivity {
       editable = extras.getBoolean("editable");
       if (editable) {   // is editing some row
         Client aux = (Client) getIntent().getSerializableExtra("client");
-        cedFld.setText(aux.getCedula());
+        cedFld.setText(aux.getUser().getCedula());
         cedFld.setEnabled(false);
         nomFld.setText(aux.getNombre());
-        emailFld.setText(aux.getCorreo());
+        emailFld.setText(aux.getUser().getEmail());
         telFld.setText(Integer.toString(aux.getTelefono()));
         //edit action
         fBtn.setOnClickListener(new View.OnClickListener() {
@@ -83,19 +94,36 @@ public class AddUpdClientActivity extends AppCompatActivity {
     }
   }
 
+  public void initSpinner() {
+    spinner = (Spinner) findViewById(R.id.roles_spinner);
+    List<String> list = new ArrayList<String>();
+    list.add("administrador");
+    list.add("cliente");
+    list.add("ninguno");
+    spinner.setPrompt(getString(R.string.privileges_prompt));
+    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+      android.R.layout.simple_spinner_item, list);
+    dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    spinner.setAdapter(dataAdapter);
+  }
+
   public void addClient() {
     if (validateForm()) {
       tempUrl = apiUrl + "insertarCliente?nombre="+nomFld.getText().toString()+
                           "&cedula="+ cedFld.getText().toString() +
                           "&correo="+ emailFld.getText().toString() +
-                          "&telefono="+ telFld.getText().toString();
+                          "&telefono="+ telFld.getText().toString() +
+                          "&contrasena="+ passFld.getText().toString() +
+                          "&rol="+ spinner.getSelectedItem().toString();
 
       MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
       myAsyncTasks.execute();
 
-      Client client = new Client(cedFld.getText().toString(), nomFld.getText().toString(),
+      User user = new User(cedFld.getText().toString(), emailFld.getText().toString(), passFld.getText().toString(),  spinner.getSelectedItem().toString());
+
+      Client client = new Client(nomFld.getText().toString(),
                                   Integer.parseInt(telFld.getText().toString()),
-                                  emailFld.getText().toString());
+                                  user);
       Intent intent = new Intent(getBaseContext(), AdmClientActivity.class);
       intent.putExtra("addClient", client);
       startActivity(intent);
@@ -106,16 +134,20 @@ public class AddUpdClientActivity extends AppCompatActivity {
   public void editCliente() {
     if (validateForm()) {
       tempUrl = apiUrl + "editCliente?nombre="+nomFld.getText().toString()+
-                          "&cedula="+ cedFld.getText().toString() +
-                          "&correo="+ emailFld.getText().toString() +
-                          "&telefono="+ telFld.getText().toString();
+                                      "&cedula="+ cedFld.getText().toString() +
+                                      "&correo="+ emailFld.getText().toString() +
+                                      "&telefono="+ telFld.getText().toString() +
+                                      "&contrasena="+ passFld.getText().toString() +
+                                      "&rol="+ spinner.getSelectedItem().toString();
 
       MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
       myAsyncTasks.execute();
 
-      Client client = new Client(cedFld.getText().toString(), nomFld.getText().toString(),
-        Integer.parseInt(telFld.getText().toString()),
-        emailFld.getText().toString());
+      User user = new User(cedFld.getText().toString(), emailFld.getText().toString(), passFld.getText().toString(), spinner.getSelectedItem().toString());
+
+      Client client = new Client(nomFld.getText().toString(),
+                                Integer.parseInt(telFld.getText().toString()),
+                                user);
       Intent intent = new Intent(getBaseContext(), AdmClientActivity.class);
       intent.putExtra("editClient", client);
       startActivity(intent);
@@ -138,6 +170,10 @@ public class AddUpdClientActivity extends AppCompatActivity {
       error++;
     }
     if (TextUtils.isEmpty(this.telFld.getText())) {
+      telFld.setError("Field required!");
+      error++;
+    }
+    if (TextUtils.isEmpty(this.spinner.getSelectedItem().toString())) {
       telFld.setError("Field required!");
       error++;
     }

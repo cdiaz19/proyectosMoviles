@@ -70,8 +70,9 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.MyViewHold
     public void onBindViewHolder(ClientAdapter.MyViewHolder holder, int position) {
         // rendering view
         final Client client = clientListFiltered.get(position);
-        holder.titulo1.setText(client.getCedula());
-        holder.titulo2.setText(client.getNombre());
+        holder.titulo1.setText(client.getNombre());
+        holder.titulo2.setText(client.getUser().getCedula());
+        holder.description.setText(client.getUser().getEmail());
     }
 
     @Override
@@ -149,7 +150,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.MyViewHold
                     List<Client> filteredList = new ArrayList<>();
                     for (Client row : clientList) {
                         // filter use two parameters
-                        if (row.getCedula().toLowerCase().contains(charString.toLowerCase()) || row.getNombre().toLowerCase().contains(charString.toLowerCase())) {
+                        if (row.getNombre().toLowerCase().contains(charString.toLowerCase()) || row.getNombre().toLowerCase().contains(charString.toLowerCase())) {
                             filteredList.add(row);
                         }
                     }

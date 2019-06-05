@@ -3,26 +3,19 @@ package com.example.lenovo.lab.LogicaNeg;
 import java.io.Serializable;
 
 public class Client implements Serializable {
-  private String cedula, nombre, correo;
+  private String nombre;
   private int telefono;
+  private User user;
 
   public Client() {
   }
 
-  public Client(String cedula, String nombre, int telefono, String correo) {
-    this.cedula = cedula;
+  public Client( String nombre, int telefono, User user) {
     this.nombre = nombre;
     this.telefono = telefono;
-    this.correo = correo;
+    this.user = user;
   }
 
-  public String getCedula() {
-    return cedula;
-  }
-
-  public void setCedula(String cedula) {
-    this.cedula = cedula;
-  }
 
   public String getNombre() {
     return nombre;
@@ -32,6 +25,8 @@ public class Client implements Serializable {
     this.nombre = nombre;
   }
 
+  public void setUser(User user) { this.user = user; }
+
   public int getTelefono() {
     return telefono;
   }
@@ -40,21 +35,14 @@ public class Client implements Serializable {
     this.telefono = telefono;
   }
 
-  public String getCorreo() {
-    return correo;
-  }
-
-  public void setCorreo(String correo) {
-    this.correo = correo;
-  }
+  public User getUser() { return user; }
 
   @Override
   public String toString() {
     return "Client{" +
-      "cedula='" + cedula + '\'' +
       ", name='" + nombre + '\'' +
       ", telefono=" + telefono +
-      ", correo='" + correo + '\'' +
+      ", user='" + user + '\'' +
       '}';
   }
 
@@ -66,19 +54,13 @@ public class Client implements Serializable {
     Client client = (Client) o;
 
     if (getTelefono() != client.getTelefono()) return false;
-    if (getCedula() != null ? !getCedula().equals(client.getCedula()) : client.getCedula() != null)
-      return false;
-    if (getNombre() != null ? !getNombre().equals(client.getNombre()) : client.getNombre() != null)
-      return false;
-    return getCorreo() != null ? getCorreo().equals(client.getCorreo()) : client.getCorreo() == null;
+    return (getNombre() != null ? !getNombre().equals(client.getNombre()) : client.getNombre() != null);
   }
 
   @Override
   public int hashCode() {
-    int result = getCedula() != null ? getCedula().hashCode() : 0;
-    result = 31 * result + (getNombre() != null ? getNombre().hashCode() : 0);
+    int result = (getNombre() != null ? getNombre().hashCode() : 0);
     result = 31 * result + getTelefono();
-    result = 31 * result + (getCorreo() != null ? getCorreo().hashCode() : 0);
     return result;
   }
 }

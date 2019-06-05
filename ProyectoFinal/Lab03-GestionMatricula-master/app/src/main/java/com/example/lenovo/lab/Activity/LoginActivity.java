@@ -22,6 +22,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -32,11 +33,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.lenovo.lab.AccesoDatos.ModelData;
+import com.example.lenovo.lab.LogicaNeg.Client;
 import com.example.lenovo.lab.LogicaNeg.User;
 import com.example.lenovo.lab.R;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.reflect.Type;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -63,6 +74,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
   private UserLoginTask mAuthTask = null;
   private SharedPreferences prefs;
   private User user;
+  private ModelData model;
+
+  String apiUrl = "http://10.0.2.2:8080/WEB-INF/";
+  String tempUrl = "";
+  String json;
 
   // UI references.
   private AutoCompleteTextView mEmailView;
@@ -106,13 +122,22 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     mProgressView = findViewById(R.id.login_progress);
   }
 
-  private ArrayList<User> searchUsers() {
-    ArrayList<User> usuariosList = new ArrayList<>();
-    //administrator
-    usuariosList.add(new User("@admin", "admin", "administrator", "111"));
-    //client
-    usuariosList.add(new User("@client", "client", "client", "222"));
-    return usuariosList;
+  private List<Client> searchUsers() {
+    tempUrl = apiUrl + "listarClientes";
+    MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
+    try {
+      json=myAsyncTasks.execute().get();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    } catch (ExecutionException e) {
+      e.printStackTrace();
+    }
+    final Gson gson = new Gson();
+    final Type tipoListaClientes = new TypeToken<List<Client>>(){}.getType();
+    final List<Client> clients = gson.fromJson(json, tipoListaClientes);
+
+    model = new ModelData(null, null, clients, null);
+    return model.getClientList();
   }
 
 
@@ -343,10 +368,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     return pieces[1].equals(mPassword);
                 }
             }*/
-      for (User user : searchUsers()) {
-        if (user.getEmail().equals(mEmail)) {
+      for (Client user : searchUsers()) {
+        if (user.getUser().getEmail().equals(mEmail)) {
           // Account exists, return true if the password matches.
-          LoginActivity.this.user = user;
+          LoginActivity.this.user = user.getUser();
           return LoginActivity.this.user.getPassword().equals(mPassword);
         }
       }
@@ -376,6 +401,97 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     protected void onCancelled() {
       mAuthTask = null;
       showProgress(false);
+    }
+  }
+
+  public class MyAsyncTasks extends AsyncTask<String, String, String> {
+
+
+    @Override
+    protected void onPreExecute() {
+      super.onPreExecute();
+
+      // display a progress dialog for good user experiance
+            /*progressDialog = new ProgressDialog(MainActivity.this);
+            progressDialog.setMessage("Please Wait");
+            progressDialog.setCancelable(false);
+            progressDialog.show();*/
+    }
+
+    @Override
+    protected String doInBackground(String... params) {
+
+      // implement API in background and store the response in current variable
+      String current = "";
+      try {
+        URL url;
+        HttpURLConnection urlConnection = null;
+        try {
+          url = new URL(tempUrl);
+
+          urlConnection = (HttpURLConnection) url
+            .openConnection();
+
+          InputStream in = urlConnection.getInputStream();
+
+          InputStreamReader isw = new InputStreamReader(in);
+
+          int data = isw.read();
+          while (data != -1) {
+            current += (char) data;
+            data = isw.read();
+            //System.out.print(current);
+
+          }
+          System.out.println(current);
+          // return the data to onPostExecute method
+          Log.w("", current);
+
+
+
+          return current;
+
+        } catch (Exception e) {
+          e.printStackTrace();
+        } finally {
+          if (urlConnection != null) {
+            urlConnection.disconnect();
+          }
+        }
+
+      } catch (Exception e) {
+        e.printStackTrace();
+        return "Exception: " + e.getMessage();
+      }
+      return current;
+    }
+
+    @Override
+    protected void onPostExecute(String s) {
+
+      try {
+
+        // final Gson gson = new Gson();
+        // final Type tipoListaCategories = new TypeToken<List<Category>>(){}.getType();
+        // categoriesList = gson.fromJson(s, tipoListaCategories);
+        //System.out.println(categoriesList);
+
+
+        //AlertDialog alertDialog = new AlertDialog.Builder(AdmCategoryActivity.this).create();
+        //alertDialog.setTitle("Mensaje");
+        //alertDialog.setMessage(s);
+        //alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+        //      new DialogInterface.OnClickListener() {
+        //        public void onClick(DialogInterface dialog, int which) {
+        //          dialog.dismiss();
+        //    }
+        //});
+        //alertDialog.show();
+
+      }
+      catch (Exception ex){
+
+      }
     }
   }
 }

@@ -5,21 +5,24 @@ import java.io.Serializable;
 public class User implements Serializable {
   private String email;
   private String password;
-  private String identify;
   private String role;
+  private String cedula;
 
   public User() {
     this.email = "";
     this.password = "";
     this.role = "";
+    this.cedula ="";
   }
 
-  public User(String email, String password, String role, String identify) {
+  public User(String cedula, String email, String password, String role) {
+    this.cedula = cedula;
     this.email = email;
     this.password = password;
-    this.identify = identify;
     this.role = role;
   }
+
+  public String getCedula() { return cedula; }
 
   public String getEmail() {
     return email;
@@ -33,6 +36,8 @@ public class User implements Serializable {
     return password;
   }
 
+  public void setCedula(String cedula) { this.cedula = cedula; }
+
   public void setPassword(String password) {
     this.password = password;
   }
@@ -45,21 +50,13 @@ public class User implements Serializable {
     this.role = role;
   }
 
-  public String getIdentify() {
-    return identify;
-  }
-
-  public void setIdentify(String identify) {
-    this.identify = identify;
-  }
-
   @Override
   public String toString() {
     return "User{" +
       "email='" + email + '\'' +
       ", password='" + password + '\'' +
-      ", identify='" + identify + '\'' +
       ", role='" + role + '\'' +
+      ",cedula=" + cedula + '\'' +
       '}';
   }
 }

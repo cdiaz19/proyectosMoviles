@@ -99,4 +99,16 @@
   <string name="title_activity_add_order">AddOrderActivity</string>
   <string name="title_activity_add_upd_order">AddUpdOrderActivity</string>
 
+  <string-array name="roles_array">
+    <item>Mercury</item>
+    <item>Venus</item>
+    <item>Earth</item>
+    <item>Mars</item>
+    <item>Jupiter</item>
+    <item>Saturn</item>
+    <item>Uranus</item>
+    <item>Neptune</item>
+  </string-array>
+
+
 </resources>

@@ -265,7 +265,7 @@ public class AdmClientActivity extends AppCompatActivity implements RecyclerItem
 
   @Override
   public void onContactSelected(Client client) { //TODO get the select item of recycleView
-    Toast.makeText(getApplicationContext(), "Selected Client: " + client.getNombre() + ", " + client.getCedula(), Toast.LENGTH_LONG).show();
+    Toast.makeText(getApplicationContext(), "Selected Client: " + client.getNombre() + ", " + client.getUser().getCedula(), Toast.LENGTH_LONG).show();
   }
 
 

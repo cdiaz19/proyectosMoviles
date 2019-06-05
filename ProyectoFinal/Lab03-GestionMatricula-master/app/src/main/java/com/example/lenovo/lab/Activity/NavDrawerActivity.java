@@ -152,7 +152,7 @@ public class NavDrawerActivity extends AppCompatActivity
       Toast.makeText(getApplicationContext(), "Orders Module", Toast.LENGTH_SHORT).show();
       openAdmOrder();
     } else if (id == R.id.nav_clients) {
-      Toast.makeText(getApplicationContext(), "Clients Module", Toast.LENGTH_SHORT).show();
+      Toast.makeText(getApplicationContext(), "Users Module", Toast.LENGTH_SHORT).show();
       openAdmClient();
     } else if (id == R.id.nav_categories) {
       Toast.makeText(getApplicationContext(), "Category Module", Toast.LENGTH_SHORT).show();

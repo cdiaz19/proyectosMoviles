@@ -54,7 +54,6 @@ public class AddUpdSegurityActivity extends AppCompatActivity {
         emailFld.setEnabled(false);
         emailFld.setText(aux.getEmail());
         passFld.setText(aux.getPassword());
-        identifyFld.setText(aux.getIdentify());
         //edit action
         fBtn.setOnClickListener(new View.OnClickListener() {
           @Override
@@ -90,7 +89,7 @@ public class AddUpdSegurityActivity extends AppCompatActivity {
   public void addUser() {
     if (validateForm()) {
       User user = new User(emailFld.getText().toString(), passFld.getText().toString(),
-        spinner.getSelectedItem().toString(), identifyFld.getText().toString());
+        spinner.getSelectedItem().toString());
 
       Intent intent = new Intent(getBaseContext(), AdmSecurityActivity.class);
       intent.putExtra("addUser", user);
@@ -102,7 +101,7 @@ public class AddUpdSegurityActivity extends AppCompatActivity {
   public void editUser() {
     if (validateForm()) {
       User user = new User(emailFld.getText().toString(), passFld.getText().toString(),
-        spinner.getSelectedItem().toString(), identifyFld.getText().toString());
+        spinner.getSelectedItem().toString());
       Intent intent = new Intent(getBaseContext(), AdmSecurityActivity.class);
 
       intent.putExtra("editUser", user);

@@ -362,17 +362,5 @@ public class AdmCategoryActivity extends AppCompatActivity implements RecyclerIt
 
       }
     }
-
-
   }
-
-
-  public  void getDataList(List<Category> cat) {
-
-
-
-  }
-
-
-
 }
