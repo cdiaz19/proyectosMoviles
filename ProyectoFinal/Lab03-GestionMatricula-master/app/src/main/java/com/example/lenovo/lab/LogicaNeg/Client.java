@@ -3,58 +3,58 @@ package com.example.lenovo.lab.LogicaNeg;
 import java.io.Serializable;
 
 public class Client implements Serializable {
-  private String identify, name, email;
-  private int phone;
+  private String cedula, nombre, correo;
+  private int telefono;
 
   public Client() {
   }
 
-  public Client(String identify, String name, int phone, String email) {
-    this.identify = identify;
-    this.name = name;
-    this.phone = phone;
-    this.email = email;
+  public Client(String cedula, String nombre, int telefono, String correo) {
+    this.cedula = cedula;
+    this.nombre = nombre;
+    this.telefono = telefono;
+    this.correo = correo;
   }
 
-  public String getIdentify() {
-    return identify;
+  public String getCedula() {
+    return cedula;
   }
 
-  public void setIdentify(String identify) {
-    this.identify = identify;
+  public void setCedula(String cedula) {
+    this.cedula = cedula;
   }
 
-  public String getName() {
-    return name;
+  public String getNombre() {
+    return nombre;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
   }
 
-  public int getPhone() {
-    return phone;
+  public int getTelefono() {
+    return telefono;
   }
 
-  public void setPhone(int phone) {
-    this.phone = phone;
+  public void setTelefono(int telefono) {
+    this.telefono = telefono;
   }
 
-  public String getEmail() {
-    return email;
+  public String getCorreo() {
+    return correo;
   }
 
-  public void setEmail(String email) {
-    this.email = email;
+  public void setCorreo(String correo) {
+    this.correo = correo;
   }
 
   @Override
   public String toString() {
     return "Client{" +
-      "identify='" + identify + '\'' +
-      ", name='" + name + '\'' +
-      ", phone=" + phone +
-      ", email='" + email + '\'' +
+      "cedula='" + cedula + '\'' +
+      ", name='" + nombre + '\'' +
+      ", telefono=" + telefono +
+      ", correo='" + correo + '\'' +
       '}';
   }
 
@@ -65,20 +65,20 @@ public class Client implements Serializable {
 
     Client client = (Client) o;
 
-    if (getPhone() != client.getPhone()) return false;
-    if (getIdentify() != null ? !getIdentify().equals(client.getIdentify()) : client.getIdentify() != null)
+    if (getTelefono() != client.getTelefono()) return false;
+    if (getCedula() != null ? !getCedula().equals(client.getCedula()) : client.getCedula() != null)
       return false;
-    if (getName() != null ? !getName().equals(client.getName()) : client.getName() != null)
+    if (getNombre() != null ? !getNombre().equals(client.getNombre()) : client.getNombre() != null)
       return false;
-    return getEmail() != null ? getEmail().equals(client.getEmail()) : client.getEmail() == null;
+    return getCorreo() != null ? getCorreo().equals(client.getCorreo()) : client.getCorreo() == null;
   }
 
   @Override
   public int hashCode() {
-    int result = getIdentify() != null ? getIdentify().hashCode() : 0;
-    result = 31 * result + (getName() != null ? getName().hashCode() : 0);
-    result = 31 * result + getPhone();
-    result = 31 * result + (getEmail() != null ? getEmail().hashCode() : 0);
+    int result = getCedula() != null ? getCedula().hashCode() : 0;
+    result = 31 * result + (getNombre() != null ? getNombre().hashCode() : 0);
+    result = 31 * result + getTelefono();
+    result = 31 * result + (getCorreo() != null ? getCorreo().hashCode() : 0);
     return result;
   }
 }

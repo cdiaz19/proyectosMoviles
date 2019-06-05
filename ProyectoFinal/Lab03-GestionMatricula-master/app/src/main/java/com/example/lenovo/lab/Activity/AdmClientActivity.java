@@ -1,18 +1,16 @@
 package com.example.lenovo.lab.Activity;
 
-import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -26,9 +24,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.lenovo.lab.Adapter.VideoGameAdapter;
+import com.example.lenovo.lab.Adapter.ClientAdapter;
 import com.example.lenovo.lab.AccesoDatos.ModelData;
-import com.example.lenovo.lab.LogicaNeg.VideoGame;
+import com.example.lenovo.lab.LogicaNeg.Client;
 import com.example.lenovo.lab.R;
 import com.example.lenovo.lab.Helper.RecyclerItemTouchHelper;
 import com.google.gson.Gson;
@@ -43,19 +41,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-public class AdmVideoGameActivity extends AppCompatActivity implements RecyclerItemTouchHelper.RecyclerItemTouchHelperListener, VideoGameAdapter.VideoGameAdapterListener {
+public class AdmClientActivity extends AppCompatActivity implements RecyclerItemTouchHelper.RecyclerItemTouchHelperListener, ClientAdapter.ClientAdapterListener {
+
 
   String apiUrl = "http://10.0.2.2:8080/WEB-INF/";
   String tempUrl = "";
+
   private RecyclerView mRecyclerView;
-  private VideoGameAdapter mAdapter;
-  private List<VideoGame> videoGamesList;
+  private ClientAdapter mAdapter;
+  List<Client> clientsList;
   private CoordinatorLayout coordinatorLayout;
   private SearchView searchView;
   private FloatingActionButton fab;
   private ModelData model;
-  private VideoGame critFiltG;
-  String json;
+  private String json;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +63,10 @@ public class AdmVideoGameActivity extends AppCompatActivity implements RecyclerI
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
-    getSupportActionBar().setTitle("Maintenance VideoGames");
-    tempUrl = apiUrl + "listarVideojuegos";
+
+    getSupportActionBar().setTitle("Maintenance Clients");
+
+    tempUrl = apiUrl + "listarClientes";
     MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
     try {
       json=myAsyncTasks.execute().get();
@@ -74,19 +75,19 @@ public class AdmVideoGameActivity extends AppCompatActivity implements RecyclerI
     } catch (ExecutionException e) {
       e.printStackTrace();
     }
-    //System.out.println("jsonvideojuego"+json);
     final Gson gson = new Gson();
-    final Type tipoListaVideojuegos = new TypeToken<List<VideoGame>>(){}.getType();
-    final List<VideoGame> videojuegos = gson.fromJson(json, tipoListaVideojuegos);
-
+    final Type tipoListaClientes = new TypeToken<List<Client>>(){}.getType();
+    final List<Client> clients = gson.fromJson(json, tipoListaClientes);
 
 
     mRecyclerView = findViewById(R.id.recycler_carrerasFld);
-    videoGamesList = new ArrayList<>();
-    model = new ModelData(null,videojuegos, null, null);
-    videoGamesList = model.getVideoGamesList();
-    mAdapter = new VideoGameAdapter(videoGamesList, this);
+    clientsList = new ArrayList<>();
+    model = new ModelData(null, null, clients, null);
+    clientsList = model.getClientList();
+    mAdapter = new ClientAdapter(clientsList, this);
     coordinatorLayout = findViewById(R.id.coordinator_layout);
+
+    // white background notification bar
     whiteNotificationBar(mRecyclerView);
 
     RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -95,81 +96,78 @@ public class AdmVideoGameActivity extends AppCompatActivity implements RecyclerI
     mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
     mRecyclerView.setAdapter(mAdapter);
 
+    ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new RecyclerItemTouchHelper(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT, this);
+    new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(mRecyclerView);
+
     fab = findViewById(R.id.addBtn);
     fab.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        goToAddUpdVideoGameActivity();
+        goToAddUpdClient();
       }
     });
 
-    //delete swiping left and right
-    ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new RecyclerItemTouchHelper(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT, this);
-    new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(mRecyclerView);
-
-    critFiltG = new VideoGame();
-    // Receive the VideoGame sent by AddUpdVideoGameActivity and then refresh the view with it.
-//    checkIntentInformation();
+    // Receive the Category sent by AddUpdCategoryActivity and then refresh view.
+    //checkIntentInformation();
     mAdapter.notifyDataSetChanged();
+  }
+
+  private void whiteNotificationBar(View view) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+      int flags = view.getSystemUiVisibility();
+      flags |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+      view.setSystemUiVisibility(flags);
+      getWindow().setStatusBarColor(Color.WHITE);
+    }
+  }
+
+  private void goToAddUpdClient() {
+    Intent intent = new Intent(this, AddUpdClientActivity.class);
+    intent.putExtra("editable", false);
+    startActivity(intent);
   }
 
   private void checkIntentInformation() {
     Bundle extras = getIntent().getExtras();
     if (extras != null) {
-      critFiltG = (VideoGame) getIntent().getSerializableExtra("filtGrupo");
-      if (critFiltG != null){ // only the videojuegos the match with the criteria
-        for(VideoGame g : model.getVideoGamesList()){
-          if(g.getCategoria().getCodigo().equals(critFiltG.getCategoria().getCodigo())){
-            videoGamesList.add(g);
-          }
-        }
-      }
-      VideoGame aux;
-      aux = (VideoGame) getIntent().getSerializableExtra("addVideoGame");
+      Client aux;
+      aux = (Client) getIntent().getSerializableExtra("addClient");
       if (aux == null) {
-        aux = (VideoGame) getIntent().getSerializableExtra("editVideoGame");
+        aux = (Client) getIntent().getSerializableExtra("editClient");
         if (aux != null) {
           //found an item that can be updated
           boolean founded = false;
-          for (VideoGame videogame : videoGamesList) {
-            if (videogame.getNombre().equals(aux.getNombre())) {
-              videogame.setNombre(aux.getNombre());
+          for (Client client : clientsList) {
+            if (client.getNombre().equals(aux.getNombre())) {
+              client.setNombre(aux.getNombre());
               founded = true;
               break;
             }
           }
+          //check if exist
           if (founded) {
-            Toast.makeText(getApplicationContext(), aux.getNombre() + " edited", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), aux.getNombre() + " edited!", Toast.LENGTH_LONG).show();
           } else {
-            Toast.makeText(getApplicationContext(), aux.getNombre() + " not finding", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), aux.getNombre() + " not finding!", Toast.LENGTH_LONG).show();
           }
         }
       } else {
         //found a new Category Object
-        videoGamesList.add(aux);
-        Toast.makeText(getApplicationContext(), aux.getNombre() + " addded to List!", Toast.LENGTH_LONG).show();
+        clientsList.add(aux);
+        Toast.makeText(getApplicationContext(), aux.getNombre() + " added to List!", Toast.LENGTH_LONG).show();
       }
     }
   }
 
-  private void goToAddUpdVideoGameActivity() {
-    Intent intent = new Intent(this, AddUpdVideoGameActivity.class);
-    intent.putExtra("editable", false);
-    intent.putExtra("filtGrupo", critFiltG);
-    startActivity(intent);
-  }
-
-
   @Override
   public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position) {
     if (direction == ItemTouchHelper.START) {
-      if (viewHolder instanceof VideoGameAdapter.MyViewHolder) {
+      if (viewHolder instanceof ClientAdapter.MyViewHolder) {
         // get the removed item name to display it in snack bar
-        String name = videoGamesList.get(viewHolder.getAdapterPosition()).getCodigoJuego();
-        tempUrl = apiUrl + "deleteVid?codigoJuego="+name;
+        String name = clientsList.get(viewHolder.getAdapterPosition()).getNombre();
+        tempUrl = apiUrl + "deleteClient?nombre="+name;
         MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
         myAsyncTasks.execute();
-
 
         // save the index deleted
         final int deletedIndex = viewHolder.getAdapterPosition();
@@ -177,10 +175,11 @@ public class AdmVideoGameActivity extends AppCompatActivity implements RecyclerI
         mAdapter.removeItem(viewHolder.getAdapterPosition());
 
         // showing snack bar with Undo option
-        Snackbar snackbar = Snackbar.make(coordinatorLayout, name + " removed from List!", Snackbar.LENGTH_LONG);
-        snackbar.setAction("Undo", new View.OnClickListener() {
+        Snackbar snackbar = Snackbar.make(coordinatorLayout, name + " deleted!", Snackbar.LENGTH_LONG);
+        snackbar.setAction("UNDO", new View.OnClickListener() {
           @Override
           public void onClick(View view) {
+            // undo is selected, restore the deleted item from adapter
             mAdapter.restoreItem(deletedIndex);
           }
         });
@@ -188,12 +187,13 @@ public class AdmVideoGameActivity extends AppCompatActivity implements RecyclerI
         snackbar.show();
       }
     } else {
-      VideoGame aux = mAdapter.getSwipedItem(viewHolder.getAdapterPosition());
+      //If is editing a row object
+      Client aux = mAdapter.getSwipedItem(viewHolder.getAdapterPosition());
 
-      Intent intent = new Intent(this, AddUpdVideoGameActivity.class);
+      //send data to Edit Activity
+      Intent intent = new Intent(this, AddUpdCategoryActivity.class);
       intent.putExtra("editable", true);
-      intent.putExtra("filtGrupo", critFiltG);
-      intent.putExtra("videoGame", aux);
+      intent.putExtra("client", aux);
       mAdapter.notifyDataSetChanged(); //restart left swipe view
       startActivity(intent);
     }
@@ -206,8 +206,10 @@ public class AdmVideoGameActivity extends AppCompatActivity implements RecyclerI
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
+    // Inflate the menu; this adds categoriesList to the action bar if it is present.
     getMenuInflater().inflate(R.menu.menu_search, menu);
 
+    // Associate searchable configuration with the SearchView   !IMPORTANT
     SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
     searchView = (SearchView) menu.findItem(R.id.action_search)
       .getActionView();
@@ -215,15 +217,18 @@ public class AdmVideoGameActivity extends AppCompatActivity implements RecyclerI
       .getSearchableInfo(getComponentName()));
     searchView.setMaxWidth(Integer.MAX_VALUE);
 
+    // listening to search query text change, every type on input
     searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
       @Override
       public boolean onQueryTextSubmit(String query) {
+        // filter recycler view when query submitted
         mAdapter.getFilter().filter(query);
         return false;
       }
 
       @Override
       public boolean onQueryTextChange(String query) {
+        // filter recycler view when text is changed
         mAdapter.getFilter().filter(query);
         return false;
       }
@@ -247,31 +252,22 @@ public class AdmVideoGameActivity extends AppCompatActivity implements RecyclerI
   }
 
   @Override
-  public void onBackPressed() {
+  public void onBackPressed() { //TODO it's not working yet
     if (!searchView.isIconified()) {
       searchView.setIconified(true);
       return;
     }
-
     Intent a = new Intent(this, NavDrawerActivity.class);
     a.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     startActivity(a);
     super.onBackPressed();
   }
 
-  private void whiteNotificationBar(View view) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-      int flags = view.getSystemUiVisibility();
-      flags |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
-      view.setSystemUiVisibility(flags);
-      getWindow().setStatusBarColor(Color.WHITE);
-    }
+  @Override
+  public void onContactSelected(Client client) { //TODO get the select item of recycleView
+    Toast.makeText(getApplicationContext(), "Selected Client: " + client.getNombre() + ", " + client.getCedula(), Toast.LENGTH_LONG).show();
   }
 
-  @Override
-  public void onContactSelected(VideoGame videoGame) {
-    Toast.makeText(getApplicationContext(), "Selected: " + videoGame.getCodigoJuego() + ", " + videoGame.getNombre(), Toast.LENGTH_LONG).show();
-  }
 
   public class MyAsyncTasks extends AsyncTask<String, String, String> {
 
@@ -299,7 +295,7 @@ public class AdmVideoGameActivity extends AppCompatActivity implements RecyclerI
           url = new URL(tempUrl);
 
           urlConnection = (HttpURLConnection) url
-                  .openConnection();
+            .openConnection();
 
           InputStream in = urlConnection.getInputStream();
 
@@ -315,6 +311,8 @@ public class AdmVideoGameActivity extends AppCompatActivity implements RecyclerI
           System.out.println(current);
           // return the data to onPostExecute method
           Log.w("", current);
+
+
 
           return current;
 
@@ -337,15 +335,22 @@ public class AdmVideoGameActivity extends AppCompatActivity implements RecyclerI
     protected void onPostExecute(String s) {
 
       try {
-        //AlertDialog alertDialog = new AlertDialog.Builder(AdmVideoGameActivity.this).create();
+
+        // final Gson gson = new Gson();
+        // final Type tipoListaCategories = new TypeToken<List<Category>>(){}.getType();
+        // categoriesList = gson.fromJson(s, tipoListaCategories);
+        //System.out.println(categoriesList);
+
+
+        //AlertDialog alertDialog = new AlertDialog.Builder(AdmCategoryActivity.this).create();
         //alertDialog.setTitle("Mensaje");
         //alertDialog.setMessage(s);
         //alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-          //      new DialogInterface.OnClickListener() {
-            //      public void onClick(DialogInterface dialog, int which) {
-              //      dialog.dismiss();
-                //  }
-          //      });
+        //      new DialogInterface.OnClickListener() {
+        //        public void onClick(DialogInterface dialog, int which) {
+        //          dialog.dismiss();
+        //    }
+        //});
         //alertDialog.show();
 
       }

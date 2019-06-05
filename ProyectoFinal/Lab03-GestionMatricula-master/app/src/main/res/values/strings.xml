@@ -1,98 +1,102 @@
 <resources>
-    <string name="app_name">Rastakuman Store!</string>
+  <string name="app_name">Rastakuman Store!</string>
 
-    <!-- String related to shared preferences -->
-    <string name="preference_user_key">com.example.lenovo.lab.USER</string>
-    <string name="preference_user_key_default">none</string>
+  <!-- String related to shared preferences -->
+  <string name="preference_user_key">com.example.lenovo.lab.USER</string>
+  <string name="preference_user_key_default">none</string>
 
-    <!-- Strings related to login -->
-    <string name="prompt_email">Correo Electronico</string>
-    <string name="prompt_password">Contraseña</string>
-    <string name="action_sign_in">Iniciar Sesion</string>
-    <string name="action_sign_in_short">Iniciar Sesion</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
+  <!-- Strings related to login -->
+  <string name="prompt_email">Correo Electronico</string>
+  <string name="prompt_password">Contraseña</string>
+  <string name="action_sign_in">Iniciar Sesion</string>
+  <string name="action_sign_in_short">Iniciar Sesion</string>
+  <string name="error_invalid_email">This correo address is invalid</string>
+  <string name="error_invalid_password">This password is too short</string>
+  <string name="error_incorrect_password">This password is incorrect</string>
+  <string name="error_field_required">This field is required</string>
+  <string name="permission_rationale">"Contacts permissions are needed for providing correo
         completions."
     </string>
-    <string name="title_activity_nav_drawer">Bienvenidos</string>
+  <string name="title_activity_nav_drawer">Bienvenidos</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+  <string name="navigation_drawer_open">Open navigation drawer</string>
+  <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Configuracion</string>
-    <string name="my_carrera">Categorias</string>
-    <string name="my_curso">Cursos</string>
-    <string name="my_profesor">Clientes</string>
-    <string name="my_alumno">Alumnos</string>
-    <string name="my_ciclo">Pedidos</string>
-    <string name="my_grupo">Grupos</string>
-    <string name="my_seguridad">Cuentas</string>
-    <string name="my_matricula">Matricula</string>
+  <string name="action_settings">Configuracion</string>
+  <string name="my_carrera">Categorias</string>
+  <string name="my_curso">Cursos</string>
+  <string name="my_profesor">Clientes</string>
+  <string name="my_alumno">Alumnos</string>
+  <string name="my_ciclo">Pedidos</string>
+  <string name="my_grupo">Grupos</string>
+  <string name="my_seguridad">Cuentas</string>
+  <string name="my_matricula">Matricula</string>
 
-    <string name="ofertaAcademica">Video Juegos</string>
+  <string name="ofertaAcademica">Video Juegos</string>
 
-    <string name="name">Nombre</string>
-    <string name="codigoJuego">Codigo</string>
-    <string name="category">Carrera</string>
-    <string name="action_search">Buscar</string>
-    <string name="agregar">Agregar</string>
+  <string name="name">Nombre</string>
+  <string name="codigoJuego">Codigo</string>
+  <string name="category">Carrera</string>
+  <string name="action_search">Buscar</string>
+  <string name="agregar">Agregar</string>
 
-    <string name="delete">ELIMINAR</string>
-    <string name="edit">EDITAR</string>
+  <string name="delete">ELIMINAR</string>
+  <string name="edit">EDITAR</string>
 
-    <string name="search_hint">Ingrese name…</string>
+  <string name="search_hint">Ingrese name…</string>
 
-    <string name="nombreAddUptCar">Nombre</string>
-    <string name="codigoAddUpdCar">Codigo</string>
-    <string name="tituloAddUptCar">Titulo</string>
+  <string name="nombreAddUptCar">Nombre</string>
+  <string name="codigoAddUpdCar">Codigo</string>
+  <string name="tituloAddUptCar">Titulo</string>
 
-    <string name="nombreAddUptCur">Nombre</string>
-    <string name="codigoAddUpdCur">Codigo</string>
-    <string name="creditoAddUptCur">Creditos</string>
-    <string name="horaAddUptCur">Horas</string>
+  <string name="nombreAddUptCur">Nombre</string>
+  <string name="codigoAddUpdCur">Codigo</string>
+  <string name="creditoAddUptCur">Creditos</string>
+  <string name="horaAddUptCur">Horas</string>
 
-    <string name="nombreAddUpdProf">Nombre</string>
-    <string name="emailAddUpdProf">Email</string>
-    <string name="cedulaAddUpdProf">Cedula</string>
-    <string name="telefonoAddUpdProf">Telefono</string>
+  <string name="nombreAddUpdProf">Nombre</string>
+  <string name="emailAddUpdProf">Email</string>
+  <string name="cedulaAddUpdProf">Cedula</string>
+  <string name="telefonoAddUpdProf">Telefono</string>
 
-    <string name="nombreAddUpdAlum">Nombre</string>
-    <string name="emailAddUpdAlum">Email</string>
-    <string name="cedulaAddUpdAlum">Cedula</string>
-    <string name="telefonoAddUpdAlum">Telefono</string>
+  <string name="nombreAddUpdAlum">Nombre</string>
+  <string name="emailAddUpdAlum">Email</string>
+  <string name="cedulaAddUpdAlum">Cedula</string>
+  <string name="telefonoAddUpdAlum">Telefono</string>
 
-    <string name="añoAddUpdCi">Año</string>
-    <string name="numeroAddUpdCi">Numero</string>
-    <string name="finicioAddUpdCi">Fecha inicio</string>
-    <string name="ffinalAddUpdCi">Fecha final</string>
-
-
-    <string name="cicloAddUptGru">Ciclo</string>
-    <string name="cursoAddUpdGru">Curso</string>
-    <string name="numeroAddUptGru">Numero</string>
-    <string name="horarioAddUptGru">Horario</string>
-    <string name="profesorAddUptGru">Profesor</string>
-
-    <string name="txtViewCarrera">Categoria</string>
-    <string name="txtViewCiclo">Empresa</string>
-    <string name="txtViewCurso">Curso</string>
-
-    <string name="emailAddUpdSeguridad">Email</string>
-    <string name="contrasenaAddUpdSeguridad">Contraseña</string>
-    <string name="cedulaAddUpdSeguridad">Cedula</string>
-    <string name="privilegioAddUpdSeguridad">Privilegio</string>
+  <string name="añoAddUpdCi">Año</string>
+  <string name="numeroAddUpdCi">Numero</string>
+  <string name="finicioAddUpdCi">Fecha inicio</string>
+  <string name="ffinalAddUpdCi">Fecha final</string>
 
 
-    <string name="privileges_prompt">Seleccione role</string>
-    <string name="annio">Año</string>
-    <string name="pedido">Ciclo</string>
-    <string name="role">Privilegio</string>
-    <string name="identify">Cedula</string>
-    <string name="txtViewGrupo">Grupo</string>
-    <string name="txtViewEstudiante">Estudiante</string>
-    <string name="notaEditTxt">Nota</string>
+  <string name="cicloAddUptGru">Ciclo</string>
+  <string name="cursoAddUpdGru">Curso</string>
+  <string name="numeroAddUptGru">Numero</string>
+  <string name="horarioAddUptGru">Horario</string>
+  <string name="profesorAddUptGru">Profesor</string>
+
+  <string name="txtViewCarrera">Categoria</string>
+  <string name="txtViewCiclo">Empresa</string>
+  <string name="txtViewCurso">Curso</string>
+
+  <string name="emailAddUpdSeguridad">Email</string>
+  <string name="contrasenaAddUpdSeguridad">Contraseña</string>
+  <string name="cedulaAddUpdSeguridad">Cedula</string>
+  <string name="privilegioAddUpdSeguridad">Privilegio</string>
+
+
+  <string name="privileges_prompt">Seleccione role</string>
+  <string name="annio">Año</string>
+  <string name="pedido">Ciclo</string>
+  <string name="role">Privilegio</string>
+  <string name="cedula">Cedula</string>
+  <string name="txtViewGrupo">Grupo</string>
+  <string name="txtViewEstudiante">Estudiante</string>
+  <string name="notaEditTxt">Nota</string>
+  <string name="title_activity_adm_client">AdmClientActivity</string>
+  <string name="title_activity_add_upd_client">AddUpdClientActivity</string>
+  <string name="title_activity_add_order">AddOrderActivity</string>
+  <string name="title_activity_add_upd_order">AddUpdOrderActivity</string>
 
 </resources>

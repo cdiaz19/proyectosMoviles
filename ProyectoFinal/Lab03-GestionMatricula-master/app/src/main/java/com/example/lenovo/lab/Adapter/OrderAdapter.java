@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.lenovo.lab.LogicaNeg.Client;
+import com.example.lenovo.lab.LogicaNeg.Order;
 import com.example.lenovo.lab.R;
 
 import java.util.ArrayList;
@@ -21,11 +22,11 @@ import java.util.List;
  * Created by User on 21/03/2018.
  */
 
-public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.MyViewHolder> implements Filterable {
-    private List<Client> clientList;
-    private List<Client> clientListFiltered;
-    private ClientAdapterListener listener;
-    private Client deletedItem;
+public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder> implements Filterable {
+    private List<Order> orderList;
+    private List<Order> orderListFiltered;
+    private OrderAdapterListener listener;
+    private Order deletedItem;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView titulo1, titulo2, description;
@@ -45,21 +46,21 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.MyViewHold
                 @Override
                 public void onClick(View view) {
                     // send selected contact in callback
-                    listener.onContactSelected(clientListFiltered.get(getAdapterPosition()));
+                    listener.onContactSelected(orderListFiltered.get(getAdapterPosition()));
                 }
             });
         }
     }
 
-    public ClientAdapter(List<Client> clientList, ClientAdapterListener listener) {
-        this.clientList = clientList;
+    public OrderAdapter(List<Order> orderList, OrderAdapterListener listener) {
+        this.orderList = orderList;
         this.listener = listener;
         //init filter
-        this.clientListFiltered = clientList;
+        this.orderListFiltered = orderList;
     }
 
     @Override
-    public ClientAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public OrderAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_list_row, parent, false);
 
@@ -67,23 +68,24 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(ClientAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(OrderAdapter.MyViewHolder holder, int position) {
         // rendering view
-        final Client client = clientListFiltered.get(position);
-        holder.titulo1.setText(client.getCedula());
-        holder.titulo2.setText(client.getNombre());
+        final Order order = orderListFiltered.get(position);
+        holder.titulo1.setText(order.getFecha());
+        holder.titulo2.setText(order.getClient().getNombre());
+        holder.description.setText(order.getVideoGame().getNombre());
     }
 
     @Override
     public int getItemCount() {
-        return clientListFiltered.size();
+        return orderListFiltered.size();
     }
 
     public void removeItem(int position) {
-        deletedItem = clientListFiltered.remove(position);
-        Iterator<Client> iter = clientList.iterator();
+        deletedItem = orderListFiltered.remove(position);
+        Iterator<Order> iter = orderList.iterator();
         while (iter.hasNext()) {
-            Client aux = iter.next();
+            Order aux = iter.next();
             if (deletedItem.equals(aux))
                 iter.remove();
         }
@@ -93,44 +95,44 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.MyViewHold
 
     public void restoreItem(int position) {
 
-        if (clientListFiltered.size() == clientList.size()) {
-            clientListFiltered.add(position, deletedItem);
+        if (orderListFiltered.size() == orderList.size()) {
+            orderListFiltered.add(position, deletedItem);
         } else {
-            clientListFiltered.add(position, deletedItem);
-            clientList.add(deletedItem);
+            orderListFiltered.add(position, deletedItem);
+            orderList.add(deletedItem);
         }
         notifyDataSetChanged();
         // notify item added by position
         notifyItemInserted(position);
     }
 
-    public Client getSwipedItem(int index) {
-        if (this.clientList.size() == this.clientListFiltered.size()) { //not filtered yet
-            return clientList.get(index);
+    public Order getSwipedItem(int index) {
+        if (this.orderList.size() == this.orderListFiltered.size()) { //not filtered yet
+            return orderList.get(index);
         } else {
-            return clientListFiltered.get(index);
+            return orderListFiltered.get(index);
         }
     }
 
     public void onItemMove(int fromPosition, int toPosition) {
-        if (clientList.size() == clientListFiltered.size()) { // without filter
+        if (orderList.size() == orderListFiltered.size()) { // without filter
             if (fromPosition < toPosition) {
                 for (int i = fromPosition; i < toPosition; i++) {
-                    Collections.swap(clientList, i, i + 1);
+                    Collections.swap(orderList, i, i + 1);
                 }
             } else {
                 for (int i = fromPosition; i > toPosition; i--) {
-                    Collections.swap(clientList, i, i - 1);
+                    Collections.swap(orderList, i, i - 1);
                 }
             }
         } else {
             if (fromPosition < toPosition) {
                 for (int i = fromPosition; i < toPosition; i++) {
-                    Collections.swap(clientListFiltered, i, i + 1);
+                    Collections.swap(orderListFiltered, i, i + 1);
                 }
             } else {
                 for (int i = fromPosition; i > toPosition; i--) {
-                    Collections.swap(clientListFiltered, i, i - 1);
+                    Collections.swap(orderListFiltered, i, i - 1);
                 }
             }
         }
@@ -144,33 +146,33 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.MyViewHold
             protected FilterResults performFiltering(CharSequence charSequence) {
                 String charString = charSequence.toString();
                 if (charString.isEmpty()) {
-                    clientListFiltered = clientList;
+                    orderListFiltered = orderList;
                 } else {
-                    List<Client> filteredList = new ArrayList<>();
-                    for (Client row : clientList) {
+                    List<Order> filteredList = new ArrayList<>();
+                    for (Order row : orderList) {
                         // filter use two parameters
-                        if (row.getCedula().toLowerCase().contains(charString.toLowerCase()) || row.getNombre().toLowerCase().contains(charString.toLowerCase())) {
+                        if (row.getFecha().toLowerCase().contains(charString.toLowerCase()) || row.getFecha().toLowerCase().contains(charString.toLowerCase())) {
                             filteredList.add(row);
                         }
                     }
 
-                    clientListFiltered = filteredList;
+                    orderListFiltered = filteredList;
                 }
 
                 FilterResults filterResults = new FilterResults();
-                filterResults.values = clientListFiltered;
+                filterResults.values = orderListFiltered;
                 return filterResults;
             }
 
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                clientListFiltered = (ArrayList<Client>) filterResults.values;
+                orderListFiltered = (ArrayList<Order>) filterResults.values;
                 notifyDataSetChanged();
             }
         };
     }
 
-    public interface ClientAdapterListener {
-        void onContactSelected(Client client);
+    public interface OrderAdapterListener {
+        void onContactSelected(Order order);
     }
 }

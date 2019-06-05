@@ -83,7 +83,7 @@ public class AdmCategoryActivity extends AppCompatActivity implements RecyclerIt
 
     mRecyclerView = findViewById(R.id.recycler_carrerasFld);
     categoriesList = new ArrayList<>();
-    model = new ModelData(categorias,null);
+    model = new ModelData(categorias,null, null, null);
     categoriesList = model.getCategoriesList();
     mAdapter = new CategoriesAdapter(categoriesList, this);
     coordinatorLayout = findViewById(R.id.coordinator_layout);

@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     prefs = this.getSharedPreferences(getString(R.string.preference_user_key), Context.MODE_PRIVATE);
 
     // Set up the login form.
-    mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+    mEmailView = (AutoCompleteTextView) findViewById(R.id.correo);
     populateAutoComplete();
 
     mPasswordView = (EditText) findViewById(R.id.password);

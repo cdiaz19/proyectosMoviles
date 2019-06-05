@@ -149,11 +149,11 @@ public class NavDrawerActivity extends AppCompatActivity
       Toast.makeText(getApplicationContext(), "Video Games Module", Toast.LENGTH_SHORT).show();
       openAdmVideoGames();
     } else if (id == R.id.nav_order) {
-      Toast.makeText(getApplicationContext(), "Orders Module not yet!", Toast.LENGTH_SHORT).show();
-//      abrirAdmPedido();
+      Toast.makeText(getApplicationContext(), "Orders Module", Toast.LENGTH_SHORT).show();
+      openAdmOrder();
     } else if (id == R.id.nav_clients) {
       Toast.makeText(getApplicationContext(), "Clients Module", Toast.LENGTH_SHORT).show();
-//      openAdmClient();
+      openAdmClient();
     } else if (id == R.id.nav_categories) {
       Toast.makeText(getApplicationContext(), "Category Module", Toast.LENGTH_SHORT).show();
       openAdmCategory();
@@ -191,6 +191,15 @@ public class NavDrawerActivity extends AppCompatActivity
     startActivity(intent);
   }
 
+  public void openAdmClient() {
+    Intent intent = new Intent(this, AdmClientActivity.class);
+    startActivity(intent);
+  }
+
+  public void openAdmOrder() {
+    Intent intent = new Intent(this, AdmOrderActivity.class);
+    startActivity(intent);
+  }
 
   public void abrirAdmHistorial() {
     Intent intent = new Intent(this, AdmVideoGameActivity.class);
