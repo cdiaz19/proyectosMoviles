@@ -12,8 +12,11 @@ package Main;
 import AccesoADatos.ServicioCategoria;
 import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
+import AccesoADatos.ServicioCliente;
 import AccesoADatos.ServicioVideojuego;
 import LogicaDeNegocio.Categoria;
+import LogicaDeNegocio.Cliente;
+import LogicaDeNegocio.Usuario;
 import LogicaDeNegocio.Videojuego;
 import java.util.LinkedList;
 /**
@@ -28,8 +31,15 @@ public class Principal {
     public static void main(String[] args) throws GlobalException, NoDataException {
         Categoria categoria= new Categoria("SHO21","Shooter12");
         ServicioCategoria sc1 = ServicioCategoria.getInstancia();
+        ServicioCliente ssc= ServicioCliente.getInstancia();
+        Usuario usuario = new Usuario("1126580","eeee4e@gmail.com","12345","cliente");
+       
+        Cliente cliente=new Cliente("Cristian hy",22920045, usuario);
+        //ssc.eliminarCliente("115790444");
+        //ssc.modificarCliente(cliente, usuario);
+        //ssc.modificarCliente(cliente);
         //ServicioVideojuego sc = ServicioVideojuego.getInstancia();
-        sc1.insertarCategoria(categoria);
+        //sc1.insertarCategoria(categoria);
         //Videojuego videojuego= new Videojuego("CODBLACK","Call of Duty Black Ops 2",2,3500,"Blizzar",categoria);
         //sc.insertarVideojuego(categoria, videojuego);
         //sc.eliminarVideojuego("COkD");
@@ -40,8 +50,8 @@ public class Principal {
         //LinkedList<Videojuego> c1 = sc.listarVideojueos();
         //System.out.print(c1);
         //sc.modificarCarrera(carrera1);
-        //LinkedList<Carrera> c1 = sc.buscarPorCodigo("05");
-        //System.out.print(c1);
+        LinkedList<Cliente> c1 = ssc.listarClientes();
+        System.out.print(c1);
         
         
         

@@ -1,5 +1,7 @@
 DROP Table videojuego;
 DROP Table categoria;
+drop table cliente;
+drop table usuario;
 
 ----------------------Tablas-------------------------------------------------
 -----------------TablaCategoria----------------------------------------------
@@ -8,6 +10,27 @@ CREATE TABLE categoria (
   nombre  VARCHAR(30) NOT NULL,
   CONSTRAINT pk_categoria PRIMARY KEY (codigo)
 );
+
+-----------------TablaUsuario--------------------------------------------
+
+CREATE TABLE usuario(
+cedula VARCHAR(30) NOT NULL,
+contrasena VARCHAR(30),
+email VARCHAR(30) NOT NULL,
+rol VARCHAR(30) NOT NULL,
+CONSTRAINT pkUsuario PRIMARY KEY (cedula)
+);
+-----------------TablaCliente---------------------------------------------
+CREATE TABLE cliente(
+nombre VARCHAR(100),
+telefono int,
+ced_usu VARCHAR(30) NOT NULL,
+CONSTRAINT pkcliente PRIMARY KEY (ced_usu),
+CONSTRAINT fk_usu
+    FOREIGN KEY (ced_usu)
+    REFERENCES usuario(cedula) ON DELETE CASCADE
+);
+
 
 -----------------TablaVideojuegos------------------------------------------
 CREATE TABLE videojuego (
@@ -23,6 +46,11 @@ CREATE TABLE videojuego (
     REFERENCES categoria(codigo) ON DELETE CASCADE
 );
 ----------------Datos Iniciales-------------------------------------------
+--Usuario
+Insert Into usuario values('115790444','12345','ale@gmail.com','cliente');
+--Clientes
+Insert Into cliente values('Alejandro Gamboa',22928804,'115790444');
+
 -- Categorias
 INSERT INTO categoria VALUES ('ACC', 'Accion');
 INSERT INTO categoria VALUES ('STR', 'Estrategia');
@@ -31,6 +59,88 @@ INSERT INTO categoria VALUES ('STR', 'Estrategia');
 INSERT INTO videojuego VALUES ('GTAV', 'Grand Thelf Auto V', 20, 35000, 'RockStart', 'ACC');
 
 ----------------Mantenimientos--------------------------------------------
+
+----------------MantenimientoDeClientes----------------------------------
+CREATE OR REPLACE FUNCTION insertarcliente (
+  cedula_IN VARCHAR,
+  contrasena_IN VARCHAR,
+  email_IN VARCHAR,
+  nombre_IN VARCHAR,
+  telefono_IN int,
+  rol_IN VARCHAR
+)
+RETURNS VOID
+AS
+'
+    INSERT INTO usuario(cedula,contrasena,email,rol) VALUES (cedula_IN,contrasena_IN,email_IN,rol_IN);
+    INSERT INTO cliente(nombre,telefono,ced_usu) VALUES (nombre_IN,telefono_IN,cedula_IN);
+'
+LANGUAGE SQL;
+
+
+CREATE OR REPLACE FUNCTION buscarcliente (
+  cedula_IN VARCHAR
+)
+RETURNS refcursor
+AS
+'
+DECLARE
+  ref refcursor;
+BEGIN
+   OPEN ref FOR SELECT u.cedula,c.nombre,u.email,c.telefono,u.contrasena FROM usuario u join cliente c on c.ced_usu=u.cedula WHERE c.ced_usu=cedula_IN;
+   RETURN ref;
+END;
+'
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION listarclientes ()
+RETURNS refcursor
+AS
+'
+DECLARE
+  ref refcursor;
+BEGIN
+   OPEN ref FOR SELECT u.cedula,c.nombre,u.email,c.telefono,u.contrasena FROM usuario u join cliente c on c.ced_usu=u.cedula;
+RETURN ref;
+END;
+'
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION actualizarcliente (
+  cedula_IN VARCHAR,
+  contrasena_IN VARCHAR,
+  email_IN VARCHAR,
+  nombre_IN VARCHAR,
+  telefono_IN int,
+  rol_IN VARCHAR)
+RETURNS VOID
+AS
+'
+   UPDATE cliente
+    SET nombre=nombre_IN,
+    telefono=telefono_IN
+    WHERE ced_usu=cedula_IN;
+    UPDATE usuario
+    SET contrasena=contrasena_IN,
+    rol=rol_IN,
+    email=email_IN
+    WHERE cedula=cedula_IN;
+	
+'
+LANGUAGE SQL;
+
+CREATE OR REPLACE FUNCTION eliminarcliente (
+  cedula_IN VARCHAR
+)
+RETURNS VOID
+AS
+'
+   DELETE FROM usuario WHERE cedula=cedula;
+'
+LANGUAGE SQL;
+
+
+
 ----------------MantenimientoDeVideojuegos--------------------------------
 CREATE OR REPLACE FUNCTION insertarvideojuego (
   codigojuego_IN VARCHAR,
