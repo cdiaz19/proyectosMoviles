@@ -7,8 +7,11 @@ import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
 import AccesoADatos.Servicio;
 import AccesoADatos.ServicioCategoria;
+import AccesoADatos.ServicioCliente;
 import AccesoADatos.ServicioVideojuego;
 import LogicaDeNegocio.Categoria;
+import LogicaDeNegocio.Cliente;
+import LogicaDeNegocio.Usuario;
 import LogicaDeNegocio.Videojuego;
 import com.google.gson.Gson;
 import java.io.IOException;
@@ -26,10 +29,15 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author alejandro
  */
-@WebServlet(urlPatterns = {"/ConnTest","/listarVideojuegos","/insertarVid","/editVid","/deleteVid","/listarCategorias","/insertarCategoria","/editCategoria","/deleteCategoria"})
+@WebServlet(urlPatterns = {"/ConnTest","/listarVideojuegos","/insertarVid",
+    "/editVid","/deleteVid","/listarCategorias","/insertarCategoria",
+    "/editCategoria","/deleteCategoria","/listarClientes","/insertarCliente",
+    "/modificarCliente","/eliminaCliente"})
 public class ConnTest extends HttpServlet {
     private ServicioVideojuego daoVideojuego;
     private ServicioCategoria servicioCategoria;
+    private ServicioCliente servicioCliente;
+    private String clientesJsonString;
     private String videojuegosJsonString;
     private String categoriasJsonString;
 
@@ -70,14 +78,151 @@ public class ConnTest extends HttpServlet {
         case "/deleteVid":
             this.doDeleteVid(request,response);
             break;
-            case "/insertarVid":
+       case "/insertarVid":
                 this.doCreate(request, response);
                 break;
+        case "/listarClientes":
+                this.doReadAllClientes(request, response);
+                break;
+        case "/insertarCliente":
+                this.doInsertCliente(request, response);
+                break;
+        case "/modificarCliente":
+                this.doModificaCliente(request, response);
+                break;
+        case "/eliminaCliente":
+            this.doDeleteCliente(request,response);
+            break;
+                
         
         }
         
     }
     
+    
+    
+    protected void doReadAllClientes(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        try {
+            
+            servicioCliente = ServicioCliente.getInstancia();
+            
+            response.setContentType("application/json;charset=UTF-8");
+            
+            //ServletOutputStream out = resp.getOutputStream();
+            LinkedList<Cliente> c1 = servicioCliente.listarClientes();
+            
+            
+            Gson gson = new Gson();
+            clientesJsonString = gson.toJson(c1);
+            PrintWriter out = response.getWriter();
+            try {
+                out.println(clientesJsonString);
+            } finally {
+                out.close();
+            }
+        }   catch (GlobalException ex) {
+            Logger.getLogger(ConnTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ConnTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    protected void doModificaCliente(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+//        processRequest(request, response);
+            response.setContentType("text/html");
+            String cedula = request.getParameter("cedula");
+            String email= request.getParameter("email");
+            String password=request.getParameter("password");
+            String nombre=request.getParameter("nombre");
+            int telefono =Integer.parseInt(request.getParameter("telefono"));
+            
+            Usuario usuario=new Usuario(cedula,email,password,"cliente");
+            Cliente cliente= new Cliente(nombre,telefono,usuario);
+            servicioCliente=ServicioCliente.getInstancia();
+            
+            
+            servicioCliente.modificarCliente(cliente, usuario);
+            
+            
+            PrintWriter out = response.getWriter();
+            try {
+                out.println("insertado");
+            } finally {
+                out.close();
+            }
+            
+        }   catch (GlobalException ex) {
+            Logger.getLogger(ConnTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ConnTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    protected void doInsertCliente(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+//        processRequest(request, response);
+            response.setContentType("text/html");
+            String cedula = request.getParameter("cedula");
+            String email= request.getParameter("email");
+            String password=request.getParameter("password");
+            String nombre=request.getParameter("nombre");
+            int telefono =Integer.parseInt(request.getParameter("telefono"));
+            
+            Usuario usuario=new Usuario(cedula,email,password,"cliente");
+            Cliente cliente= new Cliente(nombre,telefono,usuario);
+            servicioCliente=ServicioCliente.getInstancia();
+            
+            
+            servicioCliente.insertarCliente(cliente, usuario);
+            
+            
+            PrintWriter out = response.getWriter();
+            try {
+                out.println("insertado");
+            } finally {
+                out.close();
+            }
+            
+        }   catch (GlobalException ex) {
+            Logger.getLogger(ConnTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ConnTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    protected void doDeleteCliente(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+//        processRequest(request, response);
+            response.setContentType("text/html");
+            String cedula = request.getParameter("cedula");
+            
+           
+           
+            servicioCliente=ServicioCliente.getInstancia();
+            servicioCliente.eliminarCliente(cedula);
+            
+            PrintWriter out = response.getWriter();
+            try {
+                out.println("eliminado");
+            } finally {
+                out.close();
+            }
+            
+        }   catch (GlobalException ex) {
+            Logger.getLogger(ConnTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ConnTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
     
     protected void doDeleteVid(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
