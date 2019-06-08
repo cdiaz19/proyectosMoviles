@@ -1,24 +1,11 @@
 package com.example.lenovo.lab.AccesoDatos;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.os.AsyncTask;
-import android.util.Log;
-
-import com.example.lenovo.lab.Activity.AdmCategoryActivity;
 import com.example.lenovo.lab.LogicaNeg.Category;
 import com.example.lenovo.lab.LogicaNeg.Client;
 import com.example.lenovo.lab.LogicaNeg.Order;
 import com.example.lenovo.lab.LogicaNeg.User;
 import com.example.lenovo.lab.LogicaNeg.VideoGame;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.lang.reflect.Type;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +30,7 @@ public class ModelData {
     prepareVideoGamesData1(games);
     prepareClientsData1(clients);
     prepareOrdersData1(orders);
-    //prepareClientData();
+    prepareClientData();
 
   }
 
@@ -57,8 +44,8 @@ public class ModelData {
 
   public List<User> getUsuariosList() {
     usersList = new ArrayList<>();
-    usersList.add(new User("@admin", "admin", "administrator"));
-    usersList.add(new User("@client", "client", "client"));
+    usersList.add(new User("1111", "@admin", "admin", "administrator"));
+    usersList.add(new User("2222", "@client", "client", "client"));
 
     return usersList;
   }
@@ -88,10 +75,12 @@ public class ModelData {
   public void prepareClientsData1(List<Client> clients) {
     if (clients != null) {
       for (int i = 0; i < clients.size(); i++) {
-        User user = new User(clients.get(i).getUser().getEmail(), clients.get(i).getUser().getPassword(), clients.get(i).getUser().getRole());
+        User user = new User(clients.get(i).getUser().getCedula(), clients.get(i).getUser().getEmail(),
+          clients.get(i).getUser().getPassword(),
+          clients.get(i).getUser().getRole());
 
-        Client client = new Client(clients.get(i).getNombre(), clients.get(i).getCedula(),
-                                    clients.get(i).getTelefono(), user);
+        Client client = new Client(clients.get(i).getNombre(),
+                            clients.get(i).getTelefono(), user);
         clientList.add(client);
       }
     }
@@ -100,10 +89,11 @@ public class ModelData {
   public void prepareOrdersData1(List<Order> orders) {
     if (orders != null) {
       for (int i = 0; i < orders.size(); i++) {
-        User user = new User(orders.get(i).getClient().getUser().getEmail(), orders.get(i).getClient().getUser().getPassword(),
+        User user = new User(orders.get(i).getClient().getUser().getCedula(), orders.get(i).getClient().getUser().getEmail(),
+                              orders.get(i).getClient().getUser().getPassword(),
                               orders.get(i).getClient().getUser().getRole());
 
-        Client client = new Client(orders.get(i).getClient().getCedula(), orders.get(i).getClient().getNombre(),
+        Client client = new Client(orders.get(i).getClient().getNombre(),
                                     orders.get(i).getClient().getTelefono(), user);
 
         VideoGame videoGame = new VideoGame(orders.get(i).getVideoGame().getCodigoJuego(), orders.get(i).getVideoGame().getNombre(),
@@ -118,13 +108,16 @@ public class ModelData {
   }
 
 
-//  public void prepareClientData() {
-//    Client client = new Client("123", "Jose", 321, "@Jose");
-//    clientList.add(client);
-//
-//    client = new Client("234", "Miguel", 3241, "@Miguel");
-//    clientList.add(client);
-//  }
+  public void prepareClientData() {
+    User userAdmin = new User ("1234", "@admin", "admin", "administrator");
+    Client admin = new Client("Jose", 321, userAdmin);
+    clientList.add(admin);
+
+
+    User userClient = new User ("1234", "@client", "client", "client");
+    Client client = new Client("Cliente Rasta", 123, userClient);
+    clientList.add(client);
+  }
 
   public List<Category> getCategoriesList() {
     return categoriesList;

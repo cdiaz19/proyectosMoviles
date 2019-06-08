@@ -88,7 +88,7 @@ public class AddUpdSegurityActivity extends AppCompatActivity {
 
   public void addUser() {
     if (validateForm()) {
-      User user = new User(emailFld.getText().toString(), passFld.getText().toString(),
+      User user = new User(identifyFld.getText().toString(), emailFld.getText().toString(), passFld.getText().toString(),
         spinner.getSelectedItem().toString());
 
       Intent intent = new Intent(getBaseContext(), AdmSecurityActivity.class);
@@ -100,7 +100,7 @@ public class AddUpdSegurityActivity extends AppCompatActivity {
 
   public void editUser() {
     if (validateForm()) {
-      User user = new User(emailFld.getText().toString(), passFld.getText().toString(),
+      User user = new User(identifyFld.getText().toString(), emailFld.getText().toString(), passFld.getText().toString(),
         spinner.getSelectedItem().toString());
       Intent intent = new Intent(getBaseContext(), AdmSecurityActivity.class);
 

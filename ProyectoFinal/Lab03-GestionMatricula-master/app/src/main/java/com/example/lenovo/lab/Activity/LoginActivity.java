@@ -123,20 +123,27 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
   }
 
   private List<Client> searchUsers() {
-    tempUrl = apiUrl + "listarClientes";
-    MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
-    try {
-      json=myAsyncTasks.execute().get();
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    } catch (ExecutionException e) {
-      e.printStackTrace();
-    }
+
+//    tempUrl = apiUrl + "listarClientes";
+//    MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
+//    try {
+//      json=myAsyncTasks.execute().get();
+//    } catch (InterruptedException e) {
+//      e.printStackTrace();
+//    } catch (ExecutionException e) {
+//      e.printStackTrace();
+//    }
+
     final Gson gson = new Gson();
     final Type tipoListaClientes = new TypeToken<List<Client>>(){}.getType();
     final List<Client> clients = gson.fromJson(json, tipoListaClientes);
 
     model = new ModelData(null, null, clients, null);
+    System.out.println("Clientes ->");
+    System.out.println(model.getClientList());
+
+
+
     return model.getClientList();
   }
 
