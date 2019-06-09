@@ -38,7 +38,7 @@ import java.util.concurrent.ExecutionException;
 
 public class AddUpdOrderActivity extends AppCompatActivity {
 
-  String apiUrl = "http://10.0.2.2:8080/WEB-INF/";
+  String apiUrl = "http://10.0.2.2:8080/WebProyectoFinal/";
   String tempUrl = "";
   String json;
   private boolean editable = true;

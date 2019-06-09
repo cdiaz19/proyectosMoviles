@@ -112,11 +112,6 @@ public class ModelData {
     User userAdmin = new User ("1234", "@admin", "admin", "administrator");
     Client admin = new Client("Jose", 321, userAdmin);
     clientList.add(admin);
-
-
-    User userClient = new User ("1234", "@client", "client", "client");
-    Client client = new Client("Cliente Rasta", 123, userClient);
-    clientList.add(client);
   }
 
   public List<Category> getCategoriesList() {

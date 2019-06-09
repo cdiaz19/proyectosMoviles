@@ -7,8 +7,8 @@ package AccesoADatos;
 
 
 
-import LogicaDeNegocio.Cliente;
-import LogicaDeNegocio.Usuario;
+import LogicaDeNegocio.Client;
+import LogicaDeNegocio.User;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,7 +27,7 @@ public class ServicioCliente extends Servicio {
     private static final String BUSCAR = "{?=call buscarcliente(?)}";
     private static final String LISTAR = "{?=call listarclientes()}";
     
-  public void insertarCliente(Cliente cliente, Usuario usuario)
+  public void insertarCliente(Client cliente, User usuario)
             throws GlobalException, NoDataException {
         try {
             conectar();
@@ -71,7 +71,7 @@ public class ServicioCliente extends Servicio {
     }
   
   
-  public void modificarCliente(Cliente cliente, Usuario usuario)
+  public void modificarCliente(Client cliente, User usuario)
             throws GlobalException, NoDataException {
         try {
             conectar();
@@ -117,7 +117,7 @@ public class ServicioCliente extends Servicio {
     
 }
   
-  public LinkedList<Cliente> buscarPorCedula(String cedula)
+  public LinkedList<Client> buscarPorCedula(String cedula)
             throws GlobalException, NoDataException {
         try {
             conectar();
@@ -128,8 +128,8 @@ public class ServicioCliente extends Servicio {
         }
         ResultSet rs = null;
         LinkedList coleccion = new LinkedList();
-        Cliente cliente = null;
-        Usuario usuario= null;
+        Client cliente = null;
+        User usuario= null;
         CallableStatement pstmt = null;
         try {
             this.conexion.setAutoCommit(false);
@@ -140,8 +140,8 @@ public class ServicioCliente extends Servicio {
             
             rs = (ResultSet) pstmt.getObject(1);
             while (rs.next()) {
-                usuario=new Usuario(rs.getString("cedula"),rs.getString("email"),rs.getString("contrasena"),"cliente");
-                cliente = new Cliente(
+                usuario=new User(rs.getString("cedula"),rs.getString("email"),rs.getString("contrasena"),"cliente");
+                cliente = new Client(
                       
                             rs.getString("nombre"),
                             rs.getInt("telefono"),
@@ -190,7 +190,7 @@ public class ServicioCliente extends Servicio {
 }
   
   
-  public LinkedList<Cliente> listarClientes()
+  public LinkedList<Client> listarClientes()
             throws GlobalException, NoDataException {
         try {
             conectar();
@@ -201,8 +201,8 @@ public class ServicioCliente extends Servicio {
         }
         ResultSet rs = null;
         LinkedList coleccion = new LinkedList();
-        Usuario usuario = null;
-        Cliente cliente= null;
+        User usuario = null;
+        Client cliente= null;
         CallableStatement pstmt = null;
         try {
             this.conexion.setAutoCommit(false);
@@ -212,8 +212,8 @@ public class ServicioCliente extends Servicio {
             
             rs = (ResultSet) pstmt.getObject(1);
             while (rs.next()) {
-                usuario=new Usuario(rs.getString("cedula"),rs.getString("email"),rs.getString("contrasena"),"cliente");
-                cliente = new Cliente(
+                usuario=new User(rs.getString("cedula"),rs.getString("email"),rs.getString("contrasena"),"cliente");
+                cliente = new Client(
                       
                             rs.getString("nombre"),
                             rs.getInt("telefono"),

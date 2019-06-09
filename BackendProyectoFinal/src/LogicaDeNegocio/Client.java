@@ -11,21 +11,21 @@ import java.io.Serializable;
  *
  * @author alejandro
  */
-public class Cliente implements Serializable {
+public class Client implements Serializable {
     
     private String nombre;
     int telefono;
-    Usuario usuario;
+    User user;
 
-    public Cliente(String nombre, int telefono, Usuario usuario) {
+    public Client(String nombre, int telefono, User user) {
         this.nombre = nombre;
         this.telefono = telefono;
-        this.usuario = usuario;
+        this.user = user;
     }
 
     @Override
     public String toString() {
-        return "Cliente{" + "nombre=" + nombre + ", telefono=" + telefono + ", usuario=" + usuario + '}';
+        return "Cliente{" + "nombre=" + nombre + ", telefono=" + telefono + ", user=" + user + '}';
     }
 
     public String getNombre() {
@@ -44,12 +44,12 @@ public class Cliente implements Serializable {
         this.telefono = telefono;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public User getUser() {
+        return user;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     

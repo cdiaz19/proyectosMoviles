@@ -44,7 +44,7 @@ import java.util.concurrent.ExecutionException;
 public class AdmClientActivity extends AppCompatActivity implements RecyclerItemTouchHelper.RecyclerItemTouchHelperListener, ClientAdapter.ClientAdapterListener {
 
 
-  String apiUrl = "http://10.0.2.2:8080/WEB-INF/";
+  String apiUrl = "http://10.0.2.2:8080/WebProyectoFinal/";
   String tempUrl = "";
 
   private RecyclerView mRecyclerView;
@@ -77,12 +77,12 @@ public class AdmClientActivity extends AppCompatActivity implements RecyclerItem
     }
     final Gson gson = new Gson();
     final Type tipoListaClientes = new TypeToken<List<Client>>(){}.getType();
-    final List<Client> clients = gson.fromJson(json, tipoListaClientes);
+    final List<Client> clientes = gson.fromJson(json, tipoListaClientes);
 
 
     mRecyclerView = findViewById(R.id.recycler_carrerasFld);
     clientsList = new ArrayList<>();
-    model = new ModelData(null, null, clients, null);
+    model = new ModelData(null, null, clientes, null);
     clientsList = model.getClientList();
     mAdapter = new ClientAdapter(clientsList, this);
     coordinatorLayout = findViewById(R.id.coordinator_layout);

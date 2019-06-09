@@ -10,8 +10,8 @@ import AccesoADatos.ServicioCategoria;
 import AccesoADatos.ServicioCliente;
 import AccesoADatos.ServicioVideojuego;
 import LogicaDeNegocio.Categoria;
-import LogicaDeNegocio.Cliente;
-import LogicaDeNegocio.Usuario;
+import LogicaDeNegocio.Client;
+import LogicaDeNegocio.User;
 import LogicaDeNegocio.Videojuego;
 import com.google.gson.Gson;
 import java.io.IOException;
@@ -111,7 +111,7 @@ public class ConnTest extends HttpServlet {
             response.setContentType("application/json;charset=UTF-8");
             
             //ServletOutputStream out = resp.getOutputStream();
-            LinkedList<Cliente> c1 = servicioCliente.listarClientes();
+            LinkedList<Client> c1 = servicioCliente.listarClientes();
             
             
             Gson gson = new Gson();
@@ -140,8 +140,8 @@ public class ConnTest extends HttpServlet {
             String nombre=request.getParameter("nombre");
             int telefono =Integer.parseInt(request.getParameter("telefono"));
             
-            Usuario usuario=new Usuario(cedula,email,password,"cliente");
-            Cliente cliente= new Cliente(nombre,telefono,usuario);
+            User usuario=new User(cedula,email,password,"cliente");
+            Client cliente= new Client(nombre,telefono,usuario);
             servicioCliente=ServicioCliente.getInstancia();
             
             
@@ -174,8 +174,8 @@ public class ConnTest extends HttpServlet {
             String nombre=request.getParameter("nombre");
             int telefono =Integer.parseInt(request.getParameter("telefono"));
             
-            Usuario usuario=new Usuario(cedula,email,password,"cliente");
-            Cliente cliente= new Cliente(nombre,telefono,usuario);
+            User usuario=new User(cedula,email,password,"cliente");
+            Client cliente= new Client(nombre,telefono,usuario);
             servicioCliente=ServicioCliente.getInstancia();
             
             

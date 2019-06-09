@@ -11,10 +11,10 @@ import java.io.Serializable;
  *
  * @author alejandro
  */
-public class Usuario implements Serializable {
+public class User implements Serializable {
     private String cedula, email, password, role;
 
-    public Usuario(String cedula, String email, String password, String role) {
+    public User(String cedula, String email, String password, String role) {
         this.cedula = cedula;
         this.email = email;
         this.password = password;

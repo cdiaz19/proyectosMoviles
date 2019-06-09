@@ -44,7 +44,7 @@ import java.util.concurrent.ExecutionException;
 public class AdmOrderActivity extends AppCompatActivity implements RecyclerItemTouchHelper.RecyclerItemTouchHelperListener, OrderAdapter.OrderAdapterListener {
 
 
-  String apiUrl = "http://10.0.2.2:8080/WEB-INF/";
+  String apiUrl = "http://10.0.2.2:8080/WebProyectoFinal/";
   String tempUrl = "";
 
   private RecyclerView mRecyclerView;

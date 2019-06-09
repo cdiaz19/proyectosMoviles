@@ -15,8 +15,8 @@ import AccesoADatos.NoDataException;
 import AccesoADatos.ServicioCliente;
 import AccesoADatos.ServicioVideojuego;
 import LogicaDeNegocio.Categoria;
-import LogicaDeNegocio.Cliente;
-import LogicaDeNegocio.Usuario;
+import LogicaDeNegocio.Client;
+import LogicaDeNegocio.User;
 import LogicaDeNegocio.Videojuego;
 import java.util.LinkedList;
 /**
@@ -32,9 +32,9 @@ public class Principal {
         Categoria categoria= new Categoria("SHO21","Shooter12");
         ServicioCategoria sc1 = ServicioCategoria.getInstancia();
         ServicioCliente ssc= ServicioCliente.getInstancia();
-        Usuario usuario = new Usuario("1126580","eeee4e@gmail.com","12345","cliente");
+        User usuario = new User("1126580","eeee4e@gmail.com","12345","cliente");
        
-        Cliente cliente=new Cliente("Cristian hy",22920045, usuario);
+        Client cliente=new Client("Cristian hy",22920045, usuario);
         //ssc.eliminarCliente("115790444");
         //ssc.modificarCliente(cliente, usuario);
         //ssc.modificarCliente(cliente);
@@ -50,7 +50,7 @@ public class Principal {
         //LinkedList<Videojuego> c1 = sc.listarVideojueos();
         //System.out.print(c1);
         //sc.modificarCarrera(carrera1);
-        LinkedList<Cliente> c1 = ssc.listarClientes();
+        LinkedList<Client> c1 = ssc.listarClientes();
         System.out.print(c1);
         
         

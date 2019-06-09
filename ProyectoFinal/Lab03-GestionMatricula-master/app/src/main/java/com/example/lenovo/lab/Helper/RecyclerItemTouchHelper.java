@@ -65,7 +65,7 @@ public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
         backgroundViewDelete = ((CategoriesAdapter.MyViewHolder) viewHolder).viewBackgroundDelete;
         foregroundView = ((CategoriesAdapter.MyViewHolder) viewHolder).viewForeground;
 
-      } else if (this.listener.getClass().getSimpleName().equals("AdmAlumnoActivity")) {
+      } else if (this.listener.getClass().getSimpleName().equals("AdmClienteActivity")) {
         backgroundViewEdit = ((ClientAdapter.MyViewHolder) viewHolder).viewBackgroundEdit;
         backgroundViewDelete = ((ClientAdapter.MyViewHolder) viewHolder).viewBackgroundDelete;
         foregroundView = ((ClientAdapter.MyViewHolder) viewHolder).viewForeground;

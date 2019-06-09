@@ -35,7 +35,7 @@ public class AddUpdVideoGameActivity extends AppCompatActivity {
   private EditText companyFld;
   private VideoGame critFiltG;
 
-  String apiUrl = "http://10.0.2.2:8080/WEB-INF/";
+  String apiUrl = "http://10.0.2.2:8080/WebProyectoFinal/";
   String tempUrl = "";
   @Override
   protected void onCreate(Bundle savedInstanceState) {
