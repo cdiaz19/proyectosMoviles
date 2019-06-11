@@ -8,9 +8,11 @@ import AccesoADatos.NoDataException;
 import AccesoADatos.Servicio;
 import AccesoADatos.ServicioCategoria;
 import AccesoADatos.ServicioCliente;
+import AccesoADatos.ServicioOrder;
 import AccesoADatos.ServicioVideojuego;
 import LogicaDeNegocio.Categoria;
 import LogicaDeNegocio.Client;
+import LogicaDeNegocio.Order;
 import LogicaDeNegocio.User;
 import LogicaDeNegocio.Videojuego;
 import com.google.gson.Gson;
@@ -32,11 +34,14 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = {"/ConnTest","/listarVideojuegos","/insertarVid",
     "/editVid","/deleteVid","/listarCategorias","/insertarCategoria",
     "/editCategoria","/deleteCategoria","/listarClientes","/insertarCliente",
-    "/modificarCliente","/eliminaCliente"})
+    "/modificarCliente","/eliminaCliente","/listarPedidos",
+    "/insertarPedido","/modificarPedido","/eliminarPedido"})
 public class ConnTest extends HttpServlet {
     private ServicioVideojuego daoVideojuego;
     private ServicioCategoria servicioCategoria;
     private ServicioCliente servicioCliente;
+    private ServicioOrder servicioOrder;
+    private String orderJsonString;
     private String clientesJsonString;
     private String videojuegosJsonString;
     private String categoriasJsonString;
@@ -93,6 +98,22 @@ public class ConnTest extends HttpServlet {
         case "/eliminaCliente":
             this.doDeleteCliente(request,response);
             break;
+            
+        case "/listarPedidos":
+                this.doReadAllOrders(request, response);
+                break;
+        case "/insertarPedido":
+                this.doInsertPedido(request, response);
+                break;
+            
+        case "/modificarPedido":
+                this.doModificarPedido(request, response);
+                break;
+            
+        case "/eliminarPedido":
+            this.doDeletePedido(request,response);
+            break;    
+            
                 
         
         }
@@ -100,6 +121,137 @@ public class ConnTest extends HttpServlet {
     }
     
     
+    protected void doDeletePedido(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+//        processRequest(request, response);
+            response.setContentType("text/html");
+           int id =Integer.parseInt(request.getParameter("id"));
+            
+           
+           
+           servicioOrder = ServicioOrder.getInstancia();
+            
+            
+             servicioOrder.eliminarpedido(id);
+            
+            PrintWriter out = response.getWriter();
+            try {
+                out.println("eliminado");
+            } finally {
+                out.close();
+            }
+            
+        }   catch (GlobalException ex) {
+            Logger.getLogger(ConnTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ConnTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    
+    
+    protected void doModificarPedido(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+//        processRequest(request, response);
+            response.setContentType("text/html");
+             int id =Integer.parseInt(request.getParameter("id"));
+             String fecha = request.getParameter("fecha");
+            int cantidad =Integer.parseInt(request.getParameter("cantidad"));
+            String cedula= request.getParameter("cedula");
+            String codigo_videojuego=request.getParameter("videojuego_id");
+           
+            
+            User usuario=new User(cedula,null,null,null);
+            Client cliente= new Client(null,0,usuario);
+            Videojuego videojuego= new Videojuego(codigo_videojuego,null,0,0,null,null);
+            Order order= new Order(id,fecha,cantidad,0,videojuego,cliente);
+             servicioOrder = ServicioOrder.getInstancia();
+            
+            
+             servicioOrder.modificarPedido(order, cliente, videojuego);
+            
+            
+            PrintWriter out = response.getWriter();
+            try {
+                out.println("modificado");
+            } finally {
+                out.close();
+            }
+            
+        }   catch (GlobalException ex) {
+            Logger.getLogger(ConnTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ConnTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    protected void doInsertPedido(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+//        processRequest(request, response);
+            response.setContentType("text/html");
+            String fecha = request.getParameter("fecha");
+            int cantidad =Integer.parseInt(request.getParameter("cantidad"));
+            String cedula= request.getParameter("cedula");
+            String codigo_videojuego=request.getParameter("videojuego_id");
+           
+            
+            User usuario=new User(cedula,null,null,null);
+            Client cliente= new Client(null,0,usuario);
+            Videojuego videojuego= new Videojuego(codigo_videojuego,null,0,0,null,null);
+            Order order= new Order(0,fecha,cantidad,0,videojuego,cliente);
+             servicioOrder = ServicioOrder.getInstancia();
+            
+            
+             servicioOrder.insertarPedido(order, cliente, videojuego);
+            
+            
+            PrintWriter out = response.getWriter();
+            try {
+                out.println("insertado");
+            } finally {
+                out.close();
+            }
+            
+        }   catch (GlobalException ex) {
+            Logger.getLogger(ConnTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ConnTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    protected void doReadAllOrders(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        try {
+            
+            servicioOrder = ServicioOrder.getInstancia();
+            
+            response.setContentType("application/json;charset=UTF-8");
+            
+            //ServletOutputStream out = resp.getOutputStream();
+            LinkedList<Order> c1 =  servicioOrder.listarPedidos();
+            
+            
+            Gson gson = new Gson();
+            orderJsonString = gson.toJson(c1);
+            PrintWriter out = response.getWriter();
+            try {
+                out.println(orderJsonString);
+            } finally {
+                out.close();
+            }
+        }   catch (GlobalException ex) {
+            Logger.getLogger(ConnTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ConnTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     protected void doReadAllClientes(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

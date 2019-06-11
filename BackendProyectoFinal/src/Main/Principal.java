@@ -13,9 +13,11 @@ import AccesoADatos.ServicioCategoria;
 import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
 import AccesoADatos.ServicioCliente;
+import AccesoADatos.ServicioOrder;
 import AccesoADatos.ServicioVideojuego;
 import LogicaDeNegocio.Categoria;
 import LogicaDeNegocio.Client;
+import LogicaDeNegocio.Order;
 import LogicaDeNegocio.User;
 import LogicaDeNegocio.Videojuego;
 import java.util.LinkedList;
@@ -32,9 +34,14 @@ public class Principal {
         Categoria categoria= new Categoria("SHO21","Shooter12");
         ServicioCategoria sc1 = ServicioCategoria.getInstancia();
         ServicioCliente ssc= ServicioCliente.getInstancia();
-        User usuario = new User("1126580","eeee4e@gmail.com","12345","cliente");
+        ServicioOrder so= ServicioOrder.getInstancia();
+        User usuario = new User("115790444",null,null,null);
        
-        Client cliente=new Client("Cristian hy",22920045, usuario);
+        Client cliente=new Client(null,0, usuario);
+        Videojuego videojuego=new Videojuego("GTAV",null,0,0,null,null);
+        Order order=new Order(2,"2012",16,0,videojuego,cliente);
+        so.eliminarpedido(1);
+        //so.modificarPedido(order, cliente, videojuego);
         //ssc.eliminarCliente("115790444");
         //ssc.modificarCliente(cliente, usuario);
         //ssc.modificarCliente(cliente);
@@ -50,7 +57,7 @@ public class Principal {
         //LinkedList<Videojuego> c1 = sc.listarVideojueos();
         //System.out.print(c1);
         //sc.modificarCarrera(carrera1);
-        LinkedList<Client> c1 = ssc.listarClientes();
+        LinkedList<Order> c1 = so.listarPedidos();
         System.out.print(c1);
         
         

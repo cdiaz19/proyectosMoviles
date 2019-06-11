@@ -1,7 +1,9 @@
+drop table pedido;
 DROP Table videojuego;
 DROP Table categoria;
 drop table cliente;
 drop table usuario;
+
 
 ----------------------Tablas-------------------------------------------------
 -----------------TablaCategoria----------------------------------------------
@@ -45,6 +47,22 @@ CREATE TABLE videojuego (
     FOREIGN KEY (categoria_id)
     REFERENCES categoria(codigo) ON DELETE CASCADE
 );
+CREATE TABLE pedido(
+	id int GENERATED ALWAYS AS IDENTITY,
+ 	fecha VARCHAR(20),
+	cantidad int,
+	total int,
+	cliente_id VARCHAR(30) NOT NULL,
+	videojuego_id VARCHAR(10) NOT NULL,
+	CONSTRAINT pK_pedido PRIMARY KEY (id),
+	CONSTRAINT fk_cliente
+    	FOREIGN KEY (cliente_id)
+    	REFERENCES cliente(ced_usu) ON DELETE CASCADE,
+	CONSTRAINT fk_videojuego
+    	FOREIGN KEY (videojuego_id)
+    	REFERENCES videojuego(codigo_juego) ON DELETE CASCADE
+);
+
 ----------------Datos Iniciales-------------------------------------------
 --Usuario
 Insert Into usuario values('115790444','12345','ale@gmail.com','cliente');
@@ -57,10 +75,90 @@ INSERT INTO categoria VALUES ('STR', 'Estrategia');
 
 -- VideoJuegos
 INSERT INTO videojuego VALUES ('GTAV', 'Grand Thelf Auto V', 20, 35000, 'RockStart', 'ACC');
-
+--Pedidos
+INSERT INTO pedido (fecha,cantidad,total,cliente_id,videojuego_id) VALUES ('2020',5,6,'115790444','GTAV');
 ----------------Mantenimientos--------------------------------------------
 
-----------------MantenimientoDeClientes----------------------------------
+----------------MantenimientoDePedidos----------------------------------
+CREATE OR REPLACE FUNCTION insertarpedido (
+  fecha_IN VARCHAR,
+  cantidad_IN int,
+  cliente_id_IN VARCHAR,
+  videojuego_id_IN VARCHAR
+)
+RETURNS VOID
+AS
+'
+    INSERT INTO pedido(fecha,cantidad,total,cliente_id,videojuego_id) VALUES (fecha_IN,cantidad_IN,(SELECT precio from videojuego where codigo_juego=videojuego_id_IN) * cantidad_IN,cliente_id_IN,videojuego_id_IN);
+    UPDATE videojuego
+    SET cantidad= (SELECT precio from videojuego where codigo_juego=videojuego_id_IN) - cantidad_IN
+	WHERE codigo_juego=videojuego_id_IN;  
+'
+LANGUAGE SQL;
+
+
+CREATE OR REPLACE FUNCTION buscarpedido (
+  id_pedido_IN int
+)
+RETURNS refcursor
+AS
+'
+DECLARE
+  ref refcursor;
+BEGIN
+   OPEN ref FOR SELECT id,fecha,cantidad,total,cliente_id, videojuego_id FROM pedido WHERE id=id_pedido_IN;
+   RETURN ref;
+END;
+'
+LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION actualizarpedido (
+  id_pedido_IN int,
+  fecha_IN VARCHAR,
+  cantidad_IN int,	
+  cliente_id_IN VARCHAR,
+  videojuego_id_IN VARCHAR
+)
+RETURNS VOID
+AS
+'
+    UPDATE pedido SET fecha=fecha_IN,
+	cantidad=cantidad_IN,
+	total=(SELECT precio from videojuego where codigo_juego=videojuego_id_IN) * cantidad_IN
+	WHERE id=id_pedido_IN;
+    UPDATE videojuego
+    SET cantidad= (SELECT precio from videojuego where codigo_juego=videojuego_id_IN) - cantidad_IN
+	WHERE codigo_juego=videojuego_id_IN;  
+'
+LANGUAGE SQL;
+
+CREATE OR REPLACE FUNCTION listarpedidos ()
+RETURNS refcursor
+AS
+'
+DECLARE
+  ref refcursor;
+BEGIN
+   OPEN ref FOR SELECT id,fecha,cantidad,total,cliente_id, videojuego_id FROM pedido;
+RETURN ref;
+END;
+'
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION eliminarpedido (
+  id_pedido_IN int
+)
+RETURNS VOID
+AS
+'
+   DELETE FROM pedido WHERE id=id_pedido_IN;
+'
+LANGUAGE SQL;
+
+----------------MantenimientoDeClientes---------------------------------
+
+
 CREATE OR REPLACE FUNCTION insertarcliente (
   cedula_IN VARCHAR,
   contrasena_IN VARCHAR,
