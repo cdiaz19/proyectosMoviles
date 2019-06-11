@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.lab910.LogicaDeNegocio.Curso;
+import com.example.lab910.LogicaDeNegocio.CursoEstudiante;
 import com.example.lab910.LogicaDeNegocio.Estudiante;
 
 import java.util.ArrayList;
@@ -161,51 +162,47 @@ public class DBHelper extends SQLiteOpenHelper {
     return lista;
   }
 
-
   //Insertar un nuevo Curso para estudiante
   public void insertarCursoEstudiante(String estudiante, String curso){
     ContentValues cv = new ContentValues();
     cv.put("estudiante", estudiante);
     cv.put("curso", curso);
-    db.insert("estudiantes", null, cv);
+    db.insert("cursoEstudiante", null, cv);
   }
 
-  //Borrar un estudiante a partir de su id
-  public void borrarEstudiante(int id){
+  //Borrar un Curso para estudiante a partir de su id
+  public void borrarCursoEstudiante(int id){
     String[] args = new String[]{String.valueOf(id)};
-    db.delete("estudiantes", "_id=?", args);
+    db.delete("cursoEstudiante", "_id=?", args);
   }
 
   //Actualizar un estudiante
-  public void actualizarEstudiante(int id, String nombre, String apellidos, int edad) {
-    System.out.println(nombre);
-    System.out.println(apellidos);
-    System.out.println(edad);
+  public void actualizarEstudiante(int id, String estudiante, String curso) {
+    System.out.println(estudiante);
+    System.out.println(curso);
     ContentValues cv = new ContentValues();
-    cv.put("nombre", nombre);
-    cv.put("apellidos", apellidos);
-    cv.put("edad", edad);
+    cv.put("estudiante", estudiante);
+    cv.put("curso", curso);
 
-    db.update("estudiantes", cv, "_id="+id, null );
+    db.update("cursoEstudiante", cv, "_id="+id, null );
   }
 
-  //Obtener la lista de Estudiantes en la base de datos
-  public ArrayList<Estudiante> getEstudiantes(){
+  //Obtener la lista de CursoEstudiante en la base de datos
+  public ArrayList<CursoEstudiante> getCursoEstudiante(){
     //Creamos el cursor
-    ArrayList<Estudiante> lista = new ArrayList<Estudiante>();
-    Cursor c = db.rawQuery("select _id, nombre, apellidos, edad from estudiantes", null);
+    ArrayList<CursoEstudiante> lista = new ArrayList<CursoEstudiante>();
+    Cursor c = db.rawQuery("select _id, estudiante, curso from cursoEstudiante", null);
     if (c != null && c.getCount()>0) {
       c.moveToFirst();
       do {
         //Asignamos el valor en nuestras variables para crear un nuevo objeto Estudiante
-        String nombre = c.getString(c.getColumnIndex("nombre"));
-        String apellido = c.getString(c.getColumnIndex("apellidos"));
-        int edad = Integer.parseInt(c.getString(c.getColumnIndex("edad")));
+        String estudiante = c.getString(c.getColumnIndex("estudiante"));
+        String curso = c.getString(c.getColumnIndex("curso"));
         int id = c.getInt(c.getColumnIndex("_id"));
 
-        Estudiante com = new Estudiante(id, nombre, apellido, edad);
+        CursoEstudiante com = new CursoEstudiante(id, estudiante, curso);
 
-        //Añadimos el Estudiante a la lista
+        //Añadimos el CursoEstudiante a la lista
         lista.add(com);
       } while (c.moveToNext());
     }

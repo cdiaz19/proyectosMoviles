@@ -8,40 +8,47 @@
   android:paddingLeft="@dimen/activity_horizontal_margin"
   android:paddingRight="@dimen/activity_horizontal_margin"
   android:paddingTop="@dimen/activity_vertical_margin"
-  tools:context=".Activity.AdmCursoActivity"
+  tools:context=".Activity.AdmCursoEstudianteActivity"
   android:orientation="vertical"
   android:weightSum="1">
 
   <TextView
-    android:text="Crea un nuevo Curso"
+    android:text="Asignar un Curso Al Estudiante"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/txtCrear" />
 
-  <EditText
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:inputType="textPersonName"
-    android:hint="Descripcion"
-    android:ems="10"
-    android:id="@+id/editDescripcion" />
+  <TextView
+  android:text="Seleccione un Estudiante"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:id="@+id/txtVerEstudiante" />
 
-  <EditText
+  <Spinner
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:id="@+id/spinEstudiantes" />
+
+  <TextView
+    android:text="Seleccione un Curso"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:inputType="number"
-    android:hint="Creditos"
-    android:ems="10"
-    android:id="@+id/editCredito" />
+    android:id="@+id/txtVerCurso" />
+
+  <Spinner
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/spinCursos" />
+
 
   <Button
     android:text="Crear"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/btnCrearCurso" />
+    android:id="@+id/btnCrearCursoEstudiante" />
 
   <TextView
-    android:text="Seleccione un Curso"
+    android:text="Seleccione un Curso ya asignado al Estudiante"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/txtVer" />
@@ -49,40 +56,34 @@
   <Spinner
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/spinCursos" />
+    android:id="@+id/spinCursosEstudiantes" />
 
   <Button
     android:text="Ver"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/btnVerCurso" />
+    android:id="@+id/btnVerCursoEstudiante" />
 
-  <EditText
+  <Spinner
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:inputType="textPersonName"
-    android:hint="Descripcion"
-    android:ems="10"
-    android:id="@+id/txtDescripcion" />
+    android:id="@+id/spinTxTEstudiantes" />
 
-  <EditText
+  <Spinner
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:inputType="number"
-    android:hint="Creditos"
-    android:ems="10"
-    android:id="@+id/txtCredito" />
+    android:id="@+id/spinTxTCursos" />
 
   <Button
     android:text="Actualizar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/btnActualizarCurso" />
+    android:id="@+id/btnActualizarCursoEstudiante" />
 
   <Button
     android:text="Eliminar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/btnEliminarCurso" />
+    android:id="@+id/btnEliminarCursoEstudiante" />
 
 </LinearLayout>

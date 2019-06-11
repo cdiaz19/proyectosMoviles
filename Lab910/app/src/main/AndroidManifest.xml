@@ -10,9 +10,13 @@
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
     <activity
+      android:name=".Activity.AdmCursoEstudianteActivity"
+      android:label="@string/title_activity_adm_curso_estudiante"
+      android:theme="@style/AppTheme.NoActionBar"></activity>
+    <activity
       android:name=".Activity.AdmCursoActivity"
       android:label="@string/title_activity_adm_curso"
-      android:theme="@style/AppTheme.NoActionBar"></activity>
+      android:theme="@style/AppTheme.NoActionBar" />
     <activity
       android:name=".Activity.AdmEstudianteActivity"
       android:label="@string/title_activity_adm_estudiante"

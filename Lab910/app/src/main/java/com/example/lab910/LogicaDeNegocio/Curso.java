@@ -38,6 +38,6 @@ public class Curso {
 
   @Override
   public String toString() {
-    return "Id:" + id + ", " + descripcion + ", Creditos:" + creditos;
+    return "Id:" + id + ", " + descripcion + " -  Creditos " + creditos;
   }
 }

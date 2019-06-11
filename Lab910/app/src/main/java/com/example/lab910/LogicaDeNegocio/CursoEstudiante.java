@@ -1,14 +1,24 @@
 package com.example.lab910.LogicaDeNegocio;
 
 public class CursoEstudiante {
+  private int id;
   private String estudiante, curso;
 
   public CursoEstudiante() {
   }
 
-  public CursoEstudiante(String estudiante, String curso) {
+  public CursoEstudiante(int id, String estudiante, String curso) {
+    this.id = id;
     this.estudiante = estudiante;
     this.curso = curso;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public int getId() {
+    return id;
   }
 
   public String getEstudiante() {
@@ -30,6 +40,7 @@ public class CursoEstudiante {
   @Override
   public String toString() {
     return "CursoEstudiante{" +
+      "ID=" + id + '\n' +
       "estudiante='" + estudiante + '\'' +
       ", curso='" + curso + '\'' +
       '}';

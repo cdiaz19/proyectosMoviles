@@ -11,4 +11,5 @@
   <string name="menu_gallery">Cursos</string>
   <string name="title_activity_adm_estudiante">AdmEstudianteActivity</string>
   <string name="title_activity_adm_curso">AdmCursoActivity</string>
+  <string name="title_activity_adm_curso_estudiante">AdmCursoEstudiante</string>
 </resources>

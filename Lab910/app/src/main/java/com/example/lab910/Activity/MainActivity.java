@@ -88,6 +88,9 @@ public class MainActivity extends AppCompatActivity
     } else if (id == R.id.nav_gallery) {
       Toast.makeText(getApplicationContext(), "Cursos", Toast.LENGTH_SHORT).show();
       openCurso();
+    }else if (id == R.id.nav_cursoEstu) {
+      Toast.makeText(getApplicationContext(), "Asiganar Curso al Estudiante", Toast.LENGTH_SHORT).show();
+      openCursoEstudiante();
     }
 
     DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -102,6 +105,11 @@ public class MainActivity extends AppCompatActivity
 
   public void openCurso() {
     Intent intent = new Intent(this, AdmCursoActivity.class);
+    startActivity(intent);
+  }
+
+  public void openCursoEstudiante() {
+    Intent intent = new Intent(this, AdmCursoEstudianteActivity.class);
     startActivity(intent);
   }
 }
