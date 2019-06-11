@@ -157,7 +157,6 @@ public class AdmEstudianteActivity extends AppCompatActivity implements View.OnC
         c = lista.get(position);
       }
     }
-
   }
 
   @Override

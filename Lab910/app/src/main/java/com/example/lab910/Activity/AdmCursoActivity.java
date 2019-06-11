@@ -13,7 +13,6 @@ import android.widget.Spinner;
 
 import com.example.lab910.Helper.DBHelper;
 import com.example.lab910.LogicaDeNegocio.Curso;
-import com.example.lab910.LogicaDeNegocio.Estudiante;
 import com.example.lab910.R;
 
 import java.util.ArrayList;
@@ -27,17 +26,11 @@ public class AdmCursoActivity extends AppCompatActivity implements View.OnClickL
   private EditText editDescripcion;
   private EditText editCreditos;
   private EditText txtDescripcion;
-  private EditText txtCreditos;
-
-  private Spinner spinEstudaintes;
-  private ArrayAdapter spinnerAdapterEstudainte;
+  private EditText txtCredito;
 
   private Spinner spinCursos;
   private ArrayAdapter spinnerAdapterCursos;
 
-  //Lista de Estudaintes
-  private ArrayList<Estudiante> listaEstudiantes;
-  private Estudiante e;
 
   //Lista de Cursos y Curso actual
   private ArrayList<Curso> listaCursos;
@@ -58,7 +51,7 @@ public class AdmCursoActivity extends AppCompatActivity implements View.OnClickL
     editCreditos = (EditText) findViewById(R.id.editCredito);
 
     txtDescripcion = (EditText) findViewById(R.id.txtDescripcion);
-    txtCreditos = (EditText)findViewById(R.id.txtCredito);
+    txtCredito = (EditText)findViewById(R.id.txtCredito);
 
     btnCrear = (Button)findViewById(R.id.btnCrearCurso);
     btnVer = (Button)findViewById(R.id.btnVerCurso);
@@ -73,18 +66,9 @@ public class AdmCursoActivity extends AppCompatActivity implements View.OnClickL
     //Iniciamos el controlador de la base de datos
     db = new DBHelper(this);
 
-    //Iniciamos el spinner y la lista de spinEstudaintes
-    spinEstudaintes =(Spinner) findViewById(R.id.spinEstudiantes);
-    listaEstudiantes = db.getEstudiantes();
-
     //Iniciamos el spinner y la lista de spinCursos
     spinCursos = (Spinner) findViewById(R.id.spinCursos);
     listaCursos = db.getCursos();
-
-    //Creamos el adapter y lo asociamos al spinner Estudiante
-    spinnerAdapterEstudainte =new ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item, listaEstudiantes);
-    spinEstudaintes.setAdapter(spinnerAdapterEstudainte);
-    spinEstudaintes.setOnItemSelectedListener(this);
 
     //Creamos el adapter y lo asociamos al spinner Curso
     spinnerAdapterCursos =new ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item, listaCursos);
@@ -98,74 +82,77 @@ public class AdmCursoActivity extends AppCompatActivity implements View.OnClickL
     switch(v.getId()){
       case R.id.btnCrearCurso:
         //Insertamos un nuevo elemento en base de datos
+//        String[] parts = ((String) spinEstudaintes.getSelectedItem().toString()).split(" ");
+//        Estudiante estudiante = db.buscarNombreEstudiante(parts[2]);
 
-        String[] parts = ((String) spinEstudaintes.getSelectedItem().toString()).split(" ");
-        Estudiante estudiante = db.buscarNombreEstudiante(parts[2]);
+        db.insertarCurso(editDescripcion.getText().toString(), Integer.parseInt(editCreditos.getText().toString()));
 
-        db.insertarCurso(editDescripcion.getText().toString(), Integer.parseInt(editCreditos.getText().toString()), estudiante.getId());
-//
-//        //Actualizamos la lista de cursos
-//        listaCursos = db.getCursos();
-//
-//        // Actualizamos el adapter y lo asociamos de nuevo al spinner
-//        spinnerAdapterCursos = new ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item, listaCursos);
-//        spinCursos.setAdapter(spinnerAdapterCursos);
-//
-//        //Limpiamos el formulario
-//        editDescripcion.setText("");
-//        editCreditos.setText("");
+        //Actualizamos la lista de cursos
+        listaCursos = db.getCursos();
+
+        // Actualizamos el adapter y lo asociamos de nuevo al spinner
+        spinnerAdapterCursos = new ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item, listaCursos);
+        spinCursos.setAdapter(spinnerAdapterCursos);
+
+        //Limpiamos el formulario
+        editDescripcion.setText("");
+        editCreditos.setText("");
         break;
 
       case R.id.btnVerCurso:
-        //Si hay algun Estudiante seleccionado mostramos sus valores en la parte inferior
-//        if(c != null) {
-//          txtNombre.setText(c.getNombre());
-//          txtApellido.setText(c.getApellidos());
-//          txtEdad.setText(String.valueOf(c.getEdad()));
-//        }
+        //Si hay algun Curso seleccionado mostramos sus valores en la parte inferior
+        if(c != null) {
+          txtDescripcion.setText(c.getDescripcion());
+          txtCredito.setText(String.valueOf(c.getCreditos()));
+        }
         break;
 
       case R.id.btnActualizarCurso:
-//        //Si hay algun Estudiante seleccionado mostramos sus valores en la parte inferior
-//        db.actualizarEstudiante(c.getId(), txtNombre.getText().toString(), txtApellido.getText().toString(), Integer.parseInt(txtEdad.getText().toString()));
-//
-//        //Actualizamos la lista de comentarios
-//        lista = db.getEstudiantes();
-//
-//        //Actualizamos el adapter y lo asociamos de nuevo al spinner
-//        spinnerAdapter = new ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,lista);
-//        spinEstudaintes.setAdapter(spinnerAdapter);
-//
-//        //Limpiamos el formulario
-//        txtNombre.setText("");
-//        txtApellido.setText("");
-//        txtEdad.setText("");
+        //Si hay algun Curso seleccionado mostramos sus valores en la parte inferior
+        db.actualizarCurso(c.getId(), txtDescripcion.getText().toString(), Integer.parseInt(txtCredito.getText().toString()));
 
+        //Actualizamos la lista de comentarios
+        listaCursos = db.getCursos();
+
+        //Actualizamos el adapter y lo asociamos de nuevo al spinner
+        spinnerAdapterCursos = new ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item, listaCursos);
+        spinCursos.setAdapter(spinnerAdapterCursos);
+
+        //Limpiamos el formulario
+        txtDescripcion.setText("");
+        txtCredito.setText("");
         break;
 
       case R.id.btnEliminarCurso:
-        //Si hay algun Estudiante seleccionado lo borramos de la base de datos y actualizamos el spinner
-//        if(c!=null) {
-//          db.borrarEstudiante(c.getId());
-//          lista = db.getEstudiantes();
-//          spinnerAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, lista);
-//          spinEstudaintes.setAdapter(spinnerAdapter);
-//
-//          //Limpiamos los datos del panel inferior
-//          txtNombre.setText("");
-//          txtApellido.setText("");
-//          txtEdad.setText("");
-//          //Eliminamos el spinEstudaintes actual puesto que ya no existe en base de datos
-//          c=null;
-//        }
-//        break;
+        //Si hay algun Curso seleccionado lo borramos de la base de datos y actualizamos el spinner
+        if(c!=null) {
+          db.borrarCurso(c.getId());
+          listaCursos = db.getCursos();
+          spinnerAdapterCursos = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, listaCursos);
+          spinCursos.setAdapter(spinnerAdapterCursos);
+
+          //Limpiamos los datos del panel inferior
+          txtDescripcion.setText("");
+          txtCredito.setText("");
+
+          //Eliminamos el spinCursos actual puesto que ya no existe en base de datos
+          c=null;
+        }
+        break;
     }
 
   }
 
   @Override
   public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+    if (parent.getId() == R.id.spinCursos) {
+      //Si hay elementos en la base de datos, establecemos el curso actual a partir del
+      //indice del elemento seleccionado en el spinner
 
+      if(listaCursos.size()>0) {
+        c = listaCursos.get(position);
+      }
+    }
   }
 
   @Override

@@ -34,16 +34,16 @@
     android:ems="10"
     android:id="@+id/editCredito" />
 
-  <TextView
-    android:text="Seleccione un Estudiante para el Curso"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/txtVerEstudiante" />
+  <!--<TextView-->
+    <!--android:text="Seleccione un Estudiante para el Curso"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:id="@+id/txtVerEstudiante" />-->
 
-  <Spinner
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/spinEstudiantes" />
+  <!--<Spinner-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:id="@+id/spinEstudiantes" />-->
 
   <Button
     android:text="Crear"
