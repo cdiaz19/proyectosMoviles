@@ -31,6 +31,9 @@ public class AdmCursoActivity extends AppCompatActivity implements View.OnClickL
   private Spinner spinCursos;
   private ArrayAdapter spinnerAdapterCursos;
 
+  private Spinner spinEstudiantes;
+  private ArrayAdapter spinnerAdapterEstudiantes;
+
 
   //Lista de Cursos y Curso actual
   private ArrayList<Curso> listaCursos;
@@ -81,9 +84,6 @@ public class AdmCursoActivity extends AppCompatActivity implements View.OnClickL
     //Acciones de cada boton
     switch(v.getId()){
       case R.id.btnCrearCurso:
-        //Insertamos un nuevo elemento en base de datos
-//        String[] parts = ((String) spinEstudaintes.getSelectedItem().toString()).split(" ");
-//        Estudiante estudiante = db.buscarNombreEstudiante(parts[2]);
 
         db.insertarCurso(editDescripcion.getText().toString(), Integer.parseInt(editCreditos.getText().toString()));
 
@@ -109,6 +109,7 @@ public class AdmCursoActivity extends AppCompatActivity implements View.OnClickL
 
       case R.id.btnActualizarCurso:
         //Si hay algun Curso seleccionado mostramos sus valores en la parte inferior
+
         db.actualizarCurso(c.getId(), txtDescripcion.getText().toString(), Integer.parseInt(txtCredito.getText().toString()));
 
         //Actualizamos la lista de comentarios

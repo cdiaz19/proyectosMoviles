@@ -27,6 +27,9 @@ public class AdmCursoEstudianteActivity extends AppCompatActivity implements Vie
   private Button btnEliminar;
   private Button btnActualizar;
 
+  private EditText txtEstudiante;
+  private EditText txtCurso;
+
   private Spinner spinCursos;
   private ArrayAdapter spinnerAdapterCursos;
 
@@ -62,6 +65,9 @@ public class AdmCursoEstudianteActivity extends AppCompatActivity implements Vie
     btnVer = (Button)findViewById(R.id.btnVerCursoEstudiante);
     btnEliminar = (Button)findViewById(R.id.btnEliminarCursoEstudiante);
     btnActualizar = (Button)findViewById(R.id.btnActualizarCursoEstudiante);
+
+    txtEstudiante = (EditText) findViewById(R.id.txtEstudianteCurso);
+    txtCurso = (EditText) findViewById(R.id.txtCursoCurso);
 
     btnCrear.setOnClickListener(this);
     btnVer.setOnClickListener(this);
@@ -108,11 +114,6 @@ public class AdmCursoEstudianteActivity extends AppCompatActivity implements Vie
         String[] parts = ((String) spinEstudiantes.getSelectedItem().toString()).split(" ");
         String[] partss = ((String) spinCursos.getSelectedItem().toString()).split(" ");
 
-        System.out.println("=====");
-        System.out.println(parts[2]);
-        System.out.println(partss[3]);
-        System.out.println("=====");
-
         db.insertarCursoEstudiante(parts[2], partss[1]);
 
         //Actualizamos la lista de cursos
@@ -124,16 +125,28 @@ public class AdmCursoEstudianteActivity extends AppCompatActivity implements Vie
 
         break;
 //
-      case R.id.btnVerCurso:
+      case R.id.btnVerCursoEstudiante:
+        System.out.println("HIJO DE PUTAAA!!!");
 //        //Si hay algun Curso seleccionado mostramos sus valores en la parte inferior
-//        if(c != null) {
-//          txtDescripcion.setText(c.getDescripcion());
-//          txtCredito.setText(String.valueOf(c.getCreditos()));
-//        }
+        if(ce != null) {
+
+          System.out.println("=====");
+
+          System.out.println(ce);
+
+          System.out.println("=====");
+
+
+          txtEstudiante.setText(ce.getEstudiante());
+          txtCurso.setText(ce.getCurso());
+        }
         break;
 
       case R.id.btnActualizarCursoEstudiante:
         //Si hay algun Curso seleccionado mostramos sus valores en la parte inferior
+        String[] partsss = ((String) spinEstudiantes.getSelectedItem().toString()).split(" ");
+//        String[] partss = ((String) spinCursos.getSelectedItem().toString()).split(" ");
+//
 //        db.actualizarCurso(c.getId(), txtDescripcion.getText().toString(), Integer.parseInt(txtCredito.getText().toString()));
 //
 //        //Actualizamos la lista de comentarios
@@ -144,56 +157,36 @@ public class AdmCursoEstudianteActivity extends AppCompatActivity implements Vie
 //        spinCursos.setAdapter(spinnerAdapterCursos);
 //
 //        //Limpiamos el formulario
-//        txtDescripcion.setText("");
-//        txtCredito.setText("");
         break;
 
       case R.id.btnEliminarCursoEstudiante:
         //Si hay algun Curso seleccionado lo borramos de la base de datos y actualizamos el spinner
-//        if(c!=null) {
-//          db.borrarCurso(c.getId());
-//          listaCursos = db.getCursos();
-//          spinnerAdapterCursos = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, listaCursos);
-//          spinCursos.setAdapter(spinnerAdapterCursos);
-//
-//          //Limpiamos los datos del panel inferior
-//          txtDescripcion.setText("");
-//          txtCredito.setText("");
-//
-//          //Eliminamos el spinCursos actual puesto que ya no existe en base de datos
-//          c=null;
-//        }
+        if(ce!=null) {
+
+          db.borrarCursoEstudiante(ce.getId());
+
+          //Actualizamos la lista de cursos
+          listaCursosEstudiantes = db.getCursoEstudiante();
+
+          // Actualizamos el adapter y lo asociamos de nuevo al spinner
+          spinnerAdapterCursosEstudiantes = new ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item, listaCursosEstudiantes);
+          spinCursosEstudiantes.setAdapter(spinnerAdapterCursosEstudiantes);
+
+          //Eliminamos el spinCursos actual puesto que ya no existe en base de datos
+          ce=null;
+        }
         break;
     }
-
-
   }
 
   @Override
   public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-    if (parent.getId() == R.id.spinCursos) {
-      //Si hay elementos en la base de datos, establecemos el curso actual a partir del
-      //indice del elemento seleccionado en el spinner
-
-      if(listaCursos.size()>0) {
-        c = listaCursos.get(position);
-      }
-    }
-
-    if (parent.getId() == R.id.spinEstudiantes) {
-      //Si hay elementos en la base de datos, establecemos el curso actual a partir del
-      //indice del elemento seleccionado en el spinner
-
-      if(listaEstudiantes.size()>0) {
-        e = listaEstudiantes.get(position);
-      }
-    }
 
     if (parent.getId() == R.id.spinCursosEstudiantes) {
       //Si hay elementos en la base de datos, establecemos el curso actual a partir del
       //indice del elemento seleccionado en el spinner
 
-      if(listaCursosEstudiantes.size()>0) {
+      if(listaCursosEstudiantes.size() > 0) {
         ce = listaCursosEstudiantes.get(position);
       }
     }

@@ -2,7 +2,7 @@ package com.example.lab910.LogicaDeNegocio;
 
 public class Curso {
   private int id, creditos;
-  private String descripcion;
+  private String descripcion, estudiante;
 
   public Curso() { }
 

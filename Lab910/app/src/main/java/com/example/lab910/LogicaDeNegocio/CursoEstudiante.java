@@ -39,10 +39,6 @@ public class CursoEstudiante {
 
   @Override
   public String toString() {
-    return "CursoEstudiante{" +
-      "ID=" + id + '\n' +
-      "estudiante='" + estudiante + '\'' +
-      ", curso='" + curso + '\'' +
-      '}';
+    return estudiante + ", Curso:'" + curso;
   }
 }

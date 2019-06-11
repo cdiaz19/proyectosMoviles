@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class DBHelper extends SQLiteOpenHelper {
   private static final String ESTUDIANTES_TABLE_CREATE = "CREATE TABLE estudiantes(_id INTEGER PRIMARY KEY AUTOINCREMENT, nombre VARCHAR(30), apellidos TEXT, edad INTEGER)";
   private static final String CURSOS_TABLE_CREATE = "CREATE TABLE cursos(_id INTEGER PRIMARY KEY AUTOINCREMENT, descripcion VARCHAR(30), creditos INTEGER)";
-  private static final String CURSOS_ESTUDIANTE_TABLE_CREATE = "CREATE TABLE cursoEstudiante(_id INTEGER PRIMARY KEY AUTOINCREMENT, estudiante VARCHAR(30), curso VARCHAR(30))";
+  private static final String FOOO_TABLE_CREATE = "CREATE TABLE cursosEstudiante(_id INTEGER PRIMARY KEY AUTOINCREMENT, estudiante TEXT, curso TEXT)";
 
   private static final String DB_NAME = "database.sqlite";
   private static final int DB_VERSION = 1;
@@ -30,7 +30,7 @@ public class DBHelper extends SQLiteOpenHelper {
   public void onCreate(SQLiteDatabase db) {
     db.execSQL(ESTUDIANTES_TABLE_CREATE);
     db.execSQL(CURSOS_TABLE_CREATE);
-    db.execSQL(CURSOS_ESTUDIANTE_TABLE_CREATE);
+    db.execSQL(FOOO_TABLE_CREATE);
   }
 
   @Override
@@ -167,13 +167,13 @@ public class DBHelper extends SQLiteOpenHelper {
     ContentValues cv = new ContentValues();
     cv.put("estudiante", estudiante);
     cv.put("curso", curso);
-    db.insert("cursoEstudiante", null, cv);
+    db.insert("cursosEstudiante", null, cv);
   }
 
   //Borrar un Curso para estudiante a partir de su id
   public void borrarCursoEstudiante(int id){
     String[] args = new String[]{String.valueOf(id)};
-    db.delete("cursoEstudiante", "_id=?", args);
+    db.delete("cursosEstudiante", "_id=?", args);
   }
 
   //Actualizar un estudiante
@@ -184,14 +184,14 @@ public class DBHelper extends SQLiteOpenHelper {
     cv.put("estudiante", estudiante);
     cv.put("curso", curso);
 
-    db.update("cursoEstudiante", cv, "_id="+id, null );
+    db.update("cursosEstudiante", cv, "_id="+id, null );
   }
 
   //Obtener la lista de CursoEstudiante en la base de datos
   public ArrayList<CursoEstudiante> getCursoEstudiante(){
     //Creamos el cursor
     ArrayList<CursoEstudiante> lista = new ArrayList<CursoEstudiante>();
-    Cursor c = db.rawQuery("select _id, estudiante, curso from cursoEstudiante", null);
+    Cursor c = db.rawQuery("select _id, estudiante, curso from cursosEstudiante", null);
     if (c != null && c.getCount()>0) {
       c.moveToFirst();
       do {

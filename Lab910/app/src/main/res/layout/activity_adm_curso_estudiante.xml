@@ -64,18 +64,23 @@
     android:layout_height="wrap_content"
     android:id="@+id/btnVerCursoEstudiante" />
 
-  <Spinner
+  <EditText
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/spinTxTEstudiantes" />
+    android:inputType="textPersonName"
+    android:hint="Estudiante"
+    android:ems="10"
+    android:id="@+id/txtEstudianteCurso" />
 
-  <Spinner
+  <EditText
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/spinTxTCursos" />
+    android:inputType="number"
+    android:hint="Curso"
+    android:ems="10"
+    android:id="@+id/txtCursoCurso" />
 
   <Button
-    android:text="Actualizar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/btnActualizarCursoEstudiante" />
