@@ -102,6 +102,7 @@ public class AddUpdVideoGameActivity extends AppCompatActivity {
                         +"&precio="+ priceFld.getText().toString()
                         +"&categoria_id="+ codeCatFld.getText().toString()
                         +"&nombre_categoria="+ nameCatFld.getText().toString();
+      tempUrl = tempUrl.replaceAll(" ", "%20");
 
       MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
       myAsyncTasks.execute();

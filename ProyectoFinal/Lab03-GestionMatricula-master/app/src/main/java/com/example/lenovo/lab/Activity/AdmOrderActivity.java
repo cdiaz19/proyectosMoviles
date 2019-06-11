@@ -66,7 +66,7 @@ public class AdmOrderActivity extends AppCompatActivity implements RecyclerItemT
 
     getSupportActionBar().setTitle("Maintenance Orders");
 
-    tempUrl = apiUrl + "listarOrdenes";
+    tempUrl = apiUrl + "listarPedidos";
     MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
     try {
       json=myAsyncTasks.execute().get();

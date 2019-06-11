@@ -77,6 +77,7 @@ public class AddUpdCategoryActivity extends AppCompatActivity {
     public void addCategory() {
         if (validateForm()) {
             tempUrl = apiUrl + "insertarCategoria?nombre="+nomFld.getText().toString()+"&codigo="+codFld.getText().toString();
+            tempUrl = tempUrl.replaceAll(" ", "%20");
             MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
             myAsyncTasks.execute();
             Category category = new Category(codFld.getText().toString(), nomFld.getText().toString());
@@ -90,6 +91,7 @@ public class AddUpdCategoryActivity extends AppCompatActivity {
     public void editCategory() {
         if (validateForm()) {
             tempUrl = apiUrl + "editCategoria?nombre="+nomFld.getText().toString()+"&codigo="+codFld.getText().toString();
+            tempUrl = tempUrl.replaceAll(" ", "%20");
             MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
             myAsyncTasks.execute();
             Category category = new Category(codFld.getText().toString(), nomFld.getText().toString());

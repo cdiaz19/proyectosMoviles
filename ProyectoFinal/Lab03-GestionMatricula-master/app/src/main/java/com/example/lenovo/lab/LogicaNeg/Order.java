@@ -4,14 +4,18 @@ import java.io.Serializable;
 
 public class Order implements Serializable {
   private String fecha;
-  private int cantidad, total;
+
+
+
+  private int id, cantidad, total;
   private VideoGame videoGame;
   private Client client;
 
   public Order() {
   }
 
-  public Order(String fecha, int cantidad, int total, VideoGame videoGame, Client client) {
+  public Order(int id, String fecha, int cantidad, int total, VideoGame videoGame, Client client) {
+    this.id=id;
     this.fecha = fecha;
     this.cantidad = cantidad;
     this.total = total;
@@ -58,11 +62,18 @@ public class Order implements Serializable {
   public void setClient(Client client) {
     this.client = client;
   }
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
 
   @Override
   public String toString() {
-    return "Order{" +
-      "fecha='" + fecha + '\'' +
+    return "Order{" + "id= "+id+
+      ", fecha='" + fecha + '\'' +
       ", cantidad=" + cantidad +
       ", total=" + total +
       ", videoGame=" + videoGame +

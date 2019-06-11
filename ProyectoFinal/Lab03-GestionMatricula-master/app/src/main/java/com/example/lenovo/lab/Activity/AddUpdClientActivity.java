@@ -139,6 +139,7 @@ public class AddUpdClientActivity extends AppCompatActivity {
                                       "&telefono="+ telFld.getText().toString() +
                                       "&contrasena="+ passFld.getText().toString() +
                                       "&rol="+ spinner.getSelectedItem().toString();
+      tempUrl = tempUrl.replaceAll(" ", "%20");
 
       MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
       myAsyncTasks.execute();

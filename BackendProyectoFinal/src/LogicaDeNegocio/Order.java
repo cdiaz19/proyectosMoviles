@@ -26,7 +26,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" + "id=" + id + ", cantidad=" + cantidad + ", total=" + total + ", fecha=" + fecha + ", videogame=" + videogame.getCodigoJuego() + ", client=" + client.getUser().getCedula() + '}';
+        return "Order{" + "id=" + id + ", cantidad=" + cantidad + ", total=" + total + ", fecha=" + fecha + ", videogame=" + videogame.getCodigoJuego() + ", client=" + client.user.getCedula() + '}';
     }
 
     public int getId() {

@@ -89,18 +89,17 @@ public class ModelData {
   public void prepareOrdersData1(List<Order> orders) {
     if (orders != null) {
       for (int i = 0; i < orders.size(); i++) {
-        User user = new User(orders.get(i).getClient().getUser().getCedula(), orders.get(i).getClient().getUser().getEmail(),
-                              orders.get(i).getClient().getUser().getPassword(),
-                              orders.get(i).getClient().getUser().getRole());
+        User user = new User(orders.get(i).getClient().getUser().getCedula(), null,
+                              null,
+                              null);
 
-        Client client = new Client(orders.get(i).getClient().getNombre(),
-                                    orders.get(i).getClient().getTelefono(), user);
+        Client client = new Client(null,
+                                    0, user);
 
-        VideoGame videoGame = new VideoGame(orders.get(i).getVideoGame().getCodigoJuego(), orders.get(i).getVideoGame().getNombre(),
-                                            orders.get(i).getVideoGame().getEmpresa(), orders.get(i).getVideoGame().getCantidad(),
-                                            orders.get(i).getVideoGame().getPrecio(), orders.get(i).getVideoGame().getCategoria());
+        VideoGame videoGame = new VideoGame(orders.get(i).getVideoGame().getCodigoJuego(),null,
+                                            null, 0, 0, null);
 
-        Order order = new Order(orders.get(i).getFecha(), orders.get(i).getCantidad(), orders.get(i).getTotal(), videoGame, client);
+        Order order = new Order(orders.get(i).getId(),orders.get(i).getFecha(), orders.get(i).getCantidad(), orders.get(i).getTotal(), videoGame, client);
 
         orderList.add(order);
       }

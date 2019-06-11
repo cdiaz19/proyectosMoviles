@@ -51,6 +51,7 @@ public class AddUpdOrderActivity extends AppCompatActivity {
   private EditText orDateFdl;
   private EditText cantFdl;
   private EditText totalFdl;
+  private EditText id;
   private FloatingActionButton fAB;
 
   private ModelData model;
@@ -68,20 +69,20 @@ public class AddUpdOrderActivity extends AppCompatActivity {
     clientsList = new ArrayList<>();
     editable = true;
 
-//    tempUrl = apiUrl + "listarVideojuegos";
-//    MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
-//    try {
-//      json = myAsyncTasks.execute().get();
-//    } catch (InterruptedException e) {
-//      e.printStackTrace();
-//    } catch (ExecutionException e) {
-//      e.printStackTrace();
-//    }
+    tempUrl = apiUrl + "listarVideojuegos";
+    MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
+    try {
+      json = myAsyncTasks.execute().get();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    } catch (ExecutionException e) {
+      e.printStackTrace();
+    }
 
     final Gson gson = new Gson();
     final Type tipoListaVideojuegos = new TypeToken<List<VideoGame>>(){}.getType();
     final List<VideoGame> videojuegos = gson.fromJson(json, tipoListaVideojuegos);
-
+    id= findViewById(R.id.idOrder);
     cantFdl = findViewById(R.id.cantAddUpdOr);
     totalFdl = findViewById(R.id.totalAddUpdOr);
 
@@ -92,6 +93,7 @@ public class AddUpdOrderActivity extends AppCompatActivity {
     String date = simpleDateFormat.format(calendar.getTime());
     orDateFdl.setText(date);
     orDateFdl.setEnabled(false);
+    id.setText("");
     cantFdl.setText("");
     totalFdl.setText("");
 
@@ -254,7 +256,7 @@ public class AddUpdOrderActivity extends AppCompatActivity {
       MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
       myAsyncTasks.execute();
 
-      Order order = new Order(orDateFdl.getText().toString(), Integer.parseInt(cantFdl.getText().toString()),
+      Order order = new Order(Integer.parseInt(id.getText().toString()),orDateFdl.getText().toString(), Integer.parseInt(cantFdl.getText().toString()),
                               Integer.parseInt(totalFdl.getText().toString()), null, null);
 
 
@@ -279,8 +281,8 @@ public class AddUpdOrderActivity extends AppCompatActivity {
       MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
       myAsyncTasks.execute();
 
-      Order order = new Order(orDateFdl.getText().toString(), Integer.parseInt(cantFdl.getText().toString()),
-        Integer.parseInt(totalFdl.getText().toString()), null, null);
+      Order order = new Order(Integer.parseInt(id.getText().toString()),orDateFdl.getText().toString(), Integer.parseInt(cantFdl.getText().toString()),
+              Integer.parseInt(totalFdl.getText().toString()), null, null);
 
 
       System.out.println(order);

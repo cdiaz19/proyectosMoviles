@@ -91,7 +91,7 @@ AS
 '
     INSERT INTO pedido(fecha,cantidad,total,cliente_id,videojuego_id) VALUES (fecha_IN,cantidad_IN,(SELECT precio from videojuego where codigo_juego=videojuego_id_IN) * cantidad_IN,cliente_id_IN,videojuego_id_IN);
     UPDATE videojuego
-    SET cantidad= (SELECT precio from videojuego where codigo_juego=videojuego_id_IN) - cantidad_IN
+    SET cantidad= (SELECT cantidad from videojuego where codigo_juego=videojuego_id_IN) - cantidad_IN
 	WHERE codigo_juego=videojuego_id_IN;  
 '
 LANGUAGE SQL;
