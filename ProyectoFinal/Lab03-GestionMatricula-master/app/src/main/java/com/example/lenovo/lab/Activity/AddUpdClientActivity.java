@@ -74,6 +74,7 @@ public class AddUpdClientActivity extends AppCompatActivity {
         cedFld.setEnabled(false);
         nomFld.setText(aux.getNombre());
         emailFld.setText(aux.getUser().getEmail());
+        passFld.setText(aux.getUser().getPassword());
         telFld.setText(Integer.toString(aux.getTelefono()));
         //edit action
         fBtn.setOnClickListener(new View.OnClickListener() {
@@ -95,31 +96,33 @@ public class AddUpdClientActivity extends AppCompatActivity {
   }
 
   public void initSpinner() {
-    spinner = (Spinner) findViewById(R.id.roles_spinner);
-    List<String> list = new ArrayList<String>();
-    list.add("administrador");
-    list.add("cliente");
-    list.add("ninguno");
-    spinner.setPrompt(getString(R.string.privileges_prompt));
-    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-      android.R.layout.simple_spinner_item, list);
-    dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-    spinner.setAdapter(dataAdapter);
+//    spinner = (Spinner) findViewById(R.id.roles_spinner);
+//    List<String> list = new ArrayList<String>();
+//    list.add("administrador");
+//    list.add("cliente");
+//    list.add("ninguno");
+//    spinner.setPrompt(getString(R.string.privileges_prompt));
+//    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+//      android.R.layout.simple_spinner_item, list);
+//    dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//    spinner.setAdapter(dataAdapter);
   }
 
   public void addClient() {
     if (validateForm()) {
-      tempUrl = apiUrl + "insertarCliente?nombre="+nomFld.getText().toString()+
+      tempUrl = apiUrl + "insertarCliente?nombre="+ nomFld.getText().toString()+
                           "&cedula="+ cedFld.getText().toString() +
-                          "&correo="+ emailFld.getText().toString() +
+                          "&email="+ emailFld.getText().toString() +
                           "&telefono="+ telFld.getText().toString() +
-                          "&contrasena="+ passFld.getText().toString() +
-                          "&rol="+ spinner.getSelectedItem().toString();
+                          "&password="+ passFld.getText().toString();
+
+      tempUrl = tempUrl.replaceAll(" ", "%20");
+
 
       MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
       myAsyncTasks.execute();
 
-      User user = new User(cedFld.getText().toString(), emailFld.getText().toString(), passFld.getText().toString(),  spinner.getSelectedItem().toString());
+      User user = new User(cedFld.getText().toString(), emailFld.getText().toString(), passFld.getText().toString(),  "client");
 
       Client client = new Client(nomFld.getText().toString(),
                                   Integer.parseInt(telFld.getText().toString()),
@@ -133,18 +136,17 @@ public class AddUpdClientActivity extends AppCompatActivity {
 
   public void editCliente() {
     if (validateForm()) {
-      tempUrl = apiUrl + "editCliente?nombre="+nomFld.getText().toString()+
+      tempUrl = apiUrl + "modificarCliente?nombre="+ nomFld.getText().toString()+
                                       "&cedula="+ cedFld.getText().toString() +
-                                      "&correo="+ emailFld.getText().toString() +
+                                      "&email="+ emailFld.getText().toString() +
                                       "&telefono="+ telFld.getText().toString() +
-                                      "&contrasena="+ passFld.getText().toString() +
-                                      "&rol="+ spinner.getSelectedItem().toString();
+                                      "&password="+ passFld.getText().toString();
       tempUrl = tempUrl.replaceAll(" ", "%20");
 
       MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
       myAsyncTasks.execute();
 
-      User user = new User(cedFld.getText().toString(), emailFld.getText().toString(), passFld.getText().toString(), spinner.getSelectedItem().toString());
+      User user = new User(cedFld.getText().toString(), emailFld.getText().toString(), passFld.getText().toString(), "client");
 
       Client client = new Client(nomFld.getText().toString(),
                                 Integer.parseInt(telFld.getText().toString()),
@@ -174,10 +176,6 @@ public class AddUpdClientActivity extends AppCompatActivity {
       telFld.setError("Field required!");
       error++;
     }
-    if (TextUtils.isEmpty(this.spinner.getSelectedItem().toString())) {
-      telFld.setError("Field required!");
-      error++;
-    }
     if (error > 0) {
       Toast.makeText(getApplicationContext(), "Some errors in the Form!", Toast.LENGTH_LONG).show();
       return false;
@@ -185,7 +183,7 @@ public class AddUpdClientActivity extends AppCompatActivity {
     return true;
   }
 
-  public class MyAsyncTasks extends AsyncTask<String, String, String> {
+   public class MyAsyncTasks extends AsyncTask<String, String, String> {
 
     @Override
     protected void onPreExecute() {
@@ -256,7 +254,7 @@ public class AddUpdClientActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
               dialog.dismiss();
             }
-          });
+           });
         alertDialog.show();
 
       }

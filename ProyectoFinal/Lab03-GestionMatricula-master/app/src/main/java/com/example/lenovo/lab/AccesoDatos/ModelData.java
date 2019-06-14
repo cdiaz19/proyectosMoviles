@@ -30,7 +30,7 @@ public class ModelData {
     prepareVideoGamesData1(games);
     prepareClientsData1(clients);
     prepareOrdersData1(orders);
-    prepareClientData();
+    //prepareClientData();
 
   }
 
@@ -84,6 +84,10 @@ public class ModelData {
         clientList.add(client);
       }
     }
+
+    User userAdmin = new User ("1234", "@admin", "admin", "administrator");
+    Client admin = new Client("Jose", 321, userAdmin);
+    clientList.add(admin);
   }
 
   public void prepareOrdersData1(List<Order> orders) {
@@ -103,6 +107,7 @@ public class ModelData {
 
         orderList.add(order);
       }
+
     }
   }
 

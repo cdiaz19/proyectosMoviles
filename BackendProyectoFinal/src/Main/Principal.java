@@ -40,7 +40,7 @@ public class Principal {
         Client cliente=new Client(null,0, usuario);
         Videojuego videojuego=new Videojuego("GTAV",null,0,0,null,null);
         Order order=new Order(2,"2012",16,0,videojuego,cliente);
-        so.insertarPedido(order, cliente, videojuego);
+        //so.insertarPedido(order, cliente, videojuego);
         //so.modificarPedido(order, cliente, videojuego);
         //ssc.eliminarCliente("115790444");
         //ssc.modificarCliente(cliente, usuario);

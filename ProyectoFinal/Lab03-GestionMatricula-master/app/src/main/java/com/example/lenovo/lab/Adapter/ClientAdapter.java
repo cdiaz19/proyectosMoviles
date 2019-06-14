@@ -72,7 +72,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.MyViewHold
         final Client client = clientListFiltered.get(position);
         holder.titulo1.setText(client.getNombre());
         holder.titulo2.setText(client.getUser().getCedula());
-        holder.description.setText(client.getUser().getEmail());
+        holder.description.setText("Email: " + client.getUser().getEmail() + " - Tel:" + client.getTelefono());
     }
 
     @Override

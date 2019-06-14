@@ -12,21 +12,21 @@ package LogicaDeNegocio;
 public class Order {
     private int id, cantidad, total;
     private String fecha;
-    private Videojuego videogame;
+    private Videojuego videoGame;
     private Client client;
 
-    public Order(int id, String fecha,int cantidad, int total, Videojuego videogame, Client client) {
+    public Order(int id, String fecha,int cantidad, int total, Videojuego videoGame, Client client) {
         this.id = id;
         this.cantidad = cantidad;
         this.total = total;
         this.fecha = fecha;
-        this.videogame = videogame;
+        this.videoGame = videoGame;
         this.client = client;
     }
 
     @Override
     public String toString() {
-        return "Order{" + "id=" + id + ", cantidad=" + cantidad + ", total=" + total + ", fecha=" + fecha + ", videogame=" + videogame.getCodigoJuego() + ", client=" + client.user.getCedula() + '}';
+        return "Order{" + "id=" + id + ", cantidad=" + cantidad + ", total=" + total + ", fecha=" + fecha + ", videoGame=" + videoGame.getCodigoJuego() + ", client=" + client.user.getCedula() + '}';
     }
 
     public int getId() {
@@ -62,11 +62,11 @@ public class Order {
     }
 
     public Videojuego getVideogame() {
-        return videogame;
+        return videoGame;
     }
 
     public void setVideogame(Videojuego videogame) {
-        this.videogame = videogame;
+        this.videoGame = videogame;
     }
 
     public Client getClient() {

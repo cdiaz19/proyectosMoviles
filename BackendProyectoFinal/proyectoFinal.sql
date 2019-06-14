@@ -72,9 +72,12 @@ Insert Into cliente values('Alejandro Gamboa',22928804,'115790444');
 -- Categorias
 INSERT INTO categoria VALUES ('ACC', 'Accion');
 INSERT INTO categoria VALUES ('STR', 'Estrategia');
+INSERT INTO categoria VALUES ('ARPG', 'Action Role-Playing ');
 
 -- VideoJuegos
 INSERT INTO videojuego VALUES ('GTAV', 'Grand Thelf Auto V', 20, 35000, 'RockStart', 'ACC');
+INSERT INTO videojuego VALUES ('SK', 'Skyrim', 78, 42000, 'Bethesda Game Studios', 'ARPG');
+
 --Pedidos
 INSERT INTO pedido (fecha,cantidad,total,cliente_id,videojuego_id) VALUES ('2020',5,6,'115790444','GTAV');
 ----------------Mantenimientos--------------------------------------------

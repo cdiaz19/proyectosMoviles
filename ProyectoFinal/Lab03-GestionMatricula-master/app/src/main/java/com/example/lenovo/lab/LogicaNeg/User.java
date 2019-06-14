@@ -56,7 +56,7 @@ public class User implements Serializable {
       "email='" + email + '\'' +
       ", password='" + password + '\'' +
       ", role='" + role + '\'' +
-      ",cedula=" + cedula + '\'' +
+      ",cedula=" + cedula  + " " +
       '}';
   }
 }

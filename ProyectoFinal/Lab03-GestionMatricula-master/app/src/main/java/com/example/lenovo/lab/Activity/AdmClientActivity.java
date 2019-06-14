@@ -107,7 +107,7 @@ public class AdmClientActivity extends AppCompatActivity implements RecyclerItem
       }
     });
 
-    // Receive the Category sent by AddUpdCategoryActivity and then refresh view.
+    // Receive the Category sent by AddUpdClientActivity and then refresh view.
     //checkIntentInformation();
     mAdapter.notifyDataSetChanged();
   }
@@ -164,8 +164,8 @@ public class AdmClientActivity extends AppCompatActivity implements RecyclerItem
     if (direction == ItemTouchHelper.START) {
       if (viewHolder instanceof ClientAdapter.MyViewHolder) {
         // get the removed item name to display it in snack bar
-        String name = clientsList.get(viewHolder.getAdapterPosition()).getNombre();
-        tempUrl = apiUrl + "deleteClient?nombre="+name;
+        String cedula = clientsList.get(viewHolder.getAdapterPosition()).getUser().getCedula();
+        tempUrl = apiUrl + "eliminaCliente?cedula="+ cedula;
         MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
         myAsyncTasks.execute();
 
@@ -175,7 +175,7 @@ public class AdmClientActivity extends AppCompatActivity implements RecyclerItem
         mAdapter.removeItem(viewHolder.getAdapterPosition());
 
         // showing snack bar with Undo option
-        Snackbar snackbar = Snackbar.make(coordinatorLayout, name + " deleted!", Snackbar.LENGTH_LONG);
+        Snackbar snackbar = Snackbar.make(coordinatorLayout, cedula + " deleted!", Snackbar.LENGTH_LONG);
         snackbar.setAction("UNDO", new View.OnClickListener() {
           @Override
           public void onClick(View view) {
@@ -191,7 +191,7 @@ public class AdmClientActivity extends AppCompatActivity implements RecyclerItem
       Client aux = mAdapter.getSwipedItem(viewHolder.getAdapterPosition());
 
       //send data to Edit Activity
-      Intent intent = new Intent(this, AddUpdCategoryActivity.class);
+      Intent intent = new Intent(this, AddUpdClientActivity.class);
       intent.putExtra("editable", true);
       intent.putExtra("client", aux);
       mAdapter.notifyDataSetChanged(); //restart left swipe view

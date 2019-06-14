@@ -41,10 +41,12 @@ public class AddUpdOrderActivity extends AppCompatActivity {
   String apiUrl = "http://10.0.2.2:8080/WebProyectoFinal/";
   String tempUrl = "";
   String json;
+  String json2;
   private boolean editable = true;
 
   List<Client> clientsList;
   List<VideoGame> videoGamesList;
+
 
   private Spinner sp_videgames;
   private Spinner sp_clients;
@@ -82,6 +84,21 @@ public class AddUpdOrderActivity extends AppCompatActivity {
     final Gson gson = new Gson();
     final Type tipoListaVideojuegos = new TypeToken<List<VideoGame>>(){}.getType();
     final List<VideoGame> videojuegos = gson.fromJson(json, tipoListaVideojuegos);
+
+    tempUrl = apiUrl + "listarClientes";
+    MyAsyncTasks myAsyncTasks2 = new MyAsyncTasks();
+    try {
+      json2 = myAsyncTasks2.execute().get();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    } catch (ExecutionException e) {
+      e.printStackTrace();
+    }
+
+    final Gson gson2 = new Gson();
+    final Type tipoListaClientes = new TypeToken<List<Client>>(){}.getType();
+    final List<Client> clientes = gson2.fromJson(json2, tipoListaClientes);
+
     id= findViewById(R.id.idOrder);
     cantFdl = findViewById(R.id.cantAddUpdOr);
     totalFdl = findViewById(R.id.totalAddUpdOr);
@@ -94,15 +111,18 @@ public class AddUpdOrderActivity extends AppCompatActivity {
     orDateFdl.setText(date);
     orDateFdl.setEnabled(false);
     id.setText("");
+    id.setEnabled(false);
     cantFdl.setText("");
     totalFdl.setText("");
+    totalFdl.setEnabled(false);
 
     sp_videgames = (Spinner) findViewById(R.id.sp_vg);
     sp_clients = (Spinner) findViewById(R.id.sp_cleint);
     fAB = (FloatingActionButton) findViewById(R.id.addUpdOrderBtn);
 
-    model = new ModelData(null,videojuegos, null, null);
-
+    model = new ModelData(null,videojuegos, clientes, null);
+    videoGamesList=model.getVideoGamesList();
+    clientsList=model.getClientList();
     loadVideoGames();
     loadFilteredVideoGame();
     loadCients();
@@ -143,12 +163,11 @@ public class AddUpdOrderActivity extends AppCompatActivity {
 
   public void loadVideoGames() {
     // im not sure about this
-    Category cat =  new Category("FOO", "FOOOTEEEER");
+    //Category cat =  new Category("FOO", "FOOOTEEEER");
 
-    VideoGame vg = new VideoGame("GTAV", "GRATVV", "Rockstar", 23, 45000, cat);
+    //VideoGame vg = new VideoGame("GTAV", "GRATVV", "Rockstar", 23, 45000, cat);
 
 
-    videoGamesList.add(vg);
 
     System.out.println(videoGamesList);
     sp_videgames.setPrompt("Seleccione el Video Juego");
@@ -196,11 +215,6 @@ public class AddUpdOrderActivity extends AppCompatActivity {
 
   public void loadCients() {
     // im not sure about this
-    User user =  new User("1234", "@user", "user", "client");
-
-    Client client = new Client("Client", 123123, user);
-
-    clientsList.add(client);
 
     sp_videgames.setPrompt("Seleccione el Cliente");
 
@@ -222,6 +236,7 @@ public class AddUpdOrderActivity extends AppCompatActivity {
       public void onNothingSelected(AdapterView<?> adapterView) {
       }
     });
+
   }
 
   private void loadFilteredClient() {
@@ -243,21 +258,41 @@ public class AddUpdOrderActivity extends AppCompatActivity {
     ArrayAdapter<Client> adapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, clientsList);
     adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
     sp_videgames.setAdapter(adapter);
+
   }
 
   private void addOrder() {
     if (validateForm()) {
-      tempUrl = apiUrl + "insertarOrder?fehca="+orDateFdl.getText().toString()+
+      String spinerclients=sp_clients.getSelectedItem().toString();
+      String[] stringclient = spinerclients.split(",");
+      String cedulaTemp = stringclient[6];
+      String[] formatCed = cedulaTemp.split("=");
+      String cedula=formatCed[1];
+      String[] cedulafinal1 = cedula.split(" ");
+      String cedulafinal=cedulafinal1[0];
+      String spinerjuegos=sp_videgames.getSelectedItem().toString();
+      String[] stringgames = spinerjuegos.split(",");
+      String gameTemp=stringgames[0];
+      String[] formatgame=gameTemp.split("=");
+      String videojuego_id=formatgame[1].replaceAll("[^\\dA-Za-z]", "");
+
+
+
+
+
+
+      tempUrl = apiUrl + "insertarPedido?fecha="+orDateFdl.getText().toString()+
                         "&cantidad="+ cantFdl.getText().toString() +
-                        "&total="+ totalFdl.getText().toString() +
-                        "&cliente="+ sp_clients.getSelectedItem().toString() +
-                        "&videojuego="+ sp_videgames.getSelectedItem().toString();
+                        "&cedula="+ cedulafinal +
+                        "&videojuego_id="+videojuego_id;
+      tempUrl = tempUrl.replaceAll(" ", "%20");
+
 
       MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
       myAsyncTasks.execute();
 
       Order order = new Order(Integer.parseInt(id.getText().toString()),orDateFdl.getText().toString(), Integer.parseInt(cantFdl.getText().toString()),
-                              Integer.parseInt(totalFdl.getText().toString()), null, null);
+                              0, null, null);
 
 
       System.out.println(order);
@@ -272,20 +307,36 @@ public class AddUpdOrderActivity extends AppCompatActivity {
 
   private void editOrder() {
     if (validateForm()) {
-      tempUrl = apiUrl + "editOrder?fehca="+orDateFdl.getText().toString()+
-                          "&cantidad="+ cantFdl.getText().toString() +
-                          "&total="+ totalFdl.getText().toString() +
-                          "&cliente="+ sp_clients.getSelectedItem().toString() +
-                          "&videojuego="+ sp_videgames.getSelectedItem().toString();
+      String spinerclients=sp_clients.getSelectedItem().toString();
+      String[] stringclient = spinerclients.split(",");
+      String cedulaTemp = stringclient[6];
+      String[] formatCed = cedulaTemp.split("=");
+      String cedula=formatCed[1];
+      String[] cedulafinal1 = cedula.split(" ");
+      String cedulafinal=cedulafinal1[0];
+      String spinerjuegos=sp_videgames.getSelectedItem().toString();
+      String[] stringgames = spinerjuegos.split(",");
+      String gameTemp=stringgames[0];
+      String[] formatgame=gameTemp.split("=");
+      String videojuego_id=formatgame[1].replaceAll("[^\\dA-Za-z]", "");
+
+
+
+
+
+
+      tempUrl = apiUrl + "insertarPedido?fecha="+orDateFdl.getText().toString()+
+              "&cantidad="+ cantFdl.getText().toString() +
+              "&cedula="+ cedulafinal +
+              "&videojuego_id="+videojuego_id;
+      tempUrl = tempUrl.replaceAll(" ", "%20");
+
 
       MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
       myAsyncTasks.execute();
 
       Order order = new Order(Integer.parseInt(id.getText().toString()),orDateFdl.getText().toString(), Integer.parseInt(cantFdl.getText().toString()),
-              Integer.parseInt(totalFdl.getText().toString()), null, null);
-
-
-      System.out.println(order);
+              0, null, null);
 
       Intent intent = new Intent(getBaseContext(), AdmOrderActivity.class);
       intent.putExtra("AddOrder", order);
@@ -297,10 +348,6 @@ public class AddUpdOrderActivity extends AppCompatActivity {
 
   public boolean validateForm() {
     int error = 0;
-    if (TextUtils.isEmpty(this.totalFdl.getText())) {
-      totalFdl.setError("Field required!");
-      error++;
-    }
     if (TextUtils.isEmpty(this.cantFdl.getText())) {
       cantFdl.setError("Field required!");
       error++;
