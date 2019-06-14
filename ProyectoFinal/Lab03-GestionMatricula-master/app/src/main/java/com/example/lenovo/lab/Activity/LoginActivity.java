@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
   private User user;
   private ModelData model;
 
-  String apiUrl = "http://10.0.2.2:8080/WEB-INF/";
+  String apiUrl = "http://10.0.2.2:8080/WebProyectoFinal/";
   String tempUrl = "";
   String json;
 
@@ -88,6 +88,23 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
+
+    tempUrl = apiUrl + "listarClientes";
+    MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
+    try {
+      json=myAsyncTasks.execute().get();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    } catch (ExecutionException e) {
+      e.printStackTrace();
+    }
+
+    final Gson gson = new Gson();
+    final Type tipoListaClientes = new TypeToken<List<Client>>(){}.getType();
+    final List<Client> clients = gson.fromJson(json, tipoListaClientes);
+
+    model = new ModelData(null, null, clients, null);
+
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_login);
 
@@ -124,21 +141,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
   private List<Client> searchUsers() {
 
-//    tempUrl = apiUrl + "listarClientes";
-//    MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
-//    try {
-//      json=myAsyncTasks.execute().get();
-//    } catch (InterruptedException e) {
-//      e.printStackTrace();
-//    } catch (ExecutionException e) {
-//      e.printStackTrace();
-//    }
-
-    final Gson gson = new Gson();
-    final Type tipoListaClientes = new TypeToken<List<Client>>(){}.getType();
-    final List<Client> clients = gson.fromJson(json, tipoListaClientes);
-
-    model = new ModelData(null, null, clients, null);
     System.out.println("Clientes ->");
     System.out.println(model.getClientList());
 

@@ -26,6 +26,7 @@ public class ModelData {
     videoGamesList = new ArrayList<>();
     clientList = new ArrayList<>();
     orderList = new ArrayList<>();
+    System.out.print("loquesea");
     prepareCategoriesData1(categories);
     prepareVideoGamesData1(games);
     prepareClientsData1(clients);
@@ -74,6 +75,7 @@ public class ModelData {
 
   public void prepareClientsData1(List<Client> clients) {
     if (clients != null) {
+      System.out.print("entroalclients");
       for (int i = 0; i < clients.size(); i++) {
         User user = new User(clients.get(i).getUser().getCedula(), clients.get(i).getUser().getEmail(),
           clients.get(i).getUser().getPassword(),

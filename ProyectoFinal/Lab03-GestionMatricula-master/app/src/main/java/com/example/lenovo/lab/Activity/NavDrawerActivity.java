@@ -74,7 +74,7 @@ public class NavDrawerActivity extends AppCompatActivity
         holder = menu.findItem(R.id.nav_segurity);
         holder.setEnabled(true);
         break;
-      case "client":
+      case "cliente":
         holder = menu.findItem(R.id.nav_order);
         holder.setEnabled(true);
         break;
