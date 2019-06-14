@@ -63,12 +63,6 @@ public class NavDrawerActivity extends AppCompatActivity
     //using privileges to lock data
     switch (privilegio) {
       case "administrator":
-        holder = menu.findItem(R.id.nav_videoGames);
-        holder.setEnabled(true);
-        holder = menu.findItem(R.id.nav_orders);
-        holder.setEnabled(true);
-        holder = menu.findItem(R.id.nav_historial);
-        holder.setEnabled(true);
         holder = menu.findItem(R.id.nav_videoGame);
         holder.setEnabled(true);
         holder = menu.findItem(R.id.nav_categories);
@@ -81,8 +75,6 @@ public class NavDrawerActivity extends AppCompatActivity
         holder.setEnabled(true);
         break;
       case "client":
-        holder = menu.findItem(R.id.nav_videoGames);
-        holder.setEnabled(true);
         holder = menu.findItem(R.id.nav_order);
         holder.setEnabled(true);
         break;
@@ -134,18 +126,7 @@ public class NavDrawerActivity extends AppCompatActivity
     String defaultValue = getResources().getString(R.string.preference_user_key_default);
     String privilegio = prefs.getString(getString(R.string.preference_user_key), defaultValue);
 
-    if (id == R.id.nav_videoGames) {
-      Toast.makeText(getApplicationContext(), "Video Games Module not yet!", Toast.LENGTH_SHORT).show();
-//      abrirOfertaAcademica();
-    } else if (id == R.id.nav_orders) {
-      Toast.makeText(getApplicationContext(), "Orders Module not yet!", Toast.LENGTH_SHORT).show();
-//      openAdmVideoGames();
-    } else if (id == R.id.nav_bodega) {
-      Toast.makeText(getApplicationContext(), "Module not yet!", Toast.LENGTH_SHORT).show();
-//      openAdmVideoGames();
-    } else if (id == R.id.nav_historial) {
-      Toast.makeText(getApplicationContext(), "Display Historial Module not yet!", Toast.LENGTH_SHORT).show();
-    } else if (id == R.id.nav_videoGame) {
+    if (id == R.id.nav_videoGame) {
       Toast.makeText(getApplicationContext(), "Video Games Module", Toast.LENGTH_SHORT).show();
       openAdmVideoGames();
     } else if (id == R.id.nav_order) {

@@ -4,26 +4,6 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_videoGames"
-            android:enabled="false"
-            android:icon="@drawable/ic_menu_oferta_academica"
-            android:title="Video Juegos" />
-        <item
-            android:id="@+id/nav_orders"
-            android:enabled="false"
-            android:icon="@drawable/ic_menu_matricula"
-            android:title="Ordenes" />
-        <item
-            android:id="@+id/nav_bodega"
-            android:enabled="false"
-            android:icon="@drawable/ic_menu_registro_notas"
-            android:title="Bodega" />
-        <item
-            android:id="@+id/nav_historial"
-            android:enabled="false"
-            android:icon="@drawable/ic_menu_historial"
-            android:title="Consulta de Pedidos" />
     </group>
 
     <item android:title="Mantenimientos">

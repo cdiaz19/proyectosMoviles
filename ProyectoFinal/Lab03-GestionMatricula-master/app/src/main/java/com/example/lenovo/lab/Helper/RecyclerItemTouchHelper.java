@@ -12,6 +12,7 @@ import android.view.View;
 
 import com.example.lenovo.lab.Adapter.ClientAdapter;
 import com.example.lenovo.lab.Adapter.CategoriesAdapter;
+import com.example.lenovo.lab.Adapter.OrderAdapter;
 import com.example.lenovo.lab.Adapter.VideoGameAdapter;
 import com.example.lenovo.lab.Adapter.SecurityAdapter;
 
@@ -79,6 +80,10 @@ public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
         backgroundViewEdit = ((SecurityAdapter.MyViewHolder) viewHolder).viewBackgroundEdit;
         backgroundViewDelete = ((SecurityAdapter.MyViewHolder) viewHolder).viewBackgroundDelete;
         foregroundView = ((SecurityAdapter.MyViewHolder) viewHolder).viewForeground;
+
+      } else if (this.listener.getClass().getSimpleName().equals("AdmOrderActivity")) {
+        backgroundViewEdit = ((OrderAdapter.MyViewHolder) viewHolder).viewBackgroundEdit;
+        foregroundView = ((OrderAdapter.MyViewHolder) viewHolder).viewForeground;
 
       }
 

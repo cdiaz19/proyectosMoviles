@@ -86,8 +86,12 @@ public class ModelData {
     }
 
     User userAdmin = new User ("1234", "@admin", "admin", "administrator");
-    Client admin = new Client("Jose", 321, userAdmin);
+    Client admin = new Client("Jose1", 321, userAdmin);
     clientList.add(admin);
+
+    User usee = new User ("1234", "@admin", "admsssin", "administrator");
+    Client xs = new Client("Jose2", 321, usee);
+    clientList.add(xs);
   }
 
   public void prepareOrdersData1(List<Order> orders) {

@@ -199,13 +199,13 @@ public class AddUpdOrderActivity extends AppCompatActivity {
     for (VideoGame c : model.getVideoGamesList()) {
       if (c.getNombre().equals(sp_videgames.getSelectedItem().toString())) {
 //        index = model.getVideoGamesList().indexOf(c);
-        index = videoGamesList.indexOf(c);
+        index = model.getVideoGamesList().indexOf(c);
       }
     }
 
 //    cantVideoGames = model.getVideoGamesList().size();
 
-      cantVideoGames = videoGamesList.size();
+      cantVideoGames = model.getVideoGamesList().size();
 
 //    ArrayAdapter<VideoGame> adapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, model.getVideoGamesList());
     ArrayAdapter<VideoGame> adapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, videoGamesList);
@@ -244,15 +244,15 @@ public class AddUpdOrderActivity extends AppCompatActivity {
     int index = 0;
 
     for (Client c : model.getClientList()) {
-      if (c.getNombre().equals(sp_videgames.getSelectedItem().toString())) {
+      if (c.getNombre().equals(sp_clients.getSelectedItem().toString())) {
 //        index = model.getVideoGamesList().indexOf(c);
-        index = clientsList.indexOf(c);
+        index = model.getClientList().indexOf(c);
       }
     }
 
 //    cantVideoGames = model.getVideoGamesList().size();
 
-    cantClients = clientsList.size();
+    cantClients = model.getClientList().size();
 
 //    ArrayAdapter<VideoGame> adapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, model.getClientList());
     ArrayAdapter<Client> adapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, clientsList);
@@ -277,14 +277,11 @@ public class AddUpdOrderActivity extends AppCompatActivity {
       String videojuego_id=formatgame[1].replaceAll("[^\\dA-Za-z]", "");
 
 
-
-
-
-
       tempUrl = apiUrl + "insertarPedido?fecha="+orDateFdl.getText().toString()+
                         "&cantidad="+ cantFdl.getText().toString() +
                         "&cedula="+ cedulafinal +
                         "&videojuego_id="+videojuego_id;
+
       tempUrl = tempUrl.replaceAll(" ", "%20");
 
 
@@ -293,7 +290,6 @@ public class AddUpdOrderActivity extends AppCompatActivity {
 
       Order order = new Order(Integer.parseInt(id.getText().toString()),orDateFdl.getText().toString(), Integer.parseInt(cantFdl.getText().toString()),
                               0, null, null);
-
 
       System.out.println(order);
 
@@ -320,12 +316,7 @@ public class AddUpdOrderActivity extends AppCompatActivity {
       String[] formatgame=gameTemp.split("=");
       String videojuego_id=formatgame[1].replaceAll("[^\\dA-Za-z]", "");
 
-
-
-
-
-
-      tempUrl = apiUrl + "insertarPedido?fecha="+orDateFdl.getText().toString()+
+      tempUrl = apiUrl + "insertarPedido?fecha="+ orDateFdl.getText().toString()+
               "&cantidad="+ cantFdl.getText().toString() +
               "&cedula="+ cedulafinal +
               "&videojuego_id="+videojuego_id;
