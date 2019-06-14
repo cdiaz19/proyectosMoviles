@@ -71,7 +71,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
     public void onBindViewHolder(OrderAdapter.MyViewHolder holder, int position) {
         // rendering view
         final Order order = orderListFiltered.get(position);
-        holder.titulo1.setText(order.getVideoGame().getCodigoJuego());
+        holder.titulo1.setText(order.getVideoGame().getCodigoJuego() + ", cantidad: "+ order.getCantidad());
         holder.titulo2.setText(order.getClient().getUser().getCedula());
         holder.description.setText("Fecha: " + order.getFecha() + ", Monto: "+ order.getTotal());
     }

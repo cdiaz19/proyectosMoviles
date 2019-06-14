@@ -45,8 +45,8 @@ import java.util.concurrent.ExecutionException;
 
 public class AdmCategoryActivity extends AppCompatActivity implements RecyclerItemTouchHelper.RecyclerItemTouchHelperListener, CategoriesAdapter.CategoryAdapterListener {
 
-
-  String apiUrl = "http://10.0.2.2:8080/WebProyectoFinal/";
+  String apiUrl = "http://192.168.0.16:8080/WebProyectoFinal/";
+  //String apiUrl = "http://10.0.2.2:8080/WebProyectoFinal/";
   String tempUrl = "";
   private RecyclerView mRecyclerView;
   private CategoriesAdapter mAdapter;

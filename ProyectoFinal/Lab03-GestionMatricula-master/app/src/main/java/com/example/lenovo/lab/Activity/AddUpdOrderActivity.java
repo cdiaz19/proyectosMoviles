@@ -37,8 +37,8 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class AddUpdOrderActivity extends AppCompatActivity {
-
-  String apiUrl = "http://10.0.2.2:8080/WebProyectoFinal/";
+  String apiUrl = "http://192.168.0.16:8080/WebProyectoFinal/";
+  //String apiUrl = "http://10.0.2.2:8080/WebProyectoFinal/";
   String tempUrl = "";
   String json;
   String json2;
@@ -288,7 +288,7 @@ public class AddUpdOrderActivity extends AppCompatActivity {
       MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
       myAsyncTasks.execute();
 
-      Order order = new Order(Integer.parseInt(id.getText().toString()),orDateFdl.getText().toString(), Integer.parseInt(cantFdl.getText().toString()),
+      Order order = new Order(0,orDateFdl.getText().toString(), Integer.parseInt(cantFdl.getText().toString()),
                               0, null, null);
 
       System.out.println(order);

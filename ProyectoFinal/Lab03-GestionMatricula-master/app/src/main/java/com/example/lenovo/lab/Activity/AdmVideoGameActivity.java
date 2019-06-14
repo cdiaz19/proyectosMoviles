@@ -44,8 +44,8 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class AdmVideoGameActivity extends AppCompatActivity implements RecyclerItemTouchHelper.RecyclerItemTouchHelperListener, VideoGameAdapter.VideoGameAdapterListener {
-
-  String apiUrl = "http://10.0.2.2:8080/WebProyectoFinal/";
+  String apiUrl = "http://192.168.0.16:8080/WebProyectoFinal/";
+  //String apiUrl = "http://10.0.2.2:8080/WebProyectoFinal/";
   String tempUrl = "";
   private RecyclerView mRecyclerView;
   private VideoGameAdapter mAdapter;
