@@ -66,8 +66,10 @@ CREATE TABLE pedido(
 ----------------Datos Iniciales-------------------------------------------
 --Usuario
 Insert Into usuario values('115790444','12345','ale@gmail.com','cliente');
+Insert Into usuario values('4646422','12345678','cdiaz@gmail.com','cliente');
 --Clientes
 Insert Into cliente values('Alejandro Gamboa',22928804,'115790444');
+Insert Into cliente values('Cristian Diaz Jimenez',8999660,'4646422');
 
 -- Categorias
 INSERT INTO categoria VALUES ('ACC', 'Accion');
@@ -236,7 +238,7 @@ CREATE OR REPLACE FUNCTION eliminarcliente (
 RETURNS VOID
 AS
 '
-   DELETE FROM usuario WHERE cedula=cedula;
+   DELETE FROM usuario WHERE cedula=cedula_IN;
 '
 LANGUAGE SQL;
 
